@@ -23,6 +23,15 @@
 	
 	<context:component-scan base-package="com.bitcamp.cody" />
 	
+	<!-- 데이터베이스 연결을 위한 dataSource 설정 -->
+	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<beans:property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<beans:property name="jdbcUrl"
+			value="jdbc:mysql://localhost/cody?characterEncoding=utf8" />
+		<beans:property name="user" value="cody" />
+		<beans:property name="password" value="cody" />
+	</beans:bean>
+	
 	
 	
 </beans:beans>
