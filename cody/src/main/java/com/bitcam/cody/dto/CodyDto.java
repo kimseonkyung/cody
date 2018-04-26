@@ -17,6 +17,7 @@ public class CodyDto {
 	public int getCody_idx() {
 		return cody_idx;
 	}
+	
 
 	public CodyDto(int cody_idx, String cody_image, String cody_intro, boolean cody_gender, int cody_heigft,
 			int board_click, Date board_date, int board_like, int member_idx) {
