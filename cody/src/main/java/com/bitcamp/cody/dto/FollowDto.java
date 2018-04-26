@@ -1,6 +1,5 @@
 package com.bitcamp.cody.dto;
 
-
 public class FollowDto {
 
 	private int follow_idx;
@@ -16,7 +15,6 @@ public class FollowDto {
 		this.m_request = m_request;
 		this.m_response = m_response;
 	}
-	
 
 	public int getM_request() {
 		return m_request;

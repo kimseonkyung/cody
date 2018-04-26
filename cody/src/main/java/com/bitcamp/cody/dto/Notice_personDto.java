@@ -1,6 +1,5 @@
 package com.bitcamp.cody.dto;
 
-
 import java.util.Date;
 
 public class Notice_personDto {
@@ -13,7 +12,11 @@ public class Notice_personDto {
 	private int board_like;
 	private int man_idx;
 	private int member_idx;
-	
+
+	public Notice_personDto() {
+
+	}
+
 	public Notice_personDto(int notice_idx, String notice_title, String notice_contents, int board_click,
 			Date board_date, int board_like, int man_idx, int member_idx) {
 		this.notice_idx = notice_idx;
@@ -24,10 +27,6 @@ public class Notice_personDto {
 		this.board_like = board_like;
 		this.man_idx = man_idx;
 		this.member_idx = member_idx;
-	}
-
-	public Notice_personDto() {
-
 	}
 
 	public int getNotice_idx() {

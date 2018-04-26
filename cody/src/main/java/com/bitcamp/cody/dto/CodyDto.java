@@ -1,36 +1,53 @@
 package com.bitcamp.cody.dto;
 
-
 import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class CodyDto {
 
 	private int cody_idx;
 	private String cody_image;
+	private String cody_title;
 	private String cody_intro;
 	private boolean cody_gender;
 	private int cody_heigft;
+	private int cody_age;
 	private int board_click;
 	private Date board_date;
 	private int board_like;
 	private int member_idx;
+	private MultipartFile photofile;
 
-	public int getCody_idx() {
-		return cody_idx;
+	public CodyDto() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
 
-	public CodyDto(int cody_idx, String cody_image, String cody_intro, boolean cody_gender, int cody_heigft,
-			int board_click, Date board_date, int board_like, int member_idx) {
+	public CodyDto(int cody_idx, String cody_image, String cody_title, String cody_intro, boolean cody_gender,
+			int cody_heigft, int cody_age, int board_click, Date board_date, int board_like, int member_idx,
+			MultipartFile photofile) {
+		super();
 		this.cody_idx = cody_idx;
 		this.cody_image = cody_image;
+		this.cody_title = cody_title;
 		this.cody_intro = cody_intro;
 		this.cody_gender = cody_gender;
 		this.cody_heigft = cody_heigft;
+		this.cody_age = cody_age;
 		this.board_click = board_click;
 		this.board_date = board_date;
 		this.board_like = board_like;
 		this.member_idx = member_idx;
+		this.photofile = photofile;
+	}
+
+	public int getCody_idx() {
+		return cody_idx;
+	}
+
+	public void setCody_idx(int cody_idx) {
+		this.cody_idx = cody_idx;
 	}
 
 	public String getCody_image() {
@@ -39,6 +56,14 @@ public class CodyDto {
 
 	public void setCody_image(String cody_image) {
 		this.cody_image = cody_image;
+	}
+
+	public String getCody_title() {
+		return cody_title;
+	}
+
+	public void setCody_title(String cody_title) {
+		this.cody_title = cody_title;
 	}
 
 	public String getCody_intro() {
@@ -63,6 +88,14 @@ public class CodyDto {
 
 	public void setCody_heigft(int cody_heigft) {
 		this.cody_heigft = cody_heigft;
+	}
+
+	public int getCody_age() {
+		return cody_age;
+	}
+
+	public void setCody_age(int cody_age) {
+		this.cody_age = cody_age;
 	}
 
 	public int getBoard_click() {
@@ -97,15 +130,20 @@ public class CodyDto {
 		this.member_idx = member_idx;
 	}
 
-	public void setCody_idx(int cody_idx) {
-		this.cody_idx = cody_idx;
+	public MultipartFile getPhotofile() {
+		return photofile;
+	}
+
+	public void setPhotofile(MultipartFile photofile) {
+		this.photofile = photofile;
 	}
 
 	@Override
 	public String toString() {
-		return "CodyDto [cody_idx=" + cody_idx + ", cody_image=" + cody_image + ", cody_intro=" + cody_intro
-				+ ", cody_gender=" + cody_gender + ", cody_heigft=" + cody_heigft + ", board_click=" + board_click
-				+ ", board_date=" + board_date + ", board_like=" + board_like + ", member_idx=" + member_idx + "]";
+		return "CodyDto [cody_idx=" + cody_idx + ", cody_image=" + cody_image + ", cody_title=" + cody_title
+				+ ", cody_intro=" + cody_intro + ", cody_gender=" + cody_gender + ", cody_heigft=" + cody_heigft
+				+ ", cody_age=" + cody_age + ", board_click=" + board_click + ", board_date=" + board_date
+				+ ", board_like=" + board_like + ", member_idx=" + member_idx + ", photofile=" + photofile + "]";
 	}
 
 }

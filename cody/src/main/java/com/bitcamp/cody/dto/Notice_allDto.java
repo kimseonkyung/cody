@@ -1,6 +1,5 @@
 package com.bitcamp.cody.dto;
 
-
 public class Notice_allDto {
 
 	private int notice_idx;
@@ -11,9 +10,10 @@ public class Notice_allDto {
 	private int board_like;
 	private int man_idx;
 
-	
-	
-	
+	public Notice_allDto() {
+
+	}
+
 	public Notice_allDto(int notice_idx, String notice_title, String notice_contents, int board_click, int board_date,
 			int board_like, int man_idx) {
 		this.notice_idx = notice_idx;
@@ -23,10 +23,6 @@ public class Notice_allDto {
 		this.board_date = board_date;
 		this.board_like = board_like;
 		this.man_idx = man_idx;
-	}
-
-	public Notice_allDto() {
-
 	}
 
 	public int getNotice_idx() {

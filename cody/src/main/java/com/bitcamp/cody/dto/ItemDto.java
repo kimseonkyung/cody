@@ -1,28 +1,35 @@
 package com.bitcamp.cody.dto;
 
+import org.springframework.web.multipart.MultipartFile;
 
 public class ItemDto {
 
 	private int item_idx;
 	private String item_name;
 	private String item_brand;
-	private String item_price;
+	private String item_image;
+	private int item_price;
 	private String item_category;
 	private String item_color;
-	
-	
-	public ItemDto(int item_idx, String item_name, String item_brand, String item_price, String item_category,
-			String item_color) {
-		this.item_idx = item_idx;
-		this.item_name = item_name;
-		this.item_brand = item_brand;
-		this.item_price = item_price;
-		this.item_category = item_category;
-		this.item_color = item_color;
-	}
+	private int cody_idx;
+	private MultipartFile photofile;
 
 	public ItemDto() {
 
+	}
+
+	public ItemDto(int item_idx, String item_name, String item_brand, String item_image, int item_price,
+			String item_category, String item_color, int cody_idx, MultipartFile photofile) {
+		super();
+		this.item_idx = item_idx;
+		this.item_name = item_name;
+		this.item_brand = item_brand;
+		this.item_image = item_image;
+		this.item_price = item_price;
+		this.item_category = item_category;
+		this.item_color = item_color;
+		this.cody_idx = cody_idx;
+		this.photofile = photofile;
 	}
 
 	public int getItem_idx() {
@@ -49,11 +56,19 @@ public class ItemDto {
 		this.item_brand = item_brand;
 	}
 
-	public String getItem_price() {
+	public String getItem_image() {
+		return item_image;
+	}
+
+	public void setItem_image(String item_image) {
+		this.item_image = item_image;
+	}
+
+	public int getItem_price() {
 		return item_price;
 	}
 
-	public void setItem_price(String item_price) {
+	public void setItem_price(int item_price) {
 		this.item_price = item_price;
 	}
 
@@ -73,11 +88,27 @@ public class ItemDto {
 		this.item_color = item_color;
 	}
 
+	public int getCody_idx() {
+		return cody_idx;
+	}
+
+	public void setCody_idx(int cody_idx) {
+		this.cody_idx = cody_idx;
+	}
+
+	public MultipartFile getPhotofile() {
+		return photofile;
+	}
+
+	public void setPhotofile(MultipartFile photofile) {
+		this.photofile = photofile;
+	}
+
 	@Override
 	public String toString() {
 		return "ItemDto [item_idx=" + item_idx + ", item_name=" + item_name + ", item_brand=" + item_brand
-				+ ", item_price=" + item_price + ", item_category=" + item_category + ", item_color=" + item_color
-				+ "]";
+				+ ", item_image=" + item_image + ", item_price=" + item_price + ", item_category=" + item_category
+				+ ", item_color=" + item_color + ", cody_idx=" + cody_idx + ", photofile=" + photofile + "]";
 	}
 
 }
