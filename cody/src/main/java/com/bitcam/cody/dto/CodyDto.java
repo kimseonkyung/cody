@@ -12,7 +12,6 @@ public class CodyDto {
 	private int board_click;
 	private Date board_date;
 	private int board_like;
-	private int item_idx;
 	private int member_idx;
 
 	public int getCody_idx() {
@@ -20,7 +19,7 @@ public class CodyDto {
 	}
 
 	public CodyDto(int cody_idx, String cody_image, String cody_intro, boolean cody_gender, int cody_heigft,
-			int board_click, Date board_date, int board_like, int item_idx, int member_idx) {
+			int board_click, Date board_date, int board_like, int member_idx) {
 		this.cody_idx = cody_idx;
 		this.cody_image = cody_image;
 		this.cody_intro = cody_intro;
@@ -29,12 +28,7 @@ public class CodyDto {
 		this.board_click = board_click;
 		this.board_date = board_date;
 		this.board_like = board_like;
-		this.item_idx = item_idx;
 		this.member_idx = member_idx;
-	}
-
-	public void setCody_idx(int cody_idx) {
-		this.cody_idx = cody_idx;
 	}
 
 	public String getCody_image() {
@@ -93,14 +87,6 @@ public class CodyDto {
 		this.board_like = board_like;
 	}
 
-	public int getItem_idx() {
-		return item_idx;
-	}
-
-	public void setItem_idx(int item_idx) {
-		this.item_idx = item_idx;
-	}
-
 	public int getMember_idx() {
 		return member_idx;
 	}
@@ -109,12 +95,15 @@ public class CodyDto {
 		this.member_idx = member_idx;
 	}
 
+	public void setCody_idx(int cody_idx) {
+		this.cody_idx = cody_idx;
+	}
+
 	@Override
 	public String toString() {
 		return "CodyDto [cody_idx=" + cody_idx + ", cody_image=" + cody_image + ", cody_intro=" + cody_intro
 				+ ", cody_gender=" + cody_gender + ", cody_heigft=" + cody_heigft + ", board_click=" + board_click
-				+ ", board_date=" + board_date + ", board_like=" + board_like + ", item_idx=" + item_idx
-				+ ", member_idx=" + member_idx + "]";
+				+ ", board_date=" + board_date + ", board_like=" + board_like + ", member_idx=" + member_idx + "]";
 	}
 
 }
