@@ -9,10 +9,10 @@
 
 	<!-- xml파일 임포트하세요~ -->
 	<beans:import resource="kim-context.xml" />
-	<!-- <beans:import resource="seo-context.xml" /> <beans:import resource="lim-context.xml" 
+	<beans:import resource="seo-context.xml" /> <!-- <beans:import resource="lim-context.xml" 
 		/> <beans:import resource="jeong-context.xml" /> <beans:import resource="park-context.xml" 
-		/> -->
-
+		/>
+ -->
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
