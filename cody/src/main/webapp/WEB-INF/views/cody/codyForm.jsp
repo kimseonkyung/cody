@@ -18,28 +18,22 @@
 </tr>
 <tr>
 <td>착용아이템</td>
-<td><a href="#"></a></td>
+<td><a href="itemForm">항목추가</a></td>
 </tr>
 <tr>
 <td>코디상세</td>
-<td>코디소개<textarea name="information" rows="20" cols="100"></textarea></td>
+<td>제목<input type="text" name="cody_title"></td>
+<td>코디소개<textarea name="cody_intro" rows="20" cols="100"></textarea></td>
 <td>성별※<label for="loc"></label>
-                <select id="gender">
+                <select id="cody_gender">
                     <option>선택하세요</option>
                     <option>Men</option>
                     <option>Women</option>
                                    </select>
     </td>
-    <td>신장※<input type="text" name="height"></td>
-    <td>나이※<input type="text" name="age"></td>
-  <td>공개*비공개 설정※<label for="secret"></label>
-                <select id="secret">
-                    <option>선택하세요</option>
-                    <option>공개</option>
-                    <option>비공개</option>
-                                   </select>
-    
-    </td>
+    <td>신장※<input type="text" name="cody_height"></td>
+    <td>나이※<input type="text" name="cody_age"></td>
+  
     <td> 
     <input type="submit" value="Upload">
 			<input type="reset"> 

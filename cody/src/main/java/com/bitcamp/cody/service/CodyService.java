@@ -26,7 +26,7 @@ public class CodyService {
 
 		service.multipart(cody, request);
 
-		System.out.println("실행전 : " + cody.getCody_idx());
+		System.out.println("실행전 : " + cody);
 
 		// 업로드한 파일의 데이터를 item에 등록
 
@@ -34,7 +34,7 @@ public class CodyService {
 		int resultCnt = dao.insertCody(cody);
 
 		
-		System.out.println("실행후 : " + cody.getCody_idx());
+		System.out.println("실행후 : " + cody);
 
 		return resultCnt;
 	}

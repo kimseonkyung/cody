@@ -11,7 +11,7 @@ public class CodyDto {
 	private String cody_title;
 	private String cody_intro;
 	private boolean cody_gender;
-	private int cody_heigft;
+	private int cody_height;
 	private int cody_age;
 	private int board_click;
 	private Date board_date;
@@ -25,7 +25,7 @@ public class CodyDto {
 	}
 
 	public CodyDto(int cody_idx, String cody_image, String cody_title, String cody_intro, boolean cody_gender,
-			int cody_heigft, int cody_age, int board_click, Date board_date, int board_like, int member_idx,
+			int cody_height, int cody_age, int board_click, Date board_date, int board_like, int member_idx,
 			MultipartFile photofile) {
 		super();
 		this.cody_idx = cody_idx;
@@ -33,7 +33,7 @@ public class CodyDto {
 		this.cody_title = cody_title;
 		this.cody_intro = cody_intro;
 		this.cody_gender = cody_gender;
-		this.cody_heigft = cody_heigft;
+		this.cody_height = cody_height;
 		this.cody_age = cody_age;
 		this.board_click = board_click;
 		this.board_date = board_date;
@@ -82,12 +82,12 @@ public class CodyDto {
 		this.cody_gender = cody_gender;
 	}
 
-	public int getCody_heigft() {
-		return cody_heigft;
+	public int getCody_height() {
+		return cody_height;
 	}
 
-	public void setCody_heigft(int cody_heigft) {
-		this.cody_heigft = cody_heigft;
+	public void setCody_height(int cody_height) {
+		this.cody_height = cody_height;
 	}
 
 	public int getCody_age() {
@@ -141,7 +141,7 @@ public class CodyDto {
 	@Override
 	public String toString() {
 		return "CodyDto [cody_idx=" + cody_idx + ", cody_image=" + cody_image + ", cody_title=" + cody_title
-				+ ", cody_intro=" + cody_intro + ", cody_gender=" + cody_gender + ", cody_heigft=" + cody_heigft
+				+ ", cody_intro=" + cody_intro + ", cody_gender=" + cody_gender + ", cody_height=" + cody_height
 				+ ", cody_age=" + cody_age + ", board_click=" + board_click + ", board_date=" + board_date
 				+ ", board_like=" + board_like + ", member_idx=" + member_idx + ", photofile=" + photofile + "]";
 	}

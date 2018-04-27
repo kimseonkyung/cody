@@ -12,8 +12,9 @@
 
   <script>
  
-  등록성공
-  </script>
 
+  </script>
+등록성공
+<a href="codyList">목록보기</a>
 </body>
 </html>

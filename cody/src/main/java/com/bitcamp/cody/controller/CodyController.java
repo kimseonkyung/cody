@@ -15,18 +15,17 @@ import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.service.CodyService;
 
 @Controller
-@RequestMapping("/codyForm")
 public class CodyController {
 
 	@Autowired
-	CodyService service;
+	CodyService codyservice;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
 	public String codyForm() {
 		return "cody/codyForm";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/codyForm", method = RequestMethod.POST)
 	public String codyInsert(CodyDto cody, Model model, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		// 서비스에 회원 데이터 저장 요청
@@ -34,7 +33,7 @@ public class CodyController {
 		// model 에 저장
 		System.out.println(cody);
 
-		int resultCnt = service.codyInsert(cody, request);
+		int resultCnt = codyservice.codyInsert(cody, request);
 
 		String msg = "정상적으로 등록되었습니다.";
 
