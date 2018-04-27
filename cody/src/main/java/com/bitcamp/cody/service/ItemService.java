@@ -25,14 +25,14 @@ public class ItemService {
 
 		service.multipart(item, request);
 
-		System.out.println("실행전 : " + item.getItem_idx());
+		System.out.println("실행전 : " + item);
 
 		// 업로드한 파일의 데이터를 item에 등록
 
 		// dao 요청 : 데이터 저장 요청
 		int resultCnt = dao.insertItem(item);
 
-		System.out.println("실행후 : " + item.getItem_idx());
+		System.out.println("실행후 : " + item);
 
 		return resultCnt;
 	}

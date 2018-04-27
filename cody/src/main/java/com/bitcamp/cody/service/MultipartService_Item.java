@@ -15,7 +15,7 @@ public class MultipartService_Item {
 	// 파일 업로드 처리
 		
 		/*업로드 폴더 시스템 물리적 경로 찾기*/
-		String uploadURI = "/uploadfile/memberphoto";
+		String uploadURI = "/uploadfile/itemphoto";
 		String dir = request.getSession().getServletContext().getRealPath(uploadURI);
 		System.out.println(dir);
 		

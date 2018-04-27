@@ -8,7 +8,10 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- xml파일 임포트하세요~ -->
-	<beans:import resource="classpath:kim-context.xml" />
+	<beans:import resource="kim-context.xml" />
+	<!-- <beans:import resource="seo-context.xml" /> <beans:import resource="lim-context.xml" 
+		/> <beans:import resource="jeong-context.xml" /> <beans:import resource="park-context.xml" 
+		/> -->
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
@@ -19,7 +22,8 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	<!-- 업로드된 파일(사진) 들을 원래 가지는 성격의 파일로 적용하기 위한 설정 -->
+	<resources mapping="/uploadfile/**" location="/uploadfile/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
