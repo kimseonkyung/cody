@@ -33,6 +33,7 @@ public class CodyService {
 		// dao 요청 : 데이터 저장 요청
 		int resultCnt = dao.insertCody(cody);
 
+		
 		System.out.println("실행후 : " + cody.getCody_idx());
 
 		return resultCnt;

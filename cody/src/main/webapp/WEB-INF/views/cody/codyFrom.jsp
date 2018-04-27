@@ -38,6 +38,7 @@
                     <option>공개</option>
                     <option>비공개</option>
                                    </select>
+    
     </td>
     <td> 
     <input type="submit" value="Upload">

@@ -37,7 +37,8 @@ public class CodyController {
 			int resultCnt = service.codyInsert(cody, request);
 			
 			String msg = "정상적으로 등록되었습니다.";
-			
+			   
+		
 			if(resultCnt == 0)
 				msg = "등록이 되지 않았습니다. 담당자에게 문의 해주세요.";		
 			
@@ -55,5 +56,5 @@ public class CodyController {
 			return "error/ex2";
 		}
 		
-	}
+}
 

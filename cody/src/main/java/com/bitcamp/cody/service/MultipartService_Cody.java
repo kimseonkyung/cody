@@ -30,6 +30,7 @@ public class MultipartService_Cody {
 					cody.getPhotofile().transferTo(new File(dir, fileName));
 					cody.setCody_image(fileName);
 				}
+				
 				return cody;
 	}
 

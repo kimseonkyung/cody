@@ -6,4 +6,4 @@ public interface CodyDao {
 
 	int insertCody(CodyDto cody);
 
-	}
+}

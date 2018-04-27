@@ -11,7 +11,8 @@
 <body>
 
   <script>
- 등록성공
+ 
+  등록성공
   </script>
 
 </body>
