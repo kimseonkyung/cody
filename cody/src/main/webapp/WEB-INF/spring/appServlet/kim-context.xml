@@ -10,6 +10,7 @@
 	<beans:bean id="MultipartService_Item" class="com.bitcamp.cody.service.MultipartService_Item" />
 	<beans:bean id="ItemService" class="com.bitcamp.cody.service.ItemService" />
 	<beans:bean id="ItemListService" class="com.bitcamp.cody.service.ItemListService" />
+	<beans:bean id="BoardService" class="com.bitcamp.cody.service.BoardService" />
 
 
 
