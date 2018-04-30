@@ -11,7 +11,7 @@
 
 <a href="itemForm">아이템저장</a>
 <a href="codyForm">코디등록</a>
-
+<a href="bookmarkList">즐겨찾기</a>
 
 </body>
 </html>
