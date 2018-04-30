@@ -1,7 +1,5 @@
 package com.bitcamp.cody.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.cody.dto.BookMarkDto;
+import com.bitcamp.cody.service.BookmarkListService;
 import com.bitcamp.cody.service.BookmarkService;
 
 @Controller
 public class BookmarkController {
 
 	@Autowired
-	private BookmarkService bookmarkdeleteservice;
-
-	@Autowired
-	private BookmarkService bookmarkregservice;
+	private BookmarkService service;
 	
-	@Autowired
-	private BookmarkService bookmarklistservice;
+		
 	
 	@RequestMapping(value="/bookmarkList", method = RequestMethod.GET)
 	public String bookmarkList() {
@@ -40,7 +35,7 @@ public class BookmarkController {
 
 		System.out.println(bookmark);
 
-		int resultCnt = bookmarkregservice.bookmarkReg(bookmark, request);
+		int resultCnt = service.bookmarkReg(bookmark, request);
 
 		String msg = "즐겨찾기가 등록되었습니다.";
 
@@ -49,14 +44,14 @@ public class BookmarkController {
 
 		model.addAttribute("msg", msg);
 
-		return "bookmark/bookmarkRegOK";
+		return "cody/bookmarkRegOK";
 
 	}
 
 	@RequestMapping("/bookmark/bookmarkDelete")
 	public String deleteBookmark(Model model, @RequestParam("id") String id) {
 
-		int resultCnt = bookmarkdeleteservice.deleteBookmark(id);
+		int resultCnt = service.deleteBookmark(id);
 
 		String msg = "삭제 완료 되었습니다.";
 
@@ -64,21 +59,11 @@ public class BookmarkController {
 			msg = "삭제 실패 되었습니다.";
 
 		model.addAttribute("msg", msg);
+		
 
 		return "bookmark/bookmarkUpdateOk";
 	}
 
 	
-
-	@RequestMapping("/bookmark/bookmarkList")
-	public String bookmarkList(Model model) {
-
-		List<BookMarkDto> bookmarks = bookmarklistservice.getBookmarkList();
-
-		model.addAttribute("bookmarks", bookmarks);
-
-		return "bookmark/bookmarkList";
-
-	}
 
 }
