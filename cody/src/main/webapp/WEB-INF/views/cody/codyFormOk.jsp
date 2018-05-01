@@ -11,10 +11,10 @@
 <body>
 
   <script>
- 
+  alert('${msg}');
+  location.href='${pageContext.request.contextPath }/cody/codyList';
 
   </script>
-등록성공
-<a href="codyList">목록보기</a>
+
 </body>
 </html>
