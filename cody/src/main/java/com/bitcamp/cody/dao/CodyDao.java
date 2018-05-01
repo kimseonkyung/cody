@@ -5,8 +5,6 @@ import java.util.List;
 import com.bitcamp.cody.dto.CodyDto;
 
 
-
-
 public interface CodyDao {
 
 	public int insertCody(CodyDto cody);

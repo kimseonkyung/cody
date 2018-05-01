@@ -15,6 +15,7 @@ import com.bitcamp.cody.dto.CodyDto;
 public class CodyService {
 
 	@Autowired
+	
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	private CodyDao dao;
