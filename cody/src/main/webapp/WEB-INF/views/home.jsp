@@ -22,7 +22,7 @@
 <a href="member/memberReg">회원가입 (form)</a>
 <a href="member/login">로그인 (form)</a>
 <a href="member/memberList">회원 리스트</a>
-
+<a href="bookmarklist">즐겨찾기</a>
 
 
 
