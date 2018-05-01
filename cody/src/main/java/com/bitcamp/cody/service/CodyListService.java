@@ -13,21 +13,33 @@ public class CodyListService {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+
 	private CodyDao dao;
-	
-	public List<CodyDto> getCodyList(){
-		
+
+	public List<CodyDto> CodyList() {
 		dao = sqlSessionTemplate.getMapper(CodyDao.class);
-		
-		//List<Member> list = dao.selectMembers();
+
 		List<CodyDto> list = dao.selectList();
-		
-		return list;		
-		
+
+		return list;
+
 	}
-	
-	
-	
+
+	public CodyDto CodyListView(int idx) {
+		dao = sqlSessionTemplate.getMapper(CodyDao.class);
+
+		CodyDto cody = dao.selectByIdx(idx);
+		System.out.println("상세보기 : " + cody.toString());
+
+		return cody;
+	}
+
+	public List<CodyDto> CodyListSearch(String title) {
+		dao = sqlSessionTemplate.getMapper(CodyDao.class);
+
+		List<CodyDto> list = dao.selectByTitle(title);
+
+		return list;
+	}
 
 }

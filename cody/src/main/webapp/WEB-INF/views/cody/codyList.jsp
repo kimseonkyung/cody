@@ -23,14 +23,14 @@
 	</tr>
 	
 	<!-- 회원 정보 출력 반복 시작 -->
-	<c:forEach var="cody" items="${codys}">
+	<c:forEach var="cody" items="${list}">
 	<tr>
 		<td>
 		<c:if test="${cody.cody_image != null}">
 		<img src="../uploadfile/codyphoto/${cody.cody_image}" width="50">
 		</c:if>
 		</td>
-		<td>${cody.}</td>
+		<td>${cody.cody_idx}</td>
 		<td>${cody.cody_title}</td>
 		<td>${cody.cody_intro}</td>
 		<td>${cody.cody_gender}</td>
@@ -38,9 +38,9 @@
 		<td>${cody.cody_age}</td>
 		
 		<td>
-			<a href="#">상세보기</a>  
-		 	<a href="#">수정</a>  
-			<a href="#">삭제</a>
+			<a href="codyList">상세보기</a>  
+		 	<a href="codyUpdate">수정</a>  
+			<a href="../cody/codyDelete?idx=${cody.cody_idx}">삭제</a>
 		</td>
 	</tr>
 	</c:forEach>
