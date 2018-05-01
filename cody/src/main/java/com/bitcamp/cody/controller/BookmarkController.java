@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bitcamp.cody.dto.BookMarkDto;
-import com.bitcamp.cody.service.BookmarkListService;
+import com.bitcamp.cody.dto.BookmarkDto;
 import com.bitcamp.cody.service.BookmarkService;
 
 @Controller
@@ -31,7 +30,7 @@ public class BookmarkController {
 	}
 
 	@RequestMapping(value = "/bookmarkList", method = RequestMethod.POST)
-	public String bookmarkReg(BookMarkDto bookmark, Model model, HttpServletRequest request) {
+	public String bookmarkReg(BookmarkDto bookmark, Model model, HttpServletRequest request) {
 
 		System.out.println(bookmark);
 

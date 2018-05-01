@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.BookmarkDao;
-import com.bitcamp.cody.dto.BookMarkDto;
+import com.bitcamp.cody.dto.BookmarkDto;
 
 public class BookmarkListService {
 
@@ -15,11 +15,11 @@ public class BookmarkListService {
 	
 	private BookmarkDao dao;
 	
-	public List<BookMarkDto> getBookmarkList(){
+	public List<BookmarkDto> getBookmarkList(){
 	
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 		
-		List<BookMarkDto> list = dao.selectList();
+		List<BookmarkDto> list = dao.selectList();
 		
 		return list;
 		

@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.BookmarkDao;
-import com.bitcamp.cody.dto.BookMarkDto;
+import com.bitcamp.cody.dto.BookmarkDto;
 
 public class BookmarkService {
 
@@ -17,7 +17,7 @@ public class BookmarkService {
 	
 		
 
-	public int bookmarkReg(BookMarkDto bookmark, HttpServletRequest request) {
+	public int bookmarkReg(BookmarkDto bookmark, HttpServletRequest request) {
 		
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 		
