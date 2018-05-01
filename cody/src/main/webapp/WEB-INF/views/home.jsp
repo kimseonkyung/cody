@@ -19,6 +19,13 @@
 <a href="itemSearch?item_name=1">아이템 검색</a><br>
 <a href="itemForm">아이템 수정</a><br>
 <a href="itemDelete?item_idx=5">아이템 삭제</a><br>
+<a href="member/memberReg">회원가입 (form)</a>
+<a href="member/login">로그인 (form)</a>
+<a href="member/memberList">회원 리스트</a>
+
+
+
+
 
 </body>
 </html>
