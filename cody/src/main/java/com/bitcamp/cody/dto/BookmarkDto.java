@@ -47,10 +47,7 @@ public class BookmarkDto {
 		return "BookmarkDto [bookmark_idx=" + bookmark_idx + ", member_idx=" + member_idx + ", cody_idx=" + cody_idx
 				+ "]";
 	}
-	
-	
- 
-	
+		
 	
 	
 }
