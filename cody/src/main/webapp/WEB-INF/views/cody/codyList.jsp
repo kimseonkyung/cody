@@ -11,6 +11,7 @@
 <form action="${pageContext.request.contextPath }/codyList" method="post" enctype="multipart/form-data">
 <table border="1">
 	<tr>
+		
 		<td>코디이미지</td>
 		<td>착용아이템</td>
 		<td>코디상세</td>
