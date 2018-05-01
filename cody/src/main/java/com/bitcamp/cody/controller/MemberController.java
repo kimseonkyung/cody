@@ -155,6 +155,7 @@ public class MemberController {
 		public String ex2(IllegalStateException e) {
 			return "error/ex2";
 		}
+		
 	
 	   
 		
