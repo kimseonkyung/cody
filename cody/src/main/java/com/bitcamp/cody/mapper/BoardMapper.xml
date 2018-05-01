@@ -6,15 +6,38 @@
 <!-- Dao 에서 메퍼 설정에서 필요한 엘리먼트(설정) 호출할때 식별자 역할 : 필수 -->
 <mapper namespace="com.bitcamp.cody.dao.BoardDao">
 
+	<!-- 게시글 전체리스트 -->
 	<select id="selectList" resultType="com.bitcamp.cody.dto.CodyDto">
 		select * from notice_all
 	</select>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="selectByIdx" resultType="com.bitcamp.cody.dto.CodyDto">
+		select * from notice_all
+		where notice_idx = #{idx}
+	</select>
 
+	<!-- 게시글 입력 -->
+	<insert id="insertBoard" parameterType="com.bitcamp.cody.dto.CodyDto">
+		insert into notice_all
+		(notice_title, notice_contents ) values (#{notice_title},
+		#{notice_contents} )
+	</insert>
+	
+	<!-- 조회수 증가 -->
+	<update id="countAdd" parameterType="com.bitcamp.cody.dto.ItemDto">
+		update notice_all set board_click = #{count}+1 where notice_idx = #{idx}
+	</update>
 
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="com.bitcamp.cody.dto.ItemDto">
+		update notice_all set notice_title = #{notice_title}, notice_contents = #{notice_contents}
+	</update>
 
-
-
-
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="com.bitcamp.cody.dto.ItemDto">
+		delete from notice_all where notice_idx = #{idx}
+	</delete>
 
 
 

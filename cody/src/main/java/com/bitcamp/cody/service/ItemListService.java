@@ -16,21 +16,28 @@ public class ItemListService {
 	private ItemDao dao;
 
 	public List<ItemDto> getItemList() {
-		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 		List<ItemDto> list = dao.selectList();
 		
-		return null;
+		return list;
 	}
 
-	public ItemDto getListView(String idx) {
-		// TODO Auto-generated method stub
-		return null;
+	public ItemDto getListView(int idx) {
+		
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		ItemDto item = dao.selectByIdx(idx);
+		
+		return item;
 	}
 
 	public List<ItemDto> getListSearch(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);			
+		List<ItemDto> list = dao.selectByName(name);
+		
+		return list;
+	} 
 
+	 
 }

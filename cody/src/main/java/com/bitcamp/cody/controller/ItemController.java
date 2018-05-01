@@ -25,6 +25,7 @@ public class ItemController {
 	@Autowired
 	ItemListService itemListService;
 
+	/*-------------------------------- 입력 ------------------------------*/
 	@RequestMapping(value = "/itemForm", method = RequestMethod.GET)
 	public String itemForm() {
 		return "cody/itemForm";
@@ -60,34 +61,72 @@ public class ItemController {
 		return "error/ex2";
 	}
 
-	
-	
-	
+	/*-------------------------------- 리스트 ------------------------------*/
+	@RequestMapping("/itemList")
 	public String itemList(Model model) {
 
 		List<ItemDto> items = itemListService.getItemList();
 
+		System.out.println("전체리스트 : " + items.toString());
 		model.addAttribute("items", items);
 
-		return "";
+		return "cody/itemFormOk";
 	}
 
-	public String listView(Model model, @RequestParam("item_idx") String idx) {
+	@RequestMapping("/itemListView")
+	public String listView(Model model, @RequestParam("item_idx") int idx) {
 
 		ItemDto item = itemListService.getListView(idx);
 
+		System.out.println("상세보기 : " + item.toString());
 		model.addAttribute("item", item);
 
-		return "";
+		return "cody/itemFormOk";
 	}
 
+	@RequestMapping("/itemSearch")
 	public String listSearch(Model model, @RequestParam("item_name") String name) {
 
 		List<ItemDto> items = itemListService.getListSearch(name);
 
+		System.out.println("검색 : " + items.toString());
 		model.addAttribute("items", items);
 
-		return "";
+		return "cody/itemFormOk";
 	}
 
+	/*-------------------------------- 수정 ------------------------------*/
+	@RequestMapping("itemUpdate")
+	public String itemUpdate(ItemDto item, Model model, HttpServletRequest request)
+			throws IllegalStateException, IOException {
+
+		int resultCnt = itemService.itemUpdate(item, request);
+
+		String msg = "정보수정 완료";
+
+		if (resultCnt == 0)
+			msg = "정보수정 실패";
+
+		model.addAttribute("msg", msg);
+
+		return "cody/itemFormOk";
+	}
+
+	/*-------------------------------- 삭제 ------------------------------*/
+	@RequestMapping("/itemDelete")
+	public String itemDelete(Model model, @RequestParam("item_idx") int idx) {
+
+		int resultCnt = itemService.itemDelete(idx);
+
+		String msg = "정보삭제 완료";
+
+		if (resultCnt == 0)
+			msg = "정보삭제 실패";
+
+		model.addAttribute("msg", msg);
+
+		return "cody/itemFormOk";
+
+	}   
+ 
 }

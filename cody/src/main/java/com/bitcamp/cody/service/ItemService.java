@@ -24,17 +24,32 @@ public class ItemService {
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 
 		service.multipart(item, request);
-
 		System.out.println("실행전 : " + item);
-
-		// 업로드한 파일의 데이터를 item에 등록
-
-		// dao 요청 : 데이터 저장 요청
 		int resultCnt = dao.insertItem(item);
-
 		System.out.println("실행후 : " + item);
 
 		return resultCnt;
 	}
 
+	public int itemUpdate(ItemDto item, HttpServletRequest request) throws IllegalStateException, IOException {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+
+		service.multipart(item, request);
+		System.out.println("실행전 : " + item);
+		int resultCnt = dao.updateItem(item);
+		System.out.println("실행후 : " + item);
+
+		return resultCnt;
+	}
+
+	public int itemDelete(int idx) {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		int result = dao.deleteItem(idx);
+
+		return result;
+	}
+	
+  
 }
