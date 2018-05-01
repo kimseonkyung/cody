@@ -11,4 +11,5 @@ public interface BookmarkDao {
 	public List<BookmarkDto> selectList();
 	public int deleteBookmark(String id);
 	
+	
 	}

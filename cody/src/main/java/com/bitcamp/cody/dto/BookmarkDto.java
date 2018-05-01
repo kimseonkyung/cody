@@ -47,6 +47,7 @@ public class BookmarkDto {
 		return "BookMarkDto [bookmark_idx=" + bookmark_idx + ", member_idx=" + member_idx + ", cody_idx=" + cody_idx
 				+ "]";
 	}
+	
  
 	
 }
