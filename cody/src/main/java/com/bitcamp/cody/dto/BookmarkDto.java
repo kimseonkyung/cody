@@ -44,7 +44,7 @@ public class BookmarkDto {
 
 	@Override
 	public String toString() {
-		return "BookMarkDto [bookmark_idx=" + bookmark_idx + ", member_idx=" + member_idx + ", cody_idx=" + cody_idx
+		return "BookmarkDto [bookmark_idx=" + bookmark_idx + ", member_idx=" + member_idx + ", cody_idx=" + cody_idx
 				+ "]";
 	}
 	
