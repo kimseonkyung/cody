@@ -9,9 +9,15 @@
 </head>
 <body>
 
-<a href="itemForm">아이템저장</a>
-<a href="codyForm">코디등록</a>
-<a href="bookmarkList">즐겨찾기</a>
+<a href="itemForm">아이템저장</a><br>
+<a href="codyForm">코디등록</a><br>
+<a href="itemList">아이템 전체 리스트</a><br>
+<a href="itemListView?item_idx=2">아이템 상세보기</a><br>
+<a href="itemSearch?item_name=1">아이템 검색</a><br>
+<a href="itemForm">아이템 수정</a><br>
+<a href="itemDelete?item_idx=5">아이템 삭제</a><br>
 
 </body>
 </html>
+
+
