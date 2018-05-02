@@ -11,11 +11,10 @@ import com.bitcamp.cody.dao.CodyDao;
 
 import com.bitcamp.cody.dto.CodyDto;
 
-
 public class CodyService {
 
 	@Autowired
-	
+
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	private CodyDao dao;
@@ -42,7 +41,7 @@ public class CodyService {
 
 	public int codyUpdate(CodyDto cody, HttpServletRequest request) throws IllegalStateException, IOException {
 		dao = sqlSessionTemplate.getMapper(CodyDao.class);
-		
+
 		service.multipart(cody, request);
 
 		System.out.println("실행전 : " + cody);
@@ -56,12 +55,12 @@ public class CodyService {
 
 		return resultCnt;
 	}
-	
+
 	public int codyDelete(int idx) {
 		dao = sqlSessionTemplate.getMapper(CodyDao.class);
-		
+
 		int resultCnt = dao.deleteCody(idx);
-		
+
 		return resultCnt;
 	}
 

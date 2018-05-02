@@ -27,7 +27,6 @@ public class CodyController {
 	CodyListService codyListService;
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
-	
 	public String codyForm() {
 		return "cody/codyForm";
 	}
@@ -62,31 +61,28 @@ public class CodyController {
 		return "error/ex2";
 	}
 
-	//-----------리스트---------------//
+	/*-----------리스트---------------*/
 	
 	@RequestMapping("/codyList")
 	public String codyList(Model model) {
 
 		List<CodyDto> codys = codyListService.CodyList();
 		
-		System.out.println("전체리스트: " + codys.toString());
-
 		model.addAttribute("codys", codys);
 
 		return "cody/codyList";
 	}
 
-	@RequestMapping("/listView")
+	@RequestMapping("/codyListView")
 	public String CodylistView(Model model, @RequestParam("cody_idx") int idx) {
 
 		CodyDto cody = codyListService.CodyListView(idx);
-		System.out.println("상세보기: " + cody.toString());
 		model.addAttribute("cody", cody);
 
 		return "cody/codyListView";
 	}
 	
-	@RequestMapping("/listSearch")
+	@RequestMapping("/codyListSearch")
 	public String CodylistSearch(Model model, @RequestParam("cody_title") String title) {
 
 		List<CodyDto> codys = codyListService.CodyListSearch(title);
@@ -96,11 +92,11 @@ public class CodyController {
 		return "cody/codyListSearch";
 	}
 
-//--------------수정-----------------//
+/*--------------수정-----------------*/
 
 
-	@RequestMapping(value = "/codyList", method = RequestMethod.GET)
-	public String updateCody(Model model, @RequestParam("cody_idx") int idx) {
+	@RequestMapping(value="/codyUpdate", method = RequestMethod.GET)
+	public String codyUpdate(Model model, @RequestParam("cody_idx") int idx) {
 
 		CodyDto cody = codyListService.CodyListView(idx);
 
@@ -109,7 +105,7 @@ public class CodyController {
 		return "cody/codyUpdate";
 	}
 
-	@RequestMapping(value = "/codyList", method = RequestMethod.POST)
+	@RequestMapping(value="/codyUpdate", method = RequestMethod.POST)
 	public String updateOk(CodyDto cody, Model model, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 
@@ -124,11 +120,11 @@ public class CodyController {
 
 		return "cody/codyFormOk";
 	}
-//-----------------삭제----------------//
+/*-----------------삭제----------------*/
 
 
 	@RequestMapping("/codyDelete")
-	public String deleteCody(Model model, @RequestParam("cody_idx") int idx) {
+	public String codyDelete(Model model, @RequestParam("cody_idx") int idx) {
 
 		int resultCnt = codyservice.codyDelete(idx);
 

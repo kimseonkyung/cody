@@ -8,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.bitcamp.cody.dao.CodyDao;
 import com.bitcamp.cody.dto.CodyDto;
 
-
 public class CodyListService {
 
 	@Autowired
-	
+
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	private CodyDao dao;
@@ -30,7 +29,6 @@ public class CodyListService {
 		dao = sqlSessionTemplate.getMapper(CodyDao.class);
 
 		CodyDto cody = dao.selectByIdx(idx);
-		System.out.println("상세보기 : " + cody.toString());
 
 		return cody;
 	}

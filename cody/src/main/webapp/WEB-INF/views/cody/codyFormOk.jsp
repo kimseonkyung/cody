@@ -12,7 +12,7 @@
 
   <script>
   alert('${msg}');
-  location.href='${pageContext.request.contextPath }/cody/codyList';
+  location.href='${pageContext.request.contextPath }/codyList';
 
   </script>
 
