@@ -50,14 +50,11 @@
 					<td>${cody.cody_height}</td>
 					<td>${cody.cody_age}</td>
 					
-					<td><a
-						href="${pageContext.request.contextPath }/codyListView?cody_idx=${cody.cody_idx}">상세보기</a>
-						<a
-						href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx }">수정</a>
-						<a
-						href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
+					<td><a href="${pageContext.request.contextPath }/codyListView?cody_idx=${cody.cody_idx}">상세보기</a>
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx }">수정</a>
+						<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
 						<a href="codyForm">코디등록</a>
-						<a href="${pageContext.request.contextPath }/bookmarkList">즐겨찾기</a>
+						<a href="${pageContext.request.contextPath }/bookmarkList?idx=${bookmark.idx}">즐겨찾기</a>
 						</td>
 				</tr>
 			</c:forEach>

@@ -25,9 +25,8 @@
 					<td>${bookmark.member_idx}</td>
 					<td>${bookmark.cody_idx}</td>
 
-					<td><a href="../bookmark/bookmarkList?id=${bookmark.idx}">보기</a>
-						<a href="../bookmark/bookmarkList?id=${bookmark.idx}">등록</a> 
-						<a href="../bookmark/bookmarkDelete?id=${bookmark.member_id}">삭제</a>
+					<td><a href="${pageContext.request.contextPath }/bookmark/bookmarkList?idx=${bookmark.bookmark_idx}">보기</a>
+						<a href="${pageContext.request.contextPath }/bookmark/bookmarkDelete?idx=${bookmark.bookmark_idx}">삭제</a>
 
 					</td>
 

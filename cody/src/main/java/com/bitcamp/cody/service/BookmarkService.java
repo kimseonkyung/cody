@@ -31,11 +31,11 @@ public class BookmarkService {
 	}
 
 
-	public int deleteBookmark(String id) {
+	public int deleteBookmark(String bookmark_idx) {
 
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 
-		int result = dao.deleteBookmark(id);
+		int result = dao.deleteBookmark(bookmark_idx);
 
 		return result;
 
