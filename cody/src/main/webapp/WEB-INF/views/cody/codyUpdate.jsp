@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-var cody_gender = $(':radio[name="cody_gender"]:checked').val();
-$('input:radio[name=cody_gender]:input[value='+cody_gender+']').attr("checked", true);
-
 </style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+
+$("input:radio[name=cody_gender][value=" + '<c:out value="${ cody.cody_gender }"/>' + "]").attr("checked","checked");
+</script>
 </head>
 <body>
 
@@ -30,13 +33,13 @@ $('input:radio[name=cody_gender]:input[value='+cody_gender+']').attr("checked", 
 			</tr>
 			<tr>
 				<td>소개</td>
-				<td><input type="text" name="cody_intro"
-					value="${cody.cody_intro}"></td>
+				<td><textarea name="cody_intro" rows="20" cols="100">${cody.cody_intro}</textarea>
+					</td>
 			</tr>
 			<tr>
-				<td>성별<label><input type="radio" name="cody_gender" value="true">Man</label>
+			<td>성별<label><input type="radio"name="cody_gender" value="true">Man</label>
 				<label><input type="radio" name="cody_gender" value="false">Woman</label>
-				</td>
+			</td>
 			</tr>
 			<tr>
 				<td>신장</td>
@@ -47,7 +50,10 @@ $('input:radio[name=cody_gender]:input[value='+cody_gender+']').attr("checked", 
 				<td>나이</td>
 				<td><input type="text" name="cody_age" value="${cody.cody_age}"></td>
 			</tr>
-		
+		    <tr>
+				<td>코디번호</td>
+				<td><input type="text" name="cody_idx" value="${cody.cody_idx}"></td>
+			</tr>
 			<tr>
 				<td></td>
 				<td><input type="submit" value="수정"><input type="reset"

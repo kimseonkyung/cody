@@ -26,7 +26,7 @@ public class MultipartService_Cody {
 				// 파일 이름 생성 : 회원아이디_원본파일이름
 				if ( !cody.getPhotofile().isEmpty() ) {
 					// 새로운 파일 이름 생성 -> 파일 저장 -> DB에 저장할 파일이름 set
-					String fileName = cody.getCody_idx()+"_"+cody.getPhotofile().getOriginalFilename();
+					String fileName = cody.getMember_idx()+System.currentTimeMillis()+"_"+cody.getPhotofile().getOriginalFilename();
 					cody.getPhotofile().transferTo(new File(dir, fileName));
 					cody.setCody_image(fileName);
 				}

@@ -7,15 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <body>
-	사진:
+	
 	<img
 		src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
 		width="200">
 	<br> 제목: ${cody.cody_title}
 	<br> 소개: ${cody.cody_intro}
-	<br> 성별:
-					<c:set var="data" value="${cody.cody_gender}" /> 
+	<br> 성별: <c:set var="data" value="${cody.cody_gender}" /> 
 					<c:choose>
 					<c:when test="${data eq true}">
 					 Man

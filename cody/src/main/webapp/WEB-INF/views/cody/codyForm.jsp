@@ -6,8 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>코디등록</title>
 <style>
-var cody_gender = $(':radio[name="cody_gender"]:checked').val();
-$('input:radio[name=cody_gender]:input[value='+cody_gender+']').attr("checked", true);
 </style>
 </head>
 <body>
@@ -26,8 +24,8 @@ $('input:radio[name=cody_gender]:input[value='+cody_gender+']').attr("checked", 
 <td>코디상세</td>
 <td>제목<input type="text" name="cody_title"></td>
 <td>코디소개<textarea name="cody_intro" rows="20" cols="100"></textarea></td>
-<td>성별<label><input type="radio" name="cody_gender" value="true">Man</label>
-				<label><input type="radio" name="cody_gender" value="false">Woman</label>
+<td>성별<label><input type="radio" id="cody_gender" name="cody_gender" value="true">Man</label>
+				<label><input type="radio" id="cody_gender"  name="cody_gender" value="false">Woman</label>
 				</td>
     <td>신장※<input type="text" name="cody_height"></td>
     <td>나이※<input type="text" name="cody_age"></td>
