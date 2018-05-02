@@ -26,7 +26,7 @@ public class MultipartService_Item {
 		// 파일 이름 생성 : 회원아이디_원본파일이름
 		if ( !item.getPhotofile().isEmpty() ) {
 			// 새로운 파일 이름 생성 -> 파일 저장 -> DB에 저장할 파일이름 set
-			String fileName = item.getItem_name()+"_"+item.getPhotofile().getOriginalFilename();
+			String fileName = item.getItem_name()+System.currentTimeMillis()+"_"+item.getPhotofile().getOriginalFilename();
 			item.getPhotofile().transferTo(new File(dir, fileName));
 			item.setItem_image(fileName);
 		}

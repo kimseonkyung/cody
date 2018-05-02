@@ -1,0 +1,23 @@
+/*
+    CODY css
+    2018.05.01
+    Drop The Table
+*/
+
+
+
+#main_content {
+	width: 100%
+	overflow: hidden;
+}
+
+#main_section {
+    float: right;
+    width: 900px;
+    padding: 15px;
+}
+
+#main_aside {
+    float: left;
+    width: 150px;
+}

@@ -28,7 +28,7 @@ public class ItemController {
 	/*-------------------------------- 입력 ------------------------------*/
 	@RequestMapping(value = "/itemForm", method = RequestMethod.GET)
 	public String itemForm() {
-		return "cody/itemForm";
+		return "item/itemForm";
 	}
 
 	@RequestMapping(value = "/itemForm", method = RequestMethod.POST)
@@ -48,7 +48,7 @@ public class ItemController {
 
 		model.addAttribute("msg", msg);
 
-		return "cody/itemFormOk";
+		return "item/itemFormOk";
 	}
 
 	@ExceptionHandler(IOException.class)
@@ -70,7 +70,7 @@ public class ItemController {
 		System.out.println("전체리스트 : " + items.toString());
 		model.addAttribute("items", items);
 
-		return "cody/itemFormOk";
+		return "item/itemFormOk";
 	}
 
 	@RequestMapping("/itemListView")
@@ -92,7 +92,7 @@ public class ItemController {
 		System.out.println("검색 : " + items.toString());
 		model.addAttribute("items", items);
 
-		return "cody/itemFormOk";
+		return "item/itemFormOk";
 	}
 
 	/*-------------------------------- 수정 ------------------------------*/
@@ -109,7 +109,7 @@ public class ItemController {
 
 		model.addAttribute("msg", msg);
 
-		return "cody/itemFormOk";
+		return "item/itemFormOk";
 	}
 
 	/*-------------------------------- 삭제 ------------------------------*/
@@ -125,7 +125,7 @@ public class ItemController {
 
 		model.addAttribute("msg", msg);
 
-		return "cody/itemFormOk";
+		return "item/itemFormOk";
 
 	}   
  
