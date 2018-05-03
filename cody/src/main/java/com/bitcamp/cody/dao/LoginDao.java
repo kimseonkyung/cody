@@ -2,6 +2,7 @@ package com.bitcamp.cody.dao;
 
 import java.util.List;
 
+
 import com.bitcamp.cody.dto.MemberDto;
 
 public interface LoginDao {
@@ -11,6 +12,7 @@ public interface LoginDao {
 	public int modifyMember(MemberDto member);
 	public int deleteMember(String id);
 	public List<MemberDto> selectList();
+	public List<MemberDto> selectByName(String name);
 	//public int selectCount();
 
 }

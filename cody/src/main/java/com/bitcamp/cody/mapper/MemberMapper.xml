@@ -14,12 +14,25 @@
 	 -->
 	
 	<select id="selectById" resultType="com.bitcamp.cody.dto.MemberDto">	
-		SELECT * FROM MEMBER WHERE MEMBER_ID = #{ID} 		
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id} 		
 	</select>	
+	
+	<select id="selectById" resultType="com.bitcamp.cody.dto.MemberDto">	
+		SELECT * FROM MEMBER WHERE MEMBER_IDx = #{member_idx} 		
+	</select>	
+	
 	
 	<select id="selectList" resultType="com.bitcamp.cody.dto.MemberDto">	
 		SELECT * FROM MEMBER  		
 	</select>
+
+
+
+	<select id="selectByName" resultType="com.bitcamp.cody.dto.MemberDto">
+		select * from member where member_name = #{member_name}
+	</select>
+
+
 
 	<!-- insert 태그는 데이터베이스에 데이터를 삽입하는 insert구문을 사용할 때 사용  -->
 	<!-- 

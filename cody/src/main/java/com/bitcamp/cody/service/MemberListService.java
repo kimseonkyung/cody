@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import com.bitcamp.cody.dao.LoginDao;
 import com.bitcamp.cody.dto.MemberDto;
 
@@ -30,7 +31,7 @@ public class MemberListService {
 		
 	}
 
-	public MemberDto listView(String id) {
+	public MemberDto getlistView(String id) {
 		
 		dao = sqlSessionTemplate.getMapper(LoginDao.class);
 		
@@ -40,6 +41,14 @@ public class MemberListService {
 		return member;
 	}
 	
+	
+public List<MemberDto> getListSearch(String name) {
+		
+		dao = sqlSessionTemplate.getMapper(LoginDao.class);			
+		List<MemberDto> list = dao.selectByName(name);
+		
+		return list;
+	} 
 	
 	
 

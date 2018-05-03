@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.MemberListService;
 
@@ -30,9 +31,9 @@ public class MemberListController {
 	
 	// 상세보기
 	@RequestMapping("/member/listView")
-	public String listView(Model model, @RequestParam("id") String id) {
+	public String listView(Model model, @RequestParam("member_idx") String idx) {
 		
-		MemberDto member = service.listView(id);
+		MemberDto member = service.getlistView(idx);
 		
 		model.addAttribute("member", member);
 		
@@ -40,7 +41,15 @@ public class MemberListController {
 		return "member/listView";
 	}
 	
-	
+	@RequestMapping("/member/memberListSearch")
+	public String listSearch(Model model, @RequestParam("member_name") String name) {
+
+		List<MemberDto> members = service.getListSearch(name);
+		System.out.println("검색: " + members.toString());
+		model.addAttribute("members", members);
+
+		return "member/memberListSearch";
+	}
 	
 	
 	
