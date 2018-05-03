@@ -17,7 +17,7 @@
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id} 		
 	</select>	
 	
-	<select id="selectById" resultType="com.bitcamp.cody.dto.MemberDto">	
+	<select id="selectByIdx" resultType="com.bitcamp.cody.dto.MemberDto">	
 		SELECT * FROM MEMBER WHERE MEMBER_IDx = #{member_idx} 		
 	</select>	
 	

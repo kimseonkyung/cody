@@ -12,7 +12,7 @@ public interface LoginDao {
 	public int modifyMember(MemberDto member);
 	public int deleteMember(String id);
 	public List<MemberDto> selectList();
-	public List<MemberDto> selectByName(String name);
+	public List<MemberDto> selectByIdx(int idx);
 	//public int selectCount();
 
 }

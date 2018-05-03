@@ -4,30 +4,87 @@ import java.util.Date;
 
 public class RepleDto {
 
+	private int reple_idx;
+	private int regroup;	// 그룹
+	private int reparent;	// 부모
+	private int redepth;		// 깊이
+	private int reorder;		// 순서
+	private String reple_contents;
+	private Date relpe_date;
 	private int member_idx;
-	private String member_name;
-	private String member_id;
-	private String member_pw;
-	private String member_birth;
-	private String member_email;
-	private String member_ph;
-	private Date member_reg;
-	private String member_photo;
+	private int cody_idx;
 
 	public RepleDto() {
 	}
 
-	public RepleDto(int member_idx, String member_name, String member_id, String member_pw, String member_birth,
-			String member_email, String member_ph, Date member_reg, String member_photo) {
+	public RepleDto(int reple_idx, int regroup, int reparent, int redepth, int reorder, String reple_contents,
+			Date relpe_date, int member_idx, int cody_idx) {
+		super();
+		this.reple_idx = reple_idx;
+		this.regroup = regroup;
+		this.reparent = reparent;
+		this.redepth = redepth;
+		this.reorder = reorder;
+		this.reple_contents = reple_contents;
+		this.relpe_date = relpe_date;
 		this.member_idx = member_idx;
-		this.member_name = member_name;
-		this.member_id = member_id;
-		this.member_pw = member_pw;
-		this.member_birth = member_birth;
-		this.member_email = member_email;
-		this.member_ph = member_ph;
-		this.member_reg = member_reg;
-		this.member_photo = member_photo;
+		this.cody_idx = cody_idx;
+	}
+
+	public int getReple_idx() {
+		return reple_idx;
+	}
+
+	public void setReple_idx(int reple_idx) {
+		this.reple_idx = reple_idx;
+	}
+
+	public int getRegroup() {
+		return regroup;
+	}
+
+	public void setRegroup(int regroup) {
+		this.regroup = regroup;
+	}
+
+	public int getReparent() {
+		return reparent;
+	}
+
+	public void setReparent(int reparent) {
+		this.reparent = reparent;
+	}
+
+	public int getRedepth() {
+		return redepth;
+	}
+
+	public void setRedepth(int redepth) {
+		this.redepth = redepth;
+	}
+
+	public int getReorder() {
+		return reorder;
+	}
+
+	public void setReorder(int reorder) {
+		this.reorder = reorder;
+	}
+
+	public String getReple_contents() {
+		return reple_contents;
+	}
+
+	public void setReple_contents(String reple_contents) {
+		this.reple_contents = reple_contents;
+	}
+
+	public Date getRelpe_date() {
+		return relpe_date;
+	}
+
+	public void setRelpe_date(Date relpe_date) {
+		this.relpe_date = relpe_date;
 	}
 
 	public int getMember_idx() {
@@ -38,75 +95,23 @@ public class RepleDto {
 		this.member_idx = member_idx;
 	}
 
-	public String getMember_name() {
-		return member_name;
+	public int getCody_idx() {
+		return cody_idx;
 	}
 
-	public void setMember_name(String member_name) {
-		this.member_name = member_name;
-	}
-
-	public String getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
-	}
-
-	public String getMember_pw() {
-		return member_pw;
-	}
-
-	public void setMember_pw(String member_pw) {
-		this.member_pw = member_pw;
-	}
-
-	public String getMember_birth() {
-		return member_birth;
-	}
-
-	public void setMember_birth(String member_birth) {
-		this.member_birth = member_birth;
-	}
-
-	public String getMember_email() {
-		return member_email;
-	}
-
-	public void setMember_email(String member_email) {
-		this.member_email = member_email;
-	}
-
-	public String getMember_ph() {
-		return member_ph;
-	}
-
-	public void setMember_ph(String member_ph) {
-		this.member_ph = member_ph;
-	}
-
-	public Date getMember_reg() {
-		return member_reg;
-	}
-
-	public void setMember_reg(Date member_reg) {
-		this.member_reg = member_reg;
-	}
-
-	public String getMember_photo() {
-		return member_photo;
-	}
-
-	public void setMember_photo(String member_photo) {
-		this.member_photo = member_photo;
+	public void setCody_idx(int cody_idx) {
+		this.cody_idx = cody_idx;
 	}
 
 	@Override
 	public String toString() {
-		return "RepleDto [member_idx=" + member_idx + ", member_name=" + member_name + ", member_id=" + member_id
-				+ ", member_pw=" + member_pw + ", member_birth=" + member_birth + ", member_email=" + member_email
-				+ ", member_ph=" + member_ph + ", member_reg=" + member_reg + ", member_photo=" + member_photo + "]";
+		return "RepleDto [reple_idx=" + reple_idx + ", regroup=" + regroup + ", reparent=" + reparent + ", redepth="
+				+ redepth + ", reorder=" + reorder + ", reple_contents=" + reple_contents + ", relpe_date=" + relpe_date
+				+ ", member_idx=" + member_idx + ", cody_idx=" + cody_idx + "]";
 	}
 
+	
+	
+
+	
 }

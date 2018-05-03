@@ -54,6 +54,7 @@ public class MemberController {
 
 		if (member == null) {
 			return "member/loginFail";
+			
 		}
 
 		member.setMember_pw("");
@@ -74,7 +75,7 @@ public class MemberController {
 	@RequestMapping(value = "/member/modifyForm", method = RequestMethod.GET)
 	public String modifyMember(Model model, @RequestParam("id") String id) {
 
-		MemberDto member = listservice.listView(id);
+		MemberDto member = listservice.getlistView(id);
 
 		model.addAttribute("member", member);
 
