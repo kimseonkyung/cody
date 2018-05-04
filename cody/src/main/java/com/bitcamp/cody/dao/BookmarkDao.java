@@ -6,10 +6,11 @@ import com.bitcamp.cody.dto.BookmarkDto;
 
 public interface BookmarkDao {
 
-	public BookmarkDto selectById(String id);
 	public int insertBookmark(BookmarkDto bookmark);
+	public int deleteBookmark(int idx);
+	public BookmarkDto selectByIdx(int idx);
 	public List<BookmarkDto> selectList();
-	public int deleteBookmark(String id);
+	
 	
 	
 	}

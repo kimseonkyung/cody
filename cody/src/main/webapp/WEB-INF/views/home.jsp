@@ -272,8 +272,8 @@
 						href="itemForm">아이템 수정</a><br> <a
 						href="itemDelete?item_idx=5">아이템 삭제</a><br> <a
 						href="member/memberReg">회원가입 (form)</a> <a href="member/login">로그인
-						(form)</a> <a href="member/memberList">회원 리스트</a> <a
-						href="bookmarklist">즐겨찾기</a>
+						(form)</a> <a href="member/memberList">회원 리스트</a><br> 
+						<a href="bookmarkList">즐겨찾기</a>
 
 				</div>
 				<small class="d-block text-right mt-3"> <a href="#">All
