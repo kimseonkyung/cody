@@ -44,6 +44,7 @@ public class RepleController {
 	@ResponseBody
 	public String insertReple(Model model, RepleDto repleDto) {
 
+		System.out.println("repleDto : "+ repleDto);
 		int resultCnt = repleService.repleInsert(repleDto);
 
 		String msg = "입력이 정상적으로 처리되었습니다.";
@@ -78,17 +79,20 @@ public class RepleController {
 	}
 
 	// 댓글 삭제
-	@RequestMapping("/repleDelete")
-	public String itemDelete(Model model, @RequestParam("reple_idx") int idx) {
+	@RequestMapping(value="/repleDelete", method=RequestMethod.GET)
+	@ResponseBody
+	public String repleDelete(Model model, @RequestParam("reple_idx") int idx) {
 
-		int resultCnt = repleService.repleDelete(idx);
+		System.out.println("reple_idx : "+ idx);
+		
+		/*int resultCnt = repleService.repleDelete(idx);
 
 		String msg = "정보삭제 완료";
 
 		if (resultCnt == 0)
 			msg = "정보삭제 실패";
 
-		model.addAttribute("msg", msg);
+		model.addAttribute("msg", msg);*/
 
 		return "cody/repleOk";
 

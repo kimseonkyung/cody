@@ -33,8 +33,8 @@ public class RepleService {
 
 	public int repleInsert(RepleDto repleDto) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
-		int max = maxRegroup();
-		repleDto.setRegroup(max);
+		/*int max = maxRegroup();
+		repleDto.setRegroup(max);*/
 		int result = dao.repleInsert(repleDto);
 		
 		return result;

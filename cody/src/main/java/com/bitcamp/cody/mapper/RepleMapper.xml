@@ -30,13 +30,13 @@
 	
 	<!-- 댓글 입력 -->
 	<insert id="repleInsert" parameterType="com.bitcamp.cody.dto.RepleDto" useGeneratedKeys="true" keyProperty="idx">
-		insert into reple (regroup, reple_contents, member_idx, cody_idx)
-		values ( #{regroup}, #{reple_contents}, #{member_idx}, #{cody_idx} )
+		insert into reple (reple_contents, member_idx, cody_idx)
+		values (#{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
 	<insert id="re_repleInsert" parameterType="com.bitcamp.cody.dto.RepleDto" useGeneratedKeys="true" keyProperty="idx">
-		insert into reple (regroup, reparent, redepth, reorder, reple_contents, member_idx, cody_idx)
-		values ( #{regroup}, #{reple_idx}, #{redepth}+1 , #{reorder}+1 , #{reple_contents}, #{member_idx}, #{cody_idx} )
+		insert into reple (reparent, redepth, reple_contents, member_idx, cody_idx)
+		values ( #{reple_idx}, #{redepth}+1 , #{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
 
