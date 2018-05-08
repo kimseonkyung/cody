@@ -14,7 +14,6 @@ public class RepleService {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	private RepleDao dao;
-
 	
 	public RepleDto selectByIdx(int idx) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
@@ -23,9 +22,9 @@ public class RepleService {
 		return reple;
 	}
 	
-	public List<RepleDto> listAll(int cIdx, int mIdx) {
+	public List<RepleDto> listAll(int idx) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
-		List<RepleDto> list = dao.selectList(cIdx, mIdx);
+		List<RepleDto> list = dao.selectList(idx);
 		
 		return list;
 	}
@@ -34,6 +33,8 @@ public class RepleService {
 
 	public int repleInsert(RepleDto repleDto) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		/*int max = maxRegroup();
+		repleDto.setRegroup(max);*/
 		int result = dao.repleInsert(repleDto);
 		
 		return result;
@@ -42,20 +43,31 @@ public class RepleService {
 	public int re_repleInsert(RepleDto repleDto) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
 		int result = dao.re_repleInsert(repleDto);
-		dao.reorderPlus(repleDto.getReorder(), repleDto.getRegroup());
-		
+		if(result > 0  ) {
+			dao.reorderPlus(repleDto.getReorder(), repleDto.getRegroup());
+		}
 		return result;
 	} 
 	
-	/*public int maxReorder(int order, int group) {
+	public int maxRegroup() {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
 		int max = dao.maxSelect();
-		if(order <= max) {
-			int result = dao.reorderPlus(order, group);
-		}
+				
+		return max;
+	}
+
+	public int repleUpdate(RepleDto reple) {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
 		
-		return order;
-	}*/
+		return 0;
+	}
+
+	public int repleDelete(int idx) {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		int result = dao.repleDelete(idx);
+		
+		return result;
+	}
 	
 
 	

@@ -54,7 +54,7 @@
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx }">수정</a>
 						<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
 						<a href="codyForm">코디등록</a>
-						<a href="${pageContext.request.contextPath }/bookmarkList?idx=${bookmark.idx}">즐겨찾기</a>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${bookmark_idx}">즐겨찾기</a>
 						</td>
 				</tr>
 			</c:forEach>

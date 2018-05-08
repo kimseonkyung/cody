@@ -19,23 +19,24 @@
 	<select id="selectList" resultType="com.bitcamp.cody.dto.RepleDto">
 		select *
 		from reple
-		where member_idx=${mIdx} and cody_idx = #{cIdx}
+		where cody_idx = #{idx}
 		order by regroup asc, reorder asc  
 	</select>
 
 	<select id="maxSelect" resultType="int">
-		select max(reorder)
+		select max(regroup)+1
 		from reple
 	</select>
 	
+	<!-- 댓글 입력 -->
 	<insert id="repleInsert" parameterType="com.bitcamp.cody.dto.RepleDto" useGeneratedKeys="true" keyProperty="idx">
-		insert into reple (regroup, reple_contents, member_idx, cody_idx)
-		values ( max(regroup)+1, #{reple_contents}, #{member_idx}, #{cody_idx} )
+		insert into reple (reple_contents, member_idx, cody_idx)
+		values (#{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
 	<insert id="re_repleInsert" parameterType="com.bitcamp.cody.dto.RepleDto" useGeneratedKeys="true" keyProperty="idx">
-		insert into reple (regroup, reparent, redepth, reorder, reple_contents, member_idx, cody_idx)
-		values ( #{regroup}, #{reple_idx}, #{redepth}+1 , #{reorder}+1 , #{reple_contents}, #{member_idx}, #{cody_idx} )
+		insert into reple (reparent, redepth, reple_contents, member_idx, cody_idx)
+		values ( #{reple_idx}, #{redepth}+1 , #{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
 
@@ -45,8 +46,8 @@
 	</update>
 
 
-	<delete id="deleteItem" parameterType="com.bitcamp.cody.dto.ItemDto">
-		delete from item where item_idx = #{idx}
+	<delete id="repleDelete" parameterType="com.bitcamp.cody.dto.RepleDto">
+		delete from reple where reple_idx = #{idx}
 	</delete>
 
 

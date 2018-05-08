@@ -15,7 +15,7 @@ public class BookmarkListService {
 	
 	private BookmarkDao dao;
 	
-	public List<BookmarkDto> getBookmarkList(){
+	public List<BookmarkDto> BookmarkList(){
 	
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 		

@@ -17,7 +17,7 @@ public class BookmarkService {
 	
 		
 
-	public int bookmarkReg(BookmarkDto bookmark, HttpServletRequest request) {
+	public int bookmarkInsert(BookmarkDto bookmark, HttpServletRequest request) {
 		
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 		
@@ -31,15 +31,18 @@ public class BookmarkService {
 	}
 
 
-	public int deleteBookmark(String bookmark_idx) {
+	public int deleteBookmark(int idx) {
 
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 
-		int result = dao.deleteBookmark(bookmark_idx);
+		int result = dao.deleteBookmark(idx);
 
 		return result;
 
 	}
+
+
+
 	
 
 }
