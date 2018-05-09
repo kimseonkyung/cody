@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.RepleDao;
 import com.bitcamp.cody.dto.RepleDto;
+import com.bitcamp.cody.dto.TocDto;
 
 public class RepleService {
 
@@ -68,6 +69,7 @@ public class RepleService {
 		
 		return result;
 	}
+
 	
 
 	

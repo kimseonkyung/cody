@@ -3,6 +3,7 @@ package com.bitcamp.cody.dao;
 import java.util.List;
 
 import com.bitcamp.cody.dto.RepleDto;
+import com.bitcamp.cody.dto.TocDto;
 
 
 public interface RepleDao {
