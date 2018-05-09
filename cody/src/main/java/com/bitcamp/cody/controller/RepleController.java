@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.cody.dto.RepleDto;
-import com.bitcamp.cody.dto.TocDto;
+//import com.bitcamp.cody.dto.TocDto;
 import com.bitcamp.cody.service.MemberListService;
 import com.bitcamp.cody.service.RepleService;
-import com.bitcamp.cody.service.TocService;
+//import com.bitcamp.cody.service.TocService;
 
 @Controller
 public class RepleController {
@@ -22,8 +22,8 @@ public class RepleController {
 	@Autowired
 	RepleService repleService;
 
-	@Autowired
-	TocService tocService;
+//	@Autowired
+//	TocService tocService;
 
 
 	@Autowired
@@ -43,14 +43,16 @@ public class RepleController {
 	// 첫댓글 입력
 	@RequestMapping(value = "/repleInsert", method = RequestMethod.POST)
 	@ResponseBody
-	public String insertReple(Model model, RepleDto repleDto, TocDto tocDto) {
+	public String insertReple(Model model, RepleDto repleDto
+			// ,TocDto tocDto
+			) {
 
 		System.out.println("repleDto : " + repleDto);
 		int resultCnt = repleService.repleInsert(repleDto);
 
 		String msg="";
 		if(resultCnt == 1) {
-			tocService.tocInsert(tocDto);
+//			tocService.tocInsert(tocDto);
 			msg = "입력이 정상적으로 처리되었습니다.";
 		}		
 		
