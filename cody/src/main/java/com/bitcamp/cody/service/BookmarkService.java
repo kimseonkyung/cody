@@ -1,7 +1,5 @@
 package com.bitcamp.cody.service;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,14 +15,12 @@ public class BookmarkService {
 	
 		
 
-	public int bookmarkInsert(BookmarkDto bookmark, HttpServletRequest request) {
+	public int insertBookmark(BookmarkDto bookmarkVo) {
 		
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 		
-		int resultCnt = dao.insertBookmark(bookmark);
-
-		System.out.println("실행 후 : " + bookmark.getBookmark_idx());
-		
+		int resultCnt = dao.insertBookmark(bookmarkVo);
+								
 		return resultCnt;
 		
 		
@@ -40,6 +36,7 @@ public class BookmarkService {
 		return result;
 
 	}
+
 
 
 

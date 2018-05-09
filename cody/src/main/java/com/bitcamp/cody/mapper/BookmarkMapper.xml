@@ -15,13 +15,14 @@
 	</select>
 	
 	<insert id="insertBookmark" parameterType="com.bitcamp.cody.dto.BookmarkDto">
-		insert into bookmark
-		(bookmark_idx, member_idx, cody_idx)
-		values ( #{bookmark_idx}, #{member_idx}, #{cody_idx})
+		insert into bookmark (member_idx, cody_idx)
+		values ( #{member_idx}, #{cody_idx})
 	</insert>
 	
-	<delete id="deleteBookmark" parameterType="com.bitcamp.cody.dto.BookmarkDto">
+	<delete id="deleteBookmark" parameterType="int">
 		delete from bookmark where bookmark_idx = #{bookmark_idx}
 	</delete>
+	
+	
 	
 </mapper>	
