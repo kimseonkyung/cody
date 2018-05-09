@@ -30,14 +30,16 @@ div {
 					${list.reple_contents} ${list.relpe_date}
 					
 					<button id="re_repleShow">답글</button>
-					<button id="repleDelete" onclick="repleDelete(${list.reple_idx })">삭제</button>
+					<button id="repleDelete${list.reple_idx }" onclick="repleDelete(${list.reple_idx })">삭제</button>
 					
-					<!-- <div id="re_repleSave" style="border: 1px solid gray; width: 500px; display: none">
+					
+					<div id="re_repleSave" style="border: 1px solid gray; width: 500px; display: none">
 						<input type="hidden" id="cody_idx" value="1">
 						<input type="hidden" id="member_idx" value="1">
 						<textarea id="reple_contents" rows="3" cols="60" maxlength="500"></textarea>
 						<button id="re_replySave">저장</button>
-					</div> -->
+					</div>
+					
 					
 				</div>
 				
@@ -61,10 +63,23 @@ div {
 	<br>
 	<hr>
 
+	<div id="toc" style="display: none">
+	<input id="tocCnt" type="hidden" value="0">
+	!!</div>
 
 	<script>
-		$('#replySave').click(
-				function() {
+	$(document).ready(function() {
+		var cnt = $('#tocCnt').val();
+		
+		setInterval(
+		notice(cnt), 1000);
+		
+	}
+	
+		
+	
+	
+		$('#replySave').click(function() {
 
 					var cody_idx = $('#cody_idx').val();
 					var member_idx = $('#member_idx').val();
@@ -86,7 +101,6 @@ div {
 				});
 		
 		
-		
 		$('#re_repleShow').click(function () {
 			$(this).next().next().css('display', 'block');
 		});
@@ -104,12 +118,24 @@ div {
 					reple_idx : reple_idx
 				},
 				success : function(data) {
-					alert('삭제완료');
+					$('#repleDelete'+reple_idx).parent().remove();
 				}
 			});
 		}
 		
 
+		function notice(cnt) {
+			
+			
+			$.ajax({
+				type : 'get',
+				url : 
+				
+				
+			});
+			
+			
+		}
 		
 		
 		
