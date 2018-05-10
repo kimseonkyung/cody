@@ -9,7 +9,7 @@
 <style>
 #container {
 	height: 1907px;
-	width: 995px;
+	width: 999px;
 	margin: 0 auto;
 	/*컨텐츠 내부 수평 정렬*/
 	overflow: hidden;
@@ -17,7 +17,7 @@
 }
 
 #main {
-	height: 1887px;
+	height: 1750px;
 	width: 995px;
 	position: relative;
 	/*중앙정렬*/
@@ -64,18 +64,19 @@
 	cursor: pointer;
 }
 
-#content {
-	height: 1700px;
+#main_content {
+	height: 1540px;
 	width: 990px;
 	border: 2px solid orange;
 	position: relative;
 }
 
-#left {
+#left_content {
 	width: 558px;
 	height: 1500px;
 	float: left;
 	position: absolute;
+	border: 2px solid gray;
 }
 
 #left_div {
@@ -161,11 +162,12 @@
 	
 }
 
-#right {
+#right_content {
 	width: 414px;
 	float: right;
 	position: absolute;
 	right: 0;
+	border: 2px solid black;
 }
 
 #info {
@@ -185,41 +187,33 @@
 
 <body>
 	<div id="container">
-		<div id="main">
-			<form action="${pageContext.request.contextPath }/codyListView" method="post" enctype="multipart/form-data">
-				<c:forEach var="cody" items="${codys}">
-					<div id="main_header">
+	<div id= "main">
+	<form method="post" enctype="multipart/form-data">
+				
+					<header id="main_header">
 						<div id="main_header_1">
-							<a
-								href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx }"><input
-								id="update_btn" type=button value="수정"></a>
+							<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx }">
+							<input id="update_btn" type=button value="수정"></a>
 						</div>
 						<div id="main_header_2">
-							<input id="follow_input" type="button" value="팔로우하기"><a
-								href="#"></a>
+							<input id="follow_input" type="button" value="팔로우하기"><a href="#"></a>
 						</div>
-					</div>
+					</header>
 					<!--------------------내용--------------------->
-					<div id="content">
+					<div id="main_content">
 						<!-- 회원 정보 출력 반복 시작 -->
 						<!--------------------왼쪽--------------------->
 
-						<div id="left">
+						<div id="left_content">
 							<div id="left_div">
 								<div id="image">
 									<c:if test="${cody.cody_image != null}">
-										<img
-											src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
-											width="556" height="723">
+										<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" width="556" height="723">
 									</c:if>
 								</div>
 
 								<div id="funtion">
-									<div id="bookmark">
-										<a
-											href="${pageContext.request.contextPath}/bookmark?cody_idx=${bookmark_idx}"><input
-											id="bookmark_btn" type="button" value="즐겨찾기"></a>
-									</div>
+									
 									<div id="like">
 										<a href="#"><input id="like_btn" type="button" value="좋아요"></a>
 									</div>
@@ -235,14 +229,12 @@
 							</div>
 						</div>
 						<!--------------------오른쪽--------------------->
-						<div id="right">
+						<div id="right_content">
 							<div id="info">
 
-								<div id="content_name">
-									<h3>${cody.cody_title}</h3>
-								</div>
+								<div id="content_name"><h3>${cody.cody_title}</h3></div>
 
-								${cody.cody_height}
+								${cody.cody_height}cm
 								<c:set var="data" value="${cody.cody_gender}" />
 								<c:choose>
 									<c:when test="${data eq true}">
@@ -253,10 +245,8 @@
                                         Woman
                                     </c:otherwise>
 								</c:choose>
-								${cody.cody_age}
-
+								${cody.cody_age}세
 								<div id="content_content">${cody.cody_intro}</div>
-
 								<div id="content_date">${cody.board_date}</div>
 							</div>
 							<div id="item">
@@ -266,12 +256,16 @@
 								<a href="codyForm">코디등록</a>
 
 							</div>
+
+
 						</div>
+
+
+
 					</div>
-				</c:forEach>
+				
 			</form>
-			<!-- 회원 정보 출력 반복 끝 -->
-		</div>
+	</div>
 	</div>
 </body>
 
