@@ -28,18 +28,19 @@
 		from reple
 	</select>
 	
-	<!-- 댓글 입력 -->
+	<!-- 첫댓글 입력 -->
 	<insert id="repleInsert" parameterType="com.bitcamp.cody.dto.RepleDto" useGeneratedKeys="true" keyProperty="idx">
 		insert into reple (reple_contents, member_idx, cody_idx)
 		values (#{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
+	<!-- 대댓글 입력 -->
 	<insert id="re_repleInsert" parameterType="com.bitcamp.cody.dto.RepleDto" useGeneratedKeys="true" keyProperty="idx">
 		insert into reple (reparent, redepth, reple_contents, member_idx, cody_idx)
 		values ( #{reple_idx}, #{redepth}+1 , #{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
-
+	
 	<update id="reorderPlus" parameterType="int">
 		update reple set reorder = reorder+1
 		where reorder > #{order} and reorder = #{order} and group=#{group}
@@ -50,7 +51,14 @@
 		delete from reple where reple_idx = #{idx}
 	</delete>
 
+	<!-- 수신확인 -->
+	<update id="receptionUpdate" parameterType="com.bitcamp.cody.dto.RepleDto">
+		update reple set reception = false;
+	</update>
 
-
+	<select id="selectReception" resultType="int">
+		select max(reception)
+		from reple
+	</select>
 
 </mapper>

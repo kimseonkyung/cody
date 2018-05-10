@@ -22,9 +22,8 @@ public class RepleController {
 	@Autowired
 	RepleService repleService;
 
-//	@Autowired
-//	TocService tocService;
-
+	// @Autowired
+	// TocService tocService;
 
 	@Autowired
 	MemberListService memberListService;
@@ -44,20 +43,20 @@ public class RepleController {
 	@RequestMapping(value = "/repleInsert", method = RequestMethod.POST)
 	@ResponseBody
 	public String insertReple(Model model, RepleDto repleDto
-			// ,TocDto tocDto
-			) {
+	// ,TocDto tocDto
+	) {
 
 		System.out.println("repleDto : " + repleDto);
 		int resultCnt = repleService.repleInsert(repleDto);
 
-		String msg="";
-		if(resultCnt == 1) {
-//			tocService.tocInsert(tocDto);
+		String msg = "";
+		if (resultCnt == 1) {
+			// tocService.tocInsert(tocDto);
 			msg = "입력이 정상적으로 처리되었습니다.";
-		}		
-		
+		}
+
 		if (resultCnt <= 0)
-			
+
 			msg = "입력 처리가 되지 않았습니다. 담당자에게 문의 해주세요.";
 
 		model.addAttribute("msg", msg);
@@ -104,7 +103,25 @@ public class RepleController {
 		return "cody/repleOk";
 
 	}
-	
-	
+
+	// 수신 여부
+	@RequestMapping("/reception")
+	@ResponseBody
+	public int reception(Model model) {
+
+		int cnt = repleService.selectReception();
+		
+		return cnt;
+	}
+
+	// 수신 확인
+	@RequestMapping("/receptionOk")
+	@ResponseBody
+	public String receptionOK(Model model) {
+
+		int resultCnt = repleService.receptionUpdate();
+
+		return "";
+	}
 
 }
