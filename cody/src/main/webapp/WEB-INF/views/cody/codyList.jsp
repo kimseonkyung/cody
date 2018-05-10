@@ -50,12 +50,14 @@
 					<td>${cody.cody_height}</td>
 					<td>${cody.cody_age}</td>
 					
-					<td><a href="${pageContext.request.contextPath }/codyListView?cody_idx=${cody.cody_idx}">상세보기</a>
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx }">수정</a>
+					<td>
+						<a href="${pageContext.request.contextPath }/codyListView?cody_idx=${cody.cody_idx}">상세보기</a>
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}">수정</a>
 						<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
 						<a href="codyForm">코디등록</a>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${bookmark_idx}">즐겨찾기</a>
-						</td>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" >즐겨찾기</a>
+					</td>
+					
 				</tr>
 			</c:forEach>
 			<!-- 회원 정보 출력 반복 끝 -->
