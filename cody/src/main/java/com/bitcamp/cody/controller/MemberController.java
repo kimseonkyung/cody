@@ -4,6 +4,7 @@ import java.io.IOException;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,18 +37,19 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
 	public String loginForm() {
-		return "member/loginForm";
+		return "member/login";
 	}
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	public String login(@RequestParam(value = "member_id", defaultValue = "0") String id,
 			            @RequestParam(value = "member_pw", required = false) String pw, HttpSession session) {
 
+		
+		
 		System.out.println(id);
 		System.out.println(pw);
 
-		// 정상적으로 로그인 처리가 되면 리다이렉트 처리 : mypage로 이동
-		String view = "redirect:mypage"; // /member/mypage
+		
 
 		MemberDto member = service.loginChk(id, pw);
 		// null / Member 객체
@@ -55,18 +57,20 @@ public class MemberController {
 		if (member == null) {
 			return "member/loginFail";
 			
-		}
+		}else {
 
 		member.setMember_pw("");
 
 		// 세션에 데이터 저장
 		session.setAttribute("loginInfo", member);
-
-/*System.out.println(session.getAttribute("loginInfo"));
 		
-		notifier.sendMail(member.getMember_id(), "로그인이 성공적으로 처리되었습니다.");*/
+		System.out.println(session.getAttribute("loginInfo"));
+		
+		/*notifier.sendMail(member.getMember_id(), "로그인이 성공적으로 처리되었습니다.");*/
 
-		return view;
+		
+		}
+		return"home";
 	}
 	
 	
@@ -118,7 +122,7 @@ public class MemberController {
 		
 		@RequestMapping(value = "/member/memberReg", method=RequestMethod.GET)
 		public String memberRegForm() {
-			return "member/memberRegForm";
+			return "home";
 		}
 		
 		@RequestMapping(value = "/member/memberReg", method=RequestMethod.POST)
@@ -171,8 +175,6 @@ public class MemberController {
 	
 	
 		
-		
-		
 		@RequestMapping("/member/memberDelete")
 		public String deleteMember(Model model, @RequestParam("id") String id) {
 			
@@ -191,18 +193,14 @@ public class MemberController {
 					
 		}
 		
+		@RequestMapping("/member/memberlogout")
+		public String logout(HttpSession session) {
+			session.removeAttribute("loginInfo");
+			return "redirect:/";
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+	
 		
 
 }
-

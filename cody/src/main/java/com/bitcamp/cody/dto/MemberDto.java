@@ -18,6 +18,13 @@ public class MemberDto {
 	private MultipartFile photofile;
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	public MemberDto() {}
 
 

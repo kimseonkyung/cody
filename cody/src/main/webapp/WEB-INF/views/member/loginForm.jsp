@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인 폼</title>
-<style>
 
-</style>
+
+
+<style>
+ 
+  </style>
+  
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>	
 
@@ -63,6 +70,8 @@
 </script>
 </head>
 <body>
+
+
 <h1>로그인 폼</h1>
 <form id="loginForm" action="login.do" method="post">
 <table>
@@ -80,18 +89,6 @@
 	</tr>
 </table>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

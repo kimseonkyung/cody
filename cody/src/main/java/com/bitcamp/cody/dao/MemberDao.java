@@ -1,11 +1,8 @@
 package com.bitcamp.cody.dao;
 
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.springframework.jdbc.core.JdbcTemplate;
-
 import com.bitcamp.cody.dto.MemberDto;
 
 public class MemberDao {
@@ -56,8 +53,7 @@ public class MemberDao {
 	
 	
     
-		
-	
+
 	
 
 }

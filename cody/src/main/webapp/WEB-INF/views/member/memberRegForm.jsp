@@ -17,7 +17,7 @@
 			var userName = $('#member_name').val();
 			var userbirth = ${'#member_birth'}.val();
 			var useremail = ${'#member_email'}.val();
-			var userph = ${'#member_ph'}.val();
+// 			var userph = ${'#member_ph'}.val();
 			
 		
 			
@@ -93,6 +93,10 @@
 	});
 
 </script>
+
+
+
+
 <style>
 
 </style>
@@ -102,6 +106,7 @@
 <h1>회원가입 폼</h1>
 <form action="memberReg" id="regForm" method="post" enctype="multipart/form-data">
 <table>
+ 
 	<tr>
 		<td>아이디(이메일)*</td>
 		<td>
@@ -153,10 +158,19 @@
 			<input type="submit" value="가입">
 			<input type="reset">
 		</td>
-	</tr>
+	</tr> 
+	
+	
+	
+	
+	
+	
+
+	
 </table>
 
 </form>
+
 
 
 

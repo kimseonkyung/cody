@@ -4,10 +4,8 @@ import java.io.IOException;
 
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.bitcamp.cody.dao.LoginDao;
 import com.bitcamp.cody.dto.MemberDto;
 
@@ -130,15 +128,6 @@ public class MemberService {
 			
 			return result;
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		

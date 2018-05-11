@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+
 
 <%-- <html>
 <head>
@@ -157,6 +158,131 @@
 
 </head>
 
+
+<!-- 회원가입 스크립트 -->
+<script>
+	$(document).ready(function(){
+		
+		// 사용자가 입력하는 데이터의 유효성 검사
+		$('#regForm').submit(function(){
+			
+			var userId = $('#member_id').val();
+			var pw = $('#member_pw').val();
+			var userName = $('#member_name').val();
+			var userbirth = ${'#member_birth'}.val();
+			var useremail = ${'#member_email'}.val();
+// 			var userph = ${'#member_ph'}.val();
+			
+		
+			
+			
+			if(userId.length < 1){
+				alert('아이디를 입력해주세요.');
+				$('#member_id').focus();
+				return false;
+			}
+			if(pw.length < 1){
+				alert('비밀번호를 입력해주세요.');
+				$('#member_pw').focus();
+				return false;
+			}
+			if(userName.length < 1 ){
+				alert('회원명을 입력해주세요.');
+				$('#member_name').focus();
+				return false;
+			}
+			if(userbirth.length < 1 ){
+				alert('생일을 입력해주세요.');
+				$('#member_birth').focus();
+				return false;
+			}
+			if(useremail.length < 1 ){
+				alert('이메일을 입력해주세요.');
+				$('##member_email').focus();
+				return false;
+			}
+			if(userph.length < 1 ){
+				alert('전화번호를 입력해주세요.');
+				$('#member_ph').focus();
+				return false;
+			}
+			
+			
+		});
+		
+		// 아이디 입력시 사용 유무 확인 체크 : 서버쪽에 확인 요청
+		$('#member_id').focusout(function(){
+			
+			var memberId = $(this).val();
+			
+			if(memberId.length > 5){
+				
+				$.ajax({
+					url : '/cody/member/idchk',
+					type : 'post',
+					dataType : 'text',
+					data : {
+						userid : memberId
+					},
+					success : function(data){
+						if(data == "Y"){
+							$('#idChkMsg').text('사용가능한 아이디입니다.');
+							$('#idChkMsg').css('color', 'blue');
+						} else if(data == 'N') {
+							$('#idChkMsg').text('이미 사용중인 아이디입니다.');
+							$('#idChkMsg').css('color', 'red');
+						}
+					}					
+				});
+				
+				
+			} else {
+				$('#idChkMsg').text('아이디는 6자 이상이어야 합니다.');
+			}
+			
+		});
+		
+
+	
+	});
+
+</script>
+
+<!-- 로그인 스크립트 -->
+<script>	
+
+	$(document).ready(function(){
+		
+		$('#loginForm').submit(function(){
+			
+			var uId = $('#member_id').val();
+			var pw = $('#member_pw').val();
+			
+			// 아이디 값이 있는지 확인
+			if(uId.length < 1){
+				alert('아이디를 입력해주세요.');
+				return false;
+			}
+			
+			// 비밀번호값이 입력되었는지 확인
+			if(pw.legth < 1){
+				alert('비밀번호를 입력해주세요.');
+				return false;
+			}
+			
+			
+		});
+		
+		
+		
+	});
+
+</script>
+
+
+
+
+
 <body class="bg-light">
 
 	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -174,10 +300,25 @@
 		<div class="navbar-collapse offcanvas-collapse"
 			id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">회원가입
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
+		
+			<c:choose>
+			<c:when test="${not empty sessionScope.loginInfo}" >
+			     <li class="nav-item"><a class="btn btn-default btn-logiut" href="memberlogout"><span class="glyphicon glyphicon-log-out"></span>로그아웃</a></li>
+				 <li class="nav-item"><a class="nav-link" href="">마이페이지</a></li>
+			      
+				</c:when>
+				
+				<c:otherwise>
+				 <li class="nav-item active"><a class="nav-link" data-toggle="modal" data-target="#registerModal">회원가입<span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="home" data-toggle="modal" data-target="#loginModal">로그인</a></li>
+			 </c:otherwise>
+			
+			
+			
+				</c:choose>
+			
+			
+			
 				<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Switch
 						account</a></li>
@@ -190,6 +331,9 @@
 							class="dropdown-item" href="#">Another action</a> <a
 							class="dropdown-item" href="#">Something else here</a>
 					</div></li>
+					
+					
+					
 			</ul>
 		</div>
 	</nav>
@@ -203,7 +347,6 @@
 			</a> <a class="nav-link" href="#">all</a> <a class="nav-link" href="#">men</a>
 			<a class="nav-link" href="#">women</a> <a class="nav-link" href="#">아이템</a>
 			<a class="nav-link" href="#">코디</a> <a class="nav-link" href="#">사용자</a>
-			<a class="nav-link" href="#">마이페이지</a>
 		</nav>
 	</div>
 
@@ -270,8 +413,10 @@
 						리스트</a><br> <a href="itemListView?item_idx=2">아이템 상세보기</a><br>
 					<a href="itemSearch?item_name=1">아이템 검색</a><br> <a
 						href="itemForm">아이템 수정</a><br> <a
-						href="itemDelete?item_idx=5">아이템 삭제</a><br> <a
-						href="member/memberReg">회원가입 (form)</a> <a href="member/login">로그인
+						href="itemDelete?item_idx=5">아이템 삭제</a><br> 
+						
+						
+						
 						(form)</a> <a href="member/memberList">회원 리스트</a><br> 
 						<a href="bookmarkList">즐겨찾기</a><br>
 						<a href="repleList?cody_idx=1">답글</a>
@@ -361,6 +506,236 @@
 	</div>
 
 	</main>
+	
+ <!--회원가입 폼-->
+<div class="container" style="float: left">
+
+			<div class="modal fade" id="registerModal" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">회원가입</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+						</div>
+						<div class="modal-body">
+
+							<form action="member/memberReg" method="post" id="regForm" enctype="multipart/form-data" >
+                      
+								<!-- Email -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">아이디</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-between align-items-center px-2">
+										<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center">
+											<input type="text" name="member_id" id="member_id" placeholder="&nbsp;Please enter a valid email" style="width: 100%;">
+										</div>
+										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-start align-items-center pl-2">
+											<a id="authenticate" class="row justify-content-center align-items-center" style="background-color: #01D1FE; color: white; cursor: pointer; height: 27px; width: 100%;">Check</a>
+										</div>
+										<input type = "text" style = "display:none" id = "dupl">
+									</div>
+								</div>
+
+								<!-- Password -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">Password</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="password" name="member_pw" id="member_pw" style="width: 100%;">
+									</div>
+								</div>
+
+								<!--  Confirm Password 
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">
+										<p style="text-align: center;">
+											Confirm <br> Password
+										</p>
+									</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2 ">
+										<input type="password" id="chpw" style="width: 100%;">
+										<font name="check" size="2" color="red"></font>
+									</div>
+								</div> -->
+
+								<!-- Name -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">Name</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="text" name="member_name" id="member_name" style="width: 100%;">
+									</div>
+								</div>
+
+                                <!-- Email -->
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">Email</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="text" name="member_email" id="member_email" style="width: 100%;">
+									</div>
+								</div>
+
+
+								<!-- Birth -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">Date of birth</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="text" name="member_birth" id="member_birth" placeholder="&nbsp;ex)&nbsp;910425" style="width: 100%;">
+									</div>
+								</div>
+								<!-- PhoneNumber -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">PhoneNumber</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="text" name="member_ph" id="member_ph" style="width: 100%;" placeholder="&nbsp;ex)&nbsp;01095078230">
+									</div>
+								</div>
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">사진</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="file" name="photofile" placeholder="&nbsp;ex)&nbsp;910425" style="width: 100%;">
+									</div>
+								</div>
+					
+								
+								
+								
+								
+
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-5">
+									<input class="p-3" id="joinBtn" type="submit" value="Submit">
+								</div>
+								
+								
+
+							</form>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+<!-- 로그인 폼 -->
+
+		<div class="container" style="float: left">
+			<div class="modal fade" id="loginModal" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Login</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+
+							<form class="form-horizontal" action="member/login" id="#loginForm"
+								method="post">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-xl-sm-2 control-label">Email</label>
+									<div class="col-xl-12">
+										<input type="text" class="form-control" id="member_id"
+											placeholder="Email" name="member_id" style="width: 100%">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-xl-sm-2 control-label">Password</label>
+									<div class="col-xl-12">
+										<input type="password" class="form-control"
+											id="member_pw" placeholder="Password"
+											name="member_pw" style="width: 100%">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xl-sm-offset-2 col-xl-sm-10">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="useCookie">
+												아이디 저장
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xl-12ss">
+										<button type="submit" class="btn btn-primary p-3"
+											style="background-color: #01D1FE; color: white; border: none; width: 100%; font-size: 20px;">Login</button>
+									</div>
+								</div>
+							</form>
+
+							<div
+								class="col-xl-12 row justify-content-center align-items-center my-3">
+								<a href="/user/findId">아이디 찾기&nbsp;</a>&nbsp; / &nbsp;&nbsp;
+								<a href="/user/findPw">비밀번호 찾기</a>
+							</div>
+							
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-2">
+							<div
+								class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 row justify-content-center align-items-center">
+								<div
+									class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row justify-content-center align-items-center p-2">
+									<form action="/connect/facebook" method="post"
+										id="facebook-form">
+										<input type="hidden" name="scope"
+											value="public_profile, email" /> 
+										<button type="submit" style="border:none;" class="row">
+											<img src="../../resources/icon/facebook.svg"
+											class="img-fluid row justify-content-center align-items-center col-12">
+										</button>
+									</form>
+								</div>
+								<div
+									class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row justify-content-center align-items-center p-2">
+									<form method="get" id="naver-form">
+										<a href="/user/naverLogin"> <img
+											src="../../resources/icon/naver.svg"
+											class="img-fluid row justify-content-center align-items-center col-12">
+										</a>
+									</form>
+								</div>
+							
+
+							
+								<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row justify-content-center align-items-center p-2">
+									<a
+										href="https://kauth.kakao.com/oauth/authorize?client_id=275295f3722f04cd3c3715b26c3651b7&redirect_uri=http://almom.kr/user/kakaologin&response_type=code">
+										<img src="../../resources/icon/kakao.svg"
+										class="img-fluid row justify-content-center align-items-center col-12">
+									</a>
+								</div>
+								<div
+									class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row justify-content-center align-items-center p-2">
+									<form action="/user/googleLogin" method="post" id="google-form">
+										<button type="submit" style="border:none;" class="row"> <img
+											src="../../resources/icon/google.svg"
+											class="img-fluid row justify-content-center align-items-center col-12">
+										</button>
+									</form>
+								</div>
+							</div>							
+						</div>	
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -381,6 +756,8 @@
 		src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/holder.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.js"></script>
+		
+		
 </body>
 </html>
 
