@@ -181,16 +181,31 @@ min-height: 100px;
 border: 2px solid blue; 
 }
 
+#content_container{
+width: 414px;
+border: 2px solid blue;
+}
+
+#content_sub{
+width: 414px;
+border: 2px solid blue;
+}
+
 #content_intro{
 width: 414px;
-min-height: 300px;
-border: 2px solid blue; 
+border: 2px solid blue;
+line-height: 150%; 
 }
 
 #item {
 	width: 414px;
 	min-height: 20px;
 	border: 2px solid blue;
+}
+
+#content_date{
+width: 414px;
+border: 2px solid blue;
 }
 </style>
 </head>
@@ -241,10 +256,9 @@ border: 2px solid blue;
 						<!--------------------오른쪽--------------------->
 						<div id="right_content">
 							<div id="info">
-
-								<div id="content_name"><h4>${cody.cody_title}</h4></div>
-								
-								<div id="content_intro">
+							<div id="content_container">
+								<div id="content_name"><h4>${cody.cody_title}</h4></div>														
+								<div id="content_sub">
 								${cody.cody_height}cm
 								<c:set var="data" value="${cody.cody_gender}" />
 								<c:choose>
@@ -257,6 +271,7 @@ border: 2px solid blue;
                                     </c:otherwise>
 								</c:choose>
 								${cody.cody_age}세
+								</div>
 								<div id="content_content"><h5>${cody.cody_intro}</h5></div>
 								<div id="content_date"><h5>${cody.board_date}</h5></div>
 							</div>
