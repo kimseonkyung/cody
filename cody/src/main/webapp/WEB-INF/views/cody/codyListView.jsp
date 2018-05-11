@@ -172,13 +172,24 @@
 
 #info {
 	width: 414px;
-	height: 200px;
 	border: 2px solid blue;
+}
+
+#content_name{
+width: 414px;
+min-height: 100px;
+border: 2px solid blue; 
+}
+
+#content_intro{
+width: 414px;
+min-height: 300px;
+border: 2px solid blue; 
 }
 
 #item {
 	width: 414px;
-	height: 300px;
+	min-height: 20px;
 	border: 2px solid blue;
 }
 </style>
@@ -218,8 +229,7 @@
 										<a href="#"><input id="like_btn" type="button" value="좋아요"></a>
 									</div>
 									<div id="comment">
-										<a href="#"><input id="comment_btn" type="button"
-											value="코멘트"></a>
+										<a href="#"><input id="comment_btn" type="button" value="코멘트"></a>
 									</div>
 								</div>
 								<div id="like_list"></div>
@@ -232,8 +242,9 @@
 						<div id="right_content">
 							<div id="info">
 
-								<div id="content_name"><h3>${cody.cody_title}</h3></div>
-
+								<div id="content_name"><h4>${cody.cody_title}</h4></div>
+								
+								<div id="content_intro">
 								${cody.cody_height}cm
 								<c:set var="data" value="${cody.cody_gender}" />
 								<c:choose>
@@ -246,13 +257,13 @@
                                     </c:otherwise>
 								</c:choose>
 								${cody.cody_age}세
-								<div id="content_content">${cody.cody_intro}</div>
-								<div id="content_date">${cody.board_date}</div>
+								<div id="content_content"><h5>${cody.cody_intro}</h5></div>
+								<div id="content_date"><h5>${cody.board_date}</h5></div>
+							</div>
 							</div>
 							<div id="item">
 
-								<a
-									href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
+								<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
 								<a href="codyForm">코디등록</a>
 
 							</div>
