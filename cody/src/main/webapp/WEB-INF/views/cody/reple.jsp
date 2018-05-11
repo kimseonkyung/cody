@@ -15,8 +15,7 @@ div {
 }
 </style>
 
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	
 </script>
 

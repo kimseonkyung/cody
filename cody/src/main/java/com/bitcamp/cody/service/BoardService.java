@@ -1,14 +1,13 @@
 package com.bitcamp.cody.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.BoardDao;
-import com.bitcamp.cody.dao.ItemDao;
-import com.bitcamp.cody.dto.ItemDto;
-import com.bitcamp.cody.dto.Notice_allDto;
+import com.bitcamp.cody.dto.BoardDto;
 
 public class BoardService {
 
@@ -17,41 +16,52 @@ public class BoardService {
 
 	private BoardDao dao;
 
-	public List<Notice_allDto> listAll() {
+	// 게시판 리스트
+	public List<BoardDto> listAll(int offset, int noOfRecords) {
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
 
-		List<Notice_allDto> list = dao.selectList();
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("offset", offset);
+		params.put("noOfRecords", noOfRecords);
+
+		System.out.println("offset,noOfRecords : " + offset + ", " + noOfRecords);
+		List<BoardDto> list = dao.selectList(params);
 
 		return list;
 	}
 
-	public int boardInsert(Notice_allDto notiAll) {
-		
+	// 게시글 입력
+	public int boardInsert(HashMap<String, String> info) {
+
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
-		int resultCnt = dao.insertBoard(notiAll);
+		int resultCnt = dao.insertBoard(info);
 
 		return resultCnt;
 	}
 
-	public void countAdd(int count, int idx) {
+	// 조회수 증가
+	public int countAdd(HashMap<String, Object> cnt) {
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
-		dao.countAdd(count, idx);
+		
+		int result = dao.countAdd(cnt);
+		
+		return result;
 
 	}
 
-	public Notice_allDto getListView(int idx) {
-		
+	public BoardDto getListView(int idx) {
+
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
-		Notice_allDto notiAll = dao.selectByIdx(idx);
-		
-		return notiAll;
+		BoardDto board = dao.selectByIdx(idx);
+
+		return board;
 	}
 
-	public int boardUpdate(Notice_allDto notiAll) {
+	public int boardUpdate(BoardDto board) {
 
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
-		int resultCnt = dao.updateBoard(notiAll); 
-		
+		int resultCnt = dao.updateBoard(board);
+
 		return resultCnt;
 	}
 
@@ -60,6 +70,13 @@ public class BoardService {
 		int result = dao.deleteBoard(idx);
 
 		return result;
+	}
+
+	public int totalCount() {
+		dao = sqlSessionTemplate.getMapper(BoardDao.class);
+		int cnt = dao.totalCnt();
+
+		return cnt;
 	}
 
 }

@@ -159,7 +159,9 @@
 
 <body class="bg-light">
 
-	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+	<header>
+	<div class="codyHeaderBar fixed-top bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark">
 		<form class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="text" placeholder="Search"
 				aria-label="Search">
@@ -193,7 +195,8 @@
 			</ul>
 		</div>
 	</nav>
-
+	</div>
+	</header>
 
 	<div class="nav-scroller bg-white box-shadow">
 		<nav class="nav nav-underline">
@@ -274,8 +277,10 @@
 						href="member/memberReg">회원가입 (form)</a> <a href="member/login">로그인
 						(form)</a> <a href="member/memberList">회원 리스트</a><br> 
 						<a href="bookmarkList">즐겨찾기</a><br>
-						<a href="repleList?cody_idx=1">답글</a>
-						<a href="codyTimeList">타임라인</a>
+						<a href="repleList?cody_idx=1">답글</a><br>
+						<a href="codyTimeList">타임라인</a><br>
+						<a href="boardList">게시판(공지사항)</a><br>
+						
 
 				</div>
 				<small class="d-block text-right mt-3"> <a href="#">All

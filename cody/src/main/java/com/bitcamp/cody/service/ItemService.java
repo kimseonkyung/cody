@@ -15,10 +15,10 @@ public class ItemService {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	private ItemDao dao;
-
 	@Autowired
 	MultipartService_Item service;
+	
+	private ItemDao dao;
 
 	public int itemInsert(ItemDto item, HttpServletRequest request) throws IllegalStateException, IOException {
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
@@ -50,6 +50,5 @@ public class ItemService {
 
 		return result;
 	}
-	
-  
+
 }

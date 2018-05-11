@@ -40,7 +40,7 @@
 		values ( #{reple_idx}, #{redepth}+1 , #{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
-	
+
 	<update id="reorderPlus" parameterType="int">
 		update reple set reorder = reorder+1
 		where reorder > #{order} and reorder = #{order} and group=#{group}
