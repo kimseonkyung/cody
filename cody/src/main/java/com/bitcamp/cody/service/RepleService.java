@@ -69,8 +69,32 @@ public class RepleService {
 		return result;
 	}
 
+	public int receptionUpdate() {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		int result = dao.receptionUpdate();
+		
+		return result;
+	}
+	
+	public int selectReception() {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		int cnt = dao.selectReception();
+		
+		return cnt;
+	}
+
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	 
 }

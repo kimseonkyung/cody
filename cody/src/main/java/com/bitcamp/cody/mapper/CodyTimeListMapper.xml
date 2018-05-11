@@ -12,10 +12,12 @@
 
 	
 	<select id="selectList" resultType="com.bitcamp.cody.dto.CodyDto">
-		SELECT * FROM cody.cody ORDER BY cody_idx DESC;
-		
+		SELECT * FROM cody ORDER BY cody_idx DESC;		
 	</select>
-
+	
+	<select id="selectList1" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from item where cody_idx = #{cody_idx}
+	</select>
 	
  
-</mapper> 
+</mapper>  

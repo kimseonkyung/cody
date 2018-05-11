@@ -14,6 +14,8 @@ public interface RepleDao {
 	int maxSelect();
 	int reorderPlus(int order, int group);
 	int repleDelete(int idx);
+	int receptionUpdate();
+	int selectReception();
 	
 }
     

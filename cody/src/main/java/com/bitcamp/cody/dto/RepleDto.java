@@ -13,12 +13,13 @@ public class RepleDto {
 	private Date relpe_date;
 	private int member_idx;
 	private int cody_idx;
+	private boolean reception;
 
 	public RepleDto() {
 	}
 
 	public RepleDto(int reple_idx, int regroup, int reparent, int redepth, int reorder, String reple_contents,
-			Date relpe_date, int member_idx, int cody_idx) {
+			Date relpe_date, int member_idx, int cody_idx, boolean reception) {
 		super();
 		this.reple_idx = reple_idx;
 		this.regroup = regroup;
@@ -29,6 +30,7 @@ public class RepleDto {
 		this.relpe_date = relpe_date;
 		this.member_idx = member_idx;
 		this.cody_idx = cody_idx;
+		this.reception = reception;
 	}
 
 	public int getReple_idx() {
@@ -103,14 +105,21 @@ public class RepleDto {
 		this.cody_idx = cody_idx;
 	}
 
+	public boolean isReception() {
+		return reception;
+	}
+
+	public void setReception(boolean reception) {
+		this.reception = reception;
+	}
+
 	@Override
 	public String toString() {
 		return "RepleDto [reple_idx=" + reple_idx + ", regroup=" + regroup + ", reparent=" + reparent + ", redepth="
 				+ redepth + ", reorder=" + reorder + ", reple_contents=" + reple_contents + ", relpe_date=" + relpe_date
-				+ ", member_idx=" + member_idx + ", cody_idx=" + cody_idx + "]";
+				+ ", member_idx=" + member_idx + ", cody_idx=" + cody_idx + ", reception=" + reception + "]";
 	}
 
-	
 	
 
 	

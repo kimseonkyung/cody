@@ -12,12 +12,7 @@
 		<h3>최신글</h3>
 		<table border="1">
 			<tr>
-				<td>코디이미지</td>
-				<td>착용아이템</td>
-				<td>제목</td>
-				<td>소개</td>
-				<td>성별</td>
- 
+				<td>코디</td>
 			</tr>
 
 			<!-- 회원 정보 출력 반복 시작 -->
@@ -27,26 +22,21 @@
 							<img
 								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
 								width="200">
-						</c:if></td>
-					<td>착용아이템</td>
-					<td>${cody.cody_title}</td>
-					<td>${cody.cody_intro}</td>
-					<td><c:set var="data" value="${cody.cody_gender}" /> <c:choose>
-							<c:when test="${data eq true}">
-					 Man
-					 </c:when>
-
-							<c:otherwise>
-					 Woman
-					 </c:otherwise>
-						</c:choose></td>
-
-				</tr>
+						</c:if> ${cody.cody_title}${cody.cody_intro}</td>
 			</c:forEach>
-			<!-- 회원 정보 출력 반복 끝 -->
+			<tr>
+				<c:forEach var="map" items="${map}">
+					<td>${map}</td>
+				</c:forEach>
+
+			</tr>
+
+ 
 
 		</table>
 	</form>
 </body>
+
+
 </html>
- 
+

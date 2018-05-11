@@ -6,18 +6,22 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.CodyTimeListDao;
-import com.bitcamp.cody.dto.CodyDto;
+import com.bitcamp.cody.dto.ItemDto;
 
-public class CodyTimeListService {
-
+public class CodyItemListService {
+	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	private CodyTimeListDao dao;
-
-	public List<CodyDto> getCodyTimeList() {
+	
+	
+	public List<ItemDto> getCodyItemList(int cody_idx) { 
+		
 		dao = sqlSessionTemplate.getMapper(CodyTimeListDao.class);
-		List<CodyDto> list = dao.selectList();
-		return list; 
-	}
-}	  
+		List<ItemDto> list = dao.selectList1(cody_idx);
+		return list;
+ }
+ 
+}
+ 

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -11,8 +14,9 @@
 	<beans:bean id="ItemService" class="com.bitcamp.cody.service.ItemService" />
 	<beans:bean id="ItemListService" class="com.bitcamp.cody.service.ItemListService" />
 	<beans:bean id="BoardService" class="com.bitcamp.cody.service.BoardService" />
-	<beans:bean id="BoardPersonService" class="com.bitcamp.cody.service.BoardPersonService" />
+	<!-- <beans:bean id="TocService" class="com.bitcamp.cody.service.TocService" /> -->
 	<beans:bean id="RepleService" class="com.bitcamp.cody.service.RepleService" />
+
 
 
 

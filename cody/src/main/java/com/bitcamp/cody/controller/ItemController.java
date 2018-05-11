@@ -70,7 +70,7 @@ public class ItemController {
 		System.out.println("전체리스트 : " + items.toString());
 		model.addAttribute("items", items);
 
-		return "item/itemFormOk";
+		return "item/itemList";
 	}
 
 	@RequestMapping("/itemListView")
@@ -81,7 +81,7 @@ public class ItemController {
 		System.out.println("상세보기 : " + item.toString());
 		model.addAttribute("item", item);
 
-		return "cody/itemFormOk";
+		return "item/itemListView";
 	}
 
 	@RequestMapping("/itemSearch")
