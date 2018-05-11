@@ -10,19 +10,104 @@
 </style>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
-function previewFile() {
-		  var preview = document.querySelector('img');
-		  var file    = document.querySelector('input[type=file]').files[0];
-		  var reader  = new FileReader();
 
-		  reader.addEventListener("load", function () {
-		    preview.src = reader.result;
-		  }, false);
-
-		  if (file) {
-		    reader.readAsDataURL(file);
-		  }
+var cody_image;
+$(document).ready(function(){
+	$("#input_image").on("change", handleImgFileSelect);
+});
+function handleImgFileSelect(e){
+	var files = e.target.files;
+	var filesArr = Array.prototype.slice.call(files);
+	
+	filesArr.forEach(function(f){
+		if(!f.type.match("image.*")){
+			alert("이미지 파일만 업로드 가능합니다.");
+			return;
+			}
+		cody_image = f;
+		
+		var reader = new FileReader();
+		if(f.size>5242880){
+	        alert("5MB 미만 파일만 업로드 해주세요.");
+	        $("#preview").attr("src","blank");
+	        $('#input_image').wrap('<form>').closest('form').get(0).reset();
+	        $('#input_image').unwrap(); 
+	        return false;
+	    }
+		reader.onload = function(e){
+			$("#preview").attr("src", e.target.result);
 		}
+		reader.readAsDataURL(f);
+	});
+}
+
+function limit1(obj) {
+    var maxByte = 60; //최대 입력 바이트 수
+    var str = obj.value;
+    var str_len = str.length;
+ 
+    var rbyte = 0;
+    var rlen = 0;
+    var one_char = "";
+    var str2 = "";
+ 
+    for (var i = 0; i < str_len; i++) {
+        one_char = str.charAt(i);
+ 
+        if (escape(one_char).length > 4) {
+            rbyte += 2; //한글2Byte
+        } else {
+            rbyte++; //영문 등 나머지 1Byte
+        }
+ 
+        if (rbyte <= maxByte) {
+            rlen = i + 1; //return할 문자열 갯수
+        }
+    }
+ 
+    if (rbyte > maxByte) {
+        alert("한글 " + (maxByte / 2) + "자 / 영문 " + maxByte + "자를 초과 입력할 수 없습니다.");
+        str2 = str.substr(0, rlen); //문자열 자르기
+        obj.value = str2;
+        limit(obj, maxByte);
+    } else {
+        document.getElementById('byteInfo').innerText = rbyte;
+    }
+};
+
+function limit2(obj) {
+    var maxByte = 1000; //최대 입력 바이트 수
+    var str = obj.value;
+    var str_len = str.length;
+ 
+    var rbyte = 0;
+    var rlen = 0;
+    var one_char = "";
+    var str2 = "";
+ 
+    for (var i = 0; i < str_len; i++) {
+        one_char = str.charAt(i);
+ 
+        if (escape(one_char).length > 4) {
+            rbyte += 2; //한글2Byte
+        } else {
+            rbyte++; //영문 등 나머지 1Byte
+        }
+ 
+        if (rbyte <= maxByte) {
+            rlen = i + 1; //return할 문자열 갯수
+        }
+    }
+ 
+    if (rbyte > maxByte) {
+        alert("한글 " + (maxByte / 2) + "자 / 영문 " + maxByte + "자를 초과 입력할 수 없습니다.");
+        str2 = str.substr(0, rlen); //문자열 자르기
+        obj.value = str2;
+        limit(obj, maxByte);
+    } else {
+        document.getElementById('byteInfo').innerText = rbyte;
+    }
+};
 
 $(document).ready(function(){
 
@@ -430,7 +515,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="content">
-        <form action="${pageContext.request.contextPath }/codyUpdate" method="post" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath }/codyUpdate" name="codyform" id="codyform" method="post" enctype="multipart/form-data">
             <!--------------------사이드--------------------->
             <div id="side">
                <div class="side1">
@@ -447,33 +532,26 @@ $(document).ready(function(){
             <div id="main">
                 <div id="image">
                     <div id="image_frame">
-                    <div id="image_block">
-                    <c:forEach var="cody" items="${codys}">
-                    <c:if test="${cody_image != null}">
-							<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody_image}" width="280" height="360">
-						</c:if>
-						</c:forEach>
-						<img id="preview" src="" width="280" height="360"></div>
+                    <div id="image_block"><img id="preview" src="" width="280" height="360"></div>
                     <div id="image_input">
                         <button id="replace">사진 업로드</button>
-                        <input id="input_image" type="file" name="photofile" value="파일 업로드" onchange="previewFile()">
-                        
+                        <input id="input_image" type="file" name="photofile" value="파일 업로드" accept='image/*'>                        
                         </div>
                         <div class="sub1"><h6>권장 사이즈 : 가로 500px × 세로 667px</h6></div>
-                        <div class="sub2"><h6>용량 : 10MB 이내</h6></div>
+                        <div class="sub2"><h6>용량 : 5MB 이내</h6></div>
                     </div>
                 </div>
 			 <div id="title">
                     <div id="title_name">
                         <h4>코디 제목</h4>
                     </div>
-                    <div id="title_input"><input id="input_title" type="text" name="cody_title" value="${cody.cody_title}"></div>
+                    <div id="title_input"><input id="input_title" type="text" name="cody_title" onkeyup="limit1(this)" value="${cody.cody_title}"></div>
                 </div>
 				 <div id="intro">
                     <div id="intro_name">
                         <h4>코디 소개문</h4>
                     </div>
-                    <div id="intro_input"><div id="intro_text"><textarea class="text" style= "resize: none" rows="20" cols="64" name="cody_intro" id="cody_intro">${cody.cody_intro}</textarea></div><div id="intro_sub"><h6>※ 500 자 이내로 입력하십시오.</h6></div></div>
+                    <div id="intro_input"><div id="intro_text"><textarea class="text" style= "resize: none" rows="20" cols="64"  onkeyup="limit2(this)" name="cody_intro" id="cody_intro">${cody.cody_intro}</textarea></div><div id="intro_sub"><h6>※ 500 자 이내로 입력하십시오.</h6></div></div>
                 </div>
 			<div id="gender">
                     <div id="gender_name">
@@ -629,5 +707,3 @@ $(document).ready(function(){
 
 
 </html>
-	
-
