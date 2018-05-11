@@ -15,7 +15,7 @@ public class PageDto {
 
 	public PageDto(int currentPageNo, int maxPost) {
 		this.currentPageNo = currentPageNo;
-		this.sizeOfPage = 5; // 기본 페이지를 5개로 표시함
+		this.sizeOfPage = 3; // 기본 페이지를 5개로 표시함
 		this.maxPost = (maxPost != 0) ? maxPost : 10;
 		// 게시물 최대 개수가 0개가 아니라면 현재 게시물 개수(maxPost)이고, 만약 게시물수가 0개라면 10
 	}

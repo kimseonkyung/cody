@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.cody.dto.BoardDto;
 import com.bitcamp.cody.dto.PageDto;
@@ -27,7 +28,7 @@ public class BoardController {
 	public String boardList(Model model, HttpServletRequest req) {
 
 		int currentPageNo = 1; // /(localhost:8080)페이지로 오면 처음에 표시할 페이지 (1 = 첫번째 페이지)
-		int maxPost = 4; // 페이지당 표시될 게시물 최대 갯수
+		int maxPost = 5; // 페이지당 표시될 게시물 최대 갯수
 
 		if (req.getParameter("pages") != null) // 게시물이 1개도없으면(=페이지가 생성이 안되었으면)이 아니라면 == 페이징이 생성되었다면
 			currentPageNo = Integer.parseInt(req.getParameter("pages")); // pages에있는 string 타입 변수를 int형으로 바꾸어서
@@ -57,36 +58,37 @@ public class BoardController {
 		model.addAttribute("noOfRecords", noOfRecords);
 		model.addAttribute("totalCnt", totalCnt);
 
-		return "cody/boardList";
+		return "board/boardList";
 	}
 
 	// 게시글 작성화면
 	@RequestMapping("/boardForm")
 	public String boardWrite() {
-		return "cody/boardForm";
+		return "board/boardForm";
 	}
 
 	// 게시글 입력하기
 	@RequestMapping("/boardInsert")
-	public String Write(HttpSession session, @RequestParam String title, @RequestParam String content, @RequestParam String man_idx) throws Exception {
-		String page = "redirect:/boardList";																			
+	public String Write(HttpSession session, @RequestParam String title, @RequestParam String content,
+			@RequestParam String man_idx) throws Exception {
+		String page = "redirect:/boardList";
 		String user = "관리자";
 		// String user = (String) session.getAttribute("id");
-		
-		/*if(user != null){*/
-			HashMap<String, String> insertValue = new HashMap<String, String>();
-			insertValue.put("title", title);	//글 제목 
-			insertValue.put("content", content.replaceAll("\r\n", "<br>"));//.replaceAll("\r\n", "<br>")
-			insertValue.put("name", user);		//작성자
-			insertValue.put("idx", man_idx);
-			boardService.boardInsert(insertValue);	//insert.Service는 InsertService.impl에 선언할 @Service(insertService)이고, insertPost는 query.xml에 정의한 insert 쿼리의 id값.
-		/*}else if (user== null) {
-			page ="redirect:/boardList";
-		}*/
-			
+
+		/* if(user != null){ */
+		HashMap<String, String> insertValue = new HashMap<String, String>();
+		insertValue.put("title", title); // 글 제목
+		insertValue.put("content", content.replaceAll("\r\n", "<br>"));// .replaceAll("\r\n", "<br>")
+		insertValue.put("name", user); // 작성자
+		insertValue.put("idx", man_idx);
+		boardService.boardInsert(insertValue); // insert.Service는 InsertService.impl에 선언할 @Service(insertService)이고,
+												// insertPost는 query.xml에 정의한 insert 쿼리의 id값.
+		/*
+		 * }else if (user== null) { page ="redirect:/boardList"; }
+		 */
+
 		return page;
 	}
-	
 
 	// 게시글 상세보기
 	@RequestMapping("/boardListView")
@@ -104,39 +106,37 @@ public class BoardController {
 		System.out.println("상세보기 : " + board.toString());
 		model.addAttribute("board", board);
 
-		return "cody/boardListView";
+		return "board/boardListView";
+	}
+
+	// 게시글 수정화면
+	@RequestMapping("/boardUpdateForm")
+	public String boardUpdateForm(Model model, BoardDto board) {
+
+		model.addAttribute("board", board);
+
+		return "board/boardUpdateForm";
 	}
 
 	// 게시글 수정하기
 	@RequestMapping("/boardUpdate")
-	public int boardUpdate(Model model, BoardDto board) {
+	public String boardUpdate(Model model, BoardDto board) {
 
 		int resultCnt = boardService.boardUpdate(board);
 
-		String msg = "게시글수정 완료";
-
-		if (resultCnt == 0)
-			msg = "게시글수정 실패";
-
-		model.addAttribute("msg", msg);
-
-		return resultCnt;
+		System.out.println("오케이!!");
+		return "board/boardList";
 	}
 
 	// 게시글 삭제하기
 	@RequestMapping("/boardDelete")
+	@ResponseBody
 	public String boardDelete(Model model, @RequestParam("board_idx") int idx) {
 
 		int resultCnt = boardService.boardDelete(idx);
 
-		String msg = "게시글삭제 완료";
 
-		if (resultCnt == 0)
-			msg = "게시글삭제 실패";
-
-		model.addAttribute("msg", msg);
-
-		return "cody/itemFormOk";
+		return "board/boardList";
 
 	}
 

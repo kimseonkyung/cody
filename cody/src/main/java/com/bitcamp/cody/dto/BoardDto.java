@@ -11,13 +11,14 @@ public class BoardDto{
 	private Date board_date;
 	private int board_like;
 	private int man_idx;
+	private String name;
 
 	public BoardDto() {
 
 	}
 
 	public BoardDto(int board_idx, String board_title, String board_contents, int board_click, Date board_date,
-			int board_like, int man_idx) {
+			int board_like, int man_idx, String name) {
 		super();
 		this.board_idx = board_idx;
 		this.board_title = board_title;
@@ -26,6 +27,7 @@ public class BoardDto{
 		this.board_date = board_date;
 		this.board_like = board_like;
 		this.man_idx = man_idx;
+		this.name = name;
 	}
 
 	public int getBoard_idx() {
@@ -84,13 +86,22 @@ public class BoardDto{
 		this.man_idx = man_idx;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardDto [board_idx=" + board_idx + ", board_title=" + board_title + ", board_contents="
 				+ board_contents + ", board_click=" + board_click + ", board_date=" + board_date + ", board_like="
-				+ board_like + ", man_idx=" + man_idx + "]";
+				+ board_like + ", man_idx=" + man_idx + ", name=" + name + "]";
 	}
 
+	
 	
 
 }
