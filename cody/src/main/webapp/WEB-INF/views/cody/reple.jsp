@@ -26,10 +26,15 @@ div {
 		<div id="repleList">
 			<c:forEach var="arr" items="${arr }">
 				<div id="repleView" style="margin-left: ${20*arr.redepth}px;">
-					${arr.reple_contents} ${arr.reple_date }
+					<div>
+					${arr.member_id } ${arr.reple_date } 
+					<button id="re_repleShow${arr.reple_idx }" onclick="btnShow(${arr.reple_idx })">답글</button>
+					<button id="repleDelete${arr.reple_idx }" onclick="repleDelete(${arr.reple_idx })">삭제</button>
+					</div>
+					<div>${arr.reple_contents} </div>
 					
-						<button id="re_repleShow${arr.reple_idx }" onclick="btnShow(${arr.reple_idx })">답글</button>
-						<button id="repleDelete${arr.reple_idx }" onclick="repleDelete(${arr.reple_idx })">삭제</button>
+					
+						
 
 					<div id="re_repleSave${arr.reple_idx }" style="display: none;">
 						<input type="hidden" id="cody_idx" value="1"> <input type="hidden" id="member_idx" value="1">
@@ -49,6 +54,7 @@ div {
 
 
 		<div id="reple">
+			<input type="hidden" id="member_id" value="sessionId">
 			<input type="hidden" id="cody_idx" value="1">
 			<input type="hidden" id="member_idx" value="1">
 			<textarea id="reple_contents" name="reple_contents" rows="3" cols="60" maxlength="500"></textarea>
@@ -117,16 +123,12 @@ div {
 							var m = rd.getMonth();
 							var d = rd.getDate();
 							
-							$('#repleList').append('<div>'+reple_contents
-									+' <span>'+y+'.'+m+'.'+d+'<span>'
-									+' <button id="re_repleShow">답글</button> <button id= "repleDelete${arr.reple_idx }"'
-									+' onclick= "repleDelete(${arr.reple_idx })">삭제</button></div>'
-									+' <div id="re_repleSave${arr.reple_idx }"'
-									+' style="border: 1px solid gray; width: 500px; display: none">'
-									+' <input type="hidden" id="cody_idx" value="1"> <input type="hidden" id="member_idx" value="1">'
-									+' <textarea id="reple_contents" rows="3" cols="60" maxlength="500"></textarea>'
-									+' <button id="re_repleSave">저장</button>'
-								    +' </div>');
+							$('#repleList').append(
+									${}		
+									${}		
+									${}		
+							);
+									
 						}
 					});
 				});

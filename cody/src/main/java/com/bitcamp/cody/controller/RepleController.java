@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.dto.RepleDto;
-import com.bitcamp.cody.dto.TocDto;
 import com.bitcamp.cody.service.MemberListService;
 import com.bitcamp.cody.service.MemberService;
 import com.bitcamp.cody.service.RepleService;
@@ -43,17 +42,17 @@ public class RepleController {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		
 		List<RepleDto> list_r = repleService.listAll(cIdx);
-		HashMap<String, Object> map = new HashMap<>();
 		ArrayList<HashMap<String, Object>> arr = new ArrayList<>();
 		
 		for(RepleDto reple : list_r) {
-			
+			HashMap<String, Object> map = new HashMap<>();
 			MemberDto member = new MemberDto();
 			member=memberService.selectByIdx(reple.getMember_idx());
 			String date = df.format(reple.getReple_date());
 			map.put("reple_contents", reple.getReple_contents());
 			map.put("reple_date", date);
-			map.put("member_name", member.getMember_name());
+			map.put("member_id", member.getMember_id());
+			map.put("reple_idx", reple.getReple_idx());
 			arr.add(map);
 		}
 		System.out.println("arr : " + arr.toString());
@@ -67,7 +66,7 @@ public class RepleController {
 	@ResponseBody
 	public String insertReple(Model model, RepleDto repleDto) {
 		
-		System.out.println("repleDto : " + repleDto);
+		
 		int resultCnt = repleService.repleInsert(repleDto);
 
 		return "cody/repleOk";
@@ -119,16 +118,6 @@ public class RepleController {
 	public String notice(Model model, HttpSession session) {
 		String user = "sk";
 		// String user = (String) session.getAttribute("id");
-		
-		List<TocDto> notice = repleService.noticeList(user);
-		
-		for(int i=0; i<notice.size(); i++) {
-			
-		}
-		
-		System.out.println("알림 : " +notice.toString());
-		
-		model.addAttribute("notice", notice);
 		
 		return "cody/noticeList";
 	}
