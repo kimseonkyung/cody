@@ -1,8 +1,8 @@
 package com.bitcamp.cody.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bitcamp.cody.dto.CodyDto;
+import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.service.CodyItemListService;
 import com.bitcamp.cody.service.CodyTimeListService;
 
@@ -23,25 +24,26 @@ public class CodyTimeListController {
 	CodyItemListService codyItemListService;
 
 	/* -------------------------------- 리스트 ------------------------------ */
-	@RequestMapping("/codyTimeList")	
-	
-	public String codyTimeList(Model model){
+	@RequestMapping("/codyTimeList")
 
+	public String codyTimeList(Model model) {
+		
 		List<CodyDto> codytimes = codyTimeListService.getCodyTimeList();
-		
-		Map<Integer, Object> map = new HashMap<Integer,Object>();
-		
-		for(int i= 0; i<codytimes.size(); i++) {
+		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
+
+		for (CodyDto time : codytimes) {	
 			
-		  map.put(codytimes.get(i).getCody_idx(), codyItemListService.getCodyItemList(codytimes.get(i).getCody_idx()));	  
-		}	
-		System.out.println("전체리스트 : " + codytimes.toString());
-		System.out.println("map" + map.toString());
+			HashMap<Object, Object> map = new HashMap<>();
+			List<ItemDto> itemtime = new ArrayList<>();		
+			itemtime = codyItemListService.getCodyItemList(time.getCody_idx());
+			map.put(time.getCody_idx(),itemtime);	
+			map.put("codyid",time.getCody_title());
+			map.put("codyimage",time.getCody_image());
+			irr.add(map);		
+		}
+		System.out.println("irr : " + irr.toString());
 		
-		model.addAttribute("codytimes",codytimes);
-		model.addAttribute("map",map);
-		 
+		model.addAttribute("irr", irr);
 		return "time/codyTimeList";
 	}
 }
- 
