@@ -58,8 +58,16 @@ public class MemberService {
 	public MemberDto selectById(String id) {
 		
 		return dao.selectById(id);
+		
+		
 	}
 	
+public MemberDto selectByIdx(int idx) {
+		
+		return dao.selectByIdx2(idx);
+		
+		
+	}
 	
 	
  public int memberModify(MemberDto member,  HttpServletRequest request) throws IllegalStateException, IOException {

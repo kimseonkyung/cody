@@ -8,11 +8,13 @@ import com.bitcamp.cody.dto.MemberDto;
 public interface LoginDao {
 	
 	public MemberDto selectById(String id);
+	public MemberDto selectByIdx2(int idx);
 	public int insertMember(MemberDto member);
 	public int modifyMember(MemberDto member);
 	public int deleteMember(String id);
 	public List<MemberDto> selectList();
-	public List<MemberDto> selectByIdx(int idx);
+	public List<MemberDto> selectByIdx1(int idx);
 	//public int selectCount();
+	
 
 }
