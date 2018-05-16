@@ -23,6 +23,6 @@
 		delete from bookmark where bookmark_idx = #{bookmark_idx}
 	</delete>
 	
-	
+
 	
 </mapper>	

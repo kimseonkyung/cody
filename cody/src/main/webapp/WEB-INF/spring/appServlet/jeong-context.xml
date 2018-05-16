@@ -12,8 +12,7 @@
 	
 	<beans:bean id="BookmarkService" class="com.bitcamp.cody.service.BookmarkService" />
 	<beans:bean id="BookmarkListService" class="com.bitcamp.cody.service.BookmarkListService" />
-	
-	
+ 	<beans:bean id="RankingService" class="com.bitcamp.cody.service.RankingSerivce" />
 
 	
 </beans:beans>
