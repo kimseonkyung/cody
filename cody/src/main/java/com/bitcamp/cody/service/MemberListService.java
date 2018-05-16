@@ -45,7 +45,7 @@ public class MemberListService {
 public List<MemberDto> getListSearch(int idx) {
 		
 		dao = sqlSessionTemplate.getMapper(LoginDao.class);			
-		List<MemberDto> list = dao.selectByIdx(idx);
+		List<MemberDto> list = dao.selectByIdx1(idx);
 		
 		return list;
 	} 
