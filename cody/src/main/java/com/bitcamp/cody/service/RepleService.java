@@ -6,7 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.RepleDao;
+import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.dto.RepleDto;
+import com.bitcamp.cody.dto.TocDto;
 
 public class RepleService {
 
@@ -81,6 +83,14 @@ public class RepleService {
 		int cnt = dao.selectReception();
 		
 		return cnt;
+	}
+
+
+	public List<TocDto> noticeList(String user) {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		List<TocDto> notice = dao.noticeList(user);
+		
+		return notice;
 	}
 
 	

@@ -9,15 +9,10 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
 	<beans:bean id="MultipartService_Item" class="com.bitcamp.cody.service.MultipartService_Item" />
 	<beans:bean id="ItemService" class="com.bitcamp.cody.service.ItemService" />
 	<beans:bean id="ItemListService" class="com.bitcamp.cody.service.ItemListService" />
 	<beans:bean id="BoardService" class="com.bitcamp.cody.service.BoardService" />
-	<!-- <beans:bean id="TocService" class="com.bitcamp.cody.service.TocService" /> -->
 	<beans:bean id="RepleService" class="com.bitcamp.cody.service.RepleService" />
-
-
-
 
 </beans:beans>

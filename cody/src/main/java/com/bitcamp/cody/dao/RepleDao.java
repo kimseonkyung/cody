@@ -2,7 +2,9 @@ package com.bitcamp.cody.dao;
 
 import java.util.List;
 
+import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.dto.RepleDto;
+import com.bitcamp.cody.dto.TocDto;
 
 
 public interface RepleDao {
@@ -16,6 +18,7 @@ public interface RepleDao {
 	int repleDelete(int idx);
 	int receptionUpdate();
 	int selectReception();
+	List<TocDto> noticeList(String id);
 	
 }
     

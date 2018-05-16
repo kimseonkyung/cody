@@ -60,5 +60,12 @@
 		select max(reception)
 		from reple
 	</select>
+	
+	<!-- 알림 데이터 리스트 -->
+	<select id="noticeList" resultType="com.bitcamp.cody.dto.TocDto">
+		select c.cody_title, r.reple_date, r.member_idx
+		from cody c, member m, reple r
+		where m.member_id=#{id} and m.member_idx!=r.member_idx
+	</select>
 
 </mapper>

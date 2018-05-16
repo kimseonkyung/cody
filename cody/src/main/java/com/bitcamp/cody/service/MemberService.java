@@ -56,17 +56,17 @@ public class MemberService {
 	}
 
 	public MemberDto selectById(String id) {
+		dao = sqlSessionTemplate.getMapper(LoginDao.class);
+		MemberDto member = dao.selectById(id);
 		
-		return dao.selectById(id);
-		
-		
+		return member;
 	}
 	
 public MemberDto selectByIdx(int idx) {
-		
-		return dao.selectByIdx2(idx);
-		
-		
+		dao = sqlSessionTemplate.getMapper(LoginDao.class);
+		MemberDto member = dao.selectByIdx2(idx);
+		System.out.println("member : "+member);
+		return member;
 	}
 	
 	

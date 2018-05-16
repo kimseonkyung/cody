@@ -72,6 +72,7 @@ public class BoardService {
 		return result;
 	}
 
+	// 게시물 총 개수
 	public int totalCount() {
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
 		int cnt = dao.totalCnt();

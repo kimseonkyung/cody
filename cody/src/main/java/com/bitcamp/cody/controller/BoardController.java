@@ -95,9 +95,9 @@ public class BoardController {
 	public String listView(Model model, @RequestParam("board_idx") int idx, @RequestParam("board_click") int count) {
 
 		// 게시글 조회수 증가
-		HashMap<String, Object> countPlus = new HashMap<String, Object>();
-		countPlus.put("idx", idx);
-		countPlus.put("count", count);
+		HashMap<String, Object> countPlus = new HashMap<String, Object>();	//hashmap객체 생성
+		countPlus.put("idx", idx);											// idx 요소 넣기
+		countPlus.put("count", count);										// count 요소 넣기
 		boardService.countAdd(countPlus);
 
 		// 상세보기
@@ -124,8 +124,8 @@ public class BoardController {
 
 		int resultCnt = boardService.boardUpdate(board);
 
-		System.out.println("오케이!!");
-		return "board/boardList";
+		System.out.println("수정 OK !! : " + board);
+		return "redirect:/boardList";
 	}
 
 	// 게시글 삭제하기

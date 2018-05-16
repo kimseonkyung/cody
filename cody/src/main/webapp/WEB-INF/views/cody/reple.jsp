@@ -17,29 +17,24 @@ div {
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	
-</script>
 
 </head>
 <body>
 
+
 	<div>
 		<div id="repleList">
-			<c:forEach var="list" items="${list_r }">
-				<div id="repleView" style="margin-left: ${20*list.redepth}px;">
-					${list.reple_contents} ${list.relpe_date }
+			<c:forEach var="arr" items="${arr }">
+				<div id="repleView" style="margin-left: ${20*arr.redepth}px;">
+					${arr.reple_contents} ${arr.reple_date }
 					
-					<span><fmt:formatDate var="thisYmd" value="${list.relpe_date}" pattern="yyyy-MM-dd HH:mm:ss" /></span>
-					<c:set var="depth" value="${list.redepth}" />
-					<c:if test="${depth < 1 }">
-						<button id="re_repleShow${list.reple_idx }" onclick="btnShow(${list.reple_idx })">답글</button>
-						<button id="repleDelete${list.reple_idx }" onclick="repleDelete(${list.reple_idx })">삭제</button>
-					</c:if>
+						<button id="re_repleShow${arr.reple_idx }" onclick="btnShow(${arr.reple_idx })">답글</button>
+						<button id="repleDelete${arr.reple_idx }" onclick="repleDelete(${arr.reple_idx })">삭제</button>
 
-					<div id="re_repleSave${list.reple_idx }"
-						style="border: 1px solid gray; width: 500px; display: none">
+					<div id="re_repleSave${arr.reple_idx }" style="display: none;">
 						<input type="hidden" id="cody_idx" value="1"> <input type="hidden" id="member_idx" value="1">
 						<textarea id="reple_contents" rows="3" cols="60" maxlength="500"></textarea>
-						<button id="re_replySave">저장</button>
+						<button id="re_repleSave">저장</button>
 					</div>
 
 
@@ -53,11 +48,11 @@ div {
 
 
 
-		<div>
-			<input type="hidden" id="cody_idx" value="1"> <input
-				type="hidden" id="member_idx" value="1">
-			<textarea id="reple_contents" rows="3" cols="60" maxlength="500"></textarea>
-			<button id="replySave">저장</button>
+		<div id="reple">
+			<input type="hidden" id="cody_idx" value="1">
+			<input type="hidden" id="member_idx" value="1">
+			<textarea id="reple_contents" name="reple_contents" rows="3" cols="60" maxlength="500"></textarea>
+			<button id="repleSave">저장</button>
 		</div>
 
 	</div>
@@ -66,20 +61,22 @@ div {
 	<hr>
 
 	<div>
-		<button id="reception" onclick="receptionOk()">알림</button>
+		<form action="${pageContext.request.contextPath}/noticeList" method="post">
+		<input type="hidden" value="sk">
+		<input type="submit" value="알림">
+		</form>
 		<div id="ok" style="display: none">new!!</div>
 	</div>
 
 	<script>
 	$(document).ready(function() {
-		var cnt = $('#tocCnt').val();
 		
 		setInterval(function () {
 			
 			$.ajax({
 				type : 'post',
 				url : '${pageContext.request.contextPath}/reception',
-				dataType : 'text',
+				dataType : 'json',
 				data : {
 					},
 				success : function(data) {
@@ -97,28 +94,14 @@ div {
 	});
 	
 	
-	function receptionOk() {
-		
-		$.ajax({
-			type : 'post',
-			url : '${pageContext.request.contextPath}/receptionOk',
-			dataType : 'text',
-			data : {
-				},
-			success : function(data) {
-				alert("확인");
-			}
-		});
-	}
-		
 	
 		/* 첫댓글 저장 */
-		$('#replySave').click(function() {
+		$('#reple #repleSave').click(function() {
 
-					var cody_idx = $('#cody_idx').val();
-					var member_idx = $('#member_idx').val();
-					var reple_contents = $('#reple_contents').val();
-
+					var cody_idx = $('#reple #cody_idx').val();
+					var member_idx = $('#reple #member_idx').val();
+					var reple_contents = $('#reple #reple_contents').val();
+					
 					$.ajax({
 						type : 'post',
 						url : '${pageContext.request.contextPath}/repleInsert',
@@ -136,13 +119,13 @@ div {
 							
 							$('#repleList').append('<div>'+reple_contents
 									+' <span>'+y+'.'+m+'.'+d+'<span>'
-									+' <button id="re_repleShow">답글</button> <button id= "repleDelete${list.reple_idx }"'
-									+' onclick= "repleDelete(${list.reple_idx })">삭제</button></div>'
-									+' <div id="re_repleSave${list.reple_idx }"'
+									+' <button id="re_repleShow">답글</button> <button id= "repleDelete${arr.reple_idx }"'
+									+' onclick= "repleDelete(${arr.reple_idx })">삭제</button></div>'
+									+' <div id="re_repleSave${arr.reple_idx }"'
 									+' style="border: 1px solid gray; width: 500px; display: none">'
 									+' <input type="hidden" id="cody_idx" value="1"> <input type="hidden" id="member_idx" value="1">'
 									+' <textarea id="reple_contents" rows="3" cols="60" maxlength="500"></textarea>'
-									+' <button id="re_replySave">저장</button>'
+									+' <button id="re_repleSave">저장</button>'
 								    +' </div>');
 						}
 					});
