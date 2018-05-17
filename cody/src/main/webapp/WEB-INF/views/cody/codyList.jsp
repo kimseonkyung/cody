@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>코디리스트</title>
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/codyList"
 		method="post" enctype="multipart/form-data">
-		<h3>회원리스트</h3>
+		<h3>코디리스트</h3>
 		<table border="1">
 			<tr>
 				<td>코디이미지</td>

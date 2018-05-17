@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,7 @@ import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.CodyService;
 
-
+/*-----------입력---------------*/
 @Controller
 public class CodyController {
 
@@ -138,4 +137,6 @@ public class CodyController {
 		return "cody/codyFormOk";
 
 	}
+	
+	
 }
