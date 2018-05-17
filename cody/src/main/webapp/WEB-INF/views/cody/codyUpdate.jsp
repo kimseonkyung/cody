@@ -41,6 +41,11 @@ function handleImgFileSelect(e){
 	});
 }
 
+function capturekey(e) { 
+    if(e.keyCode==13 && e.srcElement.type != 'textarea') 
+    return false; 
+} 
+
 function limit1(obj) {
     var maxByte = 60; //최대 입력 바이트 수
     var str = obj.value;
@@ -515,7 +520,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="content">
-        <form action="${pageContext.request.contextPath }/codyUpdate" name="codyform" id="codyform" method="post" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath }/codyUpdate" name="codyform" id="codyform" method="post" enctype="multipart/form-data" onkeydown="return capturekey(event)">
             <!--------------------사이드--------------------->
             <div id="side">
                <div class="side1">

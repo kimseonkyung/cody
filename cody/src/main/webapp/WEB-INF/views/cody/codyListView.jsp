@@ -30,7 +30,7 @@
 #main_header {
 	height: 150px;
 	width: 990px;
-	border: 2px solid skyblue;
+	border: 2px solid darkgray;
 }
 
 #main_header_1 {
@@ -67,7 +67,6 @@
 #main_content {
 	height: 1540px;
 	width: 990px;
-	border: 2px solid orange;
 	position: relative;
 }
 
@@ -76,13 +75,11 @@
 	height: 1500px;
 	float: left;
 	position: absolute;
-	border: 2px solid gray;
 }
 
 #left_div {
 	width: 558px;
 	height: 1500px;
-	border: 2px solid blue;
 }
 
 #image {
@@ -93,7 +90,7 @@
 #funtion {
 	width: 556px;
 	height: 58px;
-	border: 2px solid black;
+	border: 2px solid darkgray;
 }
 
 #bookmark {
@@ -155,7 +152,7 @@
 #like_list {
 	width: 556px;
 	height: 62px;
-	border: 2px solid black;
+	border: 2px solid darkgray;
 }
 
 #reple {
@@ -167,46 +164,82 @@
 	float: right;
 	position: absolute;
 	right: 0;
-	border: 2px solid black;
+
 }
 
 #info {
 	width: 414px;
-	border: 2px solid blue;
-}
-
-#content_name{
-width: 414px;
-min-height: 100px;
-border: 2px solid blue; 
+	margin: 0 auto;
 }
 
 #content_container{
-width: 414px;
-border: 2px solid blue;
+width: 402px;
+
+margin: 0 auto;
+}
+
+#content_1{
+width: 380px;
+margin: 0 auto;
+}
+
+#content_name{
+width: 380px;
+font-size: 18px;
+
 }
 
 #content_sub{
-width: 414px;
-border: 2px solid blue;
+width: 402px;
+margin: 0 auto;
+}
+
+#content_sub1{
+width: 380px;
+
 }
 
 #content_intro{
-width: 414px;
-border: 2px solid blue;
-line-height: 150%; 
+width: 402px;
+margin: 0 auto;
 }
 
-#item {
-	width: 414px;
-	min-height: 20px;
-	border: 2px solid blue;
+#content_intro1{
+width: 380px;
+line-height: 180%;
+margin: 0 auto;
 }
 
 #content_date{
-width: 414px;
-border: 2px solid blue;
+width: 402px;
+margin: 0 auto;
 }
+
+#content_date1{
+width: 380px;
+min-height: 30px;
+margin: 0 auto;
+}
+
+#item {
+width: 402px;
+min-height: 120px;
+margin: 0 auto;
+}
+
+#item_name{
+width: 380px;
+min-height: 30px;
+margin: 0 auto;
+margin-top: 5px;
+}
+
+#item_main{
+width: 380px;
+min-height: 120px;
+margin: 0 auto;
+}
+
 </style>
 </head>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -257,9 +290,10 @@ border: 2px solid blue;
 						<div id="right_content">
 							<div id="info">
 							<div id="content_container">
-								<div id="content_name"><h4>${cody.cody_title}</h4></div>														
-								<div id="content_sub">
-								${cody.cody_height}cm
+								<div id="content_1">
+								<div id=content_name><h4>${cody.cody_title}</h4></div>											
+								<div id="content_sub"><div id="content_sub1">
+								모델정보:${cody.cody_height}cm
 								<c:set var="data" value="${cody.cody_gender}" />
 								<c:choose>
 									<c:when test="${data eq true}">
@@ -271,16 +305,18 @@ border: 2px solid blue;
                                     </c:otherwise>
 								</c:choose>
 								${cody.cody_age}세
+								</div></div>
 								</div>
-								<div id="content_content"><h5>${cody.cody_intro}</h5></div>
-								<div id="content_date"><h5>${cody.board_date}</h5></div>
+								<div id="content_intro"><div id="content_intro1"><p>${cody.cody_intro}</p></div></div>
+								<div id="content_date"><div id="content_date1"><p>${cody.board_date}</p></div></div>
 							</div>
 							</div>
+							
 							<div id="item">
-
-								<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
-								<a href="codyForm">코디등록</a>
-
+							<div id="item_name">착용아이템</div>
+							<div id="item_main"><a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
+								<a href="codyForm">코디등록</a></div>
+								
 							</div>
 
 

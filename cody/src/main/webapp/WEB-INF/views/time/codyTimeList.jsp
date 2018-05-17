@@ -13,25 +13,30 @@
 		<table border="1">
 			<tr>
 				<td>코디</td>
+				<td>이미지</td>
+				<td>아이템</td>
+				
 			</tr>
 
-			<!-- 회원 정보 출력 반복 시작 -->
-			<c:forEach var="cody" items="${codytimes}">
+			<c:forEach var="irr" items="${irr}">
 				<tr>
-					<td><c:if test="${cody.cody_image != null}">
+					<td>"${irr.codyid}"</td>
+					<td><c:if test="${irr.codyimage != null}">
 							<img
-								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
+								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${irr.codyimage}"
 								width="200">
-						</c:if> ${cody.cody_title}${cody.cody_intro}</td>
+					<td>"${irr}"</td>
+						</c:if>
+				</tr>
 			</c:forEach>
-			<tr>
-				<c:forEach var="map" items="${map}">
-					<td>${map}</td>
-				</c:forEach>
 
-			</tr>
+		<%-- 	<!-- 아이템 반복 출력 -->
+			<c:forEach var="irrr" items="${irr.codyidx}">
+				<tr>
+					<td>"${irr.Cody_idx}"</td>
+			</c:forEach>
+ --%>
 
- 
 
 		</table>
 	</form>
