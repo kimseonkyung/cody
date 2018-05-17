@@ -15,7 +15,7 @@
 			var useremail = ${'#member_email'}.val();
 // 			var userph = ${'#member_ph'}.val();
 			
-		
+		);
 			
 			
 			if(userId.length < 1){
