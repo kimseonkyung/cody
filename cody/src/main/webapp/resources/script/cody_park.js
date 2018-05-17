@@ -11,11 +11,11 @@
 			var userId = $('#member_id').val();
 			var pw = $('#member_pw').val();
 			var userName = $('#member_name').val();
-			var userbirth = ${'#member_birth'}.val();
-			var useremail = ${'#member_email'}.val();
+			var userbirth = $('#member_birth').val();
+			var useremail = $('#member_email').val();
 // 			var userph = ${'#member_ph'}.val();
 			
-		);
+	
 			
 			
 			if(userId.length < 1){
@@ -50,7 +50,7 @@
 			}
 			
 			
-		};
+		
 		
 		// 아이디 입력시 사용 유무 확인 체크 : 서버쪽에 확인 요청
 		$('#member_id').focusout(function(){
@@ -86,7 +86,7 @@
 		
 
 	
-	};
+	
 
 
 
@@ -177,4 +177,5 @@
     }
    });
    };
-   //]]>
+		});
+	});
