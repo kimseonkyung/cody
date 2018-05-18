@@ -73,7 +73,7 @@ public class RepleController {
 
 		int resultCnt = repleService.repleInsert(reple);
 
-		return "cody/repleOk";
+		return "";
 	}
 
 	// 대댓글

@@ -1,159 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
-<%-- <html>
-<head>
-	<title>CODY</title>
-	
-	<!--외부에 있는 스타일시트 파일을 현재 html페이지로 로드-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cody.css">
-    
-</head>
-<body>
-
-<!-- header start -->
-    <header id="main_header">
-        <div class="container">
-            <div class="search_box">
-                <input type="text"><input type="submit" value="검색">
-            </div>
-            <h1 class="main_title">CODY</h1>
-            <div class="mycontent">
-            	<div class="user">
-                로그인
-            	</div>
-				<p class="notice">알림</p>
-            </div>
-        </div>
-    </header>
-    <!-- header end -->
-
-    <article id="main_wrap">
-        <!--네비게이션 시작-->
-        <div id="main_navigation">
-            <nav>
-                <ul class="main_menu">
-                    <li>ALL</li>
-                    <li>MEN</li>
-                    <li>WOMEN</li>
-                </ul>
-
-            </nav>
-        </div>
-        <!--네비게이션 끝-->
-
-        <div class="main_article">
-
-
-
-            <!--본문 시작-->
-            <div id="content">
-                <section id="main_section">
-                    <article class="basic_article">
-                        <h1 class="article_title">랭킹</h1>
-                        <p>update 10:00</p>
-                        <p>
-                            제90회 아카데미 감독상, 작품상 등 4관왕에 오른 영화 《셰이프 오브 워터》의 원작소설이다. 불완전한 존재에 대한 관심과 사랑을 끊임없이 영화로 표현해 온 다크 판타지의 거장 기예르모 델 토로 최고의 역작으로 평가 받는 이번 작품은 사람과 괴생명체 간의 사랑을 그린 판타지 로맨스로, 진짜 성인 남녀가 사랑을 하듯이 사랑의 과정과 환희, 이별과 상실 등을 사실적으로 그려냈다.
-                        </p>
-                    </article>
-
-                    <article class="basic_article">
-                        <h1 class="article_title">타이틀</h1>
-                        <p>2018년 4월 6일</p>
-                        <p>
-                            제90회 아카데미 감독상, 작품상 등 4관왕에 오른 영화 《셰이프 오브 워터》의 원작소설이다. 불완전한 존재에 대한 관심과 사랑을 끊임없이 영화로 표현해 온 다크 판타지의 거장 기예르모 델 토로 최고의 역작으로 평가 받는 이번 작품은 사람과 괴생명체 간의 사랑을 그린 판타지 로맨스로, 진짜 성인 남녀가 사랑을 하듯이 사랑의 과정과 환희, 이별과 상실 등을 사실적으로 그려냈다.
-                        </p>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                    </article>
-
-                </section>
-                <aside id="main_aside">
-                    <h1>카테고리</h1>
-                    <ul>
-                        <li><a href="#">데이터</a></li>
-                        <li><a href="#">데이터</a></li>
-                        <li><a href="#">데이터</a></li>
-                        <li><a href="#">데이터</a></li>
-                        <li><a href="#">데이터</a></li>
-                    </ul>
-
-                    <h1>최근 글</h1>
-                    <ul>
-                        <li><a href="itemForm">아이템저장</a></li>
-                        <li><a href="codyList">코디리스트</a></li>
-                        <li><a href="listView?cody_idx=3">코디 상세보기</a></li>
-                        <li><a href="listSearch?cody_title=샤랄라">코디 검색</a></li>
-                        <li><a href="codyForm">코디등록</a><br></li>
-                        <li><a href="itemList">아이템 전체 리스트</a><br></li>
-                        <li><a href="itemListView?item_idx=2">아이템 상세보기</a></li>
-                        <li><a href="itemSearch?item_name=1">아이템 검색</a></li>
-                        <li><a href="itemForm">아이템 수정</a></li>
-                        <li><a href="itemDelete?item_idx=5">아이템 삭제</a></li>
-                        <li><a>공지사항</a></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </aside>
-            </div>
-            <!--본문 끝-->
-        </div>
-
-    </article>
-    <!--footer 시작-->
-    <footer id="footer">
-        <h1>@2018 bitcamp.</h1>
-    </footer>
-    <!--footer 끝-->
-
-</body>
-</html> --%>
-
 
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../../../favicon.ico">
 
 <title>Offcanvas template for Bootstrap</title>
 
-<!-- CODY CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/cody.css"
-	rel="stylesheet">
-
-<!-- Bootstrap core CSS -->
-<link
-	href="${pageContext.request.contextPath}/resources/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link
-	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
-	rel="stylesheet">
 
 </head>
 
@@ -230,19 +83,22 @@
 						</div></li>
 				</ol>
 				<div>
-					<a href="itemForm">아이템저장</a><br> <a href="codyList">코디리스트</a><br>
-					<a href="listSearch?cody_title=샤랄라">코디 검색</a><br> <a
-						href="codyForm">코디등록</a><br> <a href="itemList">아이템 전체
-						리스트</a><br> <a href="itemListView?item_idx=2">아이템 상세보기</a><br>
-					<a href="itemSearch?item_name=1">아이템 검색</a><br> <a
-						href="itemForm">아이템 수정</a><br> <a
-						href="itemDelete?item_idx=5">아이템 삭제</a><br> 
+					
+					<a href="${pageContext.request.contextPath}/itemForm">아이템저장</a><br> 
+					<a href="${pageContext.request.contextPath}/codyList">코디리스트</a><br>
+					<a href="${pageContext.request.contextPath}/listSearch?cody_title=샤랄라">코디 검색</a><br> 
+					<a href="${pageContext.request.contextPath}/codyForm">코디등록</a><br>
+					<a href="${pageContext.request.contextPath}/itemList">아이템 전체 리스트</a><br> 
+					<a href="${pageContext.request.contextPath}/itemListView?item_idx=2">아이템 상세보기</a><br>
+					<a href="${pageContext.request.contextPath}/itemSearch?item_name=1">아이템 검색</a><br>
+					<a href="itemForm">아이템 수정</a><br>
+					<a href="itemDelete?item_idx=5">아이템 삭제</a><br> 
 						
 						
 						
 						(form)</a> <a href="member/memberList">회원 리스트</a><br> 
 						<a href="bookmarkList">즐겨찾기</a><br>
-						<a href="repleList?cody_idx=1">답글</a><br>
+						<a href="${pageContext.request.contextPath}/repleList?cody_idx=1">답글</a><br>
 						<a href="codyTimeList">타임라인</a><br>
 						<a href="boardList">게시판(공지사항)</a><br>
 						
@@ -341,7 +197,7 @@
 	</div>
 
 	</main>
-	
+
  
 
 
@@ -350,28 +206,6 @@
 
 
 
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/jquery-slim.min.js"><\/script>')
-	</script>
-	<script
-		src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/popper.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/holder.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.js"></script>
-	<script	src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>	
-	<script	src="${pageContext.request.contextPath}/resources/script/cody_park.js"></script>	
-		
 </body>
 </html>
 

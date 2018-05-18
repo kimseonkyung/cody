@@ -1,10 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8"><meta name="viewport"	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../../../favicon.ico">
 <title>Insert title here</title>
+<!-- CODY CSS -->
+<link href="${pageContext.request.contextPath}/resources/css/cody.css"
+	rel="stylesheet">
+
+<!-- Bootstrap core CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link
+	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
+	rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+
+
 <style>
 
 </style>
@@ -35,19 +56,23 @@
 			     <a	class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" 
 			     aria-haspopup="true" aria-expanded="false">아이디</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
-					<a class="dropdown-item" href="#">마이페이지</a>
+					<a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">마이페이지</a>
 					<a class="dropdown-item" href="#">Another action</a>
 					<a class="dropdown-item btn btn-default btn-logiut" href="memberlogout"><span class="glyphicon glyphicon-log-out">로그아웃</span></a>
 				</div>
 				</li>
-			    <div>
+				<li class="nav-item">
+				<div>
 					<form action="${pageContext.request.contextPath}/noticeList" method="post">
 					<input type="hidden" value="sk">
 					<input type="submit" value="알림">
-					
 					</form>
-					<div id="ok" style="display: none">new!!</div>
 				</div>
+				<li class="nav-item">
+					<div id="ok" style="font-size:2em;">
+  					<i class="fa fa-bell-o" aria-hidden="true"></i>
+					</div>
+				</li>
 			      
 			      
 				</c:when>
@@ -289,4 +314,23 @@
 		</div>
 	
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/jquery-slim.min.js"><\/script>')
+	</script>
+	<script
+		src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/popper.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/holder.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.js"></script>
+	<script	src="${pageContext.request.contextPath}/resources/script/cody_park.js"></script>
+	<script	src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>
+		
+	
+	
 </html>

@@ -25,7 +25,6 @@ function itemListView(item_idx) {
 
 }
 
-
 /*--------------------------------------- 알림 ---------------------------------------*/
 /* 1초마다 알림 확인 */
 $(document).ready(function() {
@@ -34,14 +33,14 @@ $(document).ready(function() {
 
 		$.ajax({
 			type : 'post',
-			url : '${pageContext.request.contextPath}/reception',
+			url : 'http://localhost:8080/cody/reception',
 			dataType : 'json',
 			data : {},
 			success : function(data) {
 				if (data > 0) {
-					$('#ok').css('display', 'block');
+					$('#ok').css('color', 'red');
 				} else {
-					$('#ok').css('display', 'none');
+					$('#ok').css('color', 'black');
 				}
 			}
 		});
@@ -49,6 +48,7 @@ $(document).ready(function() {
 	}, 1000);
 
 });
+
 
 
 
@@ -63,8 +63,7 @@ $('#reple #repleSave').click(
 
 			$.ajax({
 				type : 'post',
-				url : '${pageContext.request.contextPath}/repleInsert',
-				dataType : 'text',
+				url : 'http://localhost:8080/cody/repleInsert',
 				data : {
 					cody_idx : cody_idx,
 					member_idx : member_idx,
@@ -93,7 +92,7 @@ function re_repleSave(reple_idx) {
 
 	$.ajax({
 		type : 'post',
-		url : '${pageContext.request.contextPath}/re_repleInsert',
+		url : 'http://localhost:8080/cody/re_repleInsert',
 		data : params,
 		success : function(data) {
 			alert('성공');
@@ -118,7 +117,7 @@ function repleDelete(reple_idx) {
 
 	$.ajax({
 		type : 'get',
-		url : '${pageContext.request.contextPath}/repleDelete',
+		url : 'http://localhost:8080/cody/repleDelete',
 		dataType : 'text',
 		data : {
 			reple_idx : reple_idx
