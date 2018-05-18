@@ -15,7 +15,7 @@ public class CodyDto {
 	private int cody_age;
 	private int board_click;
 	private Date board_date;
-	private int board_like;
+	private int cody_like;
 	private int member_idx;
 	private MultipartFile photofile;
 
@@ -25,8 +25,7 @@ public class CodyDto {
 	}
 
 	public CodyDto(int cody_idx, String cody_image, String cody_title, String cody_intro, boolean cody_gender,
-			int cody_height, int cody_age, int board_click, Date board_date, int board_like, int member_idx,
-			MultipartFile photofile) {
+			int cody_height, int cody_age, int board_click, Date board_date, int cody_like, int member_idx, MultipartFile photofile) {
 		super();
 		this.cody_idx = cody_idx;
 		this.cody_image = cody_image;
@@ -37,7 +36,7 @@ public class CodyDto {
 		this.cody_age = cody_age;
 		this.board_click = board_click;
 		this.board_date = board_date;
-		this.board_like = board_like;
+		this.cody_like = cody_like;
 		this.member_idx = member_idx;
 		this.photofile = photofile;
 	}
@@ -105,7 +104,8 @@ public class CodyDto {
 	public void setBoard_click(int board_click) {
 		this.board_click = board_click;
 	}
-
+	
+	
 	public Date getBoard_date() {
 		return board_date;
 	}
@@ -114,12 +114,12 @@ public class CodyDto {
 		this.board_date = board_date;
 	}
 
-	public int getBoard_like() {
-		return board_like;
+	public int getcody_like() {
+		return cody_like;
 	}
 
-	public void setBoard_like(int board_like) {
-		this.board_like = board_like;
+	public void setcody_like(int cody_like) {
+		this.cody_like = cody_like;
 	}
 
 	public int getMember_idx() {
@@ -143,7 +143,7 @@ public class CodyDto {
 		return "CodyDto [cody_idx=" + cody_idx + ", cody_image=" + cody_image + ", cody_title=" + cody_title
 				+ ", cody_intro=" + cody_intro + ", cody_gender=" + cody_gender + ", cody_height=" + cody_height
 				+ ", cody_age=" + cody_age + ", board_click=" + board_click + ", board_date=" + board_date
-				+ ", board_like=" + board_like + ", member_idx=" + member_idx + ", photofile=" + photofile + "]";
+				+ ", cody_like=" + cody_like + ", member_idx=" + member_idx + ", photofile=" + photofile + "]";
 	}
 
 }

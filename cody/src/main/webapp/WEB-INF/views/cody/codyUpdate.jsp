@@ -8,157 +8,7 @@
 <title>Insert title here</title>
 <style>
 </style>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script>
 
-var cody_image;
-$(document).ready(function(){
-	$("#input_image").on("change", handleImgFileSelect);
-});
-function handleImgFileSelect(e){
-	var files = e.target.files;
-	var filesArr = Array.prototype.slice.call(files);
-	
-	filesArr.forEach(function(f){
-		if(!f.type.match("image.*")){
-			alert("이미지 파일만 업로드 가능합니다.");
-			return;
-			}
-		cody_image = f;
-		
-		var reader = new FileReader();
-		if(f.size>5242880){
-	        alert("5MB 미만 파일만 업로드 해주세요.");
-	        $("#preview").attr("src","blank");
-	        $('#input_image').wrap('<form>').closest('form').get(0).reset();
-	        $('#input_image').unwrap(); 
-	        return false;
-	    }
-		reader.onload = function(e){
-			$("#preview").attr("src", e.target.result);
-		}
-		reader.readAsDataURL(f);
-	});
-}
-
-function capturekey(e) { 
-    if(e.keyCode==13 && e.srcElement.type != 'textarea') 
-    return false; 
-} 
-
-function limit1(obj) {
-    var maxByte = 60; //최대 입력 바이트 수
-    var str = obj.value;
-    var str_len = str.length;
- 
-    var rbyte = 0;
-    var rlen = 0;
-    var one_char = "";
-    var str2 = "";
- 
-    for (var i = 0; i < str_len; i++) {
-        one_char = str.charAt(i);
- 
-        if (escape(one_char).length > 4) {
-            rbyte += 2; //한글2Byte
-        } else {
-            rbyte++; //영문 등 나머지 1Byte
-        }
- 
-        if (rbyte <= maxByte) {
-            rlen = i + 1; //return할 문자열 갯수
-        }
-    }
- 
-    if (rbyte > maxByte) {
-        alert("한글 " + (maxByte / 2) + "자 / 영문 " + maxByte + "자를 초과 입력할 수 없습니다.");
-        str2 = str.substr(0, rlen); //문자열 자르기
-        obj.value = str2;
-        limit(obj, maxByte);
-    } else {
-        document.getElementById('byteInfo').innerText = rbyte;
-    }
-};
-
-function limit2(obj) {
-    var maxByte = 1000; //최대 입력 바이트 수
-    var str = obj.value;
-    var str_len = str.length;
- 
-    var rbyte = 0;
-    var rlen = 0;
-    var one_char = "";
-    var str2 = "";
- 
-    for (var i = 0; i < str_len; i++) {
-        one_char = str.charAt(i);
- 
-        if (escape(one_char).length > 4) {
-            rbyte += 2; //한글2Byte
-        } else {
-            rbyte++; //영문 등 나머지 1Byte
-        }
- 
-        if (rbyte <= maxByte) {
-            rlen = i + 1; //return할 문자열 갯수
-        }
-    }
- 
-    if (rbyte > maxByte) {
-        alert("한글 " + (maxByte / 2) + "자 / 영문 " + maxByte + "자를 초과 입력할 수 없습니다.");
-        str2 = str.substr(0, rlen); //문자열 자르기
-        obj.value = str2;
-        limit(obj, maxByte);
-    } else {
-        document.getElementById('byteInfo').innerText = rbyte;
-    }
-};
-
-$(document).ready(function(){
-
-	var cody_gender = ${cody.cody_gender};
-
-	  if(cody_gender > 0 ) {
-		  $('#cody_gender').attr("checked","checked"); 
-	  } else {
-		  $('#cody_gender2').attr("checked","checked"); 
-	  }
-
-	});
-	
-
-$(document).ready(function(){
-
-	  $('#cody_height option').each(function(){
-
-	    if($(this).val()=="${cody.cody_height}"){
-
-	      $(this).attr("selected","selected"); 
-
-	    }
-
-	  });
-
-	});
-
-$(document).ready(function(){
-
-	  $('#cody_age option').each(function(){
-
-	    if($(this).val()=="${cody.cody_age}"){
-
-	      $(this).attr("selected","selected"); 
-
-	    }
-
-	  });
-
-	});
-	
-	
-</script>
-<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    
     <!--헤더 스타일-->
     
     <!--초기화 코드-->
@@ -709,6 +559,40 @@ $(document).ready(function(){
 </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="${pageContext.request.contextPath}/resources/script/cody_seo2.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script>
+ $(document).ready(function(){
 
+	var cody_gender = ${cody.cody_gender};
+
+	  if(cody_gender > 0 ) {
+		  $('#cody_gender').attr("checked","checked"); 
+	  } else {
+		  $('#cody_gender2').attr("checked","checked"); 
+	  }
+
+	});
+     $('#cody_height option').each(function(){
+
+	    if($(this).val()=="${cody.cody_height}"){
+
+	      $(this).attr("selected","selected"); 
+
+	    }
+
+	  });
+	  
+	  $('#cody_age option').each(function(){
+
+		    if($(this).val()=="${cody.cody_age}"){
+
+		      $(this).attr("selected","selected"); 
+
+		    }
+
+		  });
+</script>
 
 </html>
