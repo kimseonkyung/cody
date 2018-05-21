@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>코디게시</title>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
-<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
 
 <!--초기화 코드-->
 <style>
@@ -374,6 +372,9 @@ input:focus, textarea:focus {
 </head>
 
 <body>
+
+	<!-- 인클루드 header -->
+	<%@ include file="../top/header.jsp" %>
 	<h1>코디등록</h1>
 
 	<div id="content">
@@ -423,9 +424,25 @@ input:focus, textarea:focus {
 						<li><button data-role="button" data-toggle="modal" data-target="#ClosetModal">옷장에서 선택</button></li>
 						<li><button data-role="button" data-toggle="modal" data-target="#SearchModal">상품 검색</button></li>
 						<li><button type="button" data-toggle="modal" data-target="#NewitemModal">신규 아이템 등록</button></li>
+						<li><button type="button" data-toggle="modal" data-target="#NaveritemModal">네이버 검색</button></li>
 						</ul>
 					</div>		
-					</div>	
+				</div>
+				<div>
+					<table class="table text-center table-bordered">
+						<thead>
+							<tr>
+								<th scope="col">사진</th>
+								<th scope="col">이름</th>
+								<th scope="col">가격</th>
+								<th scope="col">가격</th>
+								<th scope="col">가격</th>
+							</tr>
+						</thead>
+						<tbody id="codyTable">
+						</tbody>
+					</table>
+				</div>	
 		<div id="item_intro">
 		<h6>최대 9 항목까지 추가 할 수 있습니다</h6>
 	</div>
@@ -458,9 +475,8 @@ input:focus, textarea:focus {
 			<h4>성별※</h4>
 		</div>
 		<div id="gender_input">
-			<label><input type="radio" id="cody_gender"
-				name="cody_gender" value="true">Man</label> <label><input
-				type="radio" id="cody_gender" name="cody_gender" value="false">Woman</label>
+			<label><input type="radio" name="cody_gender" value="true">Man</label> <label>
+				<input type="radio" name="cody_gender" value="false">Woman</label>
 		</div>
 	</div>
 	<div id="height">
@@ -598,6 +614,8 @@ input:focus, textarea:focus {
 		</div>
 	</div>
 	</div>
+	
+	
 
 	<!--------------------업로드--------------------->
 	<div id="input">
@@ -746,15 +764,145 @@ input:focus, textarea:focus {
 	</div>
 
 
+	<!--------------------네이버 아이템--------------------->
+	<div class="container" style="float: left">
+		<div class="modal fade" id="NaveritemModal" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">아이템 검색</h4>
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="naverSearchOk" enctype="multipart/form-data"
+							onkeydown="return capturekey(event)">
+							
+							
+						<div>				
+           					 <input type="text" id="keyword" name="keyword" >
+           					 <input type="button" value="검색" onclick="naverSearch()">
+     					</div>
+    
+   					 	<div class="container mt-3">
+							<table class="table text-center table-bordered">
+									<thead>
+										<tr>
+											<th scope="col">사진</th>
+											<th scope="col">이름</th>
+											<th scope="col">가격</th>
+											<th scope="col">선택</th>
+										</tr>
+									</thead>
+									<tbody id="naverTable">
+									</tbody>
+							</table>
+						</div>
+						
+							
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">취소</button>
+							
+						</div>
+						
+						</form>
+						<button class="btn btn-primary" onclick="naverSearchOk()">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
-	<!-- ie10-viewport-bug-workaround.js -->
-	<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script>
-	<!-- holder.js -->
 </body>
+
+<!-- 	<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
+	ie10-viewport-bug-workaround.js
+	<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
+	
+	<!-- holder.js -->
+	<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
+	
+	<script>
+	function naverSearch() {
+		
+		var keyword = $('#keyword').val();
+
+		$.ajax({
+				url: '${pageContext.request.contextPath}/naverItem',
+				type: 'post',
+				dataType: 'JSON',
+				data: {keyword : keyword},
+			})
+			.done(function(res) { // 성공시
+				console.log(res);
+				var $table = $('#naverTable');
+				$table.html('');
+				
+				$.each(res, function(i, row) {
+					var $tr = $('<tr>').append(
+						$('<td>').html('<img src="'+row.image+'" width="100">'),
+						$('<td>').html(row.title),
+						$('<td>').html(row.lprice),
+						$('<td>').html('<input type="checkbox" name="item_check" value="'+row.productId+'">')
+					);
+					$tr.appendTo($table);
+				});
+			})
+			.fail(function(err) { // 실패
+				console.log(err);
+			});
+		}
+	
+	function naverSearchOk() {
+	 
+		var keyword = $('#naverSearchOk #keyword').val();
+		var checkArr = [];
+		
+		$('input[name="item_check"]:checked').each(function(i) {
+			checkArr.push($(this).val());	//체크된 것만 값을 뽑아서 배열에 push
+		});
+		
+		$.ajax({
+			url: '${pageContext.request.contextPath}/naverItemOk',
+			type: 'post',
+			dataType: 'text',
+			data: {
+				keyword : keyword,
+				checkArr : checkArr.toString()	// 문자열로 형변환
+			},
+			success : function(data) {
+				console.log(data);
+				var $table = $('#codyTable');
+				$table.html('');
+				
+				jQuery.each(data, function(i, row) {
+					var $tr = $('<tr>').append(
+						$('<td>').html(row.title),
+						$('<td>').html(row.link),
+						$('<td>').html('<img src="'+row.image+'" width="100">'),
+						$('<td>').html(row.lprice),
+						$('<td>').html(row.productId)
+					);
+					$tr.appendTo($table);
+				}); 
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("에러 발생  \n" + textStatus + " : " + errorThrown);
+				self.close();
+			}
+			
+		});
+	 }
+		
+	
+	
+	</script>
+	
+
 
 
 </html>

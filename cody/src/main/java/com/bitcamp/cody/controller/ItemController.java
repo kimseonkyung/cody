@@ -1,21 +1,30 @@
 package com.bitcamp.cody.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.bitcamp.cody.dto.Item;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
+import com.bitcamp.cody.service.NeverItemService;
 
 @Controller
 public class ItemController {
@@ -24,6 +33,10 @@ public class ItemController {
 	ItemService itemService;
 	@Autowired
 	ItemListService itemListService;
+	@Autowired
+	NeverItemService naverItemService; 
+
+
 
 	/*-------------------------------- 입력 ------------------------------*/
 	@RequestMapping(value = "/itemForm", method = RequestMethod.GET)
@@ -127,6 +140,78 @@ public class ItemController {
 
 		return "item/itemFormOk";
 
-	}   
+	}
+	
+	/*-------------------------------- 네이버쇼핑api ------------------------------*/
+	
+	/*@RequestMapping(value="/naverItem", produces = "application/text; charset=utf8")
+	public ModelAndView naverItem(@RequestParam(required=false)String keyword){
+        ModelAndView mav = new ModelAndView();
+        
+        if(keyword !=null)
+        {
+            mav.addObject("bookList",naverItemService.searchItem(keyword,10,1));
+        }
+        mav.setViewName("bookList");
+        return mav;
+    }*/
+
+
+	
+	@RequestMapping(value="/naverItem", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String naverItem(@RequestParam(required=false)String keyword){
+        
+		
+		
+        List<Item> items = naverItemService.searchItem(keyword, 10, 1);
+		JSONArray arr = new JSONArray();
+		
+		for (Item item : items) {
+			JSONObject obj = new JSONObject();
+			obj.put("title", item.getTitle());
+			obj.put("link", item.getLink());
+			obj.put("image", item.getImage());
+			obj.put("lprice", item.getLprice());
+			obj.put("productId", item.getProductId());
+			
+			arr.put(obj);
+		}
+		
+		return arr.toString();
+    }
+
+
+	
+	@RequestMapping(value="/naverItemOk", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String naverItemOk(@RequestParam(value="keyword", required=false)String keyword,
+			@RequestParam(value="checkArr") List<String> chechArr){
+        
+		System.out.println("키워드 : " + keyword);
+		System.out.println("chechArr : " + chechArr);
+		
+        List<Item> items = naverItemService.searchItem(keyword, 10, 1);
+		JSONArray arr = new JSONArray();
+		
+		for (Item item : items) {
+			for(int i=0; i<chechArr.size(); i++) { 
+				if(chechArr.get(i).equals(item.getProductId())) {		// 상품아이디와 같은 상품 찾기
+					JSONObject obj = new JSONObject();
+					obj.put("title", item.getTitle());
+					obj.put("link", item.getLink());
+					obj.put("image", item.getImage());
+					obj.put("lprice", item.getLprice());
+					obj.put("productId", item.getProductId());
+					arr.put(obj);
+				}
+			}
+		}
+		
+		System.out.println("실행후" + arr.toString());
+		
+		return arr.toString();
+    }
+	
  
 }
