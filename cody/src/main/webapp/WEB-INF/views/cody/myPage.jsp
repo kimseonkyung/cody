@@ -29,13 +29,20 @@ input:focus, textarea:focus {
 	}
 	
 	#card1{
-	margin-right: 29px;
+	margin-right: 47px;
+	border: 1px solid #007bff;
 	}
 	#card2{
-	margin-right: 29px;
+	margin-right: 47px;
+	border: 1px solid #007bff;
 	}
 	#card3{
-	margin-right: 29px;
+	margin-right: 47px;
+	border: 1px solid #007bff;
+	}
+	#card4{
+	
+	border: 1px solid #007bff;
 	}
 	
 </style>
@@ -75,7 +82,7 @@ input:focus, textarea:focus {
 		</div>
 		</div>
 		
-		<div class="my-3 p-3 bg-white rounded box-shadow">
+		<div>
 		
 		<div class="card" id="card1" style="width: 240px; height: 373px; float: left;"><img
 						class="card-img-top"
