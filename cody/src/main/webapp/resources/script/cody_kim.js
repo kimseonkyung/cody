@@ -27,7 +27,7 @@ function itemListView(item_idx) {
 
 /*--------------------------------------- 알림 ---------------------------------------*/
 /* 1초마다 알림 확인 */
-$(document).ready(function() {
+/*$(document).ready(function() {
 
 	setInterval(function() {
 
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
 	}, 1000);
 
-});
+});*/
 
 
 
