@@ -243,6 +243,8 @@ margin: 0 auto;
 </style>
 </head>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/script/cody_jeong.js"></script>
+<script type="text/javascript"></script>
 
 <body>
 	<div id="container">
@@ -273,8 +275,9 @@ margin: 0 auto;
 
 								<div id="funtion">
 									
-									<div id="like">
-										<a href="#"><input id="like_btn" type="button" value="좋아요"></a>
+									<div class="clickLike" >
+										<input id="cody_idx" type="hidden" value="${cody.cody_idx }">
+										<button id ="clickLike">좋아요</button>
 									</div>
 									<div id="comment">
 										<a href="#"><input id="comment_btn" type="button" value="코멘트"></a>

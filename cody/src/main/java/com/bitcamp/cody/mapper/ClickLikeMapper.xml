@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Dao 에서 메퍼 설정에서 필요한 엘리먼트(설정) 호출할때 식별자 역할 : 필수 -->
+<mapper namespace="com.bitcamp.cody.dao.CodyDao">
+
+<!-- 조회수 증가 -->
+	
+	<update id="countAdd2" parameterType="com.bitcamp.cody.dto.CodyDto">
+		update cody set cody_like = cody_like+1 where cody_idx = #{cody_idx}
+	</update>
+	
+	
+	
+</mapper>	

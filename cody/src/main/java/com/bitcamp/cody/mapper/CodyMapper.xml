@@ -10,43 +10,58 @@
 		지정하는 클래스타입의 객체에 데이터 메핑 parameterType : 여러 데이터를 하나의 객체에 담아서 받을 때 해당 객체 타입으로 
 		지정 -->
 
-	<select id="selectByIdx" resultType="com.bitcamp.cody.dto.CodyDto">
+	<select id="selectByIdx"
+		resultType="com.bitcamp.cody.dto.CodyDto">
 		select * from cody where cody_idx = #{cody_idx}
 	</select>
 
-	<select id="selectByTitle" resultType="com.bitcamp.cody.dto.CodyDto">
+	<select id="selectByTitle"
+		resultType="com.bitcamp.cody.dto.CodyDto">
 		select * from cody where cody_title = #{cody_title}
 	</select>
 
-	<select id="selectList" resultType="com.bitcamp.cody.dto.CodyDto">
+	<select id="selectList"
+		resultType="com.bitcamp.cody.dto.CodyDto">
 		select * from cody
 	</select>
 
 	<!-- insert 태그는 데이터베이스에 데이터를 삽입하는 insert구문을 사용할 때 사용 -->
 	<!-- ID : 외부에서 해당 태그를 부를 때 사용하는 식별 이름, 메퍼 파일안에서 중복 X parameterType : 여러 
 		데이터를 하나의 객체에 담아서 받을 때 해당 객체 타입으로 지정 -->
-	<insert id="insertCody" parameterType="com.bitcamp.cody.dto.CodyDto">
+	<insert id="insertCody"
+		parameterType="com.bitcamp.cody.dto.CodyDto">
 		insert into cody
-		(cody_idx, cody_image, cody_title, cody_intro, cody_gender,
+		(cody_idx, cody_image, cody_title,
+		cody_intro, cody_gender,
 		cody_height, cody_age )
-		values ( #{cody_idx}, #{cody_image}, #{cody_title}, #{cody_intro},
-		#{cody_gender}, #{cody_height}, #{cody_age} )
+		values ( #{cody_idx},
+		#{cody_image}, #{cody_title}, #{cody_intro},
+		#{cody_gender},
+		#{cody_height}, #{cody_age} )
 	</insert>
 
 
-	<delete id="deleteCody" parameterType="com.bitcamp.cody.dto.CodyDto">
+	<delete id="deleteCody"
+		parameterType="com.bitcamp.cody.dto.CodyDto">
 		delete from cody where
 		cody_idx = #{cody_idx}
 	</delete>
 
-	<update id="updateCody" parameterType="com.bitcamp.cody.dto.CodyDto">
+	<update id="updateCody"
+		parameterType="com.bitcamp.cody.dto.CodyDto">
 		update cody set cody_image
-		= #{cody_image}, cody_title = #{cody_title}, cody_intro = #{cody_intro}, 
-		cody_gender = #{cody_gender}, cody_height = #{cody_height}, cody_age = #{cody_age}
+		= #{cody_image}, cody_title =
+		#{cody_title}, cody_intro = #{cody_intro},
+		cody_gender = #{cody_gender}, cody_height = #{cody_height}, cody_age =
+		#{cody_age}
 		where cody_idx = #{cody_idx}
 	</update>
 
-
+	<insert id="ClickLike"
+		parameterType="com.bitcamp.cody.dto.CodyDto">
+		insert into cody (cody_idx, member_idx, board_like)
+		values (#{cody_idx}, #{member_idx}, #{board_like} )
+	</insert>	
 
 
 </mapper>

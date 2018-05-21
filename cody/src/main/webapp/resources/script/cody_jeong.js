@@ -1,53 +1,44 @@
-/**
- * function addBookmark(cody_idx,member_idx){
- * 
- * console.log(cody_idx,member_idx); var params = new Object(); params.cody_idx =
- * cody_idx; params.member_idx = member_idx; $.ajax({
- * url:contextRoot+"/bookmark", type:'POST', data: params,
- * success:function(data){ alert("완료!"); console.log(data);
- * window.opener.location.reload(); self.close(); }, error:function(jqXHR,
- * textStatus, errorThrown){ alert("에러 발생 \n" + textStatus + " : " +
- * errorThrown); self.close(); } }); }
- * 
+
+/*
+ * 좋아요 횟수 저장
  */
-var contextRoot = '${contextRoot}';
+$(document).ready(function(){
+$('#clickLike').click(
+		function() {
 
-$(documemt).ready(function() {
-	var cnt = $('#clickLike').val();
+			var cody_idx = $('#cody_idx').val();
+			/*var cody_like = $('#cody_like').val();*/
+			
+			$.ajax({
+				type : 'GET',
+				url : 'clickLike',
+				dataType : 'text',
+				data : {
+					cody_idx : cody_idx,
+				/*	cody_like : cody_like,*/
+					
+				},
+				success : function(data) {
+					alert('성공');
+					
+					location.reload();
 
-	setInterval(function() {
-
-		$.ajax({
-			type : 'post',
-			url : '${pageContext.request.contextPath}/clickLike',
-			dataType : 'text',
-			data : {
-
-			},
-			success : function(data) {
-
-				if (data > 0) {
-
-					$('#ok').css('display', 'block');
-				} else {
-					$('#ok').css('display', 'nonauce');
 				}
-			}
+			});
 		});
-
-	}, 1000);
-
-	function clickLikeOk() {
-
-		$.ajax({
-			type : 'post',
-			url : '${pageContext.request.contextPath}/clickLikeOk',
-			dataType : 'text',
-			data : {},
-			success : function(data) {
-				alert("확인");
-			}
-		});
-	}
 
 });
+
+
+		
+		
+		
+		
+	
+		
+		
+	
+	
+	
+	
+	

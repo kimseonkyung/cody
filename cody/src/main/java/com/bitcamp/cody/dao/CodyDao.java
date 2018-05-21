@@ -13,6 +13,7 @@ public interface CodyDao {
 	public CodyDto selectByIdx(int idx);
 	public List<CodyDto> selectByTitle(String title);
 	public List<CodyDto> selectList();
+	public int countAdd2(CodyDto cody);
 	
 	
 }
