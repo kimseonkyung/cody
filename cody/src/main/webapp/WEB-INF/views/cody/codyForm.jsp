@@ -378,7 +378,7 @@ input:focus, textarea:focus {
 	<h1>코디등록</h1>
 
 	<div id="content">
-		<form action="${pageContext.request.contextPath }/codyForm"
+		<form id="codyForm" action="${pageContext.request.contextPath }/codyForm"
 			method="post" enctype="multipart/form-data"
 			onkeydown="return capturekey(event)">
 			<!--------------------사이드--------------------->
@@ -414,6 +414,14 @@ input:focus, textarea:focus {
 						</div>
 					</div>
 				</div>
+				
+				<!-- 항목 추가 아이템 테이블 -->
+				<div>
+					<table class="table table-bordered">
+						<tbody id="codyTable"> 
+						</tbody>
+					</table>
+				</div>	
 
 				<div id="item">
 					<div class="dropdown">
@@ -428,21 +436,9 @@ input:focus, textarea:focus {
 						</ul>
 					</div>		
 				</div>
-				<div>
-					<table class="table text-center table-bordered">
-						<thead>
-							<tr>
-								<th scope="col">사진</th>
-								<th scope="col">이름</th>
-								<th scope="col">가격</th>
-								<th scope="col">가격</th>
-								<th scope="col">가격</th>
-							</tr>
-						</thead>
-						<tbody id="codyTable">
-						</tbody>
-					</table>
-				</div>	
+				
+				
+				
 		<div id="item_intro">
 		<h6>최대 9 항목까지 추가 할 수 있습니다</h6>
 	</div>
@@ -699,7 +695,7 @@ input:focus, textarea:focus {
 	</div>
 
 	<!--------------------신규 아이템--------------------->
-	<div class="container" style="float: left">
+	<%-- <div class="container" style="float: left">
 		<div class="modal fade" id="NewitemModal" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
@@ -718,7 +714,7 @@ input:focus, textarea:focus {
 								이미지 : <input type="file" name="photofile">
 							</div>
 							<div>
-								이름 : <input type="text" name="item_name">
+								이름 : <input type="text" id="item_name" name="item_name">
 							</div>
 							<div>
 								브랜드 : <input type="text" name="item_brand">
@@ -761,7 +757,7 @@ input:focus, textarea:focus {
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --%>
 
 
 	<!--------------------네이버 아이템--------------------->
@@ -869,7 +865,7 @@ input:focus, textarea:focus {
 		$.ajax({
 			url: '${pageContext.request.contextPath}/naverItemOk',
 			type: 'post',
-			dataType: 'text',
+			dataType: 'JSON',
 			data: {
 				keyword : keyword,
 				checkArr : checkArr.toString()	// 문자열로 형변환
@@ -879,16 +875,36 @@ input:focus, textarea:focus {
 				var $table = $('#codyTable');
 				$table.html('');
 				
-				jQuery.each(data, function(i, row) {
+				$.each(data, function(i, row) {
 					var $tr = $('<tr>').append(
-						$('<td>').html(row.title),
-						$('<td>').html(row.link),
-						$('<td>').html('<img src="'+row.image+'" width="100">'),
-						$('<td>').html(row.lprice),
-						$('<td>').html(row.productId)
-					);
-					$tr.appendTo($table);
-				}); 
+						$('<td rowspan="4">').html('<img src="'+row.image+'" width="100">'),
+						$('<td>').html('이름 : '+row.title)
+					); $tr.appendTo($table);
+						$tr = $('<tr>').append(
+							$('<td>').html('브랜드 : <input name="item_brand" type="text" >')
+					); $tr.appendTo($table);
+						$tr = $('<tr>').append(
+							$('<td>').html(' 색상 : <select id="input_color" name="item_color">'+
+									+'<option>선택해주세요</option>'+
+									+'<option value="흰색">흰색</option>'+
+									+'<option value="검은색">검은색</option>'+
+									+'<option value="빨간색">빨간색</option>'+
+									+'<option value="주황색">주황색</option>'+
+									+'<option value="노랑색">노랑색</option>'+
+									+'<option value="초록색">초록색</option>'+
+									+'<option value="파랑색">파랑색</option>'+
+									+'<option value="남색">남색</option>'+
+									+'<option value="보라색">보라색</option></select>   ')
+					); $tr.appendTo($table);	
+						$tr = $('<tr>').append(
+							$('<td>').html('가격 : '+row.lprice)
+					); $tr.appendTo($table);
+					var $div = $('<div>').html('<input type="hidden" name="item_image" value="'+row.image+'">'+
+									+'<input type="hidden" name="item_title" value="'+row.title+'">'+		
+									+'<input type="hidden" name="item_price" value="'+row.lprice+'">')
+									
+				});
+				
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				alert("에러 발생  \n" + textStatus + " : " + errorThrown);

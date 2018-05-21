@@ -203,6 +203,7 @@ public class ItemController {
 					obj.put("image", item.getImage());
 					obj.put("lprice", item.getLprice());
 					obj.put("productId", item.getProductId());
+					obj.put("mallName", item.getMallName());
 					arr.put(obj);
 				}
 			}
