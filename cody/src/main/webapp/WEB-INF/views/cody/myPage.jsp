@@ -27,22 +27,26 @@ input:focus, textarea:focus {
 	border: 1px solid #007bff;
 	border-radius: 15px;
 	}
-	
+
 	#card1{
-	margin-right: 47px;
+	
 	border: 1px solid #007bff;
 	}
 	#card2{
-	margin-right: 47px;
+	
 	border: 1px solid #007bff;
 	}
 	#card3{
-	margin-right: 47px;
+	
 	border: 1px solid #007bff;
 	}
 	#card4{
-	
 	border: 1px solid #007bff;
+	}
+	
+	#button2{
+	margin: 0 auto;
+	width: 300px;
 	}
 	
 </style>
@@ -70,7 +74,7 @@ input:focus, textarea:focus {
 	
 	<div class="my-3 p-3 bg-white rounded box-shadow">
           <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${member.member_photo}" width="220" height="300">
-          <button class="btn-primary" data-target="#registerModal" data-toggle="modal">프로필변경</button>
+          <button type="button" class="btn btn-primary" data-target="#registerModal" data-toggle="modal">프로필변경</button>
         </div>
      		
 		<div class="my-3 p-3 bg-white rounded box-shadow">
@@ -82,8 +86,15 @@ input:focus, textarea:focus {
 		</div>
 		</div>
 		
-		<div>
+		<div class="my-3 p-3 bg-white rounded box-shadow">
+         <div class="row">
+		<button id="button2" type="button" class="btn btn-primary btn-lg" data-target="#codyFormModal" data-toggle="modal">코디등록</button>
+		</div>		
+		</div>
 		
+		<div class="my-3 p-3 bg-white rounded box-shadow">
+		<div class="row">
+		<div class="col">
 		<div class="card" id="card1" style="width: 240px; height: 373px; float: left;"><img
 						class="card-img-top"
 						src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
@@ -93,8 +104,9 @@ input:focus, textarea:focus {
 								style="position: absolute; left: 20px;">좋아요</a>
 							<a href="#" class="btn btn-primary"
 								style="position: absolute; right: 20px;">팔로우</a>
-						</div></div>
+						</div></div></div>
 		
+		<div class="col">
 		<div class="card" id="card2" style="width: 240px; height: 373px; float: left;"><img
 						class="card-img-top"
 						src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
@@ -104,8 +116,9 @@ input:focus, textarea:focus {
 								style="position: absolute; left: 20px;">좋아요</a>
 							<a href="#" class="btn btn-primary"
 								style="position: absolute; right: 20px;">팔로우</a>
-						</div></div>				
+						</div></div></div>				
 		
+		<div class="col">
 		<div class="card" id="card3" style="width: 240px; height: 373px; float: left;"><img
 						class="card-img-top"
 						src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
@@ -115,8 +128,9 @@ input:focus, textarea:focus {
 								style="position: absolute; left: 20px;">좋아요</a>
 							<a href="#" class="btn btn-primary"
 								style="position: absolute; right: 20px;">팔로우</a>
-						</div></div>
+						</div></div></div>
 		
+		<div class="col">
 		<div class="card" id="card4" style="width: 240px; height: 373px; float: left;"><img
 						class="card-img-top"
 						src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
@@ -126,11 +140,24 @@ input:focus, textarea:focus {
 								style="position: absolute; left: 20px;">좋아요</a>
 							<a href="#" class="btn btn-primary"
 								style="position: absolute; right: 20px;">팔로우</a>
-						</div></div>
+						</div></div></div>
 		</div>
-		
+		</div>
 	
 </main>
+ 
+ <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">Bitcamp 2018 Project for <a href="${pageContext.request.contextPath }">Cody</a> by <a href="https://twitter.com/mdo">Drop the table</a>.</p>
+      <p>
+       <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    
 	<div class="container" style="float: left">
 
 			<div class="modal fade" id="registerModal" role="dialog">
