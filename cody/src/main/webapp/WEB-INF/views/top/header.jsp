@@ -110,7 +110,7 @@
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">아이디</div>
 									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-between align-items-center px-2">
 										<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center">
-											<input type="text" name="member_id" placeholder="&nbsp;Please enter a valid email" style="width: 100%;">
+											<input type="text" name="member_id" id="member_id" placeholder="&nbsp;Please enter a valid email" style="width: 100%;">
 										</div>
 										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-start align-items-center pl-2">
 											<a id="authenticate" class="row justify-content-center align-items-center" style="background-color: #01D1FE; color: white; cursor: pointer; height: 27px; width: 100%;">Check</a>
@@ -123,7 +123,7 @@
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">Password</div>
 									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
-										<input type="password" name="member_pw" style="width: 100%;">
+										<input type="password" name="member_pw" id="member_pw" style="width: 100%;">
 									</div>
 								</div>
 
@@ -221,7 +221,7 @@
 								<div class="form-group">
 									<label for="inputEmail3" class="col-xl-sm-2 control-label">Email</label>
 									<div class="col-xl-12">
-										<input type="text" class="form-control" id="member_id"
+										<input type="text" class="form-control" id="memberForm_id"
 											placeholder="Email" name="member_id" style="width: 100%">
 									</div>
 								</div>
@@ -229,7 +229,7 @@
 									<label for="inputPassword3" class="col-xl-sm-2 control-label">Password</label>
 									<div class="col-xl-12">
 										<input type="password" class="form-control"
-											id="member_pw" placeholder="Password"
+											id="memberForm_pw" placeholder="Password"
 											name="member_pw" style="width: 100%">
 									</div>
 								</div>

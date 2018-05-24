@@ -52,37 +52,7 @@
 			
 		
 		
-		// 아이디 입력시 사용 유무 확인 체크 : 서버쪽에 확인 요청
-		$('#member_id').focusout(function(){
-			
-			var memberId = $(this).val();
-			
-			if(memberId.length > 5){
-				
-				$.ajax({
-					url : '/cody/member/idchk',
-					type : 'post',
-					dataType : 'text',
-					data : {
-						userid : memberId
-					},
-					success : function(data){
-						if(data == "Y"){
-							$('#idChkMsg').text('사용가능한 아이디입니다.');
-							$('#idChkMsg').css('color', 'blue');
-						} else if(data == 'N') {
-							$('#idChkMsg').text('이미 사용중인 아이디입니다.');
-							$('#idChkMsg').css('color', 'red');
-						}
-					}					
-				});
-				
-				
-			} else {
-				$('#idChkMsg').text('아이디는 6자 이상이어야 합니다.');
-			}
-			
-		});
+		
 		
 
 	
@@ -97,8 +67,8 @@
 		
 		$('#loginForm').submit(function(){
 			
-			var uId = $('#member_id').val();
-			var pw = $('#member_pw').val();
+			var uId = $('#memberForm_id').val();
+			var pw = $('#memberForm_pw').val();
 			
 			// 아이디 값이 있는지 확인
 			if(uId.length < 1){
