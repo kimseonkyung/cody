@@ -110,7 +110,7 @@
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">아이디</div>
 									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-between align-items-center px-2">
 										<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center">
-											<input type="text" name="member_id" placeholder="&nbsp;Please enter a valid email" style="width: 100%;">
+											<input type="text" name="member_id" id="memberForm_id" placeholder="&nbsp;Please enter a valid email" style="width: 100%;">
 										</div>
 										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-start align-items-center pl-2">
 											<a id="authenticate" class="row justify-content-center align-items-center" style="background-color: #01D1FE; color: white; cursor: pointer; height: 27px; width: 100%;">Check</a>
@@ -123,7 +123,7 @@
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">Password</div>
 									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
-										<input type="password" name="member_pw" style="width: 100%;">
+										<input type="password" name="member_pw" id="memberForm_pw" style="width: 100%;">
 									</div>
 								</div>
 
