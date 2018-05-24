@@ -28,6 +28,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
 	rel="stylesheet">
+	
 
 <style>
 	.card-item-ol {
@@ -51,60 +52,10 @@
 </head>
 
 <body class="bg-light">
+	
 
-	<header>
-	<div class="codyHeaderBar fixed-top bg-dark">
-	<nav class="navbar navbar-expand-lg navbar-dark">
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search"
-				aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
-		<a class="navbar-brand mr-auto mr-lg-0" href="#">Cody</a>
-		<button class="navbar-toggler p-0 border-0" type="button"
-			data-toggle="offcanvas">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="navbar-collapse offcanvas-collapse"
-			id="navbarsExampleDefault">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">회원가입
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Switch
-						account</a></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="http://example.com"
-					id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">Settings</a>
-					<div class="dropdown-menu" aria-labelledby="dropdown01">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a> <a
-							class="dropdown-item" href="#">Something else here</a>
-					</div></li>
-			</ul>
-		</div>
-	</nav>
-	</div>
-	</header>
-
-	<div class="nav-scroller bg-white box-shadow">
-		<nav class="nav nav-underline">
-			<a class="nav-link active" href="#">Dashboard</a> <a class="nav-link"
-				href="#"> Friends <span
-				class="badge badge-pill bg-light align-text-bottom">27</span>
-			</a> <a class="nav-link" href="#">all</a> <a class="nav-link" href="#">men</a>
-			<a class="nav-link" href="#">women</a> <a class="nav-link" href="#">아이템</a>
-			<a class="nav-link" href="#">코디</a> <a class="nav-link" href="#">사용자</a>
-			<a class="nav-link" href="#">마이페이지</a>
-		</nav>
-	</div>
-
-
-
+<!-- 인클루드 header -->
+	<%@ include file="../top/header.jsp" %>
 
 	<main role="main" class="container">
 	<div
@@ -126,12 +77,12 @@
 
 				<ol class="card-item-ol" >
 				
-			<div id="repleList">
+				
+			<!------------------ 아이템 리스트 반복 출력 ----------------------->
 			<c:forEach var="item" items="${items }">
 			
 				<li class="card card-item-li">
-					<img class="card-img-top card-item" src="${pageContext.request.contextPath}/uploadfile/itemphoto/${item.item_image}" 
-					alt="Card image cap" onclick="itemListView(${item.item_idx})">
+					<img class="card-img-top card-item" src="${item.item_image}" alt="Card image cap" onclick="itemListView(${item.item_idx})">
 						<div class="card-body" style="overflow: hidden; position: relative;">
 						
 							<h5 class="card-title" style="float: left;">임해군</h5><br>
@@ -142,21 +93,14 @@
 				</li>
 
 			</c:forEach>
-			</div>
 				
-					
-					
-					
-
 					
 				</ol>
 			</div>
 
-
-
-			
 		</div>
 
+		<!------------------------- 메인 사이드 --------------------------->
 		<div id="main_aside">
 
 			<h1>카테고리</h1>
