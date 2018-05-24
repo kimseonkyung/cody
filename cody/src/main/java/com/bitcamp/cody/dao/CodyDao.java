@@ -14,6 +14,7 @@ public interface CodyDao {
 	public List<CodyDto> selectByTitle(String title);
 	public List<CodyDto> selectList();
 	public int countAdd2(CodyDto cody);
+	public int maxCodyIdx();
 	
 	
 }

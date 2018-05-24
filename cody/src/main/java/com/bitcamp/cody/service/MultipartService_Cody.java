@@ -3,20 +3,20 @@ package com.bitcamp.cody.service;
 import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.bitcamp.cody.dto.CodyDto;
 
 
 public class MultipartService_Cody {
 
-	public CodyDto multipart(CodyDto cody, HttpServletRequest request) throws IllegalStateException, IOException {
+	public CodyDto multipart(CodyDto cody, HttpSession session) throws IllegalStateException, IOException {
 
 		// 파일 업로드 처리
 		
 				/*업로드 폴더 시스템 물리적 경로 찾기*/
 				String uploadURI = "/uploadfile/codyphoto";
-				String dir = request.getSession().getServletContext().getRealPath(uploadURI);
+				String dir = session.getServletContext().getRealPath(uploadURI);
 				System.out.println(dir);
 				
 				

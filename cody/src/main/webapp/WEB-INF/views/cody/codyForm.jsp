@@ -44,7 +44,7 @@ a {
 	border: 2px solid darkgray;
 	border-radius: 5px 5px 5px 5px;
 	width: 842px;
-	height: 1400px;
+	height: 2000px;
 	position: relative;
 	/*border: 1px solid gray;*/
 	/*중앙정렬*/
@@ -378,8 +378,7 @@ input:focus, textarea:focus {
 	<h1>코디등록</h1>
 
 	<div id="content">
-		<form id="codyForm" action="${pageContext.request.contextPath }/codyForm"
-			method="post" enctype="multipart/form-data"
+		<form role="codyForm" enctype="multipart/form-data"
 			onkeydown="return capturekey(event)">
 			<!--------------------사이드--------------------->
 			<div id="side">
@@ -418,10 +417,11 @@ input:focus, textarea:focus {
 				<!-- 항목 추가 아이템 테이블 -->
 				<div>
 					<table class="table table-bordered">
-						<tbody id="codyTable"> 
+						<tbody id="codyTable">
 						</tbody>
 					</table>
 				</div>	
+
 
 				<div id="item">
 					<div class="dropdown">
@@ -614,13 +614,13 @@ input:focus, textarea:focus {
 	
 
 	<!--------------------업로드--------------------->
-	<div id="input">
-		<div id="upload_input">
-			<input id="input_upload" type="submit" value="Upload">
-		</div>
-	</div>
 
 	</form>
+	<div id="input">
+		<div id="upload_input">
+			<input id="input_upload" type="submit" onclick="codyInsert()">
+		</div>
+	</div>
 	</div>
 
 	<!--------------------옷장--------------------->
@@ -734,7 +734,7 @@ input:focus, textarea:focus {
 								</select>
 							</div>
 							<div>
-								색상 : <select id="input_color" name="item_idx">
+								색상 : <select id="item_color" name="item_color">
 									<option>선택해주세요</option>
 									<option value='흰색'>흰색</option>
 									<option value='검은색'>검은색</option>
@@ -797,15 +797,12 @@ input:focus, textarea:focus {
 							</table>
 						</div>
 						
-							
+						</form>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">취소</button>
+						<button class="btn btn-primary" onclick="naverSearchOk()">확인</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 							
 						</div>
-						
-						</form>
-						<button class="btn btn-primary" onclick="naverSearchOk()">확인</button>
 					</div>
 				</div>
 			</div>
@@ -874,35 +871,49 @@ input:focus, textarea:focus {
 				console.log(data);
 				var $table = $('#codyTable');
 				$table.html('');
+				var idx = 0;
 				
 				$.each(data, function(i, row) {
+					var $div = $('<div class="codyDiv">');
 					var $tr = $('<tr>').append(
-						$('<td rowspan="4">').html('<img src="'+row.image+'" width="100">'),
+						$('<td rowspan="5">').html('<img src="'+row.image+'" width="100">'),
 						$('<td>').html('이름 : '+row.title)
-					); $tr.appendTo($table);
+					); $tr.appendTo($div);
 						$tr = $('<tr>').append(
-							$('<td>').html('브랜드 : <input name="item_brand" type="text" >')
-					); $tr.appendTo($table);
+							$('<td>').html('브랜드 : <input name="itemList['+idx+'].item_brand" type="text" >')
+					); $tr.appendTo($div);
 						$tr = $('<tr>').append(
-							$('<td>').html(' 색상 : <select id="input_color" name="item_color">'+
-									+'<option>선택해주세요</option>'+
-									+'<option value="흰색">흰색</option>'+
-									+'<option value="검은색">검은색</option>'+
-									+'<option value="빨간색">빨간색</option>'+
-									+'<option value="주황색">주황색</option>'+
-									+'<option value="노랑색">노랑색</option>'+
-									+'<option value="초록색">초록색</option>'+
-									+'<option value="파랑색">파랑색</option>'+
-									+'<option value="남색">남색</option>'+
-									+'<option value="보라색">보라색</option></select>   ')
-					); $tr.appendTo($table);	
+							$('<td>').html(' 카테고리 : <select id="input_category" name="itemList['+idx+'].item_category">'
+									+'<option>선택해주세요</option>'
+									+'<option value="모자">모자</option>'
+									+'<option value="상의">상의</option>'
+									+'<option value="하의">하의</option>'
+									+'<option value="아우터">아우터</option>'
+									+'<option value="신발">신발</option>'
+									+'<option value="악세사리">악세사리</option></select>')
+					); $tr.appendTo($div);	
+						$tr = $('<tr>').append(
+							$('<td>').html(' 색상 : <select id="input_color" name="itemList['+idx+'].item_color">'
+									+'<option>선택해주세요</option>'
+									+'<option value="white">흰색</option>'
+									+'<option value="black">검은색</option>'
+									+'<option value="red"">빨간색</option>'
+									+'<option value="orange">주황색</option>'
+									+'<option value="yellow">노랑색</option>'
+									+'<option value="green">초록색</option>'
+									+'<option value="blue">파랑색</option>'
+									+'<option value="navy">남색</option>'
+									+'<option value="purple">보라색</option></select>')
+					); $tr.appendTo($div);	
 						$tr = $('<tr>').append(
 							$('<td>').html('가격 : '+row.lprice)
-					); $tr.appendTo($table);
-					var $div = $('<div>').html('<input type="hidden" name="item_image" value="'+row.image+'">'+
-									+'<input type="hidden" name="item_title" value="'+row.title+'">'+		
-									+'<input type="hidden" name="item_price" value="'+row.lprice+'">')
-									
+					); $tr.appendTo($div);
+					var $hidden = $('<div>').html('<input type="hidden" name="itemList['+idx+'].item_image" value="'+row.image+'">'
+										+'<input type="hidden" name="itemList['+idx+'].item_name" value="'+row.title+'">'		
+										+'<input type="hidden" name="itemList['+idx+'].item_price" value="'+row.lprice+'">');
+					 $hidden.appendTo($div);
+					 $div.appendTo($table);
+					 idx++;
 				});
 				
 			},
@@ -914,6 +925,16 @@ input:focus, textarea:focus {
 		});
 	 }
 		
+	
+	function codyInsert() {
+		var formObj = $('form[role="codyForm"]');
+		
+		console.log(formObj);
+		
+		formObj.attr("action", "codyForm");
+		formObj.attr("method", "post");
+		formObj.submit();
+	}
 	
 	
 	</script>

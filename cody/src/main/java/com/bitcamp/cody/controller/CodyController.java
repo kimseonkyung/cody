@@ -1,9 +1,11 @@
 package com.bitcamp.cody.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.cody.dto.CodyDto;
+import com.bitcamp.cody.dto.ItemDto;
+import com.bitcamp.cody.dto.ItemList;
+import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.CodyService;
+import com.bitcamp.cody.service.ItemService;
+import com.bitcamp.cody.service.MemberService;
 
 /*-----------입력---------------*/
 @Controller
@@ -24,6 +31,10 @@ public class CodyController {
 	CodyService codyservice;
 	@Autowired
 	CodyListService codyListService;
+	@Autowired
+	ItemService itemService;
+	@Autowired
+	MemberService memberService;
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
 	public String codyForm() {
@@ -31,14 +42,33 @@ public class CodyController {
 	}
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.POST)
-	public String codyInsert(CodyDto cody, Model model, HttpServletRequest request)
+	public String codyInsert(Model model, HttpSession session, CodyDto cody, ItemList list)
 			throws IllegalStateException, IOException {
+		
+		String user = "a";
+		// String user = (String) session.getAttribute("id");    // 로그인된 아이디값 가져오기
+		
 		// 서비스에 회원 데이터 저장 요청
 		// 결과 : 1 / 0
 		// model 에 저장
-		System.out.println(cody);
-
-		int resultCnt = codyservice.codyInsert(cody, request);
+		System.out.println("cody : "+ cody);
+		System.out.println("item : "+ list);
+		MemberDto member = memberService.selectById(user);	// 아이디로 member정보 가져오기
+		int memberIdx = member.getMember_idx();
+		
+		System.out.println("member : "+ member);
+		
+		cody.setMember_idx(memberIdx);
+		int resultCnt = codyservice.codyInsert(cody, session);
+		int codyIdx = codyservice.maxCodyIdx();					// 최근에 등록한 코디 idx 찾기
+		ArrayList<ItemDto> arr = new ArrayList<>();
+		for(ItemDto item  : list.getItemList()) {
+			item.setCody_idx(codyIdx);
+			item.setMember_idx(memberIdx);
+			arr.add(item);
+		}
+		
+		itemService.itemListInsert(arr);
 
 		String msg = "정상적으로 등록되었습니다.";
 
@@ -105,10 +135,10 @@ public class CodyController {
 	}
 
 	@RequestMapping(value="/codyUpdate", method = RequestMethod.POST)
-	public String updateOk(CodyDto cody, Model model, HttpServletRequest request)
+	public String updateOk(CodyDto cody, Model model, HttpSession session)
 			throws IllegalStateException, IOException {
 
-		int resultCnt = codyservice.codyUpdate(cody, request);
+		int resultCnt = codyservice.codyUpdate(cody, session);
 
 		String msg = "코디수정 완료";
 

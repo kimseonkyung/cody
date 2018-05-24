@@ -3,6 +3,7 @@ package com.bitcamp.cody.service;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,10 @@ public class CodyService {
 	@Autowired
 	MultipartService_Cody service;
 
-	public int codyInsert(CodyDto cody, HttpServletRequest request) throws IllegalStateException, IOException {
+	public int codyInsert(CodyDto cody, HttpSession session) throws IllegalStateException, IOException {
 		dao = sqlSessionTemplate.getMapper(CodyDao.class);
 
-		service.multipart(cody, request);
+		service.multipart(cody, session);
 
 		System.out.println("실행전 : " + cody);
 
@@ -38,10 +39,10 @@ public class CodyService {
 		return resultCnt;
 	}
 
-	public int codyUpdate(CodyDto cody, HttpServletRequest request) throws IllegalStateException, IOException {
+	public int codyUpdate(CodyDto cody, HttpSession session) throws IllegalStateException, IOException {
 		dao = sqlSessionTemplate.getMapper(CodyDao.class);
 
-		service.multipart(cody, request);
+		service.multipart(cody, session);
 
 		System.out.println("실행전 : " + cody);
 
@@ -60,6 +61,13 @@ public class CodyService {
 
 		int resultCnt = dao.deleteCody(idx);
 
+		return resultCnt;
+	}
+	
+	public int maxCodyIdx() {
+		dao = sqlSessionTemplate.getMapper(CodyDao.class);
+		
+		int resultCnt = dao.maxCodyIdx();
 		return resultCnt;
 	}
 

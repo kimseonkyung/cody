@@ -1,6 +1,7 @@
 package com.bitcamp.cody.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,12 +24,23 @@ public class ItemService {
 	public int itemInsert(ItemDto item, HttpServletRequest request) throws IllegalStateException, IOException {
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 
-		service.multipart(item, request);
+		// service.multipart(item, request);
 		System.out.println("실행전 : " + item);
 		int resultCnt = dao.insertItem(item);
 		System.out.println("실행후 : " + item);
 
 		return resultCnt;
+	}
+	
+	public int itemListInsert(ArrayList<ItemDto> list) {
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		
+		System.out.println("실행전 : " + list);
+		int resultCnt = dao.insertListItem(list);
+		System.out.println("실행후 : " + list);
+
+		return resultCnt;
+		
 	}
 
 	public int itemUpdate(ItemDto item, HttpServletRequest request) throws IllegalStateException, IOException {
@@ -50,5 +62,7 @@ public class ItemService {
 
 		return result;
 	}
+
+	
 
 }

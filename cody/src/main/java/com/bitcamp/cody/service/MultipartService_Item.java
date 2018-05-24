@@ -29,7 +29,10 @@ public class MultipartService_Item {
 			String fileName = item.getItem_name()+System.currentTimeMillis()+"_"+item.getPhotofile().getOriginalFilename();
 			item.getPhotofile().transferTo(new File(dir, fileName));
 			item.setItem_image(fileName);
+		} else {
+			System.out.println("item null");
 		}
+		
 		return item;
 		
 	}
