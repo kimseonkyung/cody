@@ -53,6 +53,17 @@
 	<!-- 인클루드 header -->
 	<%@ include file="./top/header.jsp" %>
 
+<main role="main" class="container">
+	
+	<!--------------------- 메인 배너 ----------------------->
+	<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+		<img class="mr-3" src="${pageContext.request.contextPath}/uploadfile/KakaoTalk_20180525_160336789.png" alt="" width="48" height="48">
+		<div class="lh-100">
+			<h6 class="mb-0 text-white lh-100">Bootstrap</h6>
+			<small>Since 2011</small>
+		</div>
+	</div>
+	
 	<div class="nav-scroller bg-white">
 	<div class="container">
 		<nav class="nav nav-underline">
@@ -62,18 +73,6 @@
 		</nav>
 	</div>
 </div>
-
-
-<main role="main" class="container">
-	
-	<!--------------------- 메인 배너 ----------------------->
-	<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-		<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
-		<div class="lh-100">
-			<h6 class="mb-0 text-white lh-100">Bootstrap</h6>
-			<small>Since 2011</small>
-		</div>
-	</div>
 
 <div class="row">
 

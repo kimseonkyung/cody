@@ -46,8 +46,8 @@ a {
 #content {
 	border: 2px solid darkgray;
 	border-radius: 5px 5px 5px 5px;
-	width: 842px;
-	height: 2000px;
+	min-width: 842px;
+	min-height: 1500px;
 	position: relative;
 	/*border: 1px solid gray;*/
 	/*중앙정렬*/
@@ -57,17 +57,7 @@ a {
 	margin-top: 10px;
 }
 
-#form {
-	width: 842px;
-	height: 1360px;
-}
 
-#side {
-	width: 280px;
-	height: 1312px;
-	left: 0;
-	position: absolute;
-}
 
 .side1 {
 	margin-top: 45px;
@@ -86,7 +76,7 @@ a {
 
 #main {
 	width: 550px;
-	height: 1312px;
+	min-height: 1312px;
 	right: 0;
 	position: absolute;
 }
@@ -103,8 +93,8 @@ a {
 }
 
 #image_block {
-	width: 280px;
-	height: 360px;
+	width: 284px;
+	height: 364px;
 	border: 2px solid darkgray;
 	position: absolute;
 	left: 20px;
@@ -122,15 +112,15 @@ a {
 }
 
 .sub1 {
-	margin-top: 230px;
+	margin-top: 240px;
 	position: absolute;
-	right: 18px;
+	right: -20px;
 }
 
 .sub2 {
-	margin-top: 253px;
+	margin-top: 260px;
 	position: absolute;
-	right: 115px;
+	right: 45px;
 }
 
 #replace {
@@ -160,7 +150,7 @@ a {
 
 #item {
 	width: 550px;
-	height: 100px;
+	min-height: 100px;
 	left: 0;
 }
 
@@ -231,8 +221,8 @@ a {
 
 #intro_text {
 	border: 2px solid darkgray;
-	width: 466px;
-	height: 303px;
+	width: 469px;
+	height: 292px;
 	border-radius: 3px 3px 3px 3px;
 	margin-left: 2px;
 }
@@ -315,10 +305,8 @@ a {
 }
 
 #input {
-	width: 842px;
 	height: 80px;
 	overflow: hidden;
-	position: absolute;
 	bottom: 0;
 }
 
@@ -382,61 +370,84 @@ input:focus, textarea:focus {
 </style>
 </head>
 
-<body>
+<body class="bg-light">
 
 	<!-- 인클루드 header -->
 	<%@ include file="../top/header.jsp" %>
 	
+	<div class="nav-scroller bg-white">
+		<div class="container">
+			<nav class="nav nav-underline">
+				<a class="nav-link active" href="#">Dashboard</a> <a class="nav-link" href="#"> Friends <span class="badge badge-pill bg-light align-text-bottom">27</span></a> <a class="nav-link" href="#">all</a> <a class="nav-link" href="#">men</a>
+				<a class="nav-link" href="#">women</a> <a class="nav-link" href="#">아이템</a>
+				<a class="nav-link" href="#">코디</a> <a class="nav-link" href="#">사용자</a>
+			</nav>
+		</div>
+	</div>
 	
-	<h1>코디등록</h1>
+	<main role="main" class="container">
+	<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded">
+		<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
+		<div class="lh-100">
+			<h6 class="mb-0 text-white lh-100">Bootstrap</h6>
+			<small>Since 2011</small>
+		</div>
+	</div>
 
+	<div class="my-3 p-3 bg-white rounded">
+	
 	<div id="content">
-		<form role="codyForm" enctype="multipart/form-data"
-			onkeydown="return capturekey(event)">
-			<!--------------------사이드--------------------->
-			<div id="side">
-				<div class="side1">
-					<h4>코디 이미지※</h4>
+		<form role="codyForm" enctype="multipart/form-data" onkeydown="return capturekey(event)">
+			
+			<div class="row">
+			
+			<!--------------------- 메인 사이드 ----------------------->
+				<div class="col-md-4 order-md-1 mr-auto">
+				
+					   <div class="my-3 p-3 bg-white rounded">
+						<div class="side1">
+							<h4>코디 이미지※</h4>
+						</div>
+						</div>
+					
+					   <div class="my-3 p-3 bg-white rounded">
+						<div class="side2">
+							<h4>착용 아이템※</h4>
+						</div>
+						</div>
+						
+						<div class="my-3 p-3 bg-white rounded">
+						<div class="side3">
+                        <h4>코디 상세</h4>
+                        </div>
+                        </div>
+					
 				</div>
-				<div class="side2">
-					<h4>착용 아이템※</h4>
-				</div>
-				<div class="side3">
-					<h4>코디 상세</h4>
-				</div>
-			</div>
 
 			<!--------------------메인--------------------->
-			<div id="main">
+			<div class="col-md-7 order-md-2">
+			<div class="my-3 p-3 bg-white rounded">
 				<div id="image">
 					<div id="image_frame">
 						<div id="image_block">
 							<img id="preview" src="" width="280" height="360">
 						</div>
 						<div id="image_input">
-							<button id="replace">사진 업로드</button>
-							<input id="input_image" type="file" name="photofile"
-								value="파일 업로드" accept='image/*'>
+										<button id="replace">사진 업로드</button>
+										<input id="input_image" type="file" name="photofile" value="파일 업로드" accept="image/*">
+									</div>
+									<div class="sub1">
+										<h6>권장 사이즈 : 가로 500 × 세로 667</h6>
+									</div>
+									<div class="sub2">
+										<h6>용량 : 5MB 이내</h6>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="sub1">
-							<h6>권장 사이즈 : 가로 500px × 세로 667px</h6>
-						</div>
-						<div class="sub2">
-							<h6>용량 : 5MB 이내</h6>
-						</div>
-					</div>
-				</div>
 				
-				<!-- 항목 추가 아이템 테이블 -->
-				<div>
-					<table class="table table-bordered">
-						<tbody id="codyTable">
-						</tbody>
-					</table>
-				</div>	
-
-
-				<div id="item">
+				<div class="my-3 p-3 bg-white rounded">
+				  <div id="item">
 					<div class="dropdown">
 						<button id="input_item" type="button" data-toggle="dropdown">+   항목 추가</button>
 						<ul class="dropdown-menu">
@@ -447,15 +458,22 @@ input:focus, textarea:focus {
 						<li><button type="button" data-toggle="modal" data-target="#NewitemModal">신규 아이템 등록</button></li>
 						<li><button type="button" data-toggle="modal" data-target="#NaveritemModal">네이버 검색</button></li>
 						</ul>
-					</div>		
-				</div>
+					</div>			
 				
-				
-				
-		<div id="item_intro">
-		<h6>최대 9 항목까지 추가 할 수 있습니다</h6>
-	</div>
+				<div id="item_intro">
+								<h6>최대 9 항목까지 추가 할 수 있습니다</h6>
+								<!-- 항목 추가 아이템 테이블 -->
+								<div>
+									<table class="table table-bordered">
+										<tbody id="codyTable">
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						</div>
 
+    <div class="my-3 p-3 bg-white rounded">
 	<div id="title">
 		<div id="title_name">
 			<h4>코디 제목</h4>
@@ -465,13 +483,16 @@ input:focus, textarea:focus {
 				onkeyup="limit1(this)">
 		</div>
 	</div>
+	</div>
+	
+	<div class="my-3 p-3 bg-white rounded">		
 	<div id="intro">
 		<div id="intro_name">
 			<h4>코디 소개문</h4>
 		</div>
 		<div id="intro_input">
 			<div id="intro_text">
-				<textarea class="text" style="resize: none" rows="20" cols="64"
+				<textarea class="text" style="resize: none" rows="12" cols="64"
 					name="cody_intro" onkeyup="limit2(this)"></textarea>
 			</div>
 			<div id="intro_sub">
@@ -479,6 +500,9 @@ input:focus, textarea:focus {
 			</div>
 		</div>
 	</div>
+	</div>
+	
+	<div class="my-3 p-3 bg-white rounded">	
 	<div id="gender">
 		<div id="gender_name">
 			<h4>성별※</h4>
@@ -488,6 +512,9 @@ input:focus, textarea:focus {
 				<input type="radio" name="cody_gender" value="false">Woman</label>
 		</div>
 	</div>
+	</div>
+	
+    <div class="my-3 p-3 bg-white rounded">
 	<div id="height">
 		<div id="height_name">
 			<h4>신장</h4>
@@ -569,6 +596,9 @@ input:focus, textarea:focus {
 			</select>
 		</div>
 	</div>
+	</div>
+	
+	<div class="my-3 p-3 bg-white rounded">
 	<div id="age">
 		<div id="age_name">
 			<h4>나이</h4>
@@ -623,19 +653,42 @@ input:focus, textarea:focus {
 		</div>
 	</div>
 	</div>
-	
+	</div>
 	
 
 	<!--------------------업로드--------------------->
-
-	</form>
+<div class="col-md-12 order-md-3">
+		<div class="my-3 p-3 bg-white rounded">
 	<div id="input">
 		<div id="upload_input">
 			<input id="input_upload" type="submit" onclick="codyInsert()">
 		</div>
 	</div>
 	</div>
-
+</div>
+		</div>
+		
+		</form>
+		</div>
+		</div>
+		</main>
+	<!--------------------- 푸터 ----------------------->
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+		<p class="mb-1">
+			Bitcamp 2018 Project by<a href="https://twitter.com/mdo"><br>Drop
+				the table</a>.
+		</p>
+		<p>
+			</p><ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+        <p></p>
+        </footer>
+	
+	
+	
 	<!--------------------옷장--------------------->
 	<div class="container" style="float: left">
 		<div class="modal fade" id="ClosetModal" role="dialog">

@@ -33,7 +33,7 @@
 .searchlabel
 /*서치박스 스타일*/
 {
-  width: 750px;
+  width: 350px;
   margin: 1px 0 0 0;
   padding: 1px;
   background-color: #ccccff;
@@ -44,14 +44,14 @@
     /*코디,아이템,회원 스타일*/
 {  padding: 1px;
   border: 1px solid #ccccff;
-  width: 750px;
+  
 }
 
 button
 {
     margin: 20px;}
-      section.buttons {
-            overflow: hidden;
+section.buttons {
+        overflow: hidden;
         }
     
 #section1b input {
@@ -62,7 +62,7 @@ section.buttons>label {
             
             /*블럭 형태로 처리*/
             display : block;
-            width : 250px;
+            width: 100px;
             height : 40px;
             
             /*블럭의 중앙에 텍스트 위치*/
@@ -70,7 +70,7 @@ section.buttons>label {
             line-height: 30px;
             
             /* label 을 수평으로 정렬 */
-            float : left;
+            display: inline-block;
             
             
             /*테두리 속성*/
@@ -108,7 +108,7 @@ section.buttons>label {
 <header class="mb_auto">
 	<div class="d-flex flex-column flex-md-row align-items-center px-md-3 mb-2 border-bottom fixed-top bg-white">
 	<div class="container">
-	<div class="navbar navbar-expand-lg navbar">
+	<nav class="navbar navbar-expand-lg navbar">
 	<div class="d-flex flex-column flex-md-row mr-auto">
 	 
 	 <form class="form-inline mr-auto md-2">
@@ -135,7 +135,7 @@ section.buttons>label {
 		</div>
 		
 		
-		<a class="navbar-brand mr-auto" href="#">Cody</a>
+		<a class="navbar-brand mr-auto" href="${pageContext.request.contextPath}">Cody</a>
 		
 
 		<div class="my-2 my-md-0 mr-md-3"id="navbarsExampleDefault">
@@ -177,7 +177,7 @@ section.buttons>label {
 							
 			</ul>
 		</div>
-	</div>
+	</nav>
 	</div>
 	</div>
 	</header>
@@ -298,7 +298,7 @@ section.buttons>label {
 
 <!-- 로그인 폼 -->
 
-		<div class="container" style="float: left">
+<div class="container" style="float: left">
 			<div class="modal fade" id="loginModal" role="dialog">
 				<div class="modal-dialog">
 					<!-- Modal content-->
