@@ -27,27 +27,33 @@
 
 
 <style>
+#main_search{
+      width: 120px;
+}
 
 </style>
 </head>
 <body>
 
 <header class="mb_auto">
-	<div class="codyHeaderBar fixed-top bg-dark">
-	<nav class="navbar navbar-expand-lg navbar-dark">
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search"
+	<div class="d-flex flex-column flex-md-row align-items-center px-md-3 mb-2 border-bottom fixed-top bg-white">
+	<div class="container">
+	<div class="navbar navbar-expand-lg navbar">
+	<div class="d-flex flex-column flex-md-row mr-auto">
+	 <form class="form-inline mr-auto md-2">	 
+			<input id="main_search" class="form-control mr-sm-2" type="text" placeholder="Search"
 				aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
 		</form>
-		<a class="navbar-brand mr-auto mr-lg-0" href="#">Cody</a>
-		<button class="navbar-toggler p-0 border-0" type="button"
-			data-toggle="offcanvas">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		</div>
+		
+		
+		<a class="navbar-brand mr-auto" href="#">Cody</a>
+		
 
-		<div class="navbar-collapse offcanvas-collapse"
-			id="navbarsExampleDefault">
+		<div class="my-2 my-md-0 mr-md-3"id="navbarsExampleDefault">
+				
 			<ul class="navbar-nav mr-auto">
 		
 			<c:choose>
@@ -82,10 +88,11 @@
 				<li class="nav-item"><a class="nav-link" href="home" data-toggle="modal" data-target="#loginModal">로그인</a></li>
 			 </c:otherwise>
 				</c:choose>
-					
+							
 			</ul>
 		</div>
-	</nav>
+	</div>
+	</div>
 	</div>
 	</header>
 	<a href="#" class="icon_font over"></a>

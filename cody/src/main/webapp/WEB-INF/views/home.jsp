@@ -53,14 +53,12 @@
 	<!-- 인클루드 header -->
 	<%@ include file="./top/header.jsp" %>
 
-	<div class="nav-scroller bg-white box-shadow">
+	<div class="nav-scroller bg-white">
 	<div class="container">
 		<nav class="nav nav-underline">
-			<a class="nav-link active" href="#">Dashboard</a> <a class="nav-link" href="#"> 
-			Friends <span class="badge badge-pill bg-light align-text-bottom">27</span></a> 
-			<a class="nav-link" href="#">all</a> <a class="nav-link" href="#">men</a>
-			<a class="nav-link" href="#">women</a> <a class="nav-link" href="#">아이템</a>
-			<a class="nav-link" href="#">코디</a> <a class="nav-link" href="#">사용자</a>
+			<a class="nav-link col-4 mr-auto" href="#">all</a> 
+			<a class="nav-link col-4 mr-auto" href="#">men</a>
+			<a class="nav-link col-4 mr-auto" href="#">women</a>
 		</nav>
 	</div>
 </div>
@@ -194,7 +192,8 @@
 	
     <!--------------------- 푸터 ----------------------->	
 <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">Bitcamp 2018 Project by<a href="https://twitter.com/mdo"><br>Drop the table</a>.</p>
+    <p class="mb-1">Bitcamp 2018 Project for <a href="${pageContext.request.contextPath }">Cody</a> 
+    by <a href="https://twitter.com/mdo">Drop the table</a>.</p>
       <p>
        <ul class="list-inline">
           <li class="list-inline-item"><a href="#">Privacy</a></li>
