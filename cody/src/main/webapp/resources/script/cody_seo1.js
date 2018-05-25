@@ -17,7 +17,7 @@ function handleImgFileSelect(e){
 		cody_image = f;
 		
 		var reader = new FileReader();
-		if(f.size>5000000){
+		if(f.size>5242880){
 	        alert("5MB 미만 파일만 업로드 해주세요.");
 	        $("#preview").attr("src","blank");
 	        $('#input_image').wrap('<form>').closest('form').get(0).reset();
