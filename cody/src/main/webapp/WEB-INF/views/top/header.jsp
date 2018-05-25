@@ -27,10 +27,80 @@
 
 
 <style>
-#main_search{
+#searchbox{
       width: 120px;
 }
+.searchlabel
+/*서치박스 스타일*/
+{
+  width: 750px;
+  margin: 1px 0 0 0;
+  padding: 1px;
+  background-color: #ccccff;
+  text-align: center;
+  border: 1px solid #ccccff;
+}
+.elements
+    /*코디,아이템,회원 스타일*/
+{  padding: 1px;
+  border: 1px solid #ccccff;
+  width: 750px;
+}
 
+button
+{
+    margin: 20px;}
+      section.buttons {
+            overflow: hidden;
+        }
+    
+#section1b input {
+        display: none;
+    }
+    
+section.buttons>label {
+            
+            /*블럭 형태로 처리*/
+            display : block;
+            width : 250px;
+            height : 40px;
+            
+            /*블럭의 중앙에 텍스트 위치*/
+            text-align: center;
+            line-height: 30px;
+            
+            /* label 을 수평으로 정렬 */
+            float : left;
+            
+            
+            /*테두리 속성*/
+            box-sizing: border-box;
+            /*border: 1px solid #000000;*/
+            
+            /*배경 색 지정*/
+            background-color: white;
+            color: black;
+            
+            
+        }
+        /*선택시 색상변경*/
+        section.buttons>label:hover {
+            cursor: pointer;
+        }
+        
+        input:nth-of-type(1):checked ~ section.buttons > label:nth-of-type(1) {
+            background-color: #DDDDDD;
+            color: #000000;
+        }
+        
+        input:nth-of-type(2):checked ~ section.buttons > label:nth-of-type(2) {
+            background-color: #DDDDDD;
+            color : #000000;
+        }
+      input:nth-of-type(3):checked ~ section.buttons > label:nth-of-type(3) {
+            background-color: #DDDDDD;
+            color : #000000;
+        }
 </style>
 </head>
 <body>
@@ -40,12 +110,28 @@
 	<div class="container">
 	<div class="navbar navbar-expand-lg navbar">
 	<div class="d-flex flex-column flex-md-row mr-auto">
-	 <form class="form-inline mr-auto md-2">	 
-			<input id="main_search" class="form-control mr-sm-2" type="text" placeholder="Search"
-				aria-label="Search">
+	 
+	 <form class="form-inline mr-auto md-2">
+	 <div class="d-flex flex-column flex-md-row mr-auto">	 
+			<div id="section1" class="label">
+			<input class="form-control mr-sm-2" type="text" placeholder="Search" id="searchbox" aria-label="Search">
 				
+			      <div id="section1b" class="elements">
+                    <input id="1" type="radio" name="tab"> 
+                    <input id="2" type="radio" name="tab">
+                    <input id="3" type="radio" name="tab">
+   
+                       <section class="buttons">
+                       <label for="1">코디</label>
+                       <label for="2">아이템</label>
+                       <label for="3">회원</label>
+                       </section>   
+                   </div>
+                 </div>
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-		</form>
+	 </div>
+		
+	 </form>
 		</div>
 		
 		
@@ -339,7 +425,28 @@
 		src="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.js"></script>
 	<script	src="${pageContext.request.contextPath}/resources/script/cody_park.js"></script>
 	<script	src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>
-	
+	<script>
+var elements = document.getElementsByTagName("div");
+// 모든 영역 접기
+for (var i = 0; i < elements.length; i++) {
+  if (elements[i].className == "elements") {
+    elements[i].style.display="none";
+  } else if (elements[i].className == "label") {
+    elements[i].onclick=switchDisplay;
+  }
+}
+// 상태에 따라 접거나 펼치기
+function switchDisplay() {
+  var parent = this.parentNode;
+  var target = parent.getElementsByTagName("div")[1];
+  if (target.style.display == "none") {
+    target.style.display="block";
+  } else {
+    target.style.display="none";
+  }
+  return false;
+}
+</script>
 	
 	
 </html>
