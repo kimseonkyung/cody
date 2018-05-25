@@ -3,21 +3,33 @@
     2018.05.01
     Drop The Table
 */
-
-
-
 #main_content {
-	width: 100%
+	width: 100%;
 	overflow: hidden;
 }
 
 #main_section {
-    float: right;
-    width: 900px;
-    padding: 15px;
+	float: right;
+	width: 900px;
+	padding: 15px;
 }
 
 #main_aside {
-    float: left;
-    width: 150px;
+	float: left;
+	width: 150px;
 }
+
+.card-item-ol {
+	overflow: hidden;
+}
+
+.card-item-li {
+	width: 240px;
+	float: left;
+	margin: 0 10px 10px 10px;
+}
+
+.card-item {
+	height: 300px;
+}
+

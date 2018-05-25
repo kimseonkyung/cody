@@ -31,6 +31,14 @@ public class ItemListService {
 		return item;
 	}
 
+	public List<ItemDto> selectByMemberIdx(int memberIdx) {
+		
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> item = dao.selectByMemberIdx(memberIdx);
+		
+		return item;
+	}
+
 	public List<ItemDto> getListSearch(String name) {
 		
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);			

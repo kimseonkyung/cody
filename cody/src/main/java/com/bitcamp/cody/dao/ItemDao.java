@@ -9,6 +9,7 @@ public interface ItemDao {
 
 	public int insertItem(ItemDto item);
 	public ItemDto selectByIdx(int idx);
+	public List<ItemDto> selectByMemberIdx(int memberIdx);
 	public List<ItemDto> selectList();
 	public List<ItemDto> selectByName(String name);
 	public int updateItem(ItemDto item);

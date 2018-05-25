@@ -20,6 +20,7 @@ import com.bitcamp.cody.dto.ItemList;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.CodyService;
+import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
 import com.bitcamp.cody.service.MemberService;
 
@@ -34,10 +35,22 @@ public class CodyController {
 	@Autowired
 	ItemService itemService;
 	@Autowired
+	ItemListService itemListService;
+	@Autowired
 	MemberService memberService;
+	
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
-	public String codyForm() {
+	public String codyForm(Model model, HttpSession session) {
+		String user = "a";
+		// String user = (String) session.getAttribute("id");    // 로그인된 아이디값 가져오기
+		
+		MemberDto member = memberService.selectById(user);	// 아이디로 member정보 가져오기
+		int memberIdx = member.getMember_idx();
+		
+		List<ItemDto> item = itemListService.selectByMemberIdx(memberIdx);
+		model.addAttribute("items", item);
+		
 		return "cody/codyForm";
 	}
 

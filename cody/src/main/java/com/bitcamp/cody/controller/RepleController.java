@@ -100,6 +100,7 @@ public class RepleController {
 
 		System.out.println("reple_idx : " + idx);
 
+		
 		int resultCnt = repleService.repleDelete(idx);
 
 		String msg = "정보삭제 완료";

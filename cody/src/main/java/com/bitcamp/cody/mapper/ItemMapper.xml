@@ -15,6 +15,10 @@
 		select * from item where item_idx = #{idx}
 	</select>
 
+	<select id="selectByMemberIdx" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from item where member_idx = #{memberIdx}
+	</select>
+
 	<select id="selectList" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item
 	</select>
