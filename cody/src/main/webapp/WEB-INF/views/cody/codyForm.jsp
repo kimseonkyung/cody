@@ -375,22 +375,18 @@ input:focus, textarea:focus {
 	<!-- 인클루드 header -->
 	<%@ include file="../top/header.jsp" %>
 	
-	<div class="nav-scroller bg-white">
-		<div class="container">
-			<nav class="nav nav-underline">
-				<a class="nav-link active" href="#">Dashboard</a> <a class="nav-link" href="#"> Friends <span class="badge badge-pill bg-light align-text-bottom">27</span></a> <a class="nav-link" href="#">all</a> <a class="nav-link" href="#">men</a>
-				<a class="nav-link" href="#">women</a> <a class="nav-link" href="#">아이템</a>
-				<a class="nav-link" href="#">코디</a> <a class="nav-link" href="#">사용자</a>
-			</nav>
-		</div>
-	</div>
+
 	
 	<main role="main" class="container">
-	<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded">
-		<img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
+	<!--------------------- 메인 배너 ----------------------->
+	<div
+		class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" 
+		style="
+		background-image: url('/cody/uploadfile/cody.png');
+		background-repeat:no-repeat;
+		background-size: contain;">
 		<div class="lh-100">
-			<h6 class="mb-0 text-white lh-100">Bootstrap</h6>
-			<small>Since 2011</small>
+			<h5 class="mb-0 text-white lh-100">CODY</h5><small>bitcamp 2018</small>
 		</div>
 	</div>
 

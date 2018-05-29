@@ -47,26 +47,52 @@ input:focus, textarea:focus {
 	#button2{
 	width: 300px;
 	}
+	.card-item-ol {
+		overflow: hidden;
+		
+	}
 	
+	.card-item-li {
+		width: 240px; 
+		float: left;
+		margin: 0 10px 10px 10px;
+	}
+
+	.card-item {
+		height: 300px;
+	}
 </style>
 
 
 </head>
-<body>
+<body class="bg-light">
 
 	<!-- 인클루드 header -->
 	<%@ include file="../top/header.jsp" %>
 	
 
 <main role="main" class="container">
+	<!--------------------- 메인 배너 ----------------------->
 	<div
 		class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" 
-		style="background-image: url('${pageContext.request.contextPath }/uploadfile/cody.png'); 
-		background-repeat:no-repeat; background-size:cover;">
+		style="
+		background-image: url('/cody/uploadfile/cody.png');
+		background-repeat:no-repeat;
+		background-size: contain;">
 		<div class="lh-100">
 			<h5 class="mb-0 text-white lh-100">CODY</h5><small>bitcamp 2018</small>
 		</div>
 	</div>
+	
+	<div class="nav-scroller bg-white">
+	<div class="container">
+		<nav class="nav nav-underline">
+			<a class="nav-link col-4 mr-auto" href="#">all</a> 
+			<a class="nav-link col-4 mr-auto" href="#">men</a>
+			<a class="nav-link col-4 mr-auto" href="#">women</a>
+		</nav>
+	</div>
+</div>
 	
 	
 	<div class="my-3 p-3 bg-white rounded box-shadow">
@@ -98,20 +124,32 @@ input:focus, textarea:focus {
 			<div class="my-3 p-3 bg-white rounded box-shadow">
 				<ol class="card-item-ol" >
 				
-			<!------------------ 아이템 리스트 반복 출력 ----------------------->
-			<c:forEach var="item" items="${items }">
 			
+		<!------------------ 코디 리스트 반복 출력 ----------------------->
+			<c:forEach var="cody" items="${codys }">
 				<li class="card card-item-li">
-					<img class="card-img-top card-item" src="${item.item_image}" alt="Card image cap" onclick="itemListView(${item.item_idx})">
-						<div class="card-body" style="overflow: hidden; position: relative;">
-						
-							<h5 class="card-title" style="float: left;">임해군</h5><br>
-							${item.item_name }<br> ${item.item_category }<br> ${item.item_price }
-							
-							<a href="#" class="btn btn-primary"	style="position: absolute; right: 20px;">구입</a>
+					<img class="card-img-top card-item" src="${cody.cody_image}" alt="Card image cap" onclick="codyListView(${cody.cody_idx})">
+		           <div class="card-body" style="overflow: hidden; position: relative;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;padding-top: 15px;height: 160px;">
+						 <h5 class="card-title" style="float: left;">아이디</h5>
+							<div><c:set var="data" value="${cody.cody_gender}" /> 
+					         <c:choose>
+	                           <c:when test="${data eq true}">
+					             Man
+					           </c:when>
+					           <c:otherwise>
+					            Woman
+					           </c:otherwise>
+					          </c:choose>
+					         </div> 
+					 <div>${cody.cody_height}cm</div> 
+					 <div>${cody.cody_age}세</div>
+							<div class="card-body" style="overflow: hidden; position: relative;height: 55px;padding-top: 15px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;">
+							<a href="#" class="btn btn-primary"	style="position: absolute; left: 0px;">좋아요</a>
+							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 0px;">즐겨찾기</a>
 						</div>
+						</div>						
 				</li>
-			</c:forEach>
+				</c:forEach>
 				</ol>
 			</div>
 		</div>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,11 +55,14 @@
 <main role="main" class="container">
 	
 	<!--------------------- 메인 배너 ----------------------->
-	<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-		<img class="mr-3" src="${pageContext.request.contextPath}/uploadfile/KakaoTalk_20180525_160336789.png" alt="" width="48" height="48">
+	<div
+		class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" 
+		style="
+		background-image: url('/cody/uploadfile/cody.png');
+		background-repeat:no-repeat;
+		background-size: contain;">
 		<div class="lh-100">
-			<h6 class="mb-0 text-white lh-100">Bootstrap</h6>
-			<small>Since 2011</small>
+			<h5 class="mb-0 text-white lh-100">CODY</h5><small>bitcamp 2018</small>
 		</div>
 	</div>
 	

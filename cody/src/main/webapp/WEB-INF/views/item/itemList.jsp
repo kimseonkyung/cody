@@ -58,21 +58,60 @@
 	<%@ include file="../top/header.jsp" %>
 
 	<main role="main" class="container">
+	<!--------------------- 메인 배너 ----------------------->
 	<div
-		class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-		<img class="mr-3"
-			src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg"
-			alt="" width="48" height="48">
+		class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" 
+		style="
+		background-image: url('/cody/uploadfile/cody.png');
+		background-repeat:no-repeat;
+		background-size: contain;">
 		<div class="lh-100">
-			<h6 class="mb-0 text-white lh-100">Bootstrap</h6>
-			<small>Since 2011</small>
+			<h5 class="mb-0 text-white lh-100">CODY</h5><small>bitcamp 2018</small>
 		</div>
 	</div>
+	
+	<div class="nav-scroller bg-white">
+	<div class="container">
+		<nav class="nav nav-underline">
+			<a class="nav-link col-4 mr-auto" href="#">all</a> 
+			<a class="nav-link col-4 mr-auto" href="#">men</a>
+			<a class="nav-link col-4 mr-auto" href="#">women</a>
+		</nav>
+	</div>
+</div>
 
 
-	<div id="main_content">
+<div class="row">
+<!------------------------- 메인  --------------------------->
+		
+		<div class="col-md-2 order-md-1 mb-4">
+		<div class="my-3 p-3 bg-white rounded box-shadow">
+			<h1>카테고리</h1>
+			<ul>
+				<li><a href="#">데이터</a></li>
+				<li><a href="#">데이터</a></li>
+				<li><a href="#">데이터</a></li>
+				<li><a href="#">데이터</a></li>
+				<li><a href="#">데이터</a></li>
+			</ul>
+			
+			<div class="my-3 p-3 bg-white rounded box-shadow">
+			<h1>최근 글</h1>
+			<ul>
+				<li><a href="#">데이터</a></li>
+				<li><a href="#">데이터</a></li>
+				<li><a href="#">데이터</a></li>
+				<li><a href="#">데이터</a></li>
+				<li><a href="#">데이터</a></li>
+			</ul>
 
-		<div id="main_section">
+
+
+</div>
+</div>
+		</div>
+
+		<div class="col-md-10 order-md-2">
 			<div class="my-3 p-3 bg-white rounded box-shadow">
 
 				<ol class="card-item-ol" >
@@ -84,10 +123,8 @@
 				<li class="card card-item-li">
 					<img class="card-img-top card-item" src="${item.item_image}" alt="Card image cap" onclick="itemListView(${item.item_idx})">
 						<div class="card-body" style="overflow: hidden; position: relative;">
-						
-							<h5 class="card-title" style="float: left;">임해군</h5><br>
+						 <h5 class="card-title" style="float: left;">임해군</h5><br>
 							${item.item_name }<br> ${item.item_category }<br> ${item.item_price }
-							
 							<a href="#" class="btn btn-primary"	style="position: absolute; right: 20px;">구입</a>
 						</div>
 				</li>
@@ -100,36 +137,22 @@
 
 		</div>
 
-		<!------------------------- 메인 사이드 --------------------------->
-		<div id="main_aside">
+		
 
-			<h1>카테고리</h1>
-			<ul>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-			</ul>
-
-			<h1>최근 글</h1>
-			<ul>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-			</ul>
-
-
-
-
-
-		</div>
-
-	</div>
-
+</div>
 	</main>
+	
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">Bitcamp 2018 Project for <a href="${pageContext.request.contextPath }">Cody</a> by <a href="https://twitter.com/mdo">Drop the table</a>.</p>
+      <p>
+       <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
