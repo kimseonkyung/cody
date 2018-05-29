@@ -34,11 +34,11 @@
 
 			<!-- 회원 정보 출력반복 시작 -->
 			<c:forEach var="bookmark" items="${bookmarks}">
-				<c:forEach var="cody" items="${codys}">
+				
 				<tr>
-				<td><c:if test="${cody.cody_image !=null }">
+				<td><c:if test="${bookmark.cody_image !=null }">
 							<img
-								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"
+								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${bookmark.cody_image}"
 								width="200">
 					</c:if></td> 
 					<td>${bookmark.bookmark_idx}</td>
@@ -64,7 +64,7 @@
 					</td>
 				</tr>
 				</c:forEach>
-			</c:forEach>
+		
 			<!-- 회원 정보 출력 반복 끝 -->
 
 		</table>

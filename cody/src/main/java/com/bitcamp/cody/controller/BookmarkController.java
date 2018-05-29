@@ -48,7 +48,7 @@ public class BookmarkController {
 		model.addAttribute("msg1", msg1);
 		model.addAttribute("cody_idx", bookmarkVo.getCody_idx());
 		model.addAttribute("member_idx", bookmarkVo.getMember_idx());
-				
+		model.addAttribute("cody_image", bookmarkVo.getCody_image());		
 		System.out.println(msg1.toString()); 
 		
 		return "cody/bookmarkInsertOk";

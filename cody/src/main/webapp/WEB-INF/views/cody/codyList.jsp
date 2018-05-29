@@ -118,7 +118,7 @@
 					 <div>${cody.cody_age}세</div>
 							<div class="card-body" style="overflow: hidden; position: relative;height: 55px;padding-top: 15px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;">
 							<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-primary"	style="position: absolute; left: 0px;">수정</a>
-							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 0px;">즐겨찾기</a>
+							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}" class="btn btn-primary"	style="position: absolute; right: 0px;">즐겨찾기</a>
 						</div>
 						</div>						
 				</li>

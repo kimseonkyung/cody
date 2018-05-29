@@ -15,8 +15,8 @@
 	</select>
 	
 	<insert id="insertBookmark" parameterType="com.bitcamp.cody.dto.BookmarkDto">
-		insert into bookmark (member_idx, cody_idx)
-		values ( #{member_idx}, #{cody_idx})
+		insert into bookmark (member_idx, cody_idx, cody_image)
+		values ( #{member_idx}, #{cody_idx}, #{cody_image})
 	</insert>
 	
 	<delete id="deleteBookmark" parameterType="int">

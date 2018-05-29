@@ -42,7 +42,7 @@ public class CodyController {
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
 	public String codyForm(Model model, HttpSession session) {
-		String user = "a";
+		String user = "jjy905@gmail.com";
 		// String user = (String) session.getAttribute("id");    // 로그인된 아이디값 가져오기
 		
 		MemberDto member = memberService.selectById(user);	// 아이디로 member정보 가져오기
@@ -58,7 +58,7 @@ public class CodyController {
 	public String codyInsert(Model model, HttpSession session, CodyDto cody, ItemList list)
 			throws IllegalStateException, IOException {
 		
-		String user = "a";
+		String user = "jjy905@gmail.com";
 		// String user = (String) session.getAttribute("id");    // 로그인된 아이디값 가져오기
 		
 		// 서비스에 회원 데이터 저장 요청
