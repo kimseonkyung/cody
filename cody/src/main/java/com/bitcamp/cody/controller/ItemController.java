@@ -143,21 +143,6 @@ public class ItemController {
 	}
 	
 	/*-------------------------------- 네이버쇼핑api ------------------------------*/
-	
-	/*@RequestMapping(value="/naverItem", produces = "application/text; charset=utf8")
-	public ModelAndView naverItem(@RequestParam(required=false)String keyword){
-        ModelAndView mav = new ModelAndView();
-        
-        if(keyword !=null)
-        {
-            mav.addObject("bookList",naverItemService.searchItem(keyword,10,1));
-        }
-        mav.setViewName("bookList");
-        return mav;
-    }*/
-
-
-	
 	@RequestMapping(value="/naverItem", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String naverItem(@RequestParam(required=false)String keyword){
@@ -213,6 +198,7 @@ public class ItemController {
 		
 		return arr.toString();
     }
+	
 	
  
 }

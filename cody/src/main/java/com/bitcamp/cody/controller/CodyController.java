@@ -111,6 +111,7 @@ public class CodyController {
 		List<CodyDto> codys = codyListService.CodyList();
 		
 		model.addAttribute("codys", codys);
+		
 
 		return "cody/codyList";
 	}
