@@ -25,6 +25,10 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 
+ <!--웹폰트 추가 : 구글 폰트-->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+    <!-- CODY CSS -->
+    <link href="resources/css/cody.css" type="text/css" rel="stylesheet">
 
 <style>
 #searchbox{
@@ -135,7 +139,7 @@ section.buttons>label {
 		</div>
 		
 		
-		<a class="navbar-brand mr-auto" href="${pageContext.request.contextPath}">Cody</a>
+		<a class="navbar-brand mr-auto" style="font-weight=300;" href="${pageContext.request.contextPath}">Cody</a>
 		
 
 		<div class="my-2 my-md-0 mr-md-3"id="navbarsExampleDefault">
@@ -338,7 +342,7 @@ section.buttons>label {
 								<div class="form-group">
 									<div class="col-xl-12ss">
 										<button type="submit" class="btn btn-primary p-3"
-											style="background-color: #01D1FE; color: white; border: none; width: 100%; font-size: 20px;">Login</button>
+											style="background-color: #01D1FE; color: white; border: none; width: 90%; font-size: 20px;">Login</button>
 									</div>
 								</div>
 							</form>
@@ -410,6 +414,7 @@ section.buttons>label {
 	
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<script>
 		window.jQuery
 				|| document
@@ -425,6 +430,9 @@ section.buttons>label {
 		src="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.js"></script>
 	<script	src="${pageContext.request.contextPath}/resources/script/cody_park.js"></script>
 	<script	src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
+	<script	src="${pageContext.request.contextPath}/resources/script/cody_jeong.js"></script>
+	
 	<script>
 var elements = document.getElementsByTagName("div");
 // 모든 영역 접기

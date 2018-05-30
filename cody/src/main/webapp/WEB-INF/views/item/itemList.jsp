@@ -173,6 +173,8 @@
 		src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/holder.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>	
 </body>
 </html>
 

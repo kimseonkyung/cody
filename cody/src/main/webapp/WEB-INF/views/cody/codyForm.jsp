@@ -503,8 +503,8 @@ input:focus, textarea:focus {
 			<h4>성별※</h4>
 		</div>
 		<div id="gender_input">
-			<label><input type="radio" name="cody_gender" value="true">Man</label> <label>
-				<input type="radio" name="cody_gender" value="false">Woman</label>
+			<label><input type="radio" id="gender1" name="cody_gender" value="true">Man</label> <label>
+				<input type="radio" id="gender2" name="cody_gender" value="false">Woman</label>
 		</div>
 	</div>
 	</div>
@@ -515,7 +515,7 @@ input:focus, textarea:focus {
 			<h4>신장</h4>
 		</div>
 		<div id="height_input">
-			<select id="input_height" name="cody_height">
+			<select id="cody_height" name="cody_height">
 				<option value='0'>선택해주세요</option>
 			<c:forEach var="i" begin="50" end="200" step="1">
 			<option value='${i}'>${i}cm</option>
@@ -531,7 +531,7 @@ input:focus, textarea:focus {
 			<h4>나이</h4>
 		</div>
 		<div id="age_input">
-			<select id="input_age" name="cody_age">
+			<select id="cody_age" name="cody_age">
 			<option value='0'>선택해주세요</option>
 			<c:forEach var="i" begin="1" end="80" step="1">
 			<option value='${i}'>${i}세</option>
@@ -560,20 +560,8 @@ input:focus, textarea:focus {
 		</div>
 		</main>
 	<!--------------------- 푸터 ----------------------->
-	<footer class="my-5 pt-5 text-muted text-center text-small">
-		<p class="mb-1">
-			Bitcamp 2018 Project by<a href="https://twitter.com/mdo"><br>Drop
-				the table</a>.
-		</p>
-		<p>
-			</p><ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-        <p></p>
-        </footer>
-	
+     <!-- 인클루드 footer -->
+	<%@ include file="../bottom/footer.jsp" %>
 	
 	
 	<!--------------------옷장--------------------->
@@ -807,7 +795,6 @@ input:focus, textarea:focus {
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
 	
 	<!-- holder.js -->
-	<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
 	
 	<script>
 	

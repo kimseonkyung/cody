@@ -9,19 +9,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.MemberDto;
+import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.ItemListService;
 
 @Controller
 public class MypageController {
 
 	@Autowired
+	CodyListService codyListService;
 	ItemListService itemListService;
 
 	
 	@RequestMapping("/myPage")
 	public String myPage(Model model, HttpSession session) {
+		
+		MemberDto member = (MemberDto) session.getAttribute("loginInfo");
+		int idx = member.getMember_idx();
+		
+		List<CodyDto> codys = codyListService.selectByMemberIdx(idx);
+
+		model.addAttribute("codys", codys);
 		
 		return "cody/myPage";
 	}

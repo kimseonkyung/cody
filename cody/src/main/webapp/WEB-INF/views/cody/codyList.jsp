@@ -133,17 +133,8 @@
 </div>
 	</main>
 
-<footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">Bitcamp 2018 Project for <a href="${pageContext.request.contextPath }">Cody</a> by <a href="https://twitter.com/mdo">Drop the table</a>.</p>
-      <p>
-       <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-        <a href="#">Back to top</a>
-      </p>
-</footer>
+<!-- 인클루드 footer -->
+	<%@ include file="../bottom/footer.jsp" %>
 
 
 	<!-- Bootstrap core JavaScript
@@ -152,18 +143,6 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/jquery-slim.min.js"><\/script>')
-	</script>
-	<script
-		src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/popper.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/bootstrap/assets/vendor/holder.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.js"></script>
+
 </body>
 </html>

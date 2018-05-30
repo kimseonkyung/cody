@@ -22,7 +22,7 @@
 
 	<select id="selectList"
 		resultType="com.bitcamp.cody.dto.CodyDto">
-		select * from cody
+		select * from cody order by board_date desc;
 	</select>
 	
 	<select id="maxCodyIdx" resultType="int">
@@ -58,7 +58,12 @@
 		parameterType="com.bitcamp.cody.dto.CodyDto">
 		insert into cody (cody_idx, member_idx, board_like)
 		values (#{cody_idx}, #{member_idx}, #{board_like} )
-	</insert>	
+	</insert>
+	
+		<!-- 조회수 증가 -->
+	<update id="countAdd3" parameterType="hashmap">
+		update cody set board_click = #{board_click}+1 where cody_idx = #{cody_idx}
+	</update>	
 
 
 </mapper>

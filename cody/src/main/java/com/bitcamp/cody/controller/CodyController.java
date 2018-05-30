@@ -127,6 +127,8 @@ public class CodyController {
 
 		CodyDto cody = codyListService.CodyListView(idx);
 		model.addAttribute("cody", cody);
+		
+		int result = codyListService.countAdd3(cody);
 
 		return "cody/codyListView";
 	}
