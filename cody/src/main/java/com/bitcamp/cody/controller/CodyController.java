@@ -3,6 +3,7 @@ package com.bitcamp.cody.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Delayed;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,7 +43,7 @@ public class CodyController {
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
 	public String codyForm(Model model, HttpSession session) {
-		String user = "jjy905@gmail.com";
+		String user = "a";
 		// String user = (String) session.getAttribute("id");    // 로그인된 아이디값 가져오기
 		
 		MemberDto member = memberService.selectById(user);	// 아이디로 member정보 가져오기
@@ -58,24 +59,29 @@ public class CodyController {
 	public String codyInsert(Model model, HttpSession session, CodyDto cody, ItemList list)
 			throws IllegalStateException, IOException {
 		
-		String user = "jjy905@gmail.com";
-		// String user = (String) session.getAttribute("id");    // 로그인된 아이디값 가져오기
+		List<ItemDto> itemList = list.getItemList();
+		System.out.println("list테스트 : " + itemList);
+		for(int i=0; i<itemList.size(); i++) {
+			if(itemList.get(i).getItem_name() == null) {
+				itemList.remove(i);
+			}
+		}
+		
+		System.out.println("itemList테스트 : " + itemList);
+		
+		MemberDto member = (MemberDto) session.getAttribute("loginInfo");    // 로그인된 아이디값 가져오기
+		int memberIdx = member.getMember_idx();
 		
 		// 서비스에 회원 데이터 저장 요청
 		// 결과 : 1 / 0
 		// model 에 저장
-		System.out.println("cody : "+ cody);
-		System.out.println("item : "+ list);
-		MemberDto member = memberService.selectById(user);	// 아이디로 member정보 가져오기
-		int memberIdx = member.getMember_idx();
 		
-		System.out.println("member : "+ member);
 		
 		cody.setMember_idx(memberIdx);
 		int resultCnt = codyservice.codyInsert(cody, session);
 		int codyIdx = codyservice.maxCodyIdx();					// 최근에 등록한 코디 idx 찾기
 		ArrayList<ItemDto> arr = new ArrayList<>();
-		for(ItemDto item  : list.getItemList()) {
+		for(ItemDto item  : itemList) {	
 			item.setCody_idx(codyIdx);
 			item.setMember_idx(memberIdx);
 			arr.add(item);

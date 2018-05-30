@@ -354,11 +354,10 @@ input:focus, textarea:focus {
 	resize: none, outline: none;
 }
 
-.sdsd {
-	display:inline; 
-	float: left;
-	padding:0 10px;
+.checkedItem {
+	 border: 1px solid blue!important;
 }
+
 
 </style>
 
@@ -518,77 +517,9 @@ input:focus, textarea:focus {
 		<div id="height_input">
 			<select id="input_height" name="cody_height">
 				<option value='0'>선택해주세요</option>
-				<option value='130'>130cm</option>
-				<option value='131'>131cm</option>
-				<option value='132'>132cm</option>
-				<option value='133'>133cm</option>
-				<option value='134'>134cm</option>
-				<option value='135'>135cm</option>
-				<option value='136'>136cm</option>
-				<option value='137'>137cm</option>
-				<option value='138'>138cm</option>
-				<option value='139'>139cm</option>
-				<option value='140'>140cm</option>
-				<option value='141'>141cm</option>
-				<option value='142'>142cm</option>
-				<option value='143'>143cm</option>
-				<option value='144'>144cm</option>
-				<option value='145'>145cm</option>
-				<option value='146'>146cm</option>
-				<option value='147'>147cm</option>
-				<option value='148'>148cm</option>
-				<option value='149'>149cm</option>
-				<option value='150'>150cm</option>
-				<option value='151'>151cm</option>
-				<option value='152'>152cm</option>
-				<option value='153'>153cm</option>
-				<option value='154'>154cm</option>
-				<option value='155'>155cm</option>
-				<option value='156'>156cm</option>
-				<option value='157'>157cm</option>
-				<option value='158'>158cm</option>
-				<option value='159'>159cm</option>
-				<option value='160'>160cm</option>
-				<option value='161'>161cm</option>
-				<option value='162'>162cm</option>
-				<option value='163'>163cm</option>
-				<option value='164'>164cm</option>
-				<option value='165'>165cm</option>
-				<option value='166'>166cm</option>
-				<option value='167'>167cm</option>
-				<option value='168'>168cm</option>
-				<option value='169'>169cm</option>
-				<option value='170'>170cm</option>
-				<option value='171'>171cm</option>
-				<option value='172'>172cm</option>
-				<option value='173'>173cm</option>
-				<option value='174'>174cm</option>
-				<option value='175'>175cm</option>
-				<option value='176'>176cm</option>
-				<option value='177'>177cm</option>
-				<option value='178'>178cm</option>
-				<option value='179'>179cm</option>
-				<option value='180'>180cm</option>
-				<option value='181'>181cm</option>
-				<option value='182'>182cm</option>
-				<option value='183'>183cm</option>
-				<option value='184'>184cm</option>
-				<option value='185'>185cm</option>
-				<option value='186'>186cm</option>
-				<option value='187'>187cm</option>
-				<option value='188'>188cm</option>
-				<option value='189'>189cm</option>
-				<option value='190'>190cm</option>
-				<option value='191'>191cm</option>
-				<option value='192'>192cm</option>
-				<option value='193'>193cm</option>
-				<option value='194'>194cm</option>
-				<option value='195'>195cm</option>
-				<option value='196'>196cm</option>
-				<option value='197'>197cm</option>
-				<option value='198'>198cm</option>
-				<option value='199'>199cm</option>
-				<option value='200'>200cm</option>
+			<c:forEach var="i" begin="50" end="200" step="1">
+			<option value='${i}'>${i}cm</option>
+			</c:forEach>
 			</select>
 		</div>
 	</div>
@@ -601,50 +532,10 @@ input:focus, textarea:focus {
 		</div>
 		<div id="age_input">
 			<select id="input_age" name="cody_age">
-				<option value='0'>선택해주세요</option>
-				<option value='8'>8세</option>
-				<option value='9'>9세</option>
-				<option value='10'>10세</option>
-				<option value='11'>11세</option>
-				<option value='12'>12세</option>
-				<option value='13'>13세</option>
-				<option value='14'>14세</option>
-				<option value='15'>15세</option>
-				<option value='16'>16세</option>
-				<option value='17'>17세</option>
-				<option value='18'>18세</option>
-				<option value='19'>19세</option>
-				<option value='20'>20세</option>
-				<option value='21'>21세</option>
-				<option value='22'>22세</option>
-				<option value='23'>23세</option>
-				<option value='24'>24세</option>
-				<option value='25'>25세</option>
-				<option value='26'>26세</option>
-				<option value='27'>27세</option>
-				<option value='28'>28세</option>
-				<option value='29'>29세</option>
-				<option value='30'>30세</option>
-				<option value='31'>31세</option>
-				<option value='32'>32세</option>
-				<option value='33'>33세</option>
-				<option value='34'>34세</option>
-				<option value='35'>35세</option>
-				<option value='36'>36세</option>
-				<option value='37'>37세</option>
-				<option value='38'>38세</option>
-				<option value='39'>39세</option>
-				<option value='40'>40세</option>
-				<option value='41'>41세</option>
-				<option value='42'>42세</option>
-				<option value='43'>43세</option>
-				<option value='44'>44세</option>
-				<option value='45'>45세</option>
-				<option value='46'>46세</option>
-				<option value='47'>47세</option>
-				<option value='48'>48세</option>
-				<option value='49'>49세</option>
-				<option value='50'>50세</option>
+			<option value='0'>선택해주세요</option>
+			<c:forEach var="i" begin="1" end="80" step="1">
+			<option value='${i}'>${i}세</option>
+			</c:forEach>
 			</select>
 		</div>
 	</div>
@@ -700,31 +591,42 @@ input:focus, textarea:focus {
 					
 					<div class="modal-body">
 				
-<%-- 						<c:forEach var="item" items="${items }">
-						<input id="chItem${item.item_idx }" type="radio" name="chItem">
-						</c:forEach>
- --%>						
 						<div class="bg-white rounded box-shadow">
+				
+						<section class="ItemButtons">
+				
 				
 						<!-- 옷장 리스트 반복 출력 -->
 							<c:forEach var="item" items="${items }">
-								<div class="card" style="width: 9rem; display: inline-block;">
-  									<img class="card-img-top" src="${item.item_image }" style="height: 150px; " alt="Card image cap">
-  										<div class="card-body" style="height: 70px; ">
+							
+								<input id="chItem${item.item_idx }" type="radio" name="chItem" value="${item.item_idx }" style="display: none;">
+							
+								<div id="card${item.item_idx }" class="card" style="width: 9rem; display: inline-block;">
+								<label for="chItem${item.item_idx }">
+								<img class="card-img-top" src="${item.item_image }" style="height: 150px; " alt="Card image cap">
+								</label>
+								<div class="card-body" style="height: 70px; ">
   											<c:set var="myItemName" value="${item.item_name }" />
   											<c:set var="nameL"  value="${fn:length(myItemName)}" />
   											<c:if test="${nameL > 8 }">
   												<c:set var="myItemName" value="${fn:substring(myItemName, 0, 7)} ..." />
   											</c:if>
    											 <p class="card-text"><small>${myItemName }</small></p>
-  										</div>
+  								</div>
 								</div>
+								<input type="hidden" id="myitem_image${item.item_idx }" value="${item.item_image }">
+								<input type="hidden" id="myitem_name${item.item_idx }" value="${item.item_name }">
+								<input type="hidden" id="myitem_brand${item.item_idx }" value="${item.item_brand }">
+								<input type="hidden" id="myitem_category${item.item_idx }" value="${item.item_category }">
+								<input type="hidden" id="myitem_color${item.item_idx }" value="${item.item_color }">
+								<input type="hidden" id="myitem_price${item.item_idx }" value="${item.item_price }">
 							</c:forEach>
-							
+						</section>
 						</div>
+						
 					</div>
 					<div class="modal-footer">
-					<button class="btn btn-primary" onclick="">확인</button>
+					<button id="myItemOk" class="btn btn-primary">확인</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
@@ -895,6 +797,7 @@ input:focus, textarea:focus {
 			</div>
 		</div>
 	</div>
+	
 
 </body>
 
@@ -970,16 +873,16 @@ input:focus, textarea:focus {
 				
 				
 				$.each(data, function(i, row) {
-					var $div = $('<div class="codyDiv">');
+					var $div = $('<div id="codyDiv'+idx+'">');
 					var $tr = $('<tr>').append(
-						$('<td rowspan="5">').html('<img src="'+row.image+'" width="100">'),
+						$('<td rowspan="6">').html('<img src="'+row.image+'" width="100">'),
 						$('<td>').html('이름 : '+row.title)
 					); $tr.appendTo($div);
 						$tr = $('<tr>').append(
 							$('<td>').html('브랜드 : <input name="itemList['+idx+'].item_brand" type="text" >')
 					); $tr.appendTo($div);
 						$tr = $('<tr>').append(
-							$('<td>').html(' 카테고리 : <select id="input_category" name="itemList['+idx+'].item_category">'
+							$('<td>').html(' 카테고리 : <select id="item_category" name="itemList['+idx+'].item_category">'
 									+'<option>선택해주세요</option>'
 									+'<option value="모자">모자</option>'
 									+'<option value="상의">상의</option>'
@@ -989,7 +892,7 @@ input:focus, textarea:focus {
 									+'<option value="악세사리">악세사리</option></select>')
 					); $tr.appendTo($div);	
 						$tr = $('<tr>').append(
-							$('<td>').html(' 색상 : <select id="input_color" name="itemList['+idx+'].item_color">'
+							$('<td>').html(' 색상 : <select id="item_color" name="itemList['+idx+'].item_color">'
 									+'<option>선택해주세요</option>'
 									+'<option value="white">흰색</option>'
 									+'<option value="black">검은색</option>'
@@ -1004,6 +907,10 @@ input:focus, textarea:focus {
 						$tr = $('<tr>').append(
 							$('<td>').html('가격 : '+row.lprice)
 					); $tr.appendTo($div);
+						$tr = $('<tr>').append(
+							$('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
+					); $tr.appendTo($div);
+					/* 태그제거 */
 					var name = strip_tag(row.title);
 					var $hidden = $('<div>').html('<input type="hidden" name="itemList['+idx+'].item_image" value="'+row.image+'">'
 										+'<input type="hidden" name="itemList['+idx+'].item_name" value="'+name+'">'		
@@ -1025,10 +932,54 @@ input:focus, textarea:focus {
 		});
 	 }
 	
+	/* 옷장아이템 선택 확인  */
+	$('#myItemOk').click(function () {
+		var ch = $('input[name="chItem"]:checked').val();
+		var image = $('#myitem_image'+ch).val();
+		var name = $('#myitem_name'+ch).val();
+		var brand = $('#myitem_brand'+ch).val();
+		var category = $('#myitem_category'+ch).val();
+		var color = $('#myitem_color'+ch).val();
+		var price = $('#myitem_price'+ch).val();
+		
+					var $div = $('<div id="codyDiv'+idx+'">');
+					var $tr = $('<tr>').append($('<td rowspan="6">').html('<img src="'+image+'" width="100">'),	$('<td>').html('이름 : '+name)
+					); $tr.appendTo($div);
+						$tr = $('<tr>').append($('<td>').html('브랜드 : '+brand)
+					); $tr.appendTo($div);	
+						$tr = $('<tr>').append($('<td>').html('카테고리 : '+category)
+					); $tr.appendTo($div);	
+						$tr = $('<tr>').append($('<td>').html('색상 : '+color)
+					); $tr.appendTo($div);	
+						$tr = $('<tr>').append($('<td>').html('가격 : '+price)
+					); $tr.appendTo($div);
+						$tr = $('<tr>').append($('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
+					); $tr.appendTo($div);
+					var $hidden = $('<div>').html('<input type="hidden" name="itemList['+idx+'].item_image" value="'+image+'">'
+											  	 +'<input type="hidden" name="itemList['+idx+'].item_name" value="'+name+'">'		
+												 +'<input type="hidden" name="itemList['+idx+'].item_brand" value="'+brand+'">'		
+												 +'<input type="hidden" name="itemList['+idx+'].item_category" value="'+category+'">'		
+												 +'<input type="hidden" name="itemList['+idx+'].item_color" value="'+color+'">'		
+												 +'<input type="hidden" name="itemList['+idx+'].item_price" value="'+price+'">');
+					 $hidden.appendTo($div);
+					 $div.appendTo($table);
+					 idx++;
+
+					 $("#ClosetModal").modal('hide');
+				
+	}) 
+	
+	
+	function itemRemove(removeIdx) {
+		$('#codyDiv'+removeIdx).remove();
+		
+	}
+	
+	/* 태그 제거 */
 	function strip_tag(str)
 	{
 	    return str.replace(/(<([^>]+)>)/ig,"");
-	}
+	};
 	
 	
 	
@@ -1042,7 +993,18 @@ input:focus, textarea:focus {
 		formObj.attr("action", "codyForm");
 		formObj.attr("method", "post");
 		formObj.submit();
-	}
+	};
+	
+	
+	// 옷장 아이템 선택 이벤트
+	$(".card").click(function () {
+		
+		$(".card").removeClass("checkedItem");
+		$(this).addClass("checkedItem");
+	}); 
+	
+	
+	
 	
 	
 	</script>

@@ -35,9 +35,7 @@ public class ItemService {
 	public int itemListInsert(ArrayList<ItemDto> list) {
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 		
-		System.out.println("실행전 : " + list);
 		int resultCnt = dao.insertListItem(list);
-		System.out.println("실행후 : " + list);
 
 		return resultCnt;
 		
