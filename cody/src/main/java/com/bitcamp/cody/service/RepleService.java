@@ -91,9 +91,9 @@ public class RepleService {
 		return cnt;
 	}
 
-	public List<RepleDto> noticeList(String id) {
+	public List<RepleDto> noticeList(int idx) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
-		List<RepleDto> list = dao.noticeList(id);
+		List<RepleDto> list = dao.noticeList(idx);
 		return list;
 	}
 	

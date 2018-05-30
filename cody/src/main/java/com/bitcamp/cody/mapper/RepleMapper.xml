@@ -72,7 +72,7 @@
 	<select id="noticeList" resultType="com.bitcamp.cody.dto.RepleDto">
 		select reple_date, cody_idx, member_idx
         from reple
-        where reception=true and cody_idx in (select cody_idx from cody where member_idx in (select member_idx from member where member_id=#{id}))
+        where reception=true and cody_idx in (select cody_idx from cody where member_idx = #{idx})
 	</select>
 
 </mapper>

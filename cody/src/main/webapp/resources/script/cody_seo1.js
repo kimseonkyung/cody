@@ -104,23 +104,3 @@ function limit2(obj) {
     }
 };
 
-function codyListView(cody_idx) {
-
-	console.log(cody_idx);
-	var params = new Object();
-	params.cody_idx = cody_idx;
-	$.ajax({
-		url : contextRoot + "/codyListView",
-		type : 'POST',
-		data : params,
-		success : function(data) {
-			alert("완료!");
-			console.log(data);
-			self.close();
-		},
-		error : function(jqXHR, textStatus, errorThrown) {
-			alert("에러 발생  \n" + textStatus + " : " + errorThrown);
-			self.close();
-		}
-	});
-}

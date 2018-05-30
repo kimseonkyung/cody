@@ -157,14 +157,7 @@ section.buttons>label {
 					<a class="dropdown-item btn btn-default btn-logiut" href="memberlogout"><span class="glyphicon glyphicon-log-out">로그아웃</span></a>
 				</div>
 				</li>
-				<li class="nav-item">
-				<div>
-					<form action="${pageContext.request.contextPath}/noticeList" method="post">
-					<input type="hidden" value="sk">
-					<input type="submit" value="알림">
-					</form>
-				</div>
-				<li class="nav-item">
+				<li class="nav-item" onclick="location.href='${pageContext.request.contextPath}/noticeList'">
 					<div id="ok" style="font-size:2em;">
   					<i class="fa fa-bell-o" aria-hidden="true"></i>
 					</div>

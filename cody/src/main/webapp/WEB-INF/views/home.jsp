@@ -11,6 +11,7 @@
 <link rel="icon" href="../../../../favicon.ico">
 
 <title>코디 메인</title>
+<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
 
 <!-- CODY CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/cody.css"
@@ -25,6 +26,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
 	rel="stylesheet">
+
 
 <style>
 	.card-item-ol {
@@ -158,7 +160,7 @@
 			<ol class="card-item-ol" >
 			<c:forEach var="cody" items="${rankings }" begin="0" end="2" step="1">		
 				<li class="card card-item-li">
-					<img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap" onclick="codyListView(${cody.cody_idx})">
+					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap"></a>
 						<div class="card-body" style="overflow: hidden; position: relative;">
 						 <h5 class="card-title" style="float: left;">아이디</h5><br>
 							<div><c:set var="data" value="${cody.cody_gender}" /> 
@@ -203,7 +205,7 @@
 			<ol class="card-item-ol" >
 			<c:forEach var="cody" items="${rankings }">		
 				<li class="card card-item-li">
-					<img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap" onclick="codyListView(${cody.cody_idx})">
+					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap" ></a>
 						<div class="card-body" style="overflow: hidden; position: relative;">
 						 <h5 class="card-title" style="float: left;">아이디</h5><br>
 							<div><c:set var="data" value="${cody.cody_gender}" /> 
@@ -271,7 +273,6 @@
         </footer>
 
 </body>
-<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf07583f54f2c24af21a8eca095b6fb2&libraries=services"></script>
 <script>
 //마커를 담을 배열입니다

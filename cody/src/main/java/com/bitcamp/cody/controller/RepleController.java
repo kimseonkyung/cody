@@ -117,21 +117,28 @@ public class RepleController {
 	// 알림 페이지로 이동
 	@RequestMapping("/noticeList")
 	public String notice(Model model, HttpSession session) {
-		String user = "a";
-		// String user = (String) session.getAttribute("id");
-
+		MemberDto myMember = (MemberDto) session.getAttribute("loginInfo");
+		int idx = myMember.getMember_idx();
+		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		
-		List<RepleDto> list = repleService.noticeList(user);
+		// 내 코디에 작성된 댓글리스트 가져오기
+		List<RepleDto> list = repleService.noticeList(idx);
 
 		ArrayList<HashMap<String, Object>> arr = new ArrayList<>();
 
 		for (RepleDto notice : list) {
 			HashMap<String, Object> map = new HashMap<>();
 			
+			// 내코디에 댓글단 작성자 정보 가져오기
 			MemberDto member = memberService.selectByIdx(notice.getMember_idx());
+			
+			// 댓글이 작성된 코디 정보가져오기
 			CodyDto cody = codyListService.CodyListView(notice.getCody_idx());
+			
+			// 날짜 포멧변경
 			String date = df.format(notice.getReple_date());
+			
 			map.put("cody_title", cody.getCody_title());
 			map.put("cody_image", cody.getCody_image());
 			map.put("reple_date", date);
@@ -148,7 +155,7 @@ public class RepleController {
 	// 수신 여부
 	@RequestMapping("/reception")
 	@ResponseBody
-	public int reception(Model model) {
+	public int reception() {
 
 		int cnt = repleService.selectReception();
 
@@ -158,8 +165,9 @@ public class RepleController {
 	// 수신 확인
 	@RequestMapping("/receptionOk")
 	@ResponseBody
-	public String receptionOK(Model model) {
+	public String receptionOK() {
 
+		// 수신여부 true로 변경
 		repleService.receptionUpdate();
 
 		return "";

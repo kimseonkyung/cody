@@ -36,6 +36,6 @@ public interface RepleDao {
 	int selectReception();
 
 	// 알림 리스트 정보 가져오기
-	List<RepleDto> noticeList(String id);
+	List<RepleDto> noticeList(int idx);
 
 }
