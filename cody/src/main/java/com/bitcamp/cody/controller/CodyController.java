@@ -23,6 +23,7 @@ import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.CodyService;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
+import com.bitcamp.cody.service.MemberListService;
 import com.bitcamp.cody.service.MemberService;
 
 /*-----------입력---------------*/
@@ -122,11 +123,20 @@ public class CodyController {
 		return "cody/codyList";
 	}
 
+	/*---------------------코디 상세보기----------------------*/
 	@RequestMapping("/codyListView")
 	public String CodylistView(Model model, @RequestParam("cody_idx") int idx) {
 
+		// 코디정보 가져오기
 		CodyDto cody = codyListService.CodyListView(idx);
+		// 코디주인 정보 가져오기
+		MemberDto member = memberService.selectByIdx(cody.getMember_idx());
+		// 코디에 등록된 아이템 가져오기
+		List<ItemDto> items = itemListService.selectByCodyIdx(idx);
+		
 		model.addAttribute("cody", cody);
+		model.addAttribute("member", member);
+		model.addAttribute("items", items);
 		
 		int result = codyListService.countAdd3(cody);
 

@@ -7,13 +7,15 @@ import com.bitcamp.cody.dto.ItemDto;
 
 public interface ItemDao {
 
-	public int insertItem(ItemDto item);
 	public ItemDto selectByIdx(int idx);
+	public int insertItem(ItemDto item);
+	public int updateItem(ItemDto item);
+	public int deleteItem(int itemIdx);
+	public int deleteCodyItem(int codyIdx);
+	public int insertListItem(ArrayList<ItemDto> list);
 	public List<ItemDto> selectByMemberIdx(int memberIdx);
 	public List<ItemDto> selectList();
 	public List<ItemDto> selectByName(String name);
-	public int updateItem(ItemDto item);
-	public int deleteItem(int idx);
-	public int insertListItem(ArrayList<ItemDto> list);
+	public List<ItemDto> selectByCodyIdx(int codyIdx);
 }
     

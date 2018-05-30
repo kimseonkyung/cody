@@ -53,14 +53,21 @@ public class ItemService {
 		return resultCnt;
 	}
 
-	public int itemDelete(int idx) {
+	public int itemDelete(int itemIdx) {
 
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
-		int result = dao.deleteItem(idx);
+		int result = dao.deleteItem(itemIdx);
 
 		return result;
 	}
 
+	public int itemCodyDelete(int codyIdx) {
+		
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		int result = dao.deleteCodyItem(codyIdx);
+		
+		return result;
+	}
 	
 
 }
