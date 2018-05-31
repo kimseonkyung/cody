@@ -9,7 +9,7 @@ function itemListView(item_idx) {
 	var params = new Object();
 	params.item_idx = item_idx;
 	$.ajax({
-		url : "${pageContext.request.contextPath}/itemListView",
+		url : "/cody/itemListView",
 		type : 'POST',
 		data : params,
 		success : function(data) {
@@ -26,14 +26,14 @@ function itemListView(item_idx) {
 }
 
 /*--------------------------------------- 알림 ---------------------------------------
- 1초마다 알림 확인 */
+ 1초마다 알림 확인 
 $(document).ready(function() {
 
 	setInterval(function() {
 
 		$.ajax({
 			type : 'post',
-			url : '${pageContext.request.contextPath}/reception',
+			url : 'http://localhost:8080/cody/reception',
 			dataType : 'json',
 			data : {},
 			success : function(data) {
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
 	}, 1000);
 
-});
+});*/
 
 
 
@@ -63,7 +63,7 @@ $('#reple #repleSave').click(
 
 			$.ajax({
 				type : 'post',
-				url : '${pageContext.request.contextPath}/repleInsert',
+				url : '/cody/repleInsert',
 				data : {
 					cody_idx : cody_idx,
 					member_idx : member_idx,
@@ -92,7 +92,7 @@ function re_repleSave(reple_idx) {
 
 	$.ajax({
 		type : 'post',
-		url : '${pageContext.request.contextPath}/re_repleInsert',
+		url : 'cody/re_repleInsert',
 		data : params,
 		success : function(data) {
 			alert('성공');
@@ -117,7 +117,7 @@ function repleDelete(reple_idx) {
 
 	$.ajax({
 		type : 'get',
-		url : '${pageContext.request.contextPath}/repleDelete',
+		url : 'cody/repleDelete',
 		dataType : 'text',
 		data : {
 			reple_idx : reple_idx
