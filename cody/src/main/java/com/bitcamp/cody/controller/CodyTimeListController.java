@@ -37,7 +37,7 @@ public class CodyTimeListController {
 			List<ItemDto> itemtime = new ArrayList<>();		
 			itemtime = codyItemListService.getCodyItemList(time.getCody_idx());
 			map.put(time.getCody_idx(),itemtime);	
-			map.put("codyid",time.getCody_title());
+			map.put("codytitle",time.getCody_title());
 			map.put("codyimage",time.getCody_image());
 			irr.add(map);		
 		}

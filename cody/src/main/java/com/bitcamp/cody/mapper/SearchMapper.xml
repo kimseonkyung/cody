@@ -1,0 +1,22 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitcamp.cody.dao.SearchDao">
+
+
+
+	<select id="SearchItem"
+		resultType="com.bitcamp.cody.dto.ItemDto">
+		SELECT * FROM ITEM WHERE ITEM_NAME LIKE CONCAT('%'#{keyword1}'%');
+	</select>
+	<select id="SearchCody"
+		resultType="com.bitcamp.cody.dto.CodyDto">
+		SELECT * FROM CODY WHERE cody_title LIKE CONCAT('%'#{keyword2}'%');
+	</select>
+	<select id="SearchMember"
+		resultType="com.bitcamp.cody.dto.MemberDto">
+		SELECT * FROM MEMBER WHERE member_name LIKE CONCAT('%'#{keyword3}'%');
+	</select>
+
+</mapper>

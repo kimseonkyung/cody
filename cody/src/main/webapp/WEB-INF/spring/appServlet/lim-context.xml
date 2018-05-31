@@ -9,5 +9,7 @@
 
 	<beans:bean id="CodyTimeListService" class="com.bitcamp.cody.service.CodyTimeListService" />
 	<beans:bean id="CodyItemListService" class="com.bitcamp.cody.service.CodyItemListService" />
+	<beans:bean id="SearchService" class="com.bitcamp.cody.service.SearchService" />
+	<beans:bean id="FollowService" class="com.bitcamp.cody.service.FollowService" />
 	
 </beans:beans>  

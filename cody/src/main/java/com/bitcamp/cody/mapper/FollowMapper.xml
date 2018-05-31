@@ -1,0 +1,50 @@
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+   <mapper namespace="com.bitcamp.cody.dao.FollowDao">
+    
+   
+   <insert id="insertfollowin" parameterType="Hashmap">
+   
+   	insert into follow(m_request, m_response)
+   	values( #{m_request}, #{m_response})   
+   
+   </insert>
+   
+   <select id="selectListrp" resultType="com.bitcamp.cody.dto.FollowDto">
+   
+    select * from follow where m_response = #{m_response}
+      
+   </select>
+   
+   <select id="selectrequet" resultType="com.bitcamp.cody.dto.MemberDto">
+   
+   	select * from member where member_idx = #{m_request}
+   
+   </select>
+   
+   <update id="updatefollow" parameterType="com.bitcamp.cody.dto.FollowDto"> 
+   
+   update follow set followinfo = true where m_request = #{m_request} and m_response =#{m_response} 
+      
+   </update>
+   
+   <delete id="deletefollow" parameterType="com.bitcamp.cody.dto.FollowDto">
+   
+   delete  from follow where follow_idx = #{follow_idx}
+      
+   </delete> 
+   
+   <select id="selectListrq" resultType="com.bitcamp.cody.dto.FollowDto">
+   
+    select* from follow where m_request = #{m_request}
+  </select>
+  
+   <select id="selectresponse" resultType="com.bitcamp.cody.dto.MemberDto">
+   
+    select * from member where member_idx = #{m_response}
+    </select>  
+   
+   </mapper>
