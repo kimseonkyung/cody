@@ -343,7 +343,7 @@
 }
 </style>
 <style> 
-input:focus, textarea:focus{    resize: none, outline: none; } 
+input:focus, textarea:focus{resize: none, outline: none;} 
 .sdsd {
 	display:inline; 
 	float: left;

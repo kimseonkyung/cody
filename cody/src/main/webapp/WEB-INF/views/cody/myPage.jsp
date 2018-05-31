@@ -128,7 +128,7 @@ input:focus, textarea:focus {
 		<!------------------ 코디 리스트 반복 출력 ----------------------->
 			<c:forEach var="cody" items="${codys }">
 				<li class="card card-item-li">
-					<img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap" onclick="codyListView(${cody.cody_idx})">
+					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap"></a>
 		           <div class="card-body" style="overflow: hidden; position: relative;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;padding-top: 15px;height: 160px;">
 						 <h5 class="card-title" style="float: left;">아이디</h5>
 							<div><c:set var="data" value="${cody.cody_gender}" /> 

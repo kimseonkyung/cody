@@ -6,26 +6,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상세보기</title>
+ <!--초기화 코드-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+    </style>
+
 <style>
-#container {
-	height: 1907px;
-	width: 999px;
+#content {
+	min-height: 1500px;
+	max-width: 1140px;
 	margin: 0 auto;
 	/*컨텐츠 내부 수평 정렬*/
 	overflow: hidden;
 	margin-top: 10px;
 }
 
-#main {
-	height: 1750px;
-	width: 995px;
-	position: relative;
-	/*중앙정렬*/
-	margin: 0 auto;
-	/*컨텐츠 내부 수평 정렬*/
-	overflow: hidden;
-	margin-top: 30px;
-}
+
 
 #main_header {
 	height: 150px;
@@ -67,29 +80,29 @@
 #main_content {
 	height: 1540px;
 	width: 990px;
-	position: relative;
+
 }
 
 #left_content {
-	width: 558px;
+	max-width: 558px;
 	height: 1500px;
-	float: left;
-	position: absolute;
+
+	
 }
 
 #left_div {
 	width: 558px;
-	height: 1500px;
+	min-height: 1000px;
 }
 
 #image {
-	width: 556px;
-	height: 723px;
+	max-width: 556px;
+	max-height: 723px;
 }
 
 #funtion {
-	width: 556px;
-	height: 58px;
+	max-width: 556px;
+	max-height: 58px;
 	border: 2px solid darkgray;
 }
 
@@ -161,9 +174,7 @@
 
 #right_content {
 	width: 414px;
-	float: right;
-	position: absolute;
-	right: 0;
+	border: 1px solid darkgray;
 
 }
 
@@ -224,7 +235,6 @@ margin: 0 auto;
 #item {
 width: 402px;
 min-height: 120px;
-margin: 0 auto;
 }
 
 #item_name{
@@ -242,59 +252,59 @@ margin: 0 auto;
 
 </style>
 </head>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script	src="${pageContext.request.contextPath}/resources/script/cody_jeong.js"></script>
-<script type="text/javascript"></script>
 
-<body>
-	<div id="container">
-	<div id= "main">
-	<form method="post" enctype="multipart/form-data">
-				
-					<header id="main_header">
-						<div id="main_header_1">
-							<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx }">
-							<input id="update_btn" type=button value="수정"></a>
-						</div>
-						<div id="main_header_2">
-							<input id="follow_input" type="button" value="팔로우하기"><a href="#"></a>
-						</div>
-					</header>
-					<!--------------------내용--------------------->
-					<div id="main_content">
-						<!-- 회원 정보 출력 반복 시작 -->
+<body class="bg-light">
+<!-- 인클루드 header -->
+	<%@ include file="../top/header.jsp" %>
+	
+	<main role="main" class="container">
+<!--------------------- 메인 배너 ----------------------->
+	<div
+		class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" 
+		style="
+		background-image: url('/cody/uploadfile/cody.png');
+		background-repeat:no-repeat;
+		background-size: contain;">
+		<div class="lh-100">
+			<h5 class="mb-0 text-white lh-100">CODY</h5><small>bitcamp 2018</small>
+		</div>
+	</div>
+		
+	
+	
+	<div class="row">
+		<div class="col-md-12">
+			<input id="follow_input" type="button" value="팔로우하기"><a href="#"></a>
+		</div>
+			
 						<!--------------------왼쪽--------------------->
-
-						<div id="left_content">
-							<div id="left_div">
-								<div id="image">
+                       <div class="col-md-7 order-md-2 mr-auto">
+                       <div id="image">
 									<c:if test="${cody.cody_image != null}">
 										<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" width="556" height="723">
 									</c:if>
 								</div>
 
-								<div id="funtion">
+								<div id="funtion">									
 									
-									<div class="clickLike" >
 										<input id="cody_idx" type="hidden" value="${cody.cody_idx }">
-										<button id ="clickLike">좋아요</button>
-									</div>
-									<div id="comment">
+										<button id ="clickLike">좋아요</button>									
+									
 										<a href="#"><input id="comment_btn" type="button" value="코멘트"></a>
-									</div>
+									
+									
 								</div>
 								<div id="like_list"></div>
+								
 								<div id="left3">
 									<div id="reple"></div>
-								</div>
-							</div>
+								</div>		
 						</div>
+						
+						
 						<!--------------------오른쪽--------------------->
-						<div id="right_content">
-							<div id="info">
-							<div id="content_container">
-								<div id="content_1">
-								<div id=content_name><h4>${cody.cody_title}</h4></div>											
+						<div class="col-md-5 order-md-3">
+							<div id=content_name><h4>${cody.cody_title}</h4></div>											
 								<div id="content_sub"><div id="content_sub1">
 								모델정보:${cody.cody_height}cm
 								<c:set var="data" value="${cody.cody_gender}" />
@@ -309,29 +319,32 @@ margin: 0 auto;
 								</c:choose>
 								${cody.cody_age}세
 								</div></div>
-								</div>
+								
 								<div id="content_intro"><div id="content_intro1"><p>${cody.cody_intro}</p></div></div>
 								<div id="content_date"><div id="content_date1"><p>${cody.board_date}</p></div></div>
-							</div>
-							</div>
 							
+							
+							
+							
+						
 							<div id="item">
 							<div id="item_name">착용아이템</div>
 							<div id="item_main"><a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
 								<a href="codyForm">코디등록</a></div>
-								
+								</div>
 							</div>
-
-
-						</div>
+						  
 
 
 
-					</div>
+                     </div>
+					
+
 				
-			</form>
-	</div>
-	</div>
+	
+	</main>
+	<!-- 인클루드 footer -->
+	<%@ include file="../bottom/footer.jsp" %>
 </body>
 
 </html>
