@@ -175,8 +175,7 @@
 					         </div> 
 					 <div>${cody.cody_height}cm</div> 
 					 <div>${cody.cody_age}세</div>
-							<a href="#" class="btn btn-primary"	style="position: absolute; left: 0px;">좋아요</a>
-							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 0px;">즐겨찾기</a>
+							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 0px;">팔로우</a>
 						</div>
 				</li>
             </c:forEach>
@@ -207,7 +206,7 @@
 				<li class="card card-item-li">
 					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap" ></a>
 						<div class="card-body" style="overflow: hidden; position: relative;">
-						 <h5 class="card-title" style="float: left;">아이디</h5><br>
+						 <h5 class="card-title" style="float: left;">${member.member_idx}</h5><br>
 							<div><c:set var="data" value="${cody.cody_gender}" /> 
 					         <c:choose>
 	                           <c:when test="${data eq true}">
@@ -219,11 +218,8 @@
 					          </c:choose>
 					         </div> 
 					 <div>${cody.cody_height}cm</div> 
-					 <div>${cody.cody_age}세</div>
-					 <a
-						href="${pageContext.request.contextPath }/codyListView?cody_idx=${cody.cody_idx}">상세보기</a>
-							<a href="#" class="btn btn-primary"	style="position: absolute; left: 0px;">좋아요</a>
-							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 0px;">즐겨찾기</a>
+					 <div>${cody.cody_age}세</div>					
+							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 0px;">팔로우</a>
 						</div>
 				</li>
             </c:forEach>
