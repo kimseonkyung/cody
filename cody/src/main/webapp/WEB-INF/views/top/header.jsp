@@ -407,7 +407,6 @@ section.buttons>label {
 	
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<script>
 		window.jQuery
 				|| document
