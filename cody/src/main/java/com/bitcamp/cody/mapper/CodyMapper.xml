@@ -12,12 +12,17 @@
 
 	<select id="selectByIdx"
 		resultType="com.bitcamp.cody.dto.CodyDto">
-		select * from cody where cody_idx = #{cody_idx}
+		select * from cody where cody_idx = #{idx}
 	</select>
 
 	<select id="selectByTitle"
 		resultType="com.bitcamp.cody.dto.CodyDto">
 		select * from cody where cody_title = #{cody_title}
+	</select>
+	
+	<select id="selectByMemberIdx"
+		resultType="com.bitcamp.cody.dto.CodyDto">
+		select * from cody where member_idx = #{memberIdx}
 	</select>
 
 	<select id="selectList"
@@ -40,8 +45,7 @@
 
 	<delete id="deleteCody"
 		parameterType="com.bitcamp.cody.dto.CodyDto">
-		delete from cody where
-		cody_idx = #{cody_idx}
+		delete from cody where cody_idx = #{idx};
 	</delete>
 
 	<update id="updateCody"

@@ -34,8 +34,8 @@
 
     </style>
 
-    <!--본문 내용 속성-->
-    <style>
+<!--본문 내용 속성-->
+<style>
 #content {
 	border: 2px solid darkgray;
 	border-radius: 5px 5px 5px 5px;
@@ -341,7 +341,7 @@
 	text-align: left;
 	vertical-align: middle;
 }
-    </style>
+</style>
 <style> 
 input:focus, textarea:focus{    resize: none, outline: none; } 
 .sdsd {
@@ -522,10 +522,10 @@ input:focus, textarea:focus{    resize: none, outline: none; }
 	</div>
             
             <div>
-            <input type="text" name="cody_idx" value="${cody.cody_idx }">
+            <input type="hidden" name="cody_idx" value="${cody.cody_idx }">
          
    			</div>
-   			</div>
+   			
 
 	<!--------------------업로드--------------------->
 <div class="col-md-12 order-md-3">
@@ -538,11 +538,14 @@ input:focus, textarea:focus{    resize: none, outline: none; }
 	</div>
 </div>
 
+
+       </div>
+       </form>
         </div>
 		
-		</form>
+	
 		</div>
-		</div>
+		
 		</main>
 	<!--------------------- 푸터 ----------------------->
 <!-- 인클루드 footer -->
@@ -910,36 +913,40 @@ function codyInsert() {
 
 </script>
 <script>
- $(document).ready(function(){
+$(document).ready(function(){
 
-	var cody_gender = ${cody.cody_gender};
+var cody_gender = ${cody.cody_gender};
 
-	  if(cody_gender > 0 ) {
-		  $('#gender1').attr("checked","checked"); 
-	  } else {
-		  $('#gender2').attr("checked","checked"); 
-	  }
+if(cody_gender > 0 ) {
 
+	$('#gender1').attr("checked","checked"); 
+
+} else {
+
+	$('#gender2').attr("checked","checked"); 
+}
+});
+
+
+$('#cody_height option').each(function(){
+
+	if($(this).val()=="${cody.cody_height}"){
+
+		$(this).attr("selected","selected"); 
+		
+	}
+	
 	});
-     $('#cody_height option').each(function(){
-
-	    if($(this).val()=="${cody.cody_height}"){
-
-	      $(this).attr("selected","selected"); 
-
-	    }
-
-	  });
 	  
-	  $('#cody_age option').each(function(){
+$('#cody_age option').each(function(){
 
-		    if($(this).val()=="${cody.cody_age}"){
+	if($(this).val()=="${cody.cody_age}"){
 
-		      $(this).attr("selected","selected"); 
+		$(this).attr("selected","selected"); 
 
-		    }
-
-		  });
+	}
+	
+	});
 </script>
 
 </html>
