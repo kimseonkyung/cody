@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.RankingDao;
 import com.bitcamp.cody.dto.CodyDto;
+import com.bitcamp.cody.dto.MemberDto;
 
 public class RankingSerivce {
 	
@@ -20,6 +21,15 @@ public class RankingSerivce {
 		dao = sqlSessionTemplate.getMapper(RankingDao.class);
 		
 		List<CodyDto> list = dao.selectList();
+		
+		return list;
+	}
+	
+	public MemberDto getId(int member_idx){
+		
+		dao = sqlSessionTemplate.getMapper(RankingDao.class);
+		
+		MemberDto list = dao.selectId(member_idx);
 		
 		return list;
 	}

@@ -14,4 +14,8 @@
 		SELECT * from cody order by board_click desc;
 	</select>
 	
+	<select id="selectId" resultType="com.bitcamp.cody.dto.MemberDto">
+		select * from member where member_idx = #{member_idx}
+	</select>
+	
 </mapper>	

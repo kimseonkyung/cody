@@ -215,7 +215,7 @@
 #intro_text {
 	border: 2px solid darkgray;
 	width: 469px;
-	height: 292px;
+	height: 308px;
 	border-radius: 3px 3px 3px 3px;
 	margin-left: 2px;
 }
@@ -468,7 +468,7 @@ input:focus, textarea:focus{resize: none, outline: none;}
                     <div id="intro_name">
                         <h4>코디 소개문</h4>
                     </div>
-                    <div id="intro_input"><div id="intro_text"><textarea class="text" style= "resize: none" rows="12" cols="64"  onkeyup="limit2(this)" name="cody_intro" id="cody_intro">
+                    <div id="intro_input"><div id="intro_text"><textarea class="text" style= "resize: none" rows="13" cols="57"  onkeyup="limit2(this)" name="cody_intro" id="cody_intro">
                     ${cody.cody_intro}</textarea></div>
                     <div id="intro_sub">
                     <h6>※ 500 자 이내로 입력하십시오.</h6>

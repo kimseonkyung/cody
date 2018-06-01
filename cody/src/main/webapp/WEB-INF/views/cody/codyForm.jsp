@@ -222,7 +222,7 @@ a {
 #intro_text {
 	border: 2px solid darkgray;
 	width: 469px;
-	height: 292px;
+	height: 308px;
 	border-radius: 3px 3px 3px 3px;
 	margin-left: 2px;
 }
@@ -487,7 +487,7 @@ input:focus, textarea:focus {
 		</div>
 		<div id="intro_input">
 			<div id="intro_text">
-				<textarea class="text" style="resize: none" rows="12" cols="64"
+				<textarea class="text" style="resize: none" rows="13" cols="57"
 					name="cody_intro" onkeyup="limit2(this)"></textarea>
 			</div>
 			<div id="intro_sub">

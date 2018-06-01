@@ -29,15 +29,15 @@
 
 
 <style>
-	.card-item-ol {
-		overflow: hidden;
+	/* .card-item-ol {
+		overflow: hidden; */
 		
 	}
 	
 	.card-item-li {
 		width: 240px; 
 		float: left;
-		margin: 0 10px 10px 10px;
+		margin: 20px 20px 20px 20px;
 	}
 
 	.card-item {
@@ -158,11 +158,11 @@
 
 	<!------------------ 랭킹리스트 반복 출력 ----------------------->			
 			<ol class="card-item-ol" >
-			<c:forEach var="cody" items="${rankings }" begin="0" end="2" step="1">		
+			<c:forEach var="cody" items="${arr }" begin="0" end="2" step="1">		
 				<li class="card card-item-li">
 					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap"></a>
 						<div class="card-body" style="overflow: hidden; position: relative;">
-						 <h5 class="card-title" style="float: left;">아이디</h5><br>
+						 <h5 class="card-title" style="float: left;">${cody.id}</h5><br>
 							<div><c:set var="data" value="${cody.cody_gender}" /> 
 					         <c:choose>
 	                           <c:when test="${data eq true}">
@@ -175,7 +175,7 @@
 					         </div> 
 					 <div>${cody.cody_height}cm</div> 
 					 <div>${cody.cody_age}세</div>
-							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 0px;">팔로우</a>
+							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 20px; bottom:20px">팔로우</a>
 						</div>
 				</li>
             </c:forEach>
@@ -207,11 +207,11 @@
 	<!------------------ 전체 리스트 반복 출력 ----------------------->			
 			<h6 class="border-bottom border-gray pb-2 mb-0">전체 리스트</h6>
 			<ol class="card-item-ol" >
-			<c:forEach var="cody" items="${rankings }">		
+			<c:forEach var="cody" items="${arr }">		
 				<li class="card card-item-li">
 					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap" ></a>
 						<div class="card-body" style="overflow: hidden; position: relative;">
-						 <h5 class="card-title" style="float: left;">${member.member_idx}</h5><br>
+						 <h5 class="card-title" style="float: left;">${cody.id}</h5><br>
 							<div><c:set var="data" value="${cody.cody_gender}" /> 
 					         <c:choose>
 	                           <c:when test="${data eq true}">
@@ -224,7 +224,7 @@
 					         </div> 
 					 <div>${cody.cody_height}cm</div> 
 					 <div>${cody.cody_age}세</div>					
-							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 0px;">팔로우</a>
+							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 20px; bottom:20px">팔로우</a>
 						</div>
 				</li>
             </c:forEach>
