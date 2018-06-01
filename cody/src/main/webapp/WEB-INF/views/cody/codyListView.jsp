@@ -123,14 +123,14 @@
 	cursor: pointer;
 }
 
-#like {
+#clickLike {
 	position: absolute;
 	right: 0;
 	margin-top: 14px;
 	margin-right: 80px;
 }
 
-#like {
+#clickLike {
 	width: 50px;
 	height: 30px;
 	border-radius: 3px;
@@ -296,6 +296,10 @@ margin: 0 auto;
 									
 										<input id="cody_idx" type="hidden" value="${cody.cody_idx }">
 										<button class ="clickLike">좋아요</button>
+										<a
+										href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">
+										<input id="bookmark" type="button" value="북마크"></a>
+										
 										
 										<a href="#"><input class="btn btn-primary" type="button" value="코멘트" style="float:right;"></a>							
 									</div>
