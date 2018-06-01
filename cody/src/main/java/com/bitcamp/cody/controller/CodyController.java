@@ -1,7 +1,9 @@
 package com.bitcamp.cody.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Delayed;
 
@@ -19,12 +21,14 @@ import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.ItemList;
 import com.bitcamp.cody.dto.MemberDto;
+import com.bitcamp.cody.dto.RepleDto;
 import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.CodyService;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
 import com.bitcamp.cody.service.MemberListService;
 import com.bitcamp.cody.service.MemberService;
+import com.bitcamp.cody.service.RepleService;
 
 /*-----------입력---------------*/
 @Controller
@@ -40,17 +44,17 @@ public class CodyController {
 	ItemListService itemListService;
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	RepleService repleService;
 	
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
 	public String codyForm(Model model, HttpSession session) {
-		String user = "a";
-		// String user = (String) session.getAttribute("id");    // 로그인된 아이디값 가져오기
-		
-		MemberDto member = memberService.selectById(user);	// 아이디로 member정보 가져오기
+		MemberDto member = (MemberDto) session.getAttribute("loginInfo");    // 로그인된 아이디값 가져오기
 		int memberIdx = member.getMember_idx();
 		
 		List<ItemDto> item = itemListService.selectByMemberIdx(memberIdx);
+		
 		model.addAttribute("items", item);
 		
 		return "cody/codyForm";
@@ -125,20 +129,53 @@ public class CodyController {
 
 	/*---------------------코디 상세보기----------------------*/
 	@RequestMapping("/codyListView")
-	public String CodylistView(Model model, @RequestParam("cody_idx") int idx) {
-
+	public String CodylistView(Model model, HttpSession session,@RequestParam("cody_idx") int idx) {
+		MemberDto myInf = (MemberDto)session.getAttribute("loginInfo");
+		
 		// 코디정보 가져오기
 		CodyDto cody = codyListService.CodyListView(idx);
+		
 		// 코디주인 정보 가져오기
 		MemberDto member = memberService.selectByIdx(cody.getMember_idx());
+		
 		// 코디에 등록된 아이템 가져오기
 		List<ItemDto> items = itemListService.selectByCodyIdx(idx);
 		
+		// 댓글 가져오기
+		// 날짜 포멧 변경
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+
+		List<RepleDto> list_r = repleService.listAll(idx);
+		ArrayList<HashMap<String, Object>> repleList = new ArrayList<>();
+		HashMap<String, Object> map = new HashMap<>();
+
+		for (RepleDto reple : list_r) {
+			MemberDto writer = memberService.selectByIdx(reple.getMember_idx());
+			String date = df.format(reple.getReple_date());
+			map.put("reple_contents", reple.getReple_contents());
+			map.put("reple_date", date);
+			map.put("member_id", writer.getMember_id());
+			map.put("reple_idx", reple.getReple_idx());
+			map.put("regroup", reple.getRegroup());
+			map.put("reparent", reple.getReparent());
+			map.put("redepth", reple.getRedepth());
+			map.put("reorder", reple.getReorder());
+			repleList.add(map);
+		}
+		
+		
+		System.out.println("repleList : "+ repleList);
+		
+		// 모델객체에 담기
+		model.addAttribute("repleList", repleList);
 		model.addAttribute("cody", cody);
 		model.addAttribute("member", member);
 		model.addAttribute("items", items);
 		
 		int result = codyListService.countAdd3(cody);
+		
+		
+		
 
 		return "cody/codyListView";
 	}
