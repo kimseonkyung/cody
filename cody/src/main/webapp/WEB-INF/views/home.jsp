@@ -195,7 +195,7 @@
 						<a href="member/memberList">회원 리스트</a><br> 
 						<a href="bookmarkList">즐겨찾기</a><br>
 						<a href="${pageContext.request.contextPath}/repleList?cody_idx=1">답글</a><br>
-						<a href="codyTimeList">타임라인</a><br>
+						<a href="${pageContext.request.contextPath}/codyTimeList">타임라인</a><br>
 						<a href="boardList">게시판(공지사항)</a><br>
 						<a href="${pageContext.request.contextPath}/followListrp">팔로워</a><br>
 						<a href="${pageContext.request.contextPath}/followListrq">팔로우</a><br>

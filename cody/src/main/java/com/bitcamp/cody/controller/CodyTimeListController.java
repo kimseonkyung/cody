@@ -39,6 +39,10 @@ public class CodyTimeListController {
 			map.put(time.getCody_idx(),itemtime);	
 			map.put("codytitle",time.getCody_title());
 			map.put("codyimage",time.getCody_image());
+			map.put("codyage", time.getCody_age());
+			map.put("codyheight",time.getCody_height());
+			map.put("codyidx",time.getCody_idx());		
+			map.put(time, itemtime);
 			irr.add(map);		
 		}
 		System.out.println("irr : " + irr.toString());
