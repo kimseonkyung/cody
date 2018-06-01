@@ -59,4 +59,12 @@ public class CodyListService {
 
 	}
 
+	public int getCodyCount(int idx) {
+		dao = sqlSessionTemplate.getMapper(CodyDao.class);
+		
+		int result = dao.codyCount(idx);
+		
+		return result;
+	}
+
 }
