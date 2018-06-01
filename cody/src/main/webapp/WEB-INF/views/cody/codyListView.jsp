@@ -63,8 +63,6 @@
 }
 
 #follow_input {
-	margin-left: 20px;
-	margin-top: 20px;
 	height: 38px;
 	width: 160px;
 	vertical-align: middle;
@@ -96,8 +94,9 @@
 }
 
 #image {
-	max-width: 556px;
-	max-height: 723px;
+	max-width:556px; 
+	max-height:724px;
+	overflow: hidden;
 }
 
 #funtion {
@@ -112,7 +111,7 @@
 	margin-left: 20px;
 }
 
-#bookmark_btn {
+#bookmark {
 	width: 80px;
 	height: 30px;
 	border-radius: 3px;
@@ -131,7 +130,7 @@
 	margin-right: 80px;
 }
 
-#like_btn {
+#like {
 	width: 50px;
 	height: 30px;
 	border-radius: 3px;
@@ -161,10 +160,15 @@
 	color: #fff;
 	cursor: pointer;
 }
+#funtion{
+max-width: 556px;
+	min-height: 58px;
+	border: 2px solid darkgray;
+}
 
 #like_list {
-	width: 556px;
-	height: 62px;
+	max-width: 556px;
+	min-height: 58px;
 	border: 2px solid darkgray;
 }
 
@@ -273,33 +277,39 @@ margin: 0 auto;
 	
 	
 	<div class="row">
-		<div class="col-md-12">
-			<input id="follow_input" type="button" value="팔로우하기"><a href="#"></a>
+		<div class="row mb-2 col-md-12 order-md-1">
+		<div class="col-md-3 mr-auto">
+		${member.member_photo} ${member.member_id} ${cody.cody_height}cm
 		</div>
+			<div class="col-md-3"><a href="#"><input class="btn btn-primary" type="button" value="팔로우하기" style="float:right;"></a>
+		</div></div>
 			
 						<!--------------------왼쪽--------------------->
                        <div class="col-md-7 order-md-2 mr-auto">
                        <div id="image">
 									<c:if test="${cody.cody_image != null}">
-										<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" width="556" height="723">
+										<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"style="width: 100%; object-fit: contain; border:2px solid darkgray;">
 									</c:if>
 								</div>
 
 								<div id="funtion">									
 									
 										<input id="cody_idx" type="hidden" value="${cody.cody_idx }">
-										<button id ="clickLike">좋아요</button>									
+										<button class ="clickLike">좋아요</button>
+										
+										<a href="#"><input class="btn btn-primary" type="button" value="코멘트" style="float:right;"></a>							
+									</div>
+										
 									
-										<a href="#"><input id="comment_btn" type="button" value="코멘트"></a>
-									
-									
-								</div>
-								<div id="like_list"></div>
+								<div id="like_list"></div>	
+								
+								
 								
 								<div id="left3">
 									<div id="reple"></div>
+								</div>
 								</div>		
-						</div>
+						
 						
 						
 						<!--------------------오른쪽--------------------->
@@ -322,26 +332,17 @@ margin: 0 auto;
 								
 								<div id="content_intro"><div id="content_intro1"><p>${cody.cody_intro}</p></div></div>
 								<div id="content_date"><div id="content_date1"><p>${cody.board_date}</p></div></div>
-							
-							
-							
-							
-						
+	
+			
 							<div id="item">
 							<div id="item_name">착용아이템</div>
 							<div id="item_main"><a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
 								<a href="codyForm">코디등록</a></div>
 								</div>
 							</div>
-						  
-
-
 
                      </div>
-					
 
-				
-	
 	</main>
 	<!-- 인클루드 footer -->
 	<%@ include file="../bottom/footer.jsp" %>
