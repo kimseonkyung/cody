@@ -26,7 +26,6 @@
 
 			<tr>
 				<td>코디</td>
-				<td>아이디</td>
 				<td>관리</td>
 				
 
@@ -39,10 +38,9 @@
 				<td><c:if test="${bookmark.cody_image !=null }">
 							<img
 								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${bookmark.cody_image}"
-								width="200">
+								width="500">
 					</c:if></td> 
-					<td>${bookmark.bookmark_idx}</td>
-					<td>${bookmark.cody_idx}</td>
+					
 					
 
 					
@@ -55,7 +53,8 @@
 						</c:when>
 					</c:choose> -->
 
-					<td><a
+					<td> 
+						<a
 						href="${pageContext.request.contextPath }/codyListView?cody_idx=${bookmark.cody_idx}">상세보기</a>
 						<a
 						href="${pageContext.request.contextPath }/deleteBookmark?bookmark_idx=${bookmark.bookmark_idx}">삭제</a>
@@ -69,7 +68,7 @@
 
 		</table>
 
-	
+	<a href="../cody">home</a>	
 	</form>
 </body>
 </html>
