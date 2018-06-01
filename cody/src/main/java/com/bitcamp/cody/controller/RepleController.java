@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.dto.RepleDto;
 import com.bitcamp.cody.service.CodyListService;
+import com.bitcamp.cody.service.MemberListService;
 import com.bitcamp.cody.service.MemberService;
 import com.bitcamp.cody.service.RepleService;
 
@@ -42,9 +45,9 @@ public class RepleController {
 
 		List<RepleDto> list_r = repleService.listAll(cIdx);
 		ArrayList<HashMap<String, Object>> arr = new ArrayList<>();
-		HashMap<String, Object> map = new HashMap<>();
 
 		for (RepleDto reple : list_r) {
+			HashMap<String, Object> map = new HashMap<>();
 			MemberDto member = memberService.selectByIdx(reple.getMember_idx());
 			String date = df.format(reple.getReple_date());
 			map.put("reple_contents", reple.getReple_contents());
@@ -150,7 +153,7 @@ public class RepleController {
 	}
 
 	// 수신 여부
-	@RequestMapping(value="/reception", method=RequestMethod.POST)
+	@RequestMapping("/reception")
 	@ResponseBody
 	public int reception() {
 

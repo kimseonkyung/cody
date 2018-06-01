@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bitcamp.cody.dto.Item;
 import com.bitcamp.cody.dto.ItemDto;
-import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
 import com.bitcamp.cody.service.NeverItemService;
@@ -87,7 +85,7 @@ public class ItemController {
 
 		return "item/itemList";
 	}
-	
+
 	@RequestMapping("/itemListView")
 	public String listView(Model model, @RequestParam("item_idx") int idx) {
 
@@ -99,7 +97,7 @@ public class ItemController {
 		return "item/itemListView";
 	}
 
-	/*@RequestMapping("/itemSearch")
+	@RequestMapping("/itemSearch")
 	public String listSearch(Model model, @RequestParam("item_name") String name) {
 
 		List<ItemDto> items = itemListService.getListSearch(name);
@@ -109,13 +107,13 @@ public class ItemController {
 
 		return "item/itemFormOk";
 	}
-*/
+
 	/*-------------------------------- 수정 ------------------------------*/
 	@RequestMapping("itemUpdate")
-	public String itemUpdate(ItemDto item, Model model)
+	public String itemUpdate(ItemDto item, Model model, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 
-		int resultCnt = itemService.itemUpdate(item);
+		int resultCnt = itemService.itemUpdate(item, request);
 
 		String msg = "정보수정 완료";
 
@@ -146,10 +144,11 @@ public class ItemController {
 	
 	/*-------------------------------- 네이버쇼핑api ------------------------------*/
 	@RequestMapping(value="/naverItem", produces = "application/text; charset=utf8")
-	
 	@ResponseBody
 	public String naverItem(@RequestParam(required=false)String keyword){
         
+		
+		
         List<Item> items = naverItemService.searchItem(keyword, 10, 1);
 		JSONArray arr = new JSONArray();
 		

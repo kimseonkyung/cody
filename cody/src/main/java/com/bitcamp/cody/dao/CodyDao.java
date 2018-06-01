@@ -17,7 +17,6 @@ public interface CodyDao {
 	public int countAdd3(CodyDto cody);
 	public int countAdd2(CodyDto cody);
 	public int maxCodyIdx();
-	public int codyCount(int idx);
 	
 }
 

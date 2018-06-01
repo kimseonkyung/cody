@@ -41,10 +41,12 @@ public class ItemService {
 		
 	}
 
-	public int itemUpdate(ItemDto item) throws IllegalStateException, IOException {
+	public int itemUpdate(ItemDto item, HttpServletRequest request) throws IllegalStateException, IOException {
 
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 
+		service.multipart(item, request);
+		System.out.println("실행전 : " + item);
 		int resultCnt = dao.updateItem(item);
 		System.out.println("실행후 : " + item);
 
@@ -63,14 +65,6 @@ public class ItemService {
 		
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 		int result = dao.deleteCodyItem(codyIdx);
-		
-		return result;
-	}
-
-	public int getItemCount(int idx) {
-		
-		dao = sqlSessionTemplate.getMapper(ItemDao.class);
-		int result = dao.itemCount(idx);
 		
 		return result;
 	}

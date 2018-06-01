@@ -33,10 +33,6 @@
 	<select id="maxCodyIdx" resultType="int">
 		select max(cody_idx) from cody
 	</select>
-	
-	<select id="codyCount" resultType="int">
-		select count(*) from cody group by member_idx having member_idx = #{memberIdx}
-	</select>
 
 	<!-- insert 태그는 데이터베이스에 데이터를 삽입하는 insert구문을 사용할 때 사용 -->
 	<!-- ID : 외부에서 해당 태그를 부를 때 사용하는 식별 이름, 메퍼 파일안에서 중복 X parameterType : 여러 
