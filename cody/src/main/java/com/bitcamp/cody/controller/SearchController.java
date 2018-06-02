@@ -2,19 +2,17 @@ package com.bitcamp.cody.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.SearchService;
-import com.mysql.fabric.xmlrpc.base.Value;
 
 @Controller
 public class SearchController {
@@ -22,73 +20,77 @@ public class SearchController {
 	@Autowired
 	SearchService searchService;
 
-	// 아이템 검색
-	@RequestMapping(value = "/searchItem", method = RequestMethod.GET)
-	public String itemkeyword (HttpServletRequest request, Value item )
-	{
-		String keyword1 = request.getParameter("keyword1");
-		
-		return keyword1;
+	// 아이템검색 뷰로 이동
+	@RequestMapping("/searchItem")
+
+	public String serachItem(Model model) {
+
+		return "search/searchItem";
 	}
-	
-	public String searchItem(Model model, String keyword1) {
+
+	// 아이템 검색
+	@RequestMapping(value = "/itemInfo", method = RequestMethod.GET)
+
+	public String searchItemInfo(Model model, @RequestParam(value = "keyword1", required = false) String keyword1) {
 
 		if (keyword1 == null)
-			
+
 			return "";
 
 		List<ItemDto> ItemLists = searchService.getSearchItem(keyword1);
 
 		model.addAttribute("ItemLists", ItemLists);
-		
+	
 		System.out.println("ItemLists: " + ItemLists.toString());
 
-		return "/search/searchItem";
+		return "search/itemInfo";
 	}
 
-	//코디 검색
-	@RequestMapping(value = "/searchCody", method = RequestMethod.GET)
-	 public String codykeyword(HttpServletRequest request, Value cody)
-	 {
-		String keyword2 = request.getParameter("keyword2");
-		
-		return keyword2;
+	// 코드 검색 뷰로 이동
+
+	@RequestMapping("/searchCody")
+	public String searchcody(Model model) {
+
+		return "search/searchCody";
+
 	}
 
-	public String searchCody(Model model, String keyword2) {
-		
-		
+	// 코디 검색
+	@RequestMapping(value = "/codyInfo", method = RequestMethod.GET)
+
+	public String searchCodyInfo(Model model, @RequestParam(value = "keyword2", required = false) String keyword2) {
+
 		if (keyword2 == null)
 			return "";
 
 		List<CodyDto> CodyLists = searchService.getSearchCody(keyword2);
 
 		model.addAttribute("CodyLists", CodyLists);
-		
+
 		System.out.println("CodyLists : " + CodyLists.toString());
 
-		return "/search/searchCody";
+		return "search/codyInfo";
 	}
 
-	//회원검색
-	@RequestMapping(value = "/searchMember", method = RequestMethod.GET)
+	// 회원 검색 뷰로 이동
+	@RequestMapping("/searchMember")
+	public String searchMember(Model model) {
 
-	 public String memberkeyword(HttpServletRequest request,Value member)
-	 {
-		String keyword3 = request.getParameter("keyword3");
-		
-		return keyword3;
-	 }
-	 public String searchMember(Model model, String keyword3) {
+		return "search/searchMember";
+	}
 
-		if (keyword3 == null)
+	// 회원검색
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
+	public String searchMemberInfo(Model model, @RequestParam(value = "keyword3", required = false) String keyword3) {
+
+		if (keyword3 == null) {
 			return "";
-
+		}
 		List<MemberDto> memberLists = searchService.getSearchMember(keyword3);
-		
-		System.out.println("MemberLsit:"+ memberLists.toString());
-		model.addAttribute("MemberLsit" , memberLists);		
 
-		return "/search/searchMember";
+		System.out.println("MemberLsit:" + memberLists.toString());
+		model.addAttribute("MemberLsit", memberLists);
+
+		return "search/memberInfo";
 	}
 }

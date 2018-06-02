@@ -6,17 +6,20 @@
 
 
 
-	<select id="SearchItem"
+	<select id="searchItem"
 		resultType="com.bitcamp.cody.dto.ItemDto">
-		SELECT * FROM ITEM WHERE ITEM_NAME LIKE CONCAT('%'#{keyword1}'%');
+		SELECT * FROM ITEM WHERE ITEM_NAME LIKE CONCAT('%',#{keyword1},'%');
 	</select>
-	<select id="SearchCody"
+	
+	<select id="searchCody"
 		resultType="com.bitcamp.cody.dto.CodyDto">
-		SELECT * FROM CODY WHERE cody_title LIKE CONCAT('%'#{keyword2}'%');
+		SELECT * FROM CODY WHERE cody_title LIKE CONCAT('%',#{keyword2},'%');
 	</select>
-	<select id="SearchMember"
+	
+	<select id="searchMember"
 		resultType="com.bitcamp.cody.dto.MemberDto">
-		SELECT * FROM MEMBER WHERE member_name LIKE CONCAT('%'#{keyword3}'%');
+		SELECT * FROM MEMBER WHERE member_name LIKE CONCAT('%',#{keyword3},'%');
+		
 	</select>
 
 </mapper>

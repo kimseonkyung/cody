@@ -9,30 +9,17 @@
 </style>
 </head>
 <body>
-<form>
+
  	<h3>회원검색 </h3>
- 	<table border = "1">
-	<tr>
- 		<td>이미지</td>	
- 		<td>생일</td>	
- 		<td>아이디</td>	 		
-	</tr>
-	<!-- 회원 정보 출력 반복 -->
-	<c:forEach var="memberLists" items="${memberLists}">
-				<tr>
-					<td><c:if test="${memberLists.member_photo != null}">
-							<img
-								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${memberLists.member_photo}"
-								width="200">
-						</c:if>
-						</td>						
-					<td>${memberLists.member_birth}</td>
-					<td>${memberLists.member_id}</td>									
-					
-				</tr>
-			</c:forEach>
-	
-	</table>
+ 	<form action="${pageContext.request.contextPath }/memberInfo"  method="GET" >
+ 	<table>
+ 	<tr>
+ 		<td>회원이름<td>
+ 		<td><input type = "text" name = "keyword3">
+ 			<input type = "submit" value = "검색">
+ 		</td>
+ 		</tr>	
+</table>
 	
 </form>
 

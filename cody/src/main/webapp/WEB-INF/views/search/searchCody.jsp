@@ -9,30 +9,17 @@
 </style>
 </head>
 <body>
-<form>
-   	<h3>코디검색 </h3>
-   	<table border = "1">
-	<tr>
- 		<td>이미지</td>	
- 		<td>코디제목</td>	
- 		<td>조회</td>	 		
-	</tr>
-	<!-- 회원 정보 출력 반복 -->
-	<c:forEach var="CodyLists" items="${CodyLists}">
-				<tr>
-					<td>
-					<c:if test="${CodyLists.cody_image != null}">
-							<img
-								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${CodyLists.cody_image}"
-								width="200">
-						</c:if>
-						</td>						
-					<td>${CodyLists.cody_title}</td>
-					<td>${CodyLists.board_click}</td>									
-					
-				</tr>
-			</c:forEach>	
-	</table>
+    	<h3>코드검색 </h3>    	
+ 	<form action="${pageContext.request.contextPath }/codyInfo"  method="GET" >
+ 	<table>
+ 	<tr>
+ 		<td>코드입력<td>
+ 		<td><input type = "text" name = "keyword2">
+ 			<input type = "submit" value = "검색">
+ 		</td>
+ 		</tr>	
+</table>
+	
 </form>
 </body>
 </html>
