@@ -205,17 +205,23 @@
 								class="card-img-top card-item"
 								src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"
 								alt="Card image cap"></a>
-							<div class="card-body"
-								style="overflow: hidden; position:relative;">
-
-								<h5 class="card-title" style="float: left;">${irr.codytitle}</h5>
-								<br>
-								<div>${irr.codyheight}cm</div>
-								<div>${irr.codyage}세</div>
-								${irr.item_name }<br> ${irr.item_category }<br>
-								${irr.item_price} <a href="#" class="btn btn-primary"
-									style="position: absolute; right: 20px; bottom: 20px">팔로우</a>
-							</div></li>
+							
+							<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
+						
+						<div class="card-main" style="float:left;height: 40px;">
+						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.photo }" style="border: 1px solid darkgray; width:40px; height: 40px;">
+						 
+						 <div style="float:right; padding-left: 15px;">
+						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.id}</p></div>
+							
+					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${cody.codyheight}cm ${cody.codyage}세</p></div>
+					    </div>
+					    </div>
+					    
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary" style="float:right;">팔로우</a>
+						
+						</div>
+							</li>
 
 					</c:forEach>
 			</ol>			
