@@ -194,44 +194,35 @@ margin: 0 auto;
 }
 
 #content_1{
-width: 380px;
+border: 2px solid darkgray;
+max-width: 445px;
 margin: 0 auto;
 }
 
 #content_name{
-width: 380px;
+max-width: 400px;
 font-size: 18px;
-
+margin: 0 auto;
+line-height: 180%;
+margin-top: 20px;
 }
 
 #content_sub{
-width: 402px;
+max-width: 400px;
 margin: 0 auto;
-}
-
-#content_sub1{
-width: 380px;
-
-}
-
-#content_intro{
-width: 402px;
-margin: 0 auto;
+margin-top: 10px;
 }
 
 #content_intro1{
-width: 380px;
+max-width: 400px;
 line-height: 180%;
 margin: 0 auto;
-}
-
-#content_date{
-width: 402px;
-margin: 0 auto;
+line-height: 180%;
+margin-top: 20px;
 }
 
 #content_date1{
-width: 380px;
+max-width: 400px;
 min-height: 30px;
 margin: 0 auto;
 }
@@ -285,7 +276,7 @@ margin: 0 auto;
 		</div></div>
 			
 						<!--------------------왼쪽--------------------->
-                       <div class="col-md-7 order-md-2 mr-auto">
+                       <div class="col-md-7 order-md-2 mr-auto" style="margin-bottom: 20px; margin-top: 20px">
                        <div id="image">
 									<c:if test="${cody.cody_image != null}">
 										<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"style="width: 100%; object-fit: contain; border:2px solid darkgray;">
@@ -317,9 +308,10 @@ margin: 0 auto;
 						
 						
 						<!--------------------오른쪽--------------------->
-						<div class="col-md-5 order-md-3">
+						<div class="col-md-5 order-md-3" style="margin-bottom: 20px; margin-top: 20px">
+						<div id= content_1>
 							<div id=content_name><h4>${cody.cody_title}</h4></div>											
-								<div id="content_sub"><div id="content_sub1">
+								<div id="content_sub">
 								모델정보:${cody.cody_height}cm
 								<c:set var="data" value="${cody.cody_gender}" />
 								<c:choose>
@@ -332,10 +324,10 @@ margin: 0 auto;
                                     </c:otherwise>
 								</c:choose>
 								${cody.cody_age}세
-								</div></div>
+								</div>
 								
-								<div id="content_intro"><div id="content_intro1"><p>${cody.cody_intro}</p></div></div>
-								<div id="content_date"><div id="content_date1"><p>${cody.board_date}</p></div></div>
+								<div id="content_intro1"><p>${cody.cody_intro}</p></div>
+								<div id="content_date1"><p>${cody.board_date}</p></div></div>
 	
 			
 							<div id="item">
