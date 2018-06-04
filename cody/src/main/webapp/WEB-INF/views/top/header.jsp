@@ -186,6 +186,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">마이페이지</a>
 					<a class="dropdown-item" href="#">Another action</a>
+					<a class="dropdown-item" href="../member/memberDelete?id=${member.member_id}">회왼탈퇴</a>
 					<a class="dropdown-item btn btn-default btn-logiut" href="${pageContext.request.contextPath}/member/memberlogout"><span class="glyphicon glyphicon-log-out">로그아웃</span></a>
 				</div>
 				</li>
@@ -502,13 +503,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 								</div>
 
 
-								<!-- Birth -->
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">생일</div>
-									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
-										<input type="text" name="member_birth" value="${member.member_birth }" placeholder="&nbsp;ex)&nbsp;910425" style="width: 100%;">
-									</div>
-								</div>
+						
 								<!-- PhoneNumber -->
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">전화번호</div>
@@ -730,7 +725,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 			if($("#dupl").val()!="ok"){
 				alert("아이디 중복확인을 해주세요");
 				$("#memberForm_id").focus();
-				return false();
+				return false;
 			}
 		});
 
