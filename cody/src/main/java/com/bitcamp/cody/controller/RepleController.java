@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,8 +41,16 @@ public class RepleController {
 	public String insertReple(RepleDto reple) {
 
 		int resultCnt = repleService.repleInsert(reple);
-
-		return "";
+		
+		// 날짜 포멧 변경
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+				
+		RepleDto lateReple = repleService.selectinfo(reple);
+		System.out.println("lateReple : " + lateReple);
+		JSONObject obj = new JSONObject();
+		obj.put("date", df.format(lateReple.getReple_date()));
+		
+		return obj.toString();
 	}
 
 	// 대댓글

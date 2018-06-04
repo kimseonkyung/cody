@@ -38,4 +38,7 @@ public interface RepleDao {
 	// 알림 리스트 정보 가져오기
 	List<RepleDto> noticeList(int idx);
 
+	// 첫댓글 저장된 댓글찾기
+	RepleDto selectinfo(RepleDto reple);
+
 }

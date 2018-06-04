@@ -34,6 +34,11 @@
 		insert into reple (regroup ,reple_contents, member_idx, cody_idx) values (#{regroup}, #{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
+	<!-- 첫댓글 저장된 댓글찾기 -->
+	<select id="selectinfo" resultType="com.bitcamp.cody.dto.RepleDto" parameterType="com.bitcamp.cody.dto.RepleDto">
+		select * from reple where cody_idx=#{cody_idx} and member_idx=#{member_idx} and reple_contents=#{reple_contents} order by reple_date desc limit 1;
+	</select>
+	
 	<!-- 대댓글 입력 -->
 	<insert id="re_repleInsert" parameterType="com.bitcamp.cody.dto.RepleDto">
 		insert into reple (regroup ,reparent, redepth, reorder, reple_contents, member_idx, cody_idx)
@@ -73,5 +78,7 @@
         from reple
         where reception=true and cody_idx in (select cody_idx from cody where member_idx = #{idx})
 	</select>
+	
+	
 
 </mapper>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.MemberListService;
@@ -45,9 +46,9 @@ public class MemberController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam(value = "member_id", defaultValue = "0") String id,
-			            @RequestParam(value = "member_pw", required = false) String pw, HttpSession session) {
+			            @RequestParam(value = "member_pw", required = false) String pw, HttpSession session, HttpServletRequest request) {
 
-		
+		 String referer = request.getHeader("Referer");
 		
 		System.out.println(id);
 		System.out.println(pw);
@@ -73,7 +74,7 @@ public class MemberController {
 
 		
 		}
-		return"home";
+		return "redirect:"+ referer;
 	}
 	
 	

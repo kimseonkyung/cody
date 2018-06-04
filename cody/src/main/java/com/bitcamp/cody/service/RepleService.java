@@ -40,6 +40,13 @@ public class RepleService {
 		
 		return result;
 	} 
+	
+	// 저장된 리스트 가져오기
+	public RepleDto selectinfo(RepleDto reple) {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		RepleDto lateReple = dao.selectinfo(reple);
+		return lateReple;
+	}
 
 	// 대댓글 저장
 	public int re_repleInsert(RepleDto reple) {

@@ -60,11 +60,13 @@ public class HomeController {
 		
 		/*랭킹 출력*/
 		List<CodyDto> rankings = rankingSerivce.getRanking();
-		ArrayList<HashMap<String, Object>> arr = new ArrayList<>();
+		ArrayList<HashMap<Object, Object>> arr = new ArrayList<>();
 		
 		for(int i = 0; i<rankings.size(); i++) {
 			MemberDto member = rankingSerivce.getId(rankings.get(i).getMember_idx());
-			HashMap<String, Object> map = new HashMap<String, Object>();
+			HashMap<Object, Object> map = new HashMap<Object, Object>();
+			List<ItemDto> itemtime = new ArrayList<>();		
+			itemtime = codyItemListService.getCodyItemList(rankings.get(i).getCody_idx());
 			System.out.println("member : "+ member);
 			map.put("cody_height", rankings.get(i).getCody_height() );
 			map.put("cody_gender", rankings.get(i).isCody_gender() );
@@ -73,6 +75,7 @@ public class HomeController {
 			map.put("cody_image", rankings.get(i).getCody_image() );
 			map.put("id", member.getMember_id() );
 			map.put("photo", member.getMember_photo() );
+			map.put(rankings.get(i), itemtime);
 			arr.add(map);
 		}	
 		System.out.println("전체리스트 : " + rankings.toString());
@@ -85,7 +88,7 @@ public class HomeController {
 		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
 
 		for (CodyDto time : codytimes) {	
-			
+			MemberDto member = rankingSerivce.getId(time.getMember_idx());
 			HashMap<Object, Object> map = new HashMap<>();
 			List<ItemDto> itemtime = new ArrayList<>();		
 			itemtime = codyItemListService.getCodyItemList(time.getCody_idx());
@@ -95,6 +98,8 @@ public class HomeController {
 			map.put("codyage", time.getCody_age());
 			map.put("codyheight",time.getCody_height());
 			map.put("codyidx",time.getCody_idx());		
+			map.put("id", member.getMember_id() );
+			map.put("photo", member.getMember_photo() );
 			map.put(time, itemtime);
 			irr.add(map);		
 		}
