@@ -99,7 +99,7 @@
 			<!------------------ 코디 리스트 반복 출력 ----------------------->
 			<c:forEach var="ItemLists" items="${ItemLists }">
 				<li class="card card-item-li">
-					<%-- <a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"> --%><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/itemphoto/${ItemLists.item_image}" alt="Card image cap">
+				 <a href="${pageContext.request.contextPath}/itemListView?item_idx=${ItemLists.item_idx}"> <img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/itemphoto/${ItemLists.item_image}" alt="Card image cap"></a>
 		           <div class="card-body" style="overflow: hidden; position: relative;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;padding-top: 15px;height: 160px;">
 						 <h5 class="card-title" style="float: left;">${ItemLists.item_name}</h5><br>
 					 <div>가격 : ${ItemLists.item_price}원</div> 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>코디</title>
 <style>
 </style>
 </head>
@@ -102,7 +102,7 @@
 			<!------------------ 코디 리스트 반복 출력 ----------------------->
 			<c:forEach var="CodyLists" items="${CodyLists}">
 				<li class="card card-item-li">
-				<%-- 	<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${CodyLists.cody_idx}"> --%><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${CodyLists.cody_image}" alt="Card image cap">
+				<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${CodyLists.cody_idx}"> <img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${CodyLists.cody_image}" alt="Card image cap"></a>
 		           <div class="card-body" style="overflow: hidden; position: relative;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;padding-top: 15px;height: 160px;">
 						 <h5 class="card-title" style="float: left;">${CodyLists.cody_title}</h5><br>
 							<div><c:set var="data" value="${CodyLists.cody_gender}" /> 

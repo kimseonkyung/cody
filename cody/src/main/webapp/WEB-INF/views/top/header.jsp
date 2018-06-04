@@ -623,10 +623,9 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 			$('#searchbox').attr('placeholder', '코디');
 			$('#scarchform').attr('action', '${pageContext.request.contextPath }/codyInfo');
 			$('#searchbox').attr('name','keyword2');
-			
-			
-			
-		})
+		 	$('#searchbox').focus(); 
+		 	$()
+		 	})
 
 	})
 
@@ -635,8 +634,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 			$('#searchbox').attr('placeholder', '아이템');
 			$('#scarchform').attr('action', '${pageContext.request.contextPath }/itemInfo');
 			$('#searchbox').attr('name','keyword1');
-					
-		
+		    $('#searchbox').focus(); 			
 		})
 		
 
@@ -645,7 +643,8 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 		$('#member').click(function() {
 			$('#searchbox').attr('placeholder', '회원');
 			$('#scarchform').attr('action', '${pageContext.request.contextPath }/memberInfo');
-			$('#searchbox').attr('name','keyword3');
+			$('#searchbox').attr('name','keyword3');		
+			$('#searchbox').focus();
 		})
 
 	})
