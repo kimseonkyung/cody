@@ -29,8 +29,8 @@
 
 
 <style>
-	/* .card-item-ol {
-		overflow: hidden; */
+	.card-item-ol {
+		overflow: hidden;
 		
 	}
 	
@@ -155,21 +155,20 @@
 			<c:forEach var="cody" items="${arr }" begin="0" end="2" step="1">		
 				<li class="card card-item-li">
 					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap"></a>
-						<div class="card-body" style="overflow: hidden; position: relative;">
-						 <h5 class="card-title" style="float: left;">${cody.id}</h5><br>
-							<div><c:set var="data" value="${cody.cody_gender}" /> 
-					         <c:choose>
-	                           <c:when test="${data eq true}">
-					             Man
-					           </c:when>
-					           <c:otherwise>
-					            Woman
-					           </c:otherwise>
-					          </c:choose>
-					         </div> 
-					 <div>${cody.cody_height}cm</div> 
-					 <div>${cody.cody_age}세</div>
-							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 20px; bottom:20px">팔로우</a>
+						<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
+						
+						<div class="card-main" style="float:left;height: 40px;">
+						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${cody.photo }" style="border: 1px solid darkgray; width:40px; height: 40px;">
+						 
+						 <div style="float:right; padding-left: 15px;">
+						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${cody.id}</p></div>
+							
+					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${cody.cody_height}cm ${cody.cody_age}세</p></div>
+					    </div>
+					    </div>
+					    
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary" style="float:right;">팔로우</a>
+						
 						</div>
 				</li>
             </c:forEach>
@@ -199,34 +198,33 @@
 	<!------------------ 전체 리스트 반복 출력 ----------------------->			
 			<h6 class="border-bottom border-gray pb-2 mb-0">전체 리스트</h6>
 			<ol class="card-item-ol" >
-			<c:forEach var="cody" items="${arr }">		
-				<li class="card card-item-li">
-					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap" ></a>
-						<div class="card-body" style="overflow: hidden; position: relative;">
-						 <h5 class="card-title" style="float: left;">${cody.id}</h5><br>
-							<div><c:set var="data" value="${cody.cody_gender}" /> 
-					         <c:choose>
-	                           <c:when test="${data eq true}">
-					             Man
-					           </c:when>
-					           <c:otherwise>
-					            Woman
-					           </c:otherwise>
-					          </c:choose>
-					         </div> 
-					 <div>${cody.cody_height}cm</div> 
-					 <div>${cody.cody_age}세</div>					
-							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary"	style="position: absolute; right: 20px; bottom:20px">팔로우</a>
-						</div>
-				</li>
-            </c:forEach>
+					<c:forEach var="irr" items="${irr}">
+
+						<li class="card card-item-li"><a
+							href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.codyidx}"><img
+								class="card-img-top card-item"
+								src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"
+								alt="Card image cap"></a>
+							<div class="card-body"
+								style="overflow: hidden; position:relative;">
+
+								<h5 class="card-title" style="float: left;">${irr.codytitle}</h5>
+								<br>
+								<div>${irr.codyheight}cm</div>
+								<div>${irr.codyage}세</div>
+								${irr.item_name }<br> ${irr.item_category }<br>
+								${irr.item_price} <a href="#" class="btn btn-primary"
+									style="position: absolute; right: 20px; bottom: 20px">팔로우</a>
+							</div></li>
+
+					</c:forEach>
 			</ol>			
 						
 		</div>
 	<small class="d-block text-right mt-3"> <a href="#">All updates</a></small>
-</div>
-    <!--------------------- 메인 내용2 ----------------------->
-<div class="col-md-10 order-md-3">
+	
+	  <!--------------------- 메인 내용2 ----------------------->
+
 			
 				<div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -246,7 +244,11 @@
 </div>
 	
 	
+
+	
+	
 </div>
+
 	</main>
 	
     <!--------------------- 푸터 ----------------------->	
@@ -433,6 +435,7 @@ function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
-}
+};
+
 </script>
 </html>
