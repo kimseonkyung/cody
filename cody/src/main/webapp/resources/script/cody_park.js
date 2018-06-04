@@ -57,7 +57,7 @@
 
 //로그인 스크립트
 	
-	$(document).ready(function(){
+/*	$(document).ready(function(){
 		
 		$('#loginForm').submit(function(){
 			
@@ -81,7 +81,7 @@
 		
 		
 	});
-
+*/
 
 //비밀번호 재확인 스크립트
 	$(document).ready(function(){

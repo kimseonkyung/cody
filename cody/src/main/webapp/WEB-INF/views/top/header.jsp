@@ -254,7 +254,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">비밀번호</div>
 									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
-										<input type="password" name="member_pw" id="memberForm_pw" style="width: 100%;">
+										<input type="password" name="member_pw" id="memberForm_pw" placeholder="6글자 이상" style="width: 100%;">
 									</div>
 								</div>
 
@@ -283,7 +283,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">메일주소</div>
 									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
-										<input type="text" name="member_email" id="member_email" style="width: 100%;">
+										<input type="text" name="member_email" id="member_email" placeholder="asdf@naver.com" style="width: 100%;">
 									</div>
 								</div>
 
@@ -497,7 +497,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">메일주소</div>
 									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
-										<input type="text" name="member_email" value="${member.member_email }" style="width: 100%;">
+										<input type="text" name="member_email" value="${member.member_email }" placeholder="asdf@naver.com" style="width: 100%;">
 									</div>
 								</div>
 
