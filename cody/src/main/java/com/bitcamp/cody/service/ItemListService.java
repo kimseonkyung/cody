@@ -54,7 +54,7 @@ public class ItemListService {
 		List<ItemDto> list = dao.selectByName(name);
 		
 		return list;
-	} 
+	}
 
 	 
 }
