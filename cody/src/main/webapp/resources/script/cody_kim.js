@@ -54,39 +54,41 @@ $(document).ready(function() {
 
 /*--------------------------------------- 댓글 ---------------------------------------*/
 /* 첫댓글 저장 */
-$('#reple #repleSave').click(
-		function() {
+$('#reple #repleSave').click(function() {
 
-			var cody_idx = $('input[name="reple_cody_idx"]').val();
 			var member_idx = $('input[name="reple_member_idx"]').val();
+			var cody_idx = $('input[name="reple_cody_idx"]').val();
 			var member_id = $('input[name="reple_member_id"]').val();
 			var member_photo = $('input[name="reple_member_photo"]').val();
 			var reple_contents = $('#reple #reple_contents').val();
 			
-			if(member_idx==null) {
+			if(member_idx.length==0) {
 				alert('로그인 이후에 작성 가능합니다.');
 				$("#loginModal").modal('show');
-				return;
+				return false;
 			}
 			
 			$.ajax({
 				type : 'post',
 				url : '/cody/repleInsert',
+				dataType: 'json',
 				data : {
 					cody_idx : cody_idx,
 					member_idx : member_idx,
 					reple_contents : reple_contents
 				},
 				success : function(data) {
-					console.log(data);
-					var rd = new Date();
-					var y = rd.getFullYear();
-					var m = rd.getMonth();
-					var d = rd.getDate();
-					var day = y + '/' + m + '/' + d;
 
-					$('#repleList').append($('<div>').text('아이디' + day),
-							$('<div>').text(reple_contents));
+					$('#repleList').append('<div style="border: 1px solid red; max-width:556px; margin-top: 10px;">'
+							+'<img class="rounded-circle" src="/cody/uploadfile/memberphoto/'+member_photo+'" style="border: 1px solid red; width:40px; height: 40px;">'
+							+'&emsp;<h2>'+member_id+'</h2> &emsp;&emsp;'+data.date
+							+'<button id="re_repleShow${repleList.reple_idx }" onclick="btnShow(${repleList.reple_idx })">답글</button>'
+							+'<button id="repleDelete${repleList.reple_idx }" onclick="repleDelete(${repleList.reple_idx })">삭제</button><br>'
+							+'<div style="border: 1px solid red; width: 300px; margin: 10px;">'+reple_contents+'</div>'
+							+'</div>');
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert("에러 발생  \n" + textStatus + " : " + errorThrown);
 				}
 			});
 		});
@@ -104,7 +106,10 @@ function re_repleSave(reple_idx) {
 		success : function(data) {
 			alert('성공');
 			location.reload();
-
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert("에러 발생  \n" + textStatus + " : " + errorThrown);
+			self.close();
 		}
 	});
 
@@ -131,6 +136,10 @@ function repleDelete(reple_idx) {
 		},
 		success : function(data) {
 			$('#repleDelete' + reple_idx).parent().parent().remove();
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert("에러 발생  \n" + textStatus + " : " + errorThrown);
+			self.close();
 		}
 	});
 }

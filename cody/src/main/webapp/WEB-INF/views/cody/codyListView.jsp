@@ -245,6 +245,11 @@ min-height: 120px;
 margin: 0 auto;
 }
 
+#repleList h2 {
+	display: inline;
+	color: #555;
+}
+
 </style>
 </head>
 
@@ -332,10 +337,9 @@ margin: 0 auto;
 
 		<div id="reple">
 			<input type="text" name="reple_cody_idx" value="${cody.cody_idx }">
-			<input type="text" name="reple_member_idx" value="${myInf.member_idx }"><br>
-			<input type="text" name="reple_member_id" value="${myInf.member_id }"><br>
-			<input type="text" name="reple_member_photo" value="${myInf.member_photo }"><br>
-			<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${myInf.member_photo }" style="border: 1px solid red; width:40px; height: 40px;">
+			<input type="text" name="reple_member_idx" value="${myInf.member_idx }">
+			<input type="text" name="reple_member_id" value="${myInf.member_id }">
+			<input type="text" name="reple_member_photo" value="${myInf.member_photo }">
 			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="3" cols="40" maxlength="450"></textarea>
 			<button type="button" id="repleSave">저장</button>
 		</div>
@@ -381,5 +385,7 @@ margin: 0 auto;
 	<!-- 인클루드 footer -->
 	<%@ include file="../bottom/footer.jsp" %>
 </body>
+
+<script	src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>
 
 </html>
