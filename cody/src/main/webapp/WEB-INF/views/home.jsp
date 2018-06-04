@@ -214,7 +214,7 @@
 						 <div style="float:right; padding-left: 15px;">
 						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.id}</p></div>
 							
-					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${cody.codyheight}cm ${cody.codyage}세</p></div>
+					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.codyheight}cm ${irr.codyage}세</p></div>
 					    </div>
 					    </div>
 					    
