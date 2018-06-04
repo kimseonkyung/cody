@@ -2,12 +2,17 @@ package com.bitcamp.cody.dao;
 
 import java.util.List;
 import javax.sql.DataSource;
+
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import com.bitcamp.cody.dto.MemberDto;
 
 public class MemberDao {
 	
 	private JdbcTemplate jdbcTemplate;
+	
+	
+	
 	
 	// 생성자 방식으로 의존 설정
 	public MemberDao(DataSource dataSource) {
@@ -52,7 +57,8 @@ public class MemberDao {
 	}
 	
 	
-    
+	
+	
 
 	
 

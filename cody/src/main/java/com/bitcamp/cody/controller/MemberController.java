@@ -1,7 +1,8 @@
 package com.bitcamp.cody.controller;
 
 import java.io.IOException;
-
+import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +24,7 @@ import com.bitcamp.cody.service.MemberListService;
 import com.bitcamp.cody.service.MemberService;
 
 
+
 @Controller
 public class MemberController {
 	
@@ -28,19 +32,18 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 
-	@Autowired
-	private MemberListService listservice;
 	
 	
 	
 	
+	/*회원 로그인*/
 	
-	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm() {
 		return "member/login";
 	}
 
-	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam(value = "member_id", defaultValue = "0") String id,
 			            @RequestParam(value = "member_pw", required = false) String pw, HttpSession session) {
 
@@ -75,21 +78,30 @@ public class MemberController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	/*회원정보 수정*/
 
-	@RequestMapping(value = "/member/modifyForm", method = RequestMethod.GET)
+  /* @RequestMapping(value = "/member/modify", method = RequestMethod.GET)
 	public String modifyMember(Model model, @RequestParam("id") String id) {
 
 		MemberDto member = listservice.getlistView(id);
 
 		model.addAttribute("member", member);
 
-		return "member/modifyForm";
-	}
-
-	@RequestMapping(value = "/member/modifyForm", method = RequestMethod.POST)
+		return "member/modify";
+	}*/
+   
+	@RequestMapping(value = "/member/modify", method = RequestMethod.POST)
 	public String modifyOk(MemberDto member, Model model, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 
+		
 		int resultCnt = service.memberModify(member, request);
 
 		String msg = "정보수정 완료";
@@ -105,19 +117,7 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping("/member/mypage")
-	public String mypage(HttpSession session, Model model) {
-		
-		MemberDto member = (MemberDto) session.getAttribute("loginInfo");
-		
-		model.addAttribute("member", member);
-		
-		return "member/mypage";
-		
-	}
-	
-	
-	// 같은 type을 찾아서 주입
+	/*회원가입*/
 		
 		
 		@RequestMapping(value = "/member/memberReg", method=RequestMethod.GET)
@@ -164,16 +164,16 @@ public class MemberController {
 	
 	   
 		
-		@RequestMapping(value="/member/idchk", method=RequestMethod.POST)
-		@ResponseBody
-		public String idChk(@RequestParam("userid") String id) {
-			
-			// Y : 사용 가능
-			// N : 사용 불가
-			return service.idChk(id);
-		}
+		
 	
 	
+		
+		
+		
+		
+		
+		/*회원탈퇴*/
+		
 		
 		@RequestMapping("/member/memberDelete")
 		public String deleteMember(Model model, @RequestParam("id") String id) {
@@ -193,14 +193,116 @@ public class MemberController {
 					
 		}
 		
+		/*회원 로그아웃*/
+		
 		@RequestMapping("/member/memberlogout")
 		public String logout(HttpSession session) {
 			session.removeAttribute("loginInfo");
 			return "redirect:/";
 		}
 		
-
+		
+		
+		
+		
+		
+		/*카카오 로그인*/
+		
+		@RequestMapping(value = "/kakaologin", method=RequestMethod.GET)
+		public String kakaologinform() {
+			return "member/kakaologin";
+		}
+		
+		
+		
+		
+		
+		
+		@RequestMapping(value = "/kakaologin", method = RequestMethod.POST)
+		public String kakaoLogin(@RequestParam(name="kakaoEmail") String email, 
+				                 @RequestParam(name="id") String id,                             
+				                 @RequestParam(name="profile_image") String profile, 
+				                 @RequestParam(name="nickname") String name, HttpSession session) {
+			                     
+			
 	
+			System.out.println(email);
+			System.out.println(id);
+			System.out.println(profile);
+			System.out.println(name);
+			
+		
+
+			// 세션에 데이터 저장
+			session.setAttribute("loginInfo", email);
+			
+			System.out.println(session.getAttribute("loginInfo"));
+			
+			/*notifier.sendMail(member.getMember_id(), "로그인이 성공적으로 처리되었습니다.");*/
+
+			
+			
+			return"home";
+		}
+
+		
+		
+		
+	
+		
+		/*아이디 찾기*/
+		
+		@RequestMapping(value = "/findId", method=RequestMethod.GET)
+		public String findIdform() {
+			return "member/findid";
+		}
+		
+		
+		
+		
+		@RequestMapping(value = "/findId" , method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+		public @ResponseBody String findId(@ModelAttribute MemberDto member, Model model , HttpServletResponse response)throws Exception {
+
+			System.out.println(member.toString());
+
+
+			ArrayList <String> emailList = service.findId(member);
+			System.out.println(emailList.toString());
+			System.out.println(emailList.get(0));
+			String findEmail = "{\"member_email\":\""+emailList+"\"}";
+
+			System.out.println(findEmail);
+
+			return findEmail;
+		}
+		
+		
+		/*아이디 유무 체크*/
+		@RequestMapping(value = "/idchk" , method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+		public @ResponseBody String checkDuplicate(HttpServletResponse response,  @RequestParam("memberForm_id") String id, Model model)throws Exception {
+
+		  String msg = service.idchk(id);
+		  System.out.println(msg);
+		  String responseMsg;
+
+
+		  if(msg == "T") {
+		        responseMsg = "{\"msg\":\""+"사용이 가능한 아이디 입니다."+"\"}";
+		  }else {
+		    responseMsg = "{\"msg\":\""+"사용이 불가한 아이디 입니다."+"\"}";
+		  }
+
+
+		   URLEncoder.encode(responseMsg , "UTF-8");
+
+
+//			model.addAttribute("msg", service.authenticate(email));
+		  System.out.println(id);
+		  return responseMsg;
+
+		}
+		
+		
 		
 
 }
