@@ -253,6 +253,13 @@ public class MemberDto {
 				+ ", member_birth=" + member_birth + ", member_email=" + member_email + ", member_ph=" + member_ph
 				+ "]";
 	}
+
+
+
+
+
+
+	
 	
 	
 	

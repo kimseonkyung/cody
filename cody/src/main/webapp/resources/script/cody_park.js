@@ -1,15 +1,13 @@
-/**
- * 
- */
-<!-- 회원가입 스크립트 -->
 
-	$(document).ready(function(){
+
+// 회원가입 스크립트
+	/*$(document).ready(function(){
 		
 		// 사용자가 입력하는 데이터의 유효성 검사
 		$('#regForm').submit(function(){
 			
-			var userId = $('#member_id').val();
-			var pw = $('#member_pw').val();
+			var userId = $('#memberForm_id').val();
+			var pw = $('#memberForm_pw').val();
 			var userName = $('#member_name').val();
 			var userbirth = $('#member_birth').val();
 			var useremail = $('#member_email').val();
@@ -20,12 +18,12 @@
 			
 			if(userId.length < 1){
 				alert('아이디를 입력해주세요.');
-				$('#member_id').focus();
+				$('#memberForm_id').focus();
 				return false;
 			}
 			if(pw.length < 1){
 				alert('비밀번호를 입력해주세요.');
-				$('#member_pw').focus();
+				$('#memberForm_pw').focus();
 				return false;
 			}
 			if(userName.length < 1 ){
@@ -50,25 +48,21 @@
 			}
 			
 			
-		
-		
-		
-		
-
 	
+	});
+		
+		
+		
+	});*/
+
+//로그인 스크립트
 	
-
-
-
-<!-- 로그인 스크립트 -->
-	
-
 	$(document).ready(function(){
 		
 		$('#loginForm').submit(function(){
 			
-			var uId = $('#memberForm_id').val();
-			var pw = $('#memberForm_pw').val();
+			var uId = $('#member_id').val();
+			var pw = $('#member_pw').val();
 			
 			// 아이디 값이 있는지 확인
 			if(uId.length < 1){
@@ -82,7 +76,6 @@
 				return false;
 			}
 
-			
 		});
 		
 		
@@ -90,8 +83,33 @@
 	});
 
 
+//비밀번호 재확인 스크립트
+	$(document).ready(function(){
+		$('#memberForm_pw').keyup(function() {
+			$('font[name=check]').text('');
+		}); //#user_pass.keyup
 
-<!-- 카카오 로그인 스크립트 -->
+		$('#chpw').keyup(function() {
+			if ($('#memberForm_pw').val() != $('#chpw').val()) {
+				$('font[name=check]').text('');
+
+			}
+			; //#user_pass.keyup
+
+			$('#chpw').keyup(function() {
+				if ($('#pw').val() != $('#chpw').val()) {
+					$('font[name=check]').text('');
+					$('font[name=check]').html("비밀번호가 일치하지 않습니다.");
+				} else {
+					$('font[name=check]').text('');
+					$('font[name=check]').html("");
+				}
+			}); //#chpass.keyup
+		});
+	});
+
+	
+//카카오 로그인 스크립트
 
    //<![CDATA[
    // 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -130,6 +148,7 @@
                 
                 
                 url : '/kakaologin',
+                
                 success : function(){
                  alert("카카오 로그인에 성공하였습니다.");
                  window.location = "mypage/main?type=kakao";
@@ -147,5 +166,15 @@
     }
    });
    };
-		});
-	});
+	
+   
+ //아이디 체크여부 확인
+ 
+ 
+
+
+
+   
+   
+   
+	

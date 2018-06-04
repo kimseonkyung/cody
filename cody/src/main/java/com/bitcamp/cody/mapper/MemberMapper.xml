@@ -12,6 +12,10 @@
 		resultType : 질의의 결과를 지정하는 클래스타입의 객체에 데이터 메핑
 		parameterType : 여러 데이터를 하나의 객체에 담아서 받을 때 해당 객체 타입으로 지정
 	 -->
+	<!-- 아이디 중복 검사 -->
+	<select id="check_id" resultType="com.bitcamp.cody.dto.MemberDto">
+		select count(*) from member where member_id = #{member_id}
+	</select>
 	
 	<select id="selectById" resultType="com.bitcamp.cody.dto.MemberDto">	
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id} 		
@@ -29,7 +33,13 @@
 		select * from member where member_name = #{member_name}
 	</select>
 
+    <select id = "findId" resultType = "com.bitcamp.cody.dto.MemberDto">
+    SELECT * FROM MEMBER 
+    </select>
 
+<select id = "idchk" resultType = "com.bitcamp.cody.dto.MemberDto">
+     select * from member where member_id = #{member_id}
+</select>
 
 
 	<!-- insert 태그는 데이터베이스에 데이터를 삽입하는 insert구문을 사용할 때 사용  -->
