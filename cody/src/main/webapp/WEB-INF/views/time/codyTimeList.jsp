@@ -151,24 +151,24 @@ $(document).ready(function (event){
 						<li class="card card-item-li"><a href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.codyidx}">
 						<img class="card-img-top card-item" src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"
 								alt="Card image cap"></a>
-							<div class="card-body"
-								style="overflow: hidden; position:relative;">
-
-								<h5 class="card-title" style="float: left;">${irr.codytitle }</h5>
-								<div>${irr.codyheight}cm</div>
-								<div>${irr.codyage}세</div>
-								
+							<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
+			
 								<c:forEach var="item" items="${irr.itemtime}" begin="0" end="2" step="1">
 								
 								<div><img src="${item.item_image}" style="width: 40px; height: 50px">
 								${item.item_price}원<a href="#" class="btn btn-primary" style="position: absolute; right:10px;">구입</a></div>
 																	
 								</c:forEach>
-								<div>
-								<br> <br>
-								<a href="#" class="btn btn-primary"								
-									style="position: absolute; right: 20px; bottom: 20px">팔로우</a>
-							</div>
+								
+								<div class="card-main" style="float:left;height: 40px;">
+						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.photo }" style="border: 1px solid darkgray; width:40px; height: 40px;">
+								<div style="float:right; padding-left: 15px;">
+						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.id}</p></div>
+							
+					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.codyheight}cm ${irr.codyage}세</p></div>
+					    </div>
+					    </div>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary" style="float:right;">팔로우</a>
 							
 							</div>
 							
