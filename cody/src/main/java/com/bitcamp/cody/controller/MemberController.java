@@ -162,16 +162,7 @@ public class MemberController {
 		}
 		
 	
-	   
-		
-		
-	
-	
-		
-		
-		
-		
-		
+	  
 		/*회원탈퇴*/
 		
 		
@@ -188,10 +179,11 @@ public class MemberController {
 			model.addAttribute("msg", msg);
 			
 			return "member/memberDelete";
-			
-					
 					
 		}
+		
+		
+		
 		
 		/*회원 로그아웃*/
 		
