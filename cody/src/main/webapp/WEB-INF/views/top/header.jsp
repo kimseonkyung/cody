@@ -145,21 +145,21 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 					<div class="d-flex flex-column flex-md-row mr-auto">
 
 						<!-- 검색 -->
-						<form id="scarchform" class="form-inline mr-auto md-2">
+						<form id="scarchform" class="form-inline mr-auto md-2" method ="GET">
 							<div class="d-flex flex-column flex-md-row mr-auto">
 								<div id="section1" class="label">
 									<input class="form-control mr-sm-2" type="text"
-										placeholder="Search" id="searchbox" aria-label="Search">
+										placeholder="Search" id="searchbox" aria-label="Search" >
 
 									<div id="section1b" class="elements">
-										<input id="codyinfo" type="radio" name="keyword2"> 
-										<input id="iteminfo" type="radio" name="keyword1"> 
-										<input id="memberinfo" type="radio" name="keyword3">
+										<input id="codyinfo" type="radio"> 
+										<input id="iteminfo" type="radio" > 
+										<input id="memberinfo" type="radio">
 
-										<section class="buttons">
-											<label for="1" id="cody">코디</label> 
-											<label for="2" id="item">아이템</label>
-											<label for="3" id="member">회원</label>
+										<section class="buttons" id="section1b">
+											<label for="codyinfo" id="cody">코디</label> 
+											<label for="iteminfo" id="item">아이템</label>
+											<label for="memberinfo" id="member">회원</label>
 										</section>
 									</div>
 								</div>
@@ -621,7 +621,11 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 	$(document).ready(function() {
 		$('#cody').click(function() {
 			$('#searchbox').attr('placeholder', '코디');
-			$('#scarchform').attr('action', 'codyInfo.jsp')
+			$('#scarchform').attr('action', '${pageContext.request.contextPath }/codyInfo');
+			$('#searchbox').attr('name','keyword2');
+			
+			
+			
 		})
 
 	})
@@ -629,14 +633,19 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 	$(document).ready(function() {
 		$('#item').click(function() {
 			$('#searchbox').attr('placeholder', '아이템');
-			$('#scarchform').attr('action', 'itemInfo.jsp')
+			$('#scarchform').attr('action', '${pageContext.request.contextPath }/itemInfo');
+			$('#searchbox').attr('name','keyword1');
+					
+		
 		})
+		
 
 	})
 	$(document).ready(function() {
 		$('#member').click(function() {
 			$('#searchbox').attr('placeholder', '회원');
-			$('#scarchform').attr('action', 'memberInfo.jsp')
+			$('#scarchform').attr('action', '${pageContext.request.contextPath }/memberInfo');
+			$('#searchbox').attr('name','keyword3');
 		})
 
 	})
