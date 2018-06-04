@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitcamp.cody.dto.CodyDto;
+import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.MemberDto;
+import com.bitcamp.cody.service.CodyItemListService;
+import com.bitcamp.cody.service.CodyTimeListService;
 import com.bitcamp.cody.service.RankingSerivce;
 
 /**
@@ -27,8 +30,11 @@ public class HomeController {
 	
 	@Autowired
 	RankingSerivce rankingSerivce;
-	
-	
+	@Autowired
+	CodyItemListService codyItemListService;
+	@Autowired
+	CodyTimeListService codyTimeListService;
+		
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -45,10 +51,16 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-        /*랭킹 출력*/
+		
+		return "index";
+	}
+	
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String main(Locale locale, Model model) {
+		
+		/*랭킹 출력*/
 		List<CodyDto> rankings = rankingSerivce.getRanking();
 		ArrayList<HashMap<String, Object>> arr = new ArrayList<>();
-			
 		
 		for(int i = 0; i<rankings.size(); i++) {
 			MemberDto member = rankingSerivce.getId(rankings.get(i).getMember_idx());
@@ -60,17 +72,36 @@ public class HomeController {
 			map.put("cody_idx", rankings.get(i).getCody_idx() );
 			map.put("cody_image", rankings.get(i).getCody_image() );
 			map.put("id", member.getMember_id() );
+			map.put("photo", member.getMember_photo() );
 			arr.add(map);
-		}		
-			
+		}	
 		System.out.println("전체리스트 : " + rankings.toString());
-		
-		
 		
 		model.addAttribute("rankings", rankings);
 		model.addAttribute("arr", arr);
 		
+		/*타임라인 출력*/
+		List<CodyDto> codytimes = codyTimeListService.getCodyTimeList();
+		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
+
+		for (CodyDto time : codytimes) {	
+			
+			HashMap<Object, Object> map = new HashMap<>();
+			List<ItemDto> itemtime = new ArrayList<>();		
+			itemtime = codyItemListService.getCodyItemList(time.getCody_idx());
+			map.put(time.getCody_idx(),itemtime);	
+			map.put("codytitle",time.getCody_title());
+			map.put("codyimage",time.getCody_image());
+			map.put("codyage", time.getCody_age());
+			map.put("codyheight",time.getCody_height());
+			map.put("codyidx",time.getCody_idx());		
+			map.put(time, itemtime);
+			irr.add(map);		
+		}
+		System.out.println("irr : " + irr.toString());
+		
+		model.addAttribute("irr", irr);
+	
 		return "home";
 	}
-	
 }
