@@ -671,7 +671,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 	    });
 	});
 </script>
-<script>
+ <script>
 	$(document).ready(function() {
 
 		var re_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 요휴성검사
@@ -727,7 +727,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 		});
 
 	});
-</script>
+</script> 
 <script type="text/javascript">
 
 var sel_file;
@@ -792,5 +792,59 @@ function handleImgFileSelect1(e) {
 	
 }
 </script>
-
+<script>
+$(document).ready(function(){
+		
+		// 사용자가 입력하는 데이터의 유효성 검사
+		$('#regForm').submit(function(){
+			
+			var userId = $('#memberForm_id').val();
+			var pw = $('#memberForm_pw').val();
+			var userName = $('#member_name').val();
+			var userbirth = $('#member_birth').val();
+			var useremail = $('#member_email').val();
+// 			var userph = ${'#member_ph'}.val();
+			
+	
+			
+			
+			if(userId.length < 1){
+				alert('아이디를 입력해주세요.');
+				$('#memberForm_id').focus();
+				return false;
+			}
+			if(pw.length < 1){
+				alert('비밀번호를 입력해주세요.');
+				$('#memberForm_pw').focus();
+				return false;
+			}
+			if(userName.length < 1 ){
+				alert('이름을 입력해주세요.');
+				$('#member_name').focus();
+				return false;
+			}
+			if(userbirth.length < 1 ){
+				alert('생일을 입력해주세요.');
+				$('#member_birth').focus();
+				return false;
+			}
+			if(useremail.length < 1 ){
+				alert('이메일을 입력해주세요.');
+				$('##member_email').focus();
+				return false;
+			}
+			if(userph.length < 1 ){
+				alert('전화번호를 입력해주세요.');
+				$('#member_ph').focus();
+				return false;
+			}
+			
+			
+	
+	});
+		
+		
+		
+	});
+	</script>
 </html>
