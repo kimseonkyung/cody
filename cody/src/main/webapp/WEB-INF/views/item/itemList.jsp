@@ -123,7 +123,7 @@
 				<li class="card card-item-li">
 					<img class="card-img-top card-item" src="${item.item_image}" alt="Card image cap" onclick="itemListView(${item.item_idx})">
 						<div class="card-body" style="overflow: hidden; position: relative;">
-						 <h5 class="card-title" style="float: left;">임해군</h5><br>
+						 <h5 class="card-title" style="float: left;"></h5>
 							${item.item_name }<br> ${item.item_category }<br> ${item.item_price }
 							<a href="#" class="btn btn-primary"	style="position: absolute; right: 20px;">구입</a>
 						</div>
