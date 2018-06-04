@@ -7,8 +7,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +19,6 @@ import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.dto.RepleDto;
 import com.bitcamp.cody.service.CodyListService;
-import com.bitcamp.cody.service.MemberListService;
 import com.bitcamp.cody.service.MemberService;
 import com.bitcamp.cody.service.RepleService;
 
@@ -36,35 +33,6 @@ public class RepleController {
 	
 	@Autowired
 	CodyListService codyListService;
-
-	// 댓글 리스트 가져오기
-	@RequestMapping("/repleList")
-	public String repleList(Model model, @RequestParam("cody_idx") int cIdx) {
-
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-
-		List<RepleDto> list_r = repleService.listAll(cIdx);
-		ArrayList<HashMap<String, Object>> arr = new ArrayList<>();
-
-		for (RepleDto reple : list_r) {
-			HashMap<String, Object> map = new HashMap<>();
-			MemberDto member = memberService.selectByIdx(reple.getMember_idx());
-			String date = df.format(reple.getReple_date());
-			map.put("reple_contents", reple.getReple_contents());
-			map.put("reple_date", date);
-			map.put("member_id", member.getMember_id());
-			map.put("reple_idx", reple.getReple_idx());
-			map.put("regroup", reple.getRegroup());
-			map.put("reparent", reple.getReparent());
-			map.put("redepth", reple.getRedepth());
-			map.put("reorder", reple.getReorder());
-			arr.add(map);
-		}
-		System.out.println("arr : " + arr.toString());
-		model.addAttribute("arr", arr);
-
-		return "cody/reple";
-	}
 
 	// 첫댓글 입력
 	@RequestMapping(value = "/repleInsert")
@@ -81,10 +49,7 @@ public class RepleController {
 	@ResponseBody
 	public String re_RepleInsert(Model model, RepleDto reple, HttpSession session) {
 
-		String user = "a";
-		// String user = (String) session.getAttribute("id");
-		
-		MemberDto member = memberService.selectById(user);
+		MemberDto member = (MemberDto) session.getAttribute("loginInfo");
 		reple.setMember_idx(member.getMember_idx());
 		
 		System.out.println("대댓글 : "+reple);
@@ -153,7 +118,7 @@ public class RepleController {
 	}
 
 	// 수신 여부
-	@RequestMapping("/reception")
+	@RequestMapping(value="/reception", method=RequestMethod.POST)
 	@ResponseBody
 	public int reception() {
 

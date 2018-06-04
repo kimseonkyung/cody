@@ -31,8 +31,7 @@
 	
 	<!-- 첫댓글 입력 -->
 	<insert id="repleInsert" parameterType="com.bitcamp.cody.dto.RepleDto">
-		insert into reple (regroup ,reple_contents, member_idx, cody_idx)
-		values (#{regroup}, #{reple_contents}, #{member_idx}, #{cody_idx} )
+		insert into reple (regroup ,reple_contents, member_idx, cody_idx) values (#{regroup}, #{reple_contents}, #{member_idx}, #{cody_idx} )
 	</insert>
 	
 	<!-- 대댓글 입력 -->

@@ -57,10 +57,18 @@ $(document).ready(function() {
 $('#reple #repleSave').click(
 		function() {
 
-			var cody_idx = $('#reple #cody_idx').val();
-			var member_idx = $('#reple #member_idx').val();
+			var cody_idx = $('input[name="reple_cody_idx"]').val();
+			var member_idx = $('input[name="reple_member_idx"]').val();
+			var member_id = $('input[name="reple_member_id"]').val();
+			var member_photo = $('input[name="reple_member_photo"]').val();
 			var reple_contents = $('#reple #reple_contents').val();
-
+			
+			if(member_idx==null) {
+				alert('로그인 이후에 작성 가능합니다.');
+				$("#loginModal").modal('show');
+				return;
+			}
+			
 			$.ajax({
 				type : 'post',
 				url : '/cody/repleInsert',
@@ -75,11 +83,10 @@ $('#reple #repleSave').click(
 					var y = rd.getFullYear();
 					var m = rd.getMonth();
 					var d = rd.getDate();
-					var day = y + '-' + m + '-' + d;
+					var day = y + '/' + m + '/' + d;
 
 					$('#repleList').append($('<div>').text('아이디' + day),
 							$('<div>').text(reple_contents));
-
 				}
 			});
 		});
@@ -92,7 +99,7 @@ function re_repleSave(reple_idx) {
 
 	$.ajax({
 		type : 'post',
-		url : 'cody/re_repleInsert',
+		url : '/cody/re_repleInsert',
 		data : params,
 		success : function(data) {
 			alert('성공');
@@ -117,7 +124,7 @@ function repleDelete(reple_idx) {
 
 	$.ajax({
 		type : 'get',
-		url : 'cody/repleDelete',
+		url : '/cody/repleDelete',
 		dataType : 'text',
 		data : {
 			reple_idx : reple_idx

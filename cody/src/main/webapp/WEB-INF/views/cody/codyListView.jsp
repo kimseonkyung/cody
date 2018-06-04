@@ -301,10 +301,48 @@ margin: 0 auto;
 								
 								
 								<div id="left3">
-									<div id="reple"></div>
+								<div>
+						
+												<!------------------------ 답글 리스트 ---------------------------->
+		<div id="repleList">
+			<c:forEach var="repleList" items="${repleList }">
+				<div id="repleView" style="margin-left: ${20*repleList.redepth}px; border: 1px solid red;">
+					<div style="border: 1px solid red; max-width:556px; margin-top: 10px;">
+					<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${repleList.member_photo }" style="border: 1px solid red; width:40px; height: 40px;">
+					&emsp;<h2>${repleList.member_id }</h2> &emsp;&emsp;${repleList.reple_date }
+					<button id="re_repleShow${repleList.reple_idx }" onclick="btnShow(${repleList.reple_idx })">답글</button>
+					<button id="repleDelete${repleList.reple_idx }" onclick="repleDelete(${repleList.reple_idx })">삭제</button><br>
+					<div style="border: 1px solid red; width: 300px; margin: 10px;">${repleList.reple_contents}</div>
+					</div>
+					
+					<%-- <div id="re_reple${repleList.reple_idx }" style="display: none;">
+					<form id="re_repleForm${repleList.reple_idx }">
+						<input type="hidden" name="cody_idx" value="${cody.cody_idx }"> 
+						<input type="hidden" name="regroup" value="${repleList.regroup }">
+						<input type="hidden" name="reparent" value=${repleList.reple_idx }>
+						<input type="hidden" name="redepth" value="${repleList.redepth }">
+						<input type="hidden" name="reorder" value="${repleList.reorder }">
+					</form>
+						<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="3" cols="60" maxlength="500"></textarea>
+						<button id="re_repleSave"  class="btn btn-outline-dark" onclick="re_repleSave(${repleList.reple_idx })">저장</button>
+					</div> --%>
+				</div>
+			</c:forEach>
+		</div>
+
+		<div id="reple">
+			<input type="text" name="reple_cody_idx" value="${cody.cody_idx }">
+			<input type="text" name="reple_member_idx" value="${myInf.member_idx }"><br>
+			<input type="text" name="reple_member_id" value="${myInf.member_id }"><br>
+			<input type="text" name="reple_member_photo" value="${myInf.member_photo }"><br>
+			<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${myInf.member_photo }" style="border: 1px solid red; width:40px; height: 40px;">
+			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="3" cols="40" maxlength="450"></textarea>
+			<button type="button" id="repleSave">저장</button>
+		</div>
+
+								</div>
 								</div>
 								</div>		
-						
 						
 						
 						<!--------------------오른쪽--------------------->

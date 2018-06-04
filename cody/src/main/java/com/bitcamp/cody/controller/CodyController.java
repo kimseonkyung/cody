@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Delayed;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,7 +25,6 @@ import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.CodyService;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
-import com.bitcamp.cody.service.MemberListService;
 import com.bitcamp.cody.service.MemberService;
 import com.bitcamp.cody.service.RepleService;
 
@@ -50,7 +48,7 @@ public class CodyController {
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
 	public String codyForm(Model model, HttpSession session) {
-		MemberDto member = (MemberDto) session.getAttribute("loginInfo");    // 로그인된 아이디값 가져오기
+		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); 
 		int memberIdx = member.getMember_idx();
 		
 		List<ItemDto> item = itemListService.selectByMemberIdx(memberIdx);
@@ -74,7 +72,7 @@ public class CodyController {
 		
 		System.out.println("itemList테스트 : " + itemList);
 		
-		MemberDto member = (MemberDto) session.getAttribute("loginInfo");    // 로그인된 아이디값 가져오기
+		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); 
 		int memberIdx = member.getMember_idx();
 		
 		// 서비스에 회원 데이터 저장 요청
@@ -143,18 +141,19 @@ public class CodyController {
 		
 		// 댓글 가져오기
 		// 날짜 포멧 변경
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm");
 
 		List<RepleDto> list_r = repleService.listAll(idx);
 		ArrayList<HashMap<String, Object>> repleList = new ArrayList<>();
-		HashMap<String, Object> map = new HashMap<>();
 
 		for (RepleDto reple : list_r) {
 			MemberDto writer = memberService.selectByIdx(reple.getMember_idx());
+			HashMap<String, Object> map = new HashMap<>();
 			String date = df.format(reple.getReple_date());
 			map.put("reple_contents", reple.getReple_contents());
 			map.put("reple_date", date);
 			map.put("member_id", writer.getMember_id());
+			map.put("member_photo", writer.getMember_photo());
 			map.put("reple_idx", reple.getReple_idx());
 			map.put("regroup", reple.getRegroup());
 			map.put("reparent", reple.getReparent());
@@ -163,17 +162,15 @@ public class CodyController {
 			repleList.add(map);
 		}
 		
-		
-		System.out.println("repleList : "+ repleList);
+		// 조회수 증가
+		int result = codyListService.countAdd3(cody);
 		
 		// 모델객체에 담기
-		model.addAttribute("repleList", repleList);
 		model.addAttribute("cody", cody);
 		model.addAttribute("member", member);
 		model.addAttribute("items", items);
-		
-		int result = codyListService.countAdd3(cody);
-		
+		model.addAttribute("myInf", myInf);
+		model.addAttribute("repleList", repleList);
 		
 		
 
