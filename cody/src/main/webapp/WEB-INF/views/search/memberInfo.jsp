@@ -94,7 +94,7 @@
 					<!------------------ 코디 리스트 반복 출력 ----------------------->
 					<c:forEach var="MemberLsit" items="${MemberLsit}">
 						<li class="card card-item-li">
-						<a href="${pageContext.request.contextPath}/itemListView?item_idx=${MemberLsit.member_idx}">
+						<a href="${pageContext.request.contextPath}/listView?member_idx=${MemberLsit.member_idx}">
 							<img class="card-img-top card-item"
 							src="${pageContext.request.contextPath}/uploadfile/memberphoto/${MemberLsit.member_photo}"
 							alt="Card image cap"></a>
