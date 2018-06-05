@@ -12,7 +12,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>코디게시</title>
 
-
 <!--초기화 코드-->
 <style>
 * {
@@ -197,7 +196,7 @@ a {
 #input_title {
 	border: 2px solid darkgray;
 	height: 25px;
-	width: 460px;
+	width: 462px;
 	border-radius: 5px 5px 5px 5px;
 }
 
@@ -221,8 +220,8 @@ a {
 
 #intro_text {
 	border: 2px solid darkgray;
-	width: 469px;
-	height: 308px;
+	max-width: 462px;
+	max-height: 316px;
 	border-radius: 3px 3px 3px 3px;
 	margin-left: 2px;
 }
@@ -392,7 +391,7 @@ input:focus, textarea:focus {
 	<div class="my-3 p-3 bg-white rounded">
 	
 	<div id="content">
-		<form role="codyForm" enctype="multipart/form-data" onkeydown="return capturekey(event)">
+		<form  role="codyForm" enctype="multipart/form-data" onkeydown="return capturekey(event)">
 			
 			<div class="row">
 			
@@ -425,11 +424,11 @@ input:focus, textarea:focus {
 				<div id="image">
 					<div id="image_frame">
 						<div id="image_block">
-							<img id="preview" src="" width="280" height="360">
+							<img id="preview" src="#" width="280" height="360">
 						</div>
 						<div id="image_input">
 										<button id="replace">사진 업로드</button>
-										<input id="input_image" type="file" name="photofile" value="파일 업로드" accept="image/*">
+										<input id="input_image" type="file" name="photofile" accept="image/*">
 									</div>
 									<div class="sub1">
 										<h6>권장 사이즈 : 가로 500 × 세로 667</h6>
@@ -487,7 +486,7 @@ input:focus, textarea:focus {
 		</div>
 		<div id="intro_input">
 			<div id="intro_text">
-				<textarea class="text" style="resize: none" rows="13" cols="57"
+				<textarea class="text" style="resize: none" rows="13" cols="63"
 					name="cody_intro" onkeyup="limit2(this)"></textarea>
 			</div>
 			<div id="intro_sub">
@@ -795,7 +794,7 @@ input:focus, textarea:focus {
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
 	
 	<!-- holder.js -->
-	
+	<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>	
 	<script>
 	
 	
@@ -971,7 +970,7 @@ input:focus, textarea:focus {
 	
 	
 	
-	/* 코디 등록 */
+	 /* 코디 등록 */
 	function codyInsert() {
 		var formObj = $('form[role="codyForm"]');
 		
@@ -980,8 +979,7 @@ input:focus, textarea:focus {
 		formObj.attr("action", "codyForm");
 		formObj.attr("method", "post");
 		formObj.submit();
-	};
-	
+	}; 
 	
 	// 옷장 아이템 선택 이벤트
 	$(".card").click(function () {
@@ -995,7 +993,6 @@ input:focus, textarea:focus {
 	
 	
 	</script>
-	
 
 
 

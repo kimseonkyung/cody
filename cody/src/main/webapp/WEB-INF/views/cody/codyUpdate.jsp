@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>코디수정</title>
 <style>
 </style>
 
@@ -190,7 +190,7 @@
 #input_title {
 	border: 2px solid darkgray;
 	height: 25px;
-	width: 460px;
+	width: 462px;
 	border-radius: 5px 5px 5px 5px;
 }
 
@@ -214,8 +214,8 @@
 
 #intro_text {
 	border: 2px solid darkgray;
-	width: 469px;
-	height: 308px;
+	width: 462px;
+	height: 316px;
 	border-radius: 3px 3px 3px 3px;
 	margin-left: 2px;
 }
@@ -415,7 +415,7 @@ input:focus, textarea:focus{resize: none, outline: none;}
 						</div>
 						<div id="image_input">
 										<button id="replace">사진 업로드</button>
-										<input id="input_image" type="file" name="photofile" value="파일 업로드" accept="image/*">
+										<input id="input_image" type="file" name="photofile" accept="image/*">
 									</div>
 									<div class="sub1">
 										<h6>권장 사이즈 : 가로 500 × 세로 667</h6>
@@ -468,7 +468,7 @@ input:focus, textarea:focus{resize: none, outline: none;}
                     <div id="intro_name">
                         <h4>코디 소개문</h4>
                     </div>
-                    <div id="intro_input"><div id="intro_text"><textarea class="text" style= "resize: none" rows="13" cols="57"  onkeyup="limit2(this)" name="cody_intro" id="cody_intro">
+                    <div id="intro_input"><div id="intro_text"><textarea class="text" style= "resize: none" rows="13" cols="63"  onkeyup="limit2(this)" name="cody_intro" id="cody_intro">
                     ${cody.cody_intro}</textarea></div>
                     <div id="intro_sub">
                     <h6>※ 500 자 이내로 입력하십시오.</h6>
@@ -770,7 +770,7 @@ ie10-viewport-bug-workaround.js
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
 
 <!-- holder.js -->
-
+	<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
 
 <script>
 
