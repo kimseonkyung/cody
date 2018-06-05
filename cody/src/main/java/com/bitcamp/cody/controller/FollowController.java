@@ -44,7 +44,7 @@ public class FollowController {
 
 		map.put("m_request", m_request);
 		map.put("m_response", m_response);// 변경해야됨
-
+		
 		int resultCnt = requestandnresponse.insertFollow(map);
 
 		String msg = "정상적 팔로우가 신청되었습니다.";

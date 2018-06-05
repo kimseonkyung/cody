@@ -24,6 +24,7 @@ public interface FollowDao {
 
 	public int followrqCount(int m_request);
 
+	
 	public int followrpCount(int m_response);
 
 

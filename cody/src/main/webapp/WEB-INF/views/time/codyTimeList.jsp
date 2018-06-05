@@ -159,7 +159,7 @@ $(document).ready(function (event){
 								&emsp;${item.item_price}원<a href="#" class="btn btn-primary" style="position: absolute; right:10px;">구입</a></div>
 																	
 								</c:forEach>
-								
+	                                               
 								
 								<div class="card-main" style="float:left;height: 40px;">
 						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.memberphoto }" style="border: 1px solid darkgray; width:40px; height: 40px;">
@@ -174,20 +174,17 @@ $(document).ready(function (event){
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-primary" style="float:right;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.codyidx}&member_idx=${irr.memberidx}" class="btn btn-primary" style="float:right;">팔로우</a>
+						<butoon id= "follow" class= "btn btn-primary" style= "float:right;" > 팔로우</butoon>
+						<input type= "hidden"  name= "codyidx" value= "${codyLsti.cody_idx}" >
 			</c:otherwise>
 			</c:choose>	
 										
-						</div>
+				</div>
 				</li>
             </c:forEach>
 			</ol>
 			</div>
-
 		</div>
-
-
-
 	</div>
 
 	</main>
@@ -201,6 +198,20 @@ $(document).ready(function (event){
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
+	<script>
+	     $(document).ready(function(){
+	    	('#follow').click(function() {
+	    	 alert("팔로우 신청완료")						
+			})	    	 
+	    	 
+	    	 
+	     })
+	
+	
+	</script>
+		
+		
+
 
 </body>
 
