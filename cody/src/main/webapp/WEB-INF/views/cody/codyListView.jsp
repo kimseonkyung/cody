@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -295,7 +296,7 @@ margin: 0 auto;
 	<div class="row">
 		<div class="row mb-2 col-md-12 order-md-1">
 		<div class="col-md-3 mr-auto">
-		${member.member_photo} ${member.member_id} ${cody.cody_height}cm
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${member.member_photo}" width="45" height="45"> ${member.member_id} ${cody.cody_height}cm
 		</div>
 		
 					<c:choose>
@@ -415,7 +416,7 @@ margin: 0 auto;
 								</div>
 								
 								<div id="content_intro1"><p>${cody.cody_intro}</p></div>
-								<div id="content_date1"><p>${cody.board_date}</p></div>
+								<div id="content_date1"><p><fmt:formatDate value="${cody.board_date}" pattern="yyyy-MM-dd HH:mm"/></p></div>
 						</div>
 	
 			
