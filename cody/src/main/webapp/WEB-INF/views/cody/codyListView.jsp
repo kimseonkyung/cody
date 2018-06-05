@@ -297,51 +297,62 @@ margin: 0 auto;
 										<input id="bookmark" type="button" value="북마크"></a>
 										
 										
-										<a href="#"><input class="btn btn-primary" type="button" value="코멘트" style="float:right;"></a>							
+										<button id="repleShow" class="btn btn-primary" style="float:right;">코멘트</button>		
+										
 									</div>
 										
 									
-								<div id="like_list"></div>	
+								<div id="like_list">
+								</div>	
 								
 								
 								
-								<div id="left3">
+								<div class="bg-white rounded box-shadow" id="left3" style="width: 556px; border: 1px solid #ddd;">
 								<div>
 						
 												<!------------------------ 답글 리스트 ---------------------------->
 		<div id="repleList">
 			<c:forEach var="repleList" items="${repleList }">
-				<div id="repleView" style="margin-left: ${20*repleList.redepth}px; border: 1px solid red;">
-					<div style="border: 1px solid red; max-width:556px; margin-top: 10px;">
-					<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${repleList.member_photo }" style="border: 1px solid red; width:40px; height: 40px;">
+				<div id="repleView" style="margin-left: ${40*repleList.redepth}px;">
+					<div style="border: 1px solid #aaa; max-width:440px; margin-top: 10px;">
+					<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${repleList.member_photo }" style="margin-left: 10px; border: 1px solid red; width:40px; height: 40px;">
 					&emsp;<h2>${repleList.member_id }</h2> &emsp;&emsp;${repleList.reple_date }
-					<button id="re_repleShow${repleList.reple_idx }" onclick="btnShow(${repleList.reple_idx })">답글</button>
+					
+					<c:choose>
+					<c:when test="${loginInfo.member_idx eq repleList.member_idx }">
 					<button id="repleDelete${repleList.reple_idx }" onclick="repleDelete(${repleList.reple_idx })">삭제</button><br>
+					</c:when>
+					<c:when test="${loginInfo ne null }">
+					<button onclick="re_repleShow(${repleList.reple_idx })">답글</button>
+					</c:when>
+					</c:choose>
+					
 					<div style="border: 1px solid red; width: 300px; margin: 10px;">${repleList.reple_contents}</div>
 					</div>
 					
-					<%-- <div id="re_reple${repleList.reple_idx }" style="display: none;">
-					<form id="re_repleForm${repleList.reple_idx }">
+					<div class="re_reple" id="re_reple${repleList.reple_idx }" style="display: none; margin-top: 5px;">
+					<form id="re_repleForm${repleList.reple_idx }" style="display: inline-block;">
 						<input type="hidden" name="cody_idx" value="${cody.cody_idx }"> 
 						<input type="hidden" name="regroup" value="${repleList.regroup }">
 						<input type="hidden" name="reparent" value=${repleList.reple_idx }>
 						<input type="hidden" name="redepth" value="${repleList.redepth }">
 						<input type="hidden" name="reorder" value="${repleList.reorder }">
+						<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="3" cols="40" maxlength="450"></textarea>
 					</form>
-						<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="3" cols="60" maxlength="500"></textarea>
 						<button id="re_repleSave"  class="btn btn-outline-dark" onclick="re_repleSave(${repleList.reple_idx })">저장</button>
-					</div> --%>
+					</div>
+					
 				</div>
 			</c:forEach>
 		</div>
 
-		<div id="reple">
+		<div id="reple" style="margin-top: 5px;">
 			<input type="text" name="reple_cody_idx" value="${cody.cody_idx }">
-			<input type="text" name="reple_member_idx" value="${myInf.member_idx }">
-			<input type="text" name="reple_member_id" value="${myInf.member_id }">
-			<input type="text" name="reple_member_photo" value="${myInf.member_photo }">
+			<input type="text" name="reple_member_idx" value="${loginInfo.member_idx }">
+			<input type="text" name="reple_member_id" value="${loginInfo.member_id }">
+			<input type="text" name="reple_member_photo" value="${loginInfo.member_photo }">
 			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="3" cols="40" maxlength="450"></textarea>
-			<button type="button" id="repleSave">저장</button>
+			<button class="btn btn-outline-dark" type="button" id="repleSave">저장</button>
 		</div>
 
 								</div>
@@ -369,15 +380,39 @@ margin: 0 auto;
 								</div>
 								
 								<div id="content_intro1"><p>${cody.cody_intro}</p></div>
-								<div id="content_date1"><p>${cody.board_date}</p></div></div>
+								<div id="content_date1"><p>${cody.board_date}</p></div>
+						</div>
 	
 			
-							<div id="item">
-							<div id="item_name">착용아이템</div>
+						<div class="bg-white rounded box-shadow" style="width:445px; margin-top:20px; border: 1px solid #111;">
+							<div id="item_name"><h2>착용아이템( ${itemSize } )</h2></div>
 							<div id="item_main"><a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
 								<a href="codyForm">코디등록</a></div>
-								</div>
+							
+							<ul style="list-style: none;">
+							<c:forEach var="item" items="${items }">
+							<li style="clear: both; margin: 10px; display: block;">
+							<div style="width: 120px; float:left;"><img src="${item.item_image }" style="margin-left:20px; width:100%; border-radius: 3px;"></div>
+							<div style="width: 270px; float:right;">
+							${item.item_name }<br>
+							${item.item_category }( ${item_color } )<br>
+							${item.item_price }<br>
+							<button class="btn btn-dark" onclick="location.href='${item.item_link}'">구입</button>
 							</div>
+							</li>
+							
+							
+							</c:forEach>
+							
+							</ul>
+							
+								
+								
+								
+						</div>
+								
+								
+						</div>
 
                      </div>
 

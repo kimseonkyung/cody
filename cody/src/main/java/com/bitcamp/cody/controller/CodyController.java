@@ -127,8 +127,7 @@ public class CodyController {
 
 	/*---------------------코디 상세보기----------------------*/
 	@RequestMapping("/codyListView")
-	public String CodylistView(Model model, HttpSession session,@RequestParam("cody_idx") int idx) {
-		MemberDto myInf = (MemberDto)session.getAttribute("loginInfo");
+	public String CodylistView(Model model, @RequestParam("cody_idx") int idx) {
 		
 		// 코디정보 가져오기
 		CodyDto cody = codyListService.CodyListView(idx);
@@ -152,6 +151,7 @@ public class CodyController {
 			String date = df.format(reple.getReple_date());
 			map.put("reple_contents", reple.getReple_contents());
 			map.put("reple_date", date);
+			map.put("member_idx", writer.getMember_idx());
 			map.put("member_id", writer.getMember_id());
 			map.put("member_photo", writer.getMember_photo());
 			map.put("reple_idx", reple.getReple_idx());
@@ -169,7 +169,7 @@ public class CodyController {
 		model.addAttribute("cody", cody);
 		model.addAttribute("member", member);
 		model.addAttribute("items", items);
-		model.addAttribute("myInf", myInf);
+		model.addAttribute("itemSize", items.size());
 		model.addAttribute("repleList", repleList);
 		
 		

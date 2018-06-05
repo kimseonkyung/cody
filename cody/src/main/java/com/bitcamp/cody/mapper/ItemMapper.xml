@@ -46,11 +46,11 @@
 	</insert>
 
 	<insert id="insertListItem" parameterType="com.bitcamp.cody.dto.ItemDto" useGeneratedKeys="true" keyProperty="idx">
-		insert into item (item_name, item_brand, item_image, item_price, item_category, item_color, cody_idx, member_idx )
+		insert into item (item_name, item_brand, item_image, item_price, item_category, item_color, cody_idx, member_idx, item_link )
 		values
 		<foreach collection="list" item="item" index="index" separator=" , ">
 		 ( #{item.item_name}, #{item.item_brand}, #{item.item_image}, #{item.item_price}, 
-		#{item.item_category}, #{item.item_color}, #{item.cody_idx}, #{item.member_idx} )
+		#{item.item_category}, #{item.item_color}, #{item.cody_idx}, #{item.member_idx}, #{item.item_link} )
 		</foreach>
 	</insert>
 

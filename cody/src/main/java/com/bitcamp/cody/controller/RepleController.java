@@ -75,14 +75,16 @@ public class RepleController {
 		System.out.println("reple_idx : " + idx);
 
 		
-		int resultCnt = repleService.repleDelete(idx);
-
-		String msg = "정보삭제 완료";
-
-		if (resultCnt == 0)
-			msg = "정보삭제 실패";
-
-		model.addAttribute("msg", msg);
+		List<RepleDto> reple =  repleService.childReple(idx);
+		System.out.println("reple : " + reple);
+		if(reple.size() == 0) {
+			repleService.repleDelete(idx);
+		} else {
+			RepleDto re = new RepleDto();
+			re.setReple_idx(idx);
+			re.setReple_contents("댓글이 삭제되었습니다.");
+			repleService.repleUpdate(re);
+		}
 
 		return "cody/repleOk";
 
