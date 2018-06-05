@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html>
@@ -149,10 +150,19 @@ input:focus, textarea:focus {
 	
 	
 	<div class="p-3 bg-white rounded box-shadow">
-          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo}" width="220" height="300">
-          <button type="button" class="btn btn-primary" data-target="#registerupdateModal" data-toggle="modal">프로필변경</button>
-        </div>
-     		
+          <button type="button" class="btn btn-primary" data-target="#registerupdateModal" data-toggle="modal" style="float:right;margin-top:7%;margin-right: 5%;">프로필변경</button>	
+	      
+	      <div class="p-3 bg-white rounded box-shadow" style="width:460px;">
+          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo}" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
+          
+          <div style="float:right; margin-top:9%;">
+          <div><p style="vertical-align: inherit;margin-bottom: 0px; font-size:20px;">${loginInfo.member_id}</p></div>							
+		  <div><p style="vertical-align: inherit;margin-bottom: 0px; font-size:20px;"><fmt:formatDate value="${loginInfo.member_reg}" pattern="yyyy-MM-dd"/></p></div>
+          </div>
+          
+     	</div>
+     	</div>	
+		
 		<div class="p-3 bg-white rounded box-shadow" style="margin: 0" >
 		<div class="btn-group btn-group-myPage" role="group" style="display:table; margin-left: auto; margin-right: auto;">
     			<button type="button" class="btn myBtn-secondary" id="gCody" style="border: 1px solid #ccc; margin: 0;"> <strong>코디</strong><br>${codyCount }</button>
