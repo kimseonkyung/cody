@@ -194,9 +194,11 @@ public class CodyController {
 	public String codyUpdate(Model model, @RequestParam("cody_idx") int idx) {
 
 		CodyDto cody = codyListService.CodyListView(idx);
-
+		List<ItemDto> items = itemListService.selectByCodyIdx(idx);
+		
 		model.addAttribute("cody", cody);
-
+		model.addAttribute("items", items);
+		
 		return "cody/codyUpdate";
 	}
 

@@ -68,7 +68,7 @@ $('#reple #repleSave').click(function() {
 				return false;
 			}
 			
-			if(reple_contents.length==0) {
+			if(reple_contents.trim()==0) {
 				alert('댓글을 입력하세요');
 				$('#reple #reple_contents').focus();
 				return;
@@ -85,13 +85,14 @@ $('#reple #repleSave').click(function() {
 				},
 				success : function(data) {
 
-					$('#repleList').append('<div style="border: 1px solid red; max-width:556px; margin-top: 10px;">'
-							+'<img class="rounded-circle" src="/cody/uploadfile/memberphoto/'+member_photo+'" style="border: 1px solid red; width:40px; height: 40px;">'
-							+'&emsp;<h2>'+member_id+'</h2> &emsp;&emsp;'+data.date
-							+'<button id="re_repleShow${repleList.reple_idx }" onclick="btnShow(${repleList.reple_idx })">답글</button>'
-							+'<button id="repleDelete${repleList.reple_idx }" onclick="repleDelete(${repleList.reple_idx })">삭제</button><br>'
-							+'<div style="border: 1px solid red; width: 300px; margin: 10px;">'+reple_contents+'</div>'
+					$('#repleList').append('<div class="repleDiv">'
+							+'<img class="rounded-circle repleImg" src="/cody/uploadfile/memberphoto/'+member_photo+'">'
+							+'&emsp;<p class="h3 repleId">'+member_id+'</p> &emsp;&emsp;'+data.date
+							+'<button class="ml-3" id="repleDelete${repleList.reple_idx }" onclick="repleDelete(${repleList.reple_idx })">삭제</button><br>'
+							+'<div class="repleCon">'+reple_contents+'</div>'
 							+'</div>');
+					$('#reple_contents').val("");
+					$('#reple_contents').focus();
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 					alert("에러 발생  \n" + textStatus + " : " + errorThrown);
@@ -110,7 +111,6 @@ function re_repleSave(reple_idx) {
 		url : '/cody/re_repleInsert',
 		data : params,
 		success : function(data) {
-			alert('저장 완료');
 			location.reload();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
@@ -152,7 +152,6 @@ function repleDelete(reple_idx) {
 			reple_idx : reple_idx
 		},
 		success : function(data) {
-			alert('삭제 완료');
 			location.reload();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
