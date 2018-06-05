@@ -50,6 +50,7 @@ public class CodyTimeListController {
 			map.put("memberidx", time.getMember_idx() );
 			map.put("memberphoto", member.getMember_photo() );
 			map.put(time, itemtime);
+			map.put("itemtime", itemtime);
 			irr.add(map);		
 		}
 		System.out.println("irr : " + irr.toString());

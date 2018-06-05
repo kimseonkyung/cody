@@ -150,7 +150,7 @@ input:focus, textarea:focus {
 	
 	<div class="p-3 bg-white rounded box-shadow">
           <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo}" width="220" height="300">
-          <button type="button" class="btn btn-primary" data-target="#registerModal" data-toggle="modal">프로필변경</button>
+          <button type="button" class="btn btn-primary" data-target="#registerupdateModal" data-toggle="modal">프로필변경</button>
         </div>
      		
 		<div class="p-3 bg-white rounded box-shadow" style="margin: 0" >
@@ -184,7 +184,133 @@ input:focus, textarea:focus {
 			</div>
 		</div>
 		
+		<!--회원가입 폼-->
+<div class="container" style="float: left">
+
+			<div class="modal fade" id="registerupdateModal" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">프로필변경</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+						</div>
+						<div class="modal-body">
+
+							<form action="member/memberReg" method="post" id="regForm" enctype="multipart/form-data">
+                      
+								<!-- Email -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">아이디</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-between align-items-center px-2">
+										<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center">
+											<input type="text" name="member_id" id="memberForm_id" value="{member.member_id}" placeholder="&nbsp;Please enter a valid email" style="width: 100%;">
+										</div>
+										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-start align-items-center pl-2">
+										<a id="idchk" class="row justify-content-center align-items-center" style="background-color: #01D1FE; color: white; cursor: pointer; height: 27px; width: 100%;">중복확인</a>
+									    </div>
 				
+										<input type = "text" style = "display:none" id = "dupl">
+									</div>
+								</div>
+								
+								<!-- Password -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">비밀번호</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="password" name="member_pw" id="memberForm_pw" placeholder="6글자 이상" style="width: 100%;">
+									</div>
+								</div>
+
+								 
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">
+										<p style="text-align: center;">
+											비밀번호 <br> 재확인
+										</p>
+									</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2 ">
+										<input type="password" id="chpw" style="width: 100%;">
+										<font name="check" size="2" color="red"></font>
+									</div>
+								</div> 
+
+								<!-- Name -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">사용자 이름</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="text" name="member_name" id="member_name" value="{member.member_name}" style="width: 100%;">
+									</div>
+								</div>
+
+                                <!-- Email -->
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">메일주소</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="text" name="member_email" id="member_email" placeholder="asdf@naver.com" value="{member.member_email}" style="width: 100%;">
+									</div>
+								</div>
+
+
+								<!-- Birth -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">생일</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="text" name="member_birth" id="member_birth" placeholder="&nbsp;ex)&nbsp;910425" value="{member.member_birth}" style="width: 100%;">
+									</div>
+								</div>
+								<!-- PhoneNumber -->
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">전화번호</div>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="text" name="member_ph" id="member_ph" style="width: 100%;" value="{member.member_ph}" placeholder="&nbsp;ex)&nbsp;01095078230">
+									</div>
+								</div>
+								
+								
+								
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">사진</div>
+									
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
+										<input type="file" name="photofile" id="input_img" value="{member.member_photo}">
+									</div>
+									
+									<div class="img_wrap">
+									  <img id="img" src="" width="280" height="260"/>
+									
+									</div>
+									
+									
+								</div>
+								
+								
+								
+
+								<div class="form-group">
+									<div class="col-xl-12ss">
+										<button type="submit" class="btn btn-primary p-3"
+											style="background-color: #01D1FE; color: white; border: none; width: 90%; font-size: 20px;">가입</button>
+									</div>
+								</div>
+
+								
+								
+
+								</form>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>			
 <script>
 
 
@@ -207,7 +333,7 @@ $('#gCody').click(function () {
 		
 			$.each(data, function(i, e) {
 				$('#myPageList').append('<div class="myCard">'
-						+ '<a href="/cody/codyListView?cody_idx='+ e.cody_idx +'"><img class="card-img-top" src="/cody/uploadfile/codyphoto/'+ e.cody_image +'" style="height: 250px;" alt="Card image cap"></a>'
+						+ '<a href="/cody/codyListView?cody_idx='+ e.cody_idx +'"><img class="card-img-top" src="/cody/uploadfile/codyphoto/'+ e.cody_image +'" style="height: 300px;" alt="Card image cap"></a>'
 						+ '<div class="card-body" style="height: 100%">'
 						+ e.cody_title
 						+ '</div>'
