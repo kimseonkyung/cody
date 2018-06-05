@@ -36,15 +36,19 @@ public class CodyTimeListController {
 		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
 
 		for (CodyDto time : codytimes) {	
-			MemberDto member = rankingSerivce.getId(time.getMember_idx());		
+			MemberDto member = rankingSerivce.getId(time.getMember_idx());
 			HashMap<Object, Object> map = new HashMap<>();
 			List<ItemDto> itemtime = new ArrayList<>();		
 			itemtime = codyItemListService.getCodyItemList(time.getCody_idx());
 			map.put(time.getCody_idx(),itemtime);	
 			map.put("codytitle",time.getCody_title());
 			map.put("codyimage",time.getCody_image());
-			map.put("id", member.getMember_id() );
-			map.put("photo", member.getMember_photo() );
+			map.put("codyidx",time.getCody_idx());	
+			map.put("codyage", time.getCody_age());
+			map.put("codyheight",time.getCody_height());
+			map.put("memberid", member.getMember_id() );
+			map.put("memberidx", time.getMember_idx() );
+			map.put("memberphoto", member.getMember_photo() );
 			map.put(time, itemtime);
 			irr.add(map);		
 		}

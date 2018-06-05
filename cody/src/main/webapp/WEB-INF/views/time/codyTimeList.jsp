@@ -161,22 +161,25 @@ $(document).ready(function (event){
 								</c:forEach>
 								
 								<div class="card-main" style="float:left;height: 40px;">
-						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.photo }" style="border: 1px solid darkgray; width:40px; height: 40px;">
+						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.memberphoto }" style="border: 1px solid darkgray; width:40px; height: 40px;">
 								<div style="float:right; padding-left: 15px;">
-						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.id}</p></div>
+						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.memberid}</p></div>
 							
 					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.codyheight}cm ${irr.codyage}세</p></div>
 					    </div>
 					    </div>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary" style="float:right;">팔로우</a>
-							
-							</div>
-							
-							</li>
-
-					</c:forEach>
-
-				</ol>
+						<c:choose>
+			<c:when test="${loginInfo.member_idx eq irr.memberidx}" >
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-primary" style="float:right;">수정</a>						
+			</c:when>
+			<c:otherwise>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.codyidx}&member_idx=${irr.memberidx}" class="btn btn-primary" style="float:right;">팔로우</a>
+			</c:otherwise>
+			</c:choose>			
+						</div>
+				</li>
+            </c:forEach>
+			</ol>
 			</div>
 
 		</div>

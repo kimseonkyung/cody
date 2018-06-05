@@ -6,19 +6,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+
+
+<style type="text/css">
+ 
+    body {
+        background:url('${pageContext.request.contextPath }/uploadfile/index.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+ 
+</style>
 <body>
-<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-content-center" 
-     style="width:100%; height:100%; 
-            background-image:url(../../resources/image/gym1.jpg); 
-            background-size:cover; background-position:center center;">
+
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center">
-		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center my-5">
-			<a href="${pageContext.request.contextPath}/main">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center my-5" style=" position:absolute; top:45%;left:30%;">
+			<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/main" style="font-size:50px;">
 			CODY
 			</a>
-		</div>	
-            
-</div>
+	
+  </div>          
 </div>
 </body>
 </html>

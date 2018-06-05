@@ -73,8 +73,9 @@ public class HomeController {
 			map.put("cody_age", rankings.get(i).getCody_age() );
 			map.put("cody_idx", rankings.get(i).getCody_idx() );
 			map.put("cody_image", rankings.get(i).getCody_image() );
-			map.put("id", member.getMember_id() );
-			map.put("photo", member.getMember_photo() );
+			map.put("member_idx", rankings.get(i).getMember_idx() );
+			map.put("member_id", member.getMember_id() );
+			map.put("member_photo", member.getMember_photo() );
 			map.put(rankings.get(i), itemtime);
 			arr.add(map);
 		}	
@@ -99,6 +100,7 @@ public class HomeController {
 			map.put("codyheight",time.getCody_height());
 			map.put("codyidx",time.getCody_idx());		
 			map.put("id", member.getMember_id() );
+			map.put("memberidx", time.getMember_idx() );			
 			map.put("photo", member.getMember_photo() );
 			map.put(time, itemtime);
 			irr.add(map);		
