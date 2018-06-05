@@ -148,12 +148,12 @@ input:focus, textarea:focus {
 </div>
 	
 	
-	<div class="bg-white rounded box-shadow">
-          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${member.member_photo}" width="220" height="300">
+	<div class="p-3 bg-white rounded box-shadow">
+          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo}" width="220" height="300">
           <button type="button" class="btn btn-primary" data-target="#registerModal" data-toggle="modal">프로필변경</button>
         </div>
      		
-		<div class="bg-white rounded box-shadow" style="margin: 0" >
+		<div class="p-3 bg-white rounded box-shadow" style="margin: 0" >
 		<div class="btn-group btn-group-myPage" role="group" style="display:table; margin-left: auto; margin-right: auto;">
     			<button type="button" class="btn myBtn-secondary" id="gCody" style="border: 1px solid #ccc; margin: 0;"> <strong>코디</strong><br>${codyCount }</button>
     			<button type="button" class="btn myBtn-secondary" id="gCloset" style="border: 1px solid #ccc; margin: 0;"> <strong>옷장</strong><br>${itemCount }</button>
