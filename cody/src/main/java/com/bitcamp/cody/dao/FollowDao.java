@@ -22,6 +22,10 @@ public interface FollowDao {
 
 	public MemberDto selectresponse(int m_reseponse);
 
+	public int followrqCount(int m_request);
+
+	public int followrpCount(int m_response);
+
 
 
 }

@@ -17,6 +17,7 @@ import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.CodyListService;
+import com.bitcamp.cody.service.FollowService;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
 
@@ -29,7 +30,9 @@ public class MypageController {
 	ItemService itemService;
 	@Autowired
 	ItemListService itemListService;
-
+	@Autowired	
+	FollowService requestandnresponse;
+	
 	
 	@RequestMapping("/myPage")
 	public String myPage(Model model, HttpSession session) {
@@ -40,9 +43,14 @@ public class MypageController {
 		// 마이페이지 정보개수
 		int itemCount = itemService.getItemCount(idx);
 		int codyCount = codyListService.getCodyCount(idx);
+		int followrqCount = requestandnresponse.getfollowrqCount(idx);
+		int followrpCount = requestandnresponse.getfollowrpCount(idx);
 		
 		model.addAttribute("itemCount", itemCount);
 		model.addAttribute("codyCount", codyCount);
+		model.addAttribute("followrqCount", followrqCount);
+		model.addAttribute("followrpCount", followrpCount);
+		
 		
 		return "cody/myPage";
 	}

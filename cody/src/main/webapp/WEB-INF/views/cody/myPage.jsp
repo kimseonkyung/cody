@@ -379,14 +379,59 @@ $('#gLike').click(function () {
 
 $('#gFollower').click(function () {
 	
+	 $.ajax({
+			type : 'post',
+			url : '/cody/myFollowerrp',
+			dataType : 'json',
+			data : {}
+	 		})
+	 		.done(function(data) {
+		 		$('#myPageList').empty();
+			
+				$.each(data, function(i, e) {
+					$('#myPageList').append('<div class="myCard">'
+							+ '<a href="/cody/listView?member_idx='+ e.followrp_idx +'"><img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrp_imag +'" style="height: 250px;" alt="Card image cap"></a>'
+							+ '<div class="card-body" style="height: 100%">'
+							+ e.followrp_id		
+							+ '<br>'
+							+ e.followrp_birth
+							+ '</div>'
+							+ '</div>');
+				});
+			})
+			.fail(function(err) { // 실패
+				console.log(err);
+			});
+	 
 }) 
 
 $('#gFollow').click(function () {
 	
+	 $.ajax({
+			type : 'post',
+			url : '/cody/myFollowerrq',
+			dataType : 'json',
+			data : {}
+	 		})
+	 		.done(function(data) {
+		 		$('#myPageList').empty();
+			
+				$.each(data, function(i, e) {
+					$('#myPageList').append('<div class="myCard">'
+							+ '<a href="/cody/listView?member_idx='+ e.followrq_idx +'"><img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrq_imge +'" style="height: 250px;" alt="Card image cap"></a>'
+							+ '<div class="card-body" style="height: 100%">'
+							+ e.followrq_id		
+							+ '<br>'
+							+ e.followrq_birth
+							+ '</div>'
+							+ '</div>');
+				});
+			})
+			.fail(function(err) { // 실패
+				console.log(err);
+			});
+	
 })  
-
-	
-	
 	
 
 /* $('.btn-group-myPage').click(function() {

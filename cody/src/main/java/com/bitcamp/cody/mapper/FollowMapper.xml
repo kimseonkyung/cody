@@ -45,6 +45,19 @@
    <select id="selectresponse" resultType="com.bitcamp.cody.dto.MemberDto">
    
     select * from member where member_idx = #{m_response}
+    
     </select>  
+    
+    <select id="followrqCount" resultType ="int">
+        
+     select count(*) from follow  group by m_response having m_response = #{m_request}
+    
+    </select>
+        
+    <select id="followrpCount" resultType ="int">
+    
+    select count(*) from follow  group by m_request having m_request = #{m_response}
+    
+    </select>
    
    </mapper>

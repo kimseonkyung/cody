@@ -79,5 +79,18 @@ public class FollowService {
 		return list;
 	}
 
+	public int getfollowrqCount(int m_request) {
+		
+		dao = sqlSessionTemplate.getMapper(FollowDao.class);
+		int result = dao.followrqCount(m_request);
+		return result;
+	}
+
+	public int getfollowrpCount(int m_response) {
+		dao =sqlSessionTemplate.getMapper(FollowDao.class);
+		int result = dao.followrpCount(m_response);
+		return result;
+	}
+
 
 }

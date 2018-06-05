@@ -1,23 +1,24 @@
 package com.bitcamp.cody.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.cody.dto.FollowDto;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.FollowService;
 import com.bitcamp.cody.service.MemberService;
-import com.mysql.fabric.xmlrpc.base.Member;
 
 @Controller
 public class FollowController {
@@ -27,10 +28,11 @@ public class FollowController {
 
 	@Autowired
 	MemberService memberService;
-
-	// 신청하는 사람
+	
+	
+		// 신청하는 사람
 	@RequestMapping(value = "/followinsert", method = RequestMethod.GET)
-	public String followrequest(/* @RequestParam("member_idx") int m_response, */
+	public String followrequest( @RequestParam("member_idx") int m_response, 
 			HttpSession session, Model model) {
 
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); // 로그인된 아이디값 가져오기
@@ -41,7 +43,7 @@ public class FollowController {
 		HashMap<String, Integer> map = new HashMap();
 
 		map.put("m_request", m_request);
-		map.put("m_response", 1);// 변경해야됨
+		map.put("m_response", m_response);// 변경해야됨
 
 		int resultCnt = requestandnresponse.insertFollow(map);
 
@@ -58,8 +60,9 @@ public class FollowController {
 
 	// 받는 사람 팔로워
 
-	@RequestMapping("/followListrp")
-	public String followresponse(HttpSession session, Model model) {
+	@RequestMapping(value = "/myFollowerrp",method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String followresponse(HttpSession session/*, Model model*/) {
 
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo");
 
@@ -68,7 +71,26 @@ public class FollowController {
 		System.out.println("memberIdx: " + m_response);
 
 		List<FollowDto> responseList = requestandnresponse.getListrespons(m_response);
-		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
+		JSONArray arr = new JSONArray();
+		
+		
+		for (FollowDto response : responseList) {
+			MemberDto memberrequst = requestandnresponse.selectrequest(response.getM_request());
+			JSONObject obj = new JSONObject();
+			obj.put("followrp_idx", memberrequst.getMember_idx());
+			obj.put("followrp_id", memberrequst.getMember_id());
+			obj.put("followrp_imag",memberrequst.getMember_photo());
+			obj.put("followrp_birth",memberrequst.getMember_birth());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+			
+				
+		
+		/*	ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
 
 		System.out.println("response: " + responseList.toString());
 
@@ -81,28 +103,47 @@ public class FollowController {
 
 			map.put(response.getM_response(), memberrequst);
 
-			irr.add(map);
+			irr.add(map);*/
 		}
 
-		System.out.println("irr: " + irr.toString());
+		/*System.out.println("irr: " + irr.toString());
 
 		model.addAttribute("irr", irr);
 
-		return "follow/followListrp";
-	}
+		return "follow/followListrp";*/
+		
+
 	
 	// 하는 사람 팔로우
 
-	@RequestMapping("/followListrq")
-
-	public String requestList(Model model, HttpSession session) {
+	@RequestMapping(value="/myFollowerrq", method= RequestMethod.POST,produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String requestList(/*Model model,*/ HttpSession session) {
 
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo");
 
 		int m_request = member.getMember_idx();
 
 		List<FollowDto> requestLsit = requestandnresponse.getListrequet(m_request);		
-		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
+		JSONArray arr = new JSONArray();
+		
+		for(FollowDto request : requestLsit) {
+			MemberDto memberrespons = requestandnresponse.selectresponse(request.getM_response());
+			JSONObject obj = new JSONObject();
+			
+			obj.put("followrq_idx",memberrespons.getMember_idx());
+			obj.put("followrq_id",memberrespons.getMember_id());
+			obj.put("followrq_imge",memberrespons.getMember_photo());
+			obj.put("followrq_birth",memberrespons.getMember_birth());
+			arr.put(obj);			
+		}
+		
+		System.out.println("arr : " + arr);
+				
+		return arr.toString();
+		
+		
+	/*	ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
 		
 	    System.out.println("request: "+ requestLsit.toString());
 
@@ -117,16 +158,16 @@ public class FollowController {
 		}
 		model.addAttribute("irr", irr);
 
-		return "follow/followListrq";
+		return "follow/followListrq";*/
 
 	}
 
 	// 수정
 
 	@RequestMapping(value = "/followUpDate", method = RequestMethod.GET)
-	public String utdatefallow(Model model, HttpSession session /* @RequestParam("member_idx") int m_request */) {
+	public String utdatefallow(Model model, HttpSession Session ,@RequestParam("member_idx") int m_request ) {
 
-		MemberDto member = (MemberDto) session.getAttribute("loginInfo");
+		MemberDto member = (MemberDto) Session.getAttribute("loginInfo");
 
 		int m_response = member.getMember_idx();
 
@@ -134,7 +175,7 @@ public class FollowController {
 		HashMap<String, Integer> map = new HashMap();
 
 		map.put("m_response", m_response);
-		map.put("m_request", 7);// 변경해야됨
+		map.put("m_request", m_request);// 변경해야됨
 
 		int resultCnt = requestandnresponse.getfollowUpdate(map);
 
@@ -152,9 +193,9 @@ public class FollowController {
 
 	@RequestMapping("/followDelete")
 
-	public String deleteFollow(Model model/* , @RequestParam("fallow_idx") int followidx */) {
+	public String deleteFollow(Model model , @RequestParam("fallow_idx") int followidx ) {
 
-		int resultCnt = requestandnresponse.getdeleteFollow(22);
+		int resultCnt = requestandnresponse.getdeleteFollow(followidx);
 
 		String msg1 = "삭제 완료 되었습니다.";
 
