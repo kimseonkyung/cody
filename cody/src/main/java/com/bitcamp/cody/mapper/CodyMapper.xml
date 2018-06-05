@@ -35,7 +35,7 @@
 	</select>
 	
 	<select id="codyCount" resultType="int">
-		select count(*) from cody group by member_idx having member_idx = #{memberIdx}
+		select count(*) from cody where member_idx = #{memberIdx}
 	</select>
 
 	<!-- insert 태그는 데이터베이스에 데이터를 삽입하는 insert구문을 사용할 때 사용 -->

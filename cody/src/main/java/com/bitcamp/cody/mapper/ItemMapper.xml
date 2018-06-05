@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="itemCount" resultType="int">
-		select count(*) from item group by member_idx having member_idx = #{memberIdx}
+		select count(*) from item where member_idx = #{memberIdx}
 	</select>
  
  
