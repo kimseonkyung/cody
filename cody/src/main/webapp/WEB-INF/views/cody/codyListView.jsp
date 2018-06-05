@@ -419,10 +419,8 @@ margin: 0 auto;
 						</div>
 	
 			
-						<div class="bg-white rounded box-shadow" style="width:445px; margin-top:20px; border: 1px solid #111;">
+						<div class="bg-white rounded box-shadow" style="max-width: 445px;margin-top:20px;border: 2px solid darkgray;overflow: hidden;">
 							<div id="item_name"><h2>착용아이템( ${itemSize } )</h2></div>
-							<div id="item_main"><a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}">삭제</a>
-								<a href="codyForm">코디등록</a></div>
 							
 							<ul style="list-style: none;">
 							<c:forEach var="item" items="${items }">
