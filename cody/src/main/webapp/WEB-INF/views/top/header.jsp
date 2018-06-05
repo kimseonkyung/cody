@@ -168,7 +168,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 
 
 					<a class="navbar-brand mr-auto" style=""
-						href="${pageContext.request.contextPath}">Cody</a>
+						href="${pageContext.request.contextPath}/main">Cody</a>
 
 
 					<div class="my-2 my-md-0 mr-md-3" id="navbarsExampleDefault">
