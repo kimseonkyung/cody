@@ -68,6 +68,12 @@ $('#reple #repleSave').click(function() {
 				return false;
 			}
 			
+			if(reple_contents.length==0) {
+				alert('댓글을 입력하세요');
+				$('#reple #reple_contents').focus();
+				return;
+			}
+			
 			$.ajax({
 				type : 'post',
 				url : '/cody/repleInsert',
@@ -95,7 +101,7 @@ $('#reple #repleSave').click(function() {
 
 /* 대댓글 저장 */
 function re_repleSave(reple_idx) {
-
+	
 	var params = $('#re_repleForm' + reple_idx).serialize();
 	console.log(params);
 
@@ -104,7 +110,7 @@ function re_repleSave(reple_idx) {
 		url : '/cody/re_repleInsert',
 		data : params,
 		success : function(data) {
-			alert('성공');
+			alert('저장 완료');
 			location.reload();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
@@ -115,14 +121,25 @@ function re_repleSave(reple_idx) {
 
 }
 
-/* 답글 작성공간 보여주기 */
-function btnShow(reple_idx) {
-	if ($('#re_reple' + reple_idx).css('display') == 'none') {
-		$('#re_reple' + reple_idx).show();
+/* 답글 접기 */
+$('#repleShow').click(function(cody_idx) {
+	if ($('#repleList').css('display') == 'none') {
+		$('#repleList').show();
 	} else {
-		$('#re_reple' + reple_idx).hide();
+		$('#repleList').hide();
+	}
+});
+
+/* 답글 작성공간 보여주기 */
+function re_repleShow(reple_idx) {
+	if ($('#re_reple'+reple_idx).css('display') == 'none') {
+		$('.re_reple').hide();
+		$('#re_reple'+reple_idx).show();
+	} else {
+		$('#re_reple'+reple_idx).hide();
 	}
 }
+	
 
 /* 답글 삭제 */
 function repleDelete(reple_idx) {
@@ -135,7 +152,8 @@ function repleDelete(reple_idx) {
 			reple_idx : reple_idx
 		},
 		success : function(data) {
-			$('#repleDelete' + reple_idx).parent().parent().remove();
+			alert('삭제 완료');
+			location.reload();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert("에러 발생  \n" + textStatus + " : " + errorThrown);

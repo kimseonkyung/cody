@@ -56,9 +56,18 @@
 		from reple
 	</select>
 
-	<!-- 댓글삭제(자식댓글까지 같이 삭제) -->
+	<!-- 자식 댓글이 있는지 찾기 -->
+	<select id="childReple" resultType="com.bitcamp.cody.dto.RepleDto">
+		select * from reple where reparent = #{idx}
+	</select>
+	
+	<update id="repleUpdate" parameterType="com.bitcamp.cody.dto.RepleDto">
+		update reple set reple_contents = #{reple_contents} where reple_idx=#{reple_idx}
+	</update>
+	
+	<!-- 댓글삭제 -->
 	<delete id="repleDelete" parameterType="com.bitcamp.cody.dto.RepleDto">
-		delete from reple where reple_idx = #{idx} or reparent=#{idx}
+		delete from reple where reple_idx = #{idx}
 	</delete>
 
 	<!-- 알림 확인후 수신여부값 변경 -->

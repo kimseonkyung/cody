@@ -11,6 +11,7 @@ public class ItemDto {
 	private String item_brand;
 	private String item_image;
 	private int item_price;
+	private String item_link;
 	private String item_category;
 	private String item_color;
 	private int cody_idx;
@@ -22,13 +23,15 @@ public class ItemDto {
 	}
 
 	public ItemDto(int item_idx, String item_name, String item_brand, String item_image, int item_price,
-			String item_category, String item_color, int cody_idx, int member_idx, MultipartFile photofile) {
+			String item_link, String item_category, String item_color, int cody_idx, int member_idx,
+			MultipartFile photofile) {
 		super();
 		this.item_idx = item_idx;
 		this.item_name = item_name;
 		this.item_brand = item_brand;
 		this.item_image = item_image;
 		this.item_price = item_price;
+		this.item_link = item_link;
 		this.item_category = item_category;
 		this.item_color = item_color;
 		this.cody_idx = cody_idx;
@@ -76,6 +79,14 @@ public class ItemDto {
 		this.item_price = item_price;
 	}
 
+	public String getItem_link() {
+		return item_link;
+	}
+
+	public void setItem_link(String item_link) {
+		this.item_link = item_link;
+	}
+
 	public String getItem_category() {
 		return item_category;
 	}
@@ -119,9 +130,11 @@ public class ItemDto {
 	@Override
 	public String toString() {
 		return "ItemDto [item_idx=" + item_idx + ", item_name=" + item_name + ", item_brand=" + item_brand
-				+ ", item_image=" + item_image + ", item_price=" + item_price + ", item_category=" + item_category
-				+ ", item_color=" + item_color + ", cody_idx=" + cody_idx + ", member_idx=" + member_idx
-				+ ", photofile=" + photofile + "]";
+				+ ", item_image=" + item_image + ", item_price=" + item_price + ", item_link=" + item_link
+				+ ", item_category=" + item_category + ", item_color=" + item_color + ", cody_idx=" + cody_idx
+				+ ", member_idx=" + member_idx + ", photofile=" + photofile + "]";
 	}
+
+	
 
 }

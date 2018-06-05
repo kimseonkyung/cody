@@ -53,10 +53,6 @@
 	border: 1px solid #ccccff;
 }
 
-button {
-	margin: 20px;
-}
-
 section.buttons {
 	overflow: hidden;
 }

@@ -10,7 +10,8 @@ public interface RepleDao {
 	List<RepleDto> selectList(int idx);
 
 	RepleDto selectByIdx(int idx);
-
+	
+	List<RepleDto> childReple(int idx);
 	// 첫댓글 저장
 	int repleInsert(RepleDto reple);
 
@@ -40,5 +41,7 @@ public interface RepleDao {
 
 	// 첫댓글 저장된 댓글찾기
 	RepleDto selectinfo(RepleDto reple);
+
+	int repleUpdate(RepleDto re);
 
 }
