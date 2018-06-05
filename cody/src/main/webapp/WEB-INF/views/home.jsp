@@ -194,8 +194,6 @@
 						<a href="${pageContext.request.contextPath}/repleList?cody_idx=1">답글</a><br>
 						<a href="${pageContext.request.contextPath}/codyTimeList">타임라인</a><br>
 						<a href="boardList">게시판(공지사항)</a><br>
-						<a href="${pageContext.request.contextPath}/followListrp">팔로워</a><br>
-						<a href="${pageContext.request.contextPath}/followListrq">팔로우</a><br>
 						<a href="${pageContext.request.contextPath}/followinsert">팔로우 신청</a><br>
 						<a href="${pageContext.request.contextPath}/followUpDate">팔로우 수락</a><br>
 						<a href="${pageContext.request.contextPath}/followDelete">팔로우 삭제</a><br>
