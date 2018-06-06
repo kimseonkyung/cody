@@ -51,9 +51,9 @@ public class CodyController {
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); 
 		int memberIdx = member.getMember_idx();
 		
-		List<ItemDto> item = itemListService.selectByMemberIdx(memberIdx);
+		List<ItemDto> items = itemListService.selectByMemberIdx(memberIdx);
 		
-		model.addAttribute("items", item);
+		model.addAttribute("items", items);
 		
 		return "cody/codyForm";
 	}
@@ -143,6 +143,7 @@ public class CodyController {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm");
 
 		List<RepleDto> list_r = repleService.listAll(idx);
+		
 		ArrayList<HashMap<String, Object>> repleList = new ArrayList<>();
 
 		for (RepleDto reple : list_r) {
@@ -191,38 +192,54 @@ public class CodyController {
 
 
 	@RequestMapping(value="/codyUpdate", method = RequestMethod.GET)
-	public String codyUpdate(Model model, @RequestParam("cody_idx") int idx) {
-
-		CodyDto cody = codyListService.CodyListView(idx);
-		List<ItemDto> items = itemListService.selectByCodyIdx(idx);
+	public String codyUpdate(Model model,HttpSession session , @RequestParam("cody_idx") int idx) {
+		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); 
+		int memberIdx = member.getMember_idx();
 		
-		model.addAttribute("cody", cody);
+		List<ItemDto> items = itemListService.selectByMemberIdx(memberIdx);
+		
+		CodyDto cody = codyListService.CodyListView(idx);
+		List<ItemDto> codyItems = itemListService.selectByCodyIdx(idx);
+		
 		model.addAttribute("items", items);
+		model.addAttribute("cody", cody);
+		model.addAttribute("codyItems", codyItems);
+		
+		System.out.println("cody : "+cody);
 		
 		return "cody/codyUpdate";
 	}
-
-	@RequestMapping(value="/codyUpdate", method = RequestMethod.POST)
-	public String updateOk(CodyDto cody, Model model, HttpSession session)
+	@RequestMapping(value = "/codyUpdate", method = RequestMethod.POST)
+	public String codyUpdate(Model model, HttpSession session, CodyDto cody, ItemList list)
 			throws IllegalStateException, IOException {
-
+		
+		List<ItemDto> itemList = list.getItemList();
+		for(int i=0; i<itemList.size(); i++) {
+			if(itemList.get(i).getItem_name() == null) {
+				itemList.remove(i);
+			}
+		}
+		
 		int resultCnt = codyservice.codyUpdate(cody, session);
-
-		String msg = "코디수정 완료";
-
-		if (resultCnt == 0)
-			msg = "수정 실패";
-
-		model.addAttribute("msg", msg);
+		
+		ArrayList<ItemDto> arr = new ArrayList<>();
+		for(ItemDto item  : itemList) {	
+			arr.add(item);
+		}
+		
+		itemService.itemCodyDelete(cody.getCody_idx());
+		itemService.itemListInsert(arr);
 
 		return "cody/codyFormOk";
 	}
+	
 /*-----------------삭제----------------*/
 
 
 	@RequestMapping("/codyDelete")
 	public String codyDelete(Model model, @RequestParam("cody_idx") int idx) {
 
+		itemService.itemCodyDelete(idx);
 		int resultCnt = codyservice.codyDelete(idx);
 
 		String msg = "코디삭제 완료";

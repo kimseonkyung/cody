@@ -341,14 +341,12 @@
 	text-align: left;
 	vertical-align: middle;
 }
-</style>
-<style> 
 input:focus, textarea:focus{resize: none, outline: none;} 
-.sdsd {
-	display:inline; 
-	float: left;
-	padding:0 10px;
+
+.checkedItem {
+	 border: 1px solid blue!important;
 }
+
 </style>
 
 
@@ -429,6 +427,32 @@ input:focus, textarea:focus{resize: none, outline: none;}
 				
 				<div class="my-3 p-3 bg-white rounded">
 				  <div id="item">
+				 <!-- 항목 추가 아이템 테이블 -->
+								<div>
+									<table id="codyTable" class="table table-bordered">
+										<c:forEach var="item" items="${codyItems }" varStatus="status">
+										<tbody id="codyDiv${status.index }">
+												<tr>
+													<td rowspan="6"><img src="${item.item_image }" width="100"></td>
+													<td>이름 : ${item.item_name }</td>
+												</tr>
+												<tr><td>브랜드 : ${item.item_brand }</td></tr>
+												<tr><td>카테고리 : ${item.item_category }</td></tr>
+												<tr><td>색상 : ${item.item_color }</td></tr>
+												<tr><td>가격 : ${item.item_price }</td></tr>
+												<tr><td><button class="btn btn-dark" type="button" onclick="itemRemove(${status.index })">삭제</button>
+													<input type="hidden" name="itemList[${status.index }].item_image" value="'${item.item_image }">	
+													<input type="hidden" name="itemList[${status.index }].item_name" value="'${item.item_name }">	
+													<input type="hidden" name="itemList[${status.index }].item_brand" value="'${item.item_brand }">	
+													<input type="hidden" name="itemList[${status.index }].item_category" value="'${item.item_category }">	
+													<input type="hidden" name="itemList[${status.index }].item_color" value="'${item.item_color }">	
+													<input type="hidden" name="itemList[${status.index }].item_price" value="'${item.item_price }">	
+												</td></tr>
+										</tbody>
+										</c:forEach>
+									</table>
+								</div>
+				 				
 					<div class="dropdown">
 						<button id="input_item" type="button" data-toggle="dropdown">+   항목 추가</button>
 						<ul class="dropdown-menu">
@@ -443,13 +467,6 @@ input:focus, textarea:focus{resize: none, outline: none;}
 				
 				<div id="item_intro">
 								<h6>최대 9 항목까지 추가 할 수 있습니다</h6>
-								<!-- 항목 추가 아이템 테이블 -->
-								<div>
-									<table class="table table-bordered">
-										<tbody id="codyTable">
-										</tbody>
-									</table>
-								</div>
 							</div>
 						</div>
 						</div>
@@ -468,8 +485,8 @@ input:focus, textarea:focus{resize: none, outline: none;}
                     <div id="intro_name">
                         <h4>코디 소개문</h4>
                     </div>
-                    <div id="intro_input"><div id="intro_text"><textarea class="text" style= "resize: none" rows="13" cols="63"  onkeyup="limit2(this)" name="cody_intro" id="cody_intro">
-                    ${cody.cody_intro}</textarea></div>
+                    <div id="intro_input"><div id="intro_text">
+                    <textarea class="text" style= "resize: none" rows="13" cols="63"  onkeyup="limit2(this)" name="cody_intro" id="cody_intro">${cody.cody_intro}</textarea></div>
                     <div id="intro_sub">
                     <h6>※ 500 자 이내로 입력하십시오.</h6>
                     </div>
@@ -517,22 +534,20 @@ input:focus, textarea:focus{resize: none, outline: none;}
 			</c:forEach>
 			</select>
 		</div>
+		<input type="hidden" name="cody_idx" value="${cody.cody_idx }">
+    	<input type="hidden" name="member_idx" value="${cody.member_idx }">
 	</div>
 	</div>
+	
 	</div>
-            
-            <div>
-            <input type="hidden" name="cody_idx" value="${cody.cody_idx }">
-         
-   			</div>
    			
 
 	<!--------------------업로드--------------------->
 <div class="col-md-12 order-md-3">
-		<div class="my-3 p-3 bg-white rounded">
+	<div class="my-3 p-3 bg-white rounded">
 	<div id="input">
 		<div id="upload_input">
-			<input id="input_upload" type="submit" onclick="codyUpdate()">
+			<input id="input_upload" type="submit" onclick="codyUpdate()" value="확인">
 		</div>
 	</div>
 	</div>
@@ -566,31 +581,42 @@ input:focus, textarea:focus{resize: none, outline: none;}
 					
 					<div class="modal-body">
 				
-<%-- 						<c:forEach var="item" items="${items }">
-						<input id="chItem${item.item_idx }" type="radio" name="chItem">
-						</c:forEach>
- --%>						
 						<div class="bg-white rounded box-shadow">
+				
+						<section class="ItemButtons">
+				
 				
 						<!-- 옷장 리스트 반복 출력 -->
 							<c:forEach var="item" items="${items }">
-								<div class="card" style="width: 9rem; display: inline-block;">
-  									<img class="card-img-top" src="${item.item_image }" style="height: 150px; " alt="Card image cap">
-  										<div class="card-body" style="height: 70px; ">
+							
+								<input id="chItem${item.item_idx }" type="radio" name="chItem" value="${item.item_idx }" style="display: none;">
+							
+								<div id="card${item.item_idx }" class="card" style="width: 9rem; display: inline-block;">
+								<label for="chItem${item.item_idx }">
+								<img class="card-img-top" src="${item.item_image }" style="height: 150px; " alt="Card image cap">
+								</label>
+								<div class="card-body" style="height: 70px; ">
   											<c:set var="myItemName" value="${item.item_name }" />
   											<c:set var="nameL"  value="${fn:length(myItemName)}" />
   											<c:if test="${nameL > 8 }">
   												<c:set var="myItemName" value="${fn:substring(myItemName, 0, 7)} ..." />
   											</c:if>
    											 <p class="card-text"><small>${myItemName }</small></p>
-  										</div>
+  								</div>
 								</div>
+								<input type="hidden" id="myitem_image${item.item_idx }" value="${item.item_image }">
+								<input type="hidden" id="myitem_name${item.item_idx }" value="${item.item_name }">
+								<input type="hidden" id="myitem_brand${item.item_idx }" value="${item.item_brand }">
+								<input type="hidden" id="myitem_category${item.item_idx }" value="${item.item_category }">
+								<input type="hidden" id="myitem_color${item.item_idx }" value="${item.item_color }">
+								<input type="hidden" id="myitem_price${item.item_idx }" value="${item.item_price }">
 							</c:forEach>
-							
+						</section>
 						</div>
+						
 					</div>
 					<div class="modal-footer">
-					<button class="btn btn-primary" onclick="">확인</button>
+					<button id="myItemOk" class="btn btn-primary">확인</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
@@ -771,182 +797,33 @@ ie10-viewport-bug-workaround.js
 
 <!-- holder.js -->
 	<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>
+	<script>
 
-<script>
+	$(document).ready(function(){
 
+	  $('#cody_height option').each(function(){
+	    if($(this).val()=="${cody.cody_height}"){
+	      $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
+	    }
+	  });
 
-/* 네이버 검색 */
-function naverSearch() {
-	
-	var keyword = $('#keyword').val();
-
-	$.ajax({
-			url: '${pageContext.request.contextPath}/naverItem',
-			type: 'post',
-			dataType: 'JSON',
-			data: {keyword : keyword},
-		})
-		.done(function(res) { // 성공시
-			console.log(res);
-			var $table = $('#naverTable');
-			$table.html('');
-			
-			$.each(res, function(i, row) {
-				var $tr = $('<tr>').append(
-					$('<td>').html('<img src="'+row.image+'" width="100">'),
-					$('<td>').html(row.title),
-					$('<td>').html(row.lprice),
-					$('<td>').html('<input type="checkbox" name="item_check" value="'+row.productId+'">')
-				);
-				$tr.appendTo($table);
-			});
-		})
-		.fail(function(err) { // 실패
-			console.log(err);
-		});
-	}
-
-/* 아이템 선택후 등록 테이블 */
-var $table = $('#codyTable');
-$table.html('');
-var idx = 0;
-
-
-
-/* 네이버 상품 선택 확인 */
-function naverSearchOk() {
- 
-	var keyword = $('#naverSearchOk #keyword').val();
-	var checkArr = [];
-	
-	$('input[name="item_check"]:checked').each(function(i) {
-		checkArr.push($(this).val());	//체크된 것만 값을 뽑아서 배열에 push
-	});
-	
-	$.ajax({
-		url: '${pageContext.request.contextPath}/naverItemOk',
-		type: 'post',
-		dataType: 'JSON',
-		data: {
-			keyword : keyword,
-			checkArr : checkArr.toString()	// 문자열로 형변환
-		},
-		success : function(data) {
-			console.log(data);
-			
-			
-			$.each(data, function(i, row) {
-				var $div = $('<div class="codyDiv">');
-				var $tr = $('<tr>').append(
-					$('<td rowspan="5">').html('<img src="'+row.image+'" width="100">'),
-					$('<td>').html('이름 : '+row.title)
-				); $tr.appendTo($div);
-					$tr = $('<tr>').append(
-						$('<td>').html('브랜드 : <input name="itemList['+idx+'].item_brand" type="text" >')
-				); $tr.appendTo($div);
-					$tr = $('<tr>').append(
-						$('<td>').html(' 카테고리 : <select id="input_category" name="itemList['+idx+'].item_category">'
-								+'<option>선택해주세요</option>'
-								+'<option value="모자">모자</option>'
-								+'<option value="상의">상의</option>'
-								+'<option value="하의">하의</option>'
-								+'<option value="아우터">아우터</option>'
-								+'<option value="신발">신발</option>'
-								+'<option value="악세사리">악세사리</option></select>')
-				); $tr.appendTo($div);	
-					$tr = $('<tr>').append(
-						$('<td>').html(' 색상 : <select id="input_color" name="itemList['+idx+'].item_color">'
-								+'<option>선택해주세요</option>'
-								+'<option value="white">흰색</option>'
-								+'<option value="black">검은색</option>'
-								+'<option value="red"">빨간색</option>'
-								+'<option value="orange">주황색</option>'
-								+'<option value="yellow">노랑색</option>'
-								+'<option value="green">초록색</option>'
-								+'<option value="blue">파랑색</option>'
-								+'<option value="navy">남색</option>'
-								+'<option value="purple">보라색</option></select>')
-				); $tr.appendTo($div);	
-					$tr = $('<tr>').append(
-						$('<td>').html('가격 : '+row.lprice)
-				); $tr.appendTo($div);
-				var name = strip_tag(row.title);
-				var $hidden = $('<div>').html('<input type="hidden" name="itemList['+idx+'].item_image" value="'+row.image+'">'
-									+'<input type="hidden" name="itemList['+idx+'].item_name" value="'+name+'">'		
-									+'<input type="hidden" name="itemList['+idx+'].item_price" value="'+row.lprice+'">');
-				 $hidden.appendTo($div);
-				 $div.appendTo($table);
-				 idx++;
-
-				 $("#NaveritemModal").modal('hide');
-
-			});
-			
-		},
-		error : function() {
-			alert("상품을 선택해 주세요.  \n");
-			self.close();
-		}
-		
-	});
- }
-
-function strip_tag(str)
-{
-    return str.replace(/(<([^>]+)>)/ig,"");
-}
-
-
-
-
-/* 코디 등록 */
-function codyInsert() {
-	var formObj = $('form[role="codyForm"]');
-	
-	console.log(formObj);
-	
-	formObj.attr("action", "codyForm");
-	formObj.attr("method", "post");
-	formObj.submit();
-}
-
-
-</script>
-<script>
-$(document).ready(function(){
-
-var cody_gender = ${cody.cody_gender};
-
-if(cody_gender > 0 ) {
-
-	$('#gender1').attr("checked","checked"); 
-
-} else {
-
-	$('#gender2').attr("checked","checked"); 
-}
-});
-
-
-$('#cody_height option').each(function(){
-
-	if($(this).val()=="${cody.cody_height}"){
-
-		$(this).attr("selected","selected"); 
-		
-	}
-	
-	});
+	  $('#cody_age option').each(function(){
+	    if($(this).val()=="${cody.cody_age}"){
+	      $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
+	    }
+	  });
 	  
-$('#cody_age option').each(function(){
-
-	if($(this).val()=="${cody.cody_age}"){
-
-		$(this).attr("selected","selected"); 
-
-	}
-	
+	  $('#gender_input input[name="cody_gender"]').each(function(){
+	    if($(this).val()=="${cody.cody_gender}"){
+	      $(this).attr("checked","checked"); // attr적용안될경우 prop으로 
+	    }
+	  });
+	  
+	  
+	  
 	});
-</script>
+
+	</script>
 
 </html>

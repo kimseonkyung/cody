@@ -442,6 +442,14 @@ input:focus, textarea:focus {
 				
 				<div class="my-3 p-3 bg-white rounded">
 				  <div id="item">
+				  				<!-- 항목 추가 아이템 테이블 -->
+								<div>
+									<table class="table table-bordered">
+										<tbody id="codyTable">
+										</tbody>
+									</table>
+								</div>
+								
 					<div class="dropdown">
 						<button id="input_item" type="button" data-toggle="dropdown">+   항목 추가</button>
 						<ul class="dropdown-menu">
@@ -456,13 +464,7 @@ input:focus, textarea:focus {
 				
 				<div id="item_intro">
 								<h6>최대 9 항목까지 추가 할 수 있습니다</h6>
-								<!-- 항목 추가 아이템 테이블 -->
-								<div>
-									<table class="table table-bordered">
-										<tbody id="codyTable">
-										</tbody>
-									</table>
-								</div>
+								
 							</div>
 						</div>
 						</div>
@@ -547,7 +549,7 @@ input:focus, textarea:focus {
 		<div class="my-3 p-3 bg-white rounded">
 	<div id="input">
 		<div id="upload_input">
-			<input id="input_upload" type="submit" onclick="codyInsert()">
+			<input id="input_upload" type="submit" onclick="codyInsert()" value="등록">
 		</div>
 	</div>
 	</div>
@@ -795,205 +797,7 @@ input:focus, textarea:focus {
 	
 	<!-- holder.js -->
 	<script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>	
-	<script>
-	
-	
-	/* 네이버 검색 */
-	function naverSearch() {
-		
-		var keyword = $('#keyword').val();
-
-		$.ajax({
-				url: '${pageContext.request.contextPath}/naverItem',
-				type: 'post',
-				dataType: 'JSON',
-				data: {keyword : keyword},
-			})
-			.done(function(res) { // 성공시
-				console.log(res);
-				var $table = $('#naverTable');
-				$table.html('');
-				
-				$.each(res, function(i, row) {
-					var $tr = $('<tr>').append(
-						$('<td>').html('<img src="'+row.image+'" width="100">'),
-						$('<td>').html(row.title),
-						$('<td>').html(row.lprice),
-						$('<td>').html('<input type="checkbox" name="item_check" value="'+row.productId+'">')
-					);
-					$tr.appendTo($table);
-				});
-			})
-			.fail(function(err) { // 실패
-				console.log(err);
-			});
-		}
-	
-	/* 아이템 선택후 등록 테이블 */
-	var $table = $('#codyTable');
-	$table.html('');
-	var idx = 0;
-	
-	
-	
-	/* 네이버 상품 선택 확인 */
-	function naverSearchOk() {
-	 
-		var keyword = $('#naverSearchOk #keyword').val();
-		var checkArr = [];
-		
-		$('input[name="item_check"]:checked').each(function(i) {
-			checkArr.push($(this).val());	//체크된 것만 값을 뽑아서 배열에 push
-		});
-		
-		$.ajax({
-			url: '${pageContext.request.contextPath}/naverItemOk',
-			type: 'post',
-			dataType: 'JSON',
-			data: {
-				keyword : keyword,
-				checkArr : checkArr.toString()	// 문자열로 형변환
-			},
-			success : function(data) {
-				console.log(data);
-				
-				
-				$.each(data, function(i, row) {
-					var $div = $('<div id="codyDiv'+idx+'">');
-					var $tr = $('<tr>').append(
-						$('<td rowspan="6">').html('<img src="'+row.image+'" width="100">'),
-						$('<td>').html('이름 : '+row.title)
-					); $tr.appendTo($div);
-						$tr = $('<tr>').append(
-							$('<td>').html('브랜드 : <input name="itemList['+idx+'].item_brand" type="text" >')
-					); $tr.appendTo($div);
-						$tr = $('<tr>').append(
-							$('<td>').html(' 카테고리 : <select id="item_category" name="itemList['+idx+'].item_category">'
-									+'<option>선택해주세요</option>'
-									+'<option value="모자">모자</option>'
-									+'<option value="상의">상의</option>'
-									+'<option value="하의">하의</option>'
-									+'<option value="아우터">아우터</option>'
-									+'<option value="신발">신발</option>'
-									+'<option value="악세사리">악세사리</option></select>')
-					); $tr.appendTo($div);	
-						$tr = $('<tr>').append(
-							$('<td>').html(' 색상 : <select id="item_color" name="itemList['+idx+'].item_color">'
-									+'<option>선택해주세요</option>'
-									+'<option value="white">흰색</option>'
-									+'<option value="black">검은색</option>'
-									+'<option value="red"">빨간색</option>'
-									+'<option value="orange">주황색</option>'
-									+'<option value="yellow">노랑색</option>'
-									+'<option value="green">초록색</option>'
-									+'<option value="blue">파랑색</option>'
-									+'<option value="navy">남색</option>'
-									+'<option value="purple">보라색</option></select>')
-					); $tr.appendTo($div);	
-						$tr = $('<tr>').append(
-							$('<td>').html('가격 : '+row.lprice)
-					); $tr.appendTo($div);
-						$tr = $('<tr>').append(
-							$('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
-					); $tr.appendTo($div);
-					/* 태그제거 */
-					var name = strip_tag(row.title);
-					var $hidden = $('<div>').html('<input type="hidden" name="itemList['+idx+'].item_image" value="'+row.image+'">'
-										+'<input type="hidden" name="itemList['+idx+'].item_name" value="'+name+'">'		
-										+'<input type="hidden" name="itemList['+idx+'].item_price" value="'+row.lprice+'">');
-					 $hidden.appendTo($div);
-					 $div.appendTo($table);
-					 idx++;
-
-					 $("#NaveritemModal").modal('hide');
-
-				});
-				
-			},
-			error : function() {
-				alert("상품을 선택해 주세요.  \n");
-				self.close();
-			}
-			
-		});
-	 }
-	
-	/* 옷장아이템 선택 확인  */
-	$('#myItemOk').click(function () {
-		var ch = $('input[name="chItem"]:checked').val();
-		var image = $('#myitem_image'+ch).val();
-		var name = $('#myitem_name'+ch).val();
-		var brand = $('#myitem_brand'+ch).val();
-		var category = $('#myitem_category'+ch).val();
-		var color = $('#myitem_color'+ch).val();
-		var price = $('#myitem_price'+ch).val();
-		
-					var $div = $('<div id="codyDiv'+idx+'">');
-					var $tr = $('<tr>').append($('<td rowspan="6">').html('<img src="'+image+'" width="100">'),	$('<td>').html('이름 : '+name)
-					); $tr.appendTo($div);
-						$tr = $('<tr>').append($('<td>').html('브랜드 : '+brand)
-					); $tr.appendTo($div);	
-						$tr = $('<tr>').append($('<td>').html('카테고리 : '+category)
-					); $tr.appendTo($div);	
-						$tr = $('<tr>').append($('<td>').html('색상 : '+color)
-					); $tr.appendTo($div);	
-						$tr = $('<tr>').append($('<td>').html('가격 : '+price)
-					); $tr.appendTo($div);
-						$tr = $('<tr>').append($('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
-					); $tr.appendTo($div);
-					var $hidden = $('<div>').html('<input type="hidden" name="itemList['+idx+'].item_image" value="'+image+'">'
-											  	 +'<input type="hidden" name="itemList['+idx+'].item_name" value="'+name+'">'		
-												 +'<input type="hidden" name="itemList['+idx+'].item_brand" value="'+brand+'">'		
-												 +'<input type="hidden" name="itemList['+idx+'].item_category" value="'+category+'">'		
-												 +'<input type="hidden" name="itemList['+idx+'].item_color" value="'+color+'">'		
-												 +'<input type="hidden" name="itemList['+idx+'].item_price" value="'+price+'">');
-					 $hidden.appendTo($div);
-					 $div.appendTo($table);
-					 idx++;
-
-					 $("#ClosetModal").modal('hide');
-				
-	}) 
-	
-	
-	function itemRemove(removeIdx) {
-		$('#codyDiv'+removeIdx).remove();
-		
-	}
-	
-	/* 태그 제거 */
-	function strip_tag(str)
-	{
-	    return str.replace(/(<([^>]+)>)/ig,"");
-	};
-	
-	
-	
-	
-	 /* 코디 등록 */
-	function codyInsert() {
-		var formObj = $('form[role="codyForm"]');
-		
-		console.log(formObj);
-		
-		formObj.attr("action", "codyForm");
-		formObj.attr("method", "post");
-		formObj.submit();
-	}; 
-	
-	// 옷장 아이템 선택 이벤트
-	$(".card").click(function () {
-		
-		$(".card").removeClass("checkedItem");
-		$(this).addClass("checkedItem");
-	}); 
-	
-	
-	
-	
-	
-	</script>
-
+	<script src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>
 
 
 </html>

@@ -270,6 +270,14 @@ margin: 0 auto;
 	margin-left: 10px; 
 }
 
+.saveBtn {
+	width: 70px;
+	height: 113px;
+	text-align: center;
+	border: 1px solid #aaa;
+	margin-left: 5px;
+}
+
 
 </style>
 </head>
@@ -303,8 +311,8 @@ margin: 0 auto;
 					<c:when test="${loginInfo.member_idx eq cody.member_idx }">
 					<div class="col-md-3">
 					<div style="float: right;">
-					<input class="btn btn-primary" type="button" value="수정">
-					<input class="btn btn-primary" type="button" value="삭제">
+					<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}"><input class="btn btn-primary" type="button" value="수정"></a>
+					<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}"><input class="btn btn-primary" type="button" value="삭제"></a>
 					</div>
 					</div>
 					</c:when>
@@ -382,13 +390,19 @@ margin: 0 auto;
 			</c:forEach>
 		</div>
 
-		<div id="reple" style="margin-top: 5px;">
-			<input type="hidden" name="reple_cody_idx" value="${cody.cody_idx }">
+		<div id="reple">
+		<table  style="margin: 10px auto;">
+		<tr>
+		<td>
+		<input type="hidden" name="reple_cody_idx" value="${cody.cody_idx }">
 			<input type="hidden" name="reple_member_idx" value="${loginInfo.member_idx }">
 			<input type="hidden" name="reple_member_id" value="${loginInfo.member_id }">
 			<input type="hidden" name="reple_member_photo" value="${loginInfo.member_photo }">
-			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="3" cols="40" maxlength="450"></textarea>
-			<button class="btn btn-outline-dark" type="button" id="repleSave">저장</button>
+			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="5" cols="60" maxlength="500"></textarea>
+		</td>
+		<td><button class="btn-outline-dark saveBtn border-secondary rounded" type="button" id="repleSave">저장</button></td>
+		</tr>
+		</table>
 		</div>
 
 								</div>
