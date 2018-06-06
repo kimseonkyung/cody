@@ -21,53 +21,45 @@
 <link
 	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
 	rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
 <script type="text/javascript">
-$(document).ready(function (event){
+	$(document).ready(function(event) {
 
-    $(window).scroll(function(){
+		$(window).scroll(function() {
 
-    
+			var scrollHeight = $(window).scrollTop() + $(window).height();
 
-    var scrollHeight = $(window).scrollTop() + $(window).height();
+			var documentHeight = $(document).height();
 
-    var documentHeight = $(document).height();
+			//스크롤이 맨아래로 갔는지 아닌지 확인하는 if문
 
-    
+			if (scrollHeight == documentHeight) {
 
-    //스크롤이 맨아래로 갔는지 아닌지 확인하는 if문
+				for (var i = 0; i < 10; i++) {
 
-    if(scrollHeight == documentHeight){
+					$('<h1>Infinity Scroll11</h1>').appendTo('body');
 
-    for(var i = 0; i < 10; i++){
+				}
 
-    $('<h1>Infinity Scroll11</h1>').appendTo('body');
+			}
 
-    }      
+		});
 
-    }
+	});
 
-    
+	//테스트를 위해 내부에 공간을 채워서 스크롤을 임의로 만듬
 
-    });
+	$(document).ready(function() {
 
-    });
+		for (var i = 0; i < 20; i++) {
 
-    
+			$('<h1>infinity scroll</h1>').appendTo('body');
 
-    //테스트를 위해 내부에 공간을 채워서 스크롤을 임의로 만듬
+		}
 
-    $(document).ready(function(){
-
-    for(var i = 0; i < 20; i++){
-
-    $('<h1>infinity scroll</h1>').appendTo('body');
-
-    }      
-
-    });
-
+	});
 </script>
 
 <style>
@@ -93,9 +85,7 @@ $(document).ready(function (event){
 	<main role="main" class="container"> <!--------------------- 메인 배너 ----------------------->
 	<div
 		class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow"
-		style="background-image: url('/cody/uploadfile/cody.png'); 
-		background-repeat: no-repeat; 
-		background-size: contain;">
+		style="background-image: url('/cody/uploadfile/cody.png'); background-repeat: no-repeat; background-size: contain;">
 		<div class="lh-100">
 			<h5 class="mb-0 text-white lh-100">CODY</h5>
 			<small>bitcamp 2018</small>
@@ -146,43 +136,64 @@ $(document).ready(function (event){
 				<ol class="card-item-ol">
 					<!------------------ 타임라인 전체 리스트 반복 출력 ----------------------->
 
-					<c:forEach var="irr" items="${irr}" >
+					<c:forEach var="irr" items="${irr}">
 
-						<li class="card card-item-li"><a href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.codyidx}">
-						<img class="card-img-top card-item" src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"
-								alt="Card image cap"></a>
-							<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-left: 10px;padding-right: 10px;padding-bottom: 10px;">
-										
-								<c:forEach var="item" items="${irr.itemtime}" begin="0" end="2" step="1">
-								
-								<div style="padding-bottom:10px;"><img src="${item.item_image}" style="width: 40px; height: 50px">
-								&emsp;${item.item_price}원<a href="#" class="btn btn-primary" style="position: absolute; right:10px;">구입</a></div>
-																	
+						<li class="card card-item-li"><a
+							href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.codyidx}">
+								<img class="card-img-top card-item"
+								src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"
+								alt="Card image cap">
+						</a>
+							<div class="card-body"
+								style="overflow: hidden; position: relative; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+
+								<c:forEach var="item" items="${irr.itemtime}" begin="0" end="2"
+									step="1">
+
+									<div style="padding-bottom: 10px;">
+										<img src="${item.item_image}"
+											style="width: 40px; height: 50px">
+										&emsp;${item.item_price}원<a href="#" class="btn btn-primary"
+											style="position: absolute; right: 10px;">구입</a>
+									</div>
+
 								</c:forEach>
-	                                               
-								
-								<div class="card-main" style="float:left;height: 40px;">
-						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.memberphoto }" style="border: 1px solid darkgray; width:40px; height: 40px;">
-								<div style="float:right; padding-left: 15px;">
-						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.memberid}</p></div>
-							
-					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.codyheight}cm ${irr.codyage}세</p></div>
-					    </div>
-					    </div>
-						<c:choose>
-			<c:when test="${loginInfo.member_idx eq irr.memberidx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-primary" style="float:right;">수정</a>						
-			</c:when>
-			<c:otherwise>
-						<butoon id= "follow" class= "btn btn-primary" style= "float:right;" > 팔로우</butoon>
-						<input type= "hidden"  name= "codyidx" value= "${codyLsti.cody_idx}" >
-			</c:otherwise>
-			</c:choose>	
-										
-				</div>
-				</li>
-            </c:forEach>
-			</ol>
+
+
+								<div class="card-main" style="float: left; height: 40px;">
+									<img class="rounded-circle"
+										src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.memberphoto }"
+										style="border: 1px solid darkgray; width: 40px; height: 40px;">
+									<div style="float: right; padding-left: 15px;">
+										<div>
+											<p
+												style="vertical-align: inherit; margin-bottom: 0px; height: 20px;">${irr.memberid}</p>
+										</div>
+
+										<div>
+											<p
+												style="vertical-align: inherit; margin-bottom: 0px; height: 20px; font-size: 5px">${irr.codyheight}cm
+												${irr.codyage}세</p>
+										</div>
+									</div>
+								</div>
+								<c:choose>
+									<c:when test="${loginInfo.member_idx eq irr.memberidx}">
+										<a
+											href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}"
+											class="btn btn-primary" style="float: right;">수정</a>
+									</c:when>
+									<c:otherwise>
+										<button id="follow" class="btn btn-primary" 
+											style="float: right;" onclick="ssss(${irr.memberidx})">sss</button>
+										<input type="hidden" name="memberidx" value="${irr.memberidx}"
+											id="follow">
+									</c:otherwise>
+								</c:choose>
+
+							</div></li>
+					</c:forEach>
+				</ol>
 			</div>
 		</div>
 	</div>
@@ -195,22 +206,72 @@ $(document).ready(function (event){
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
 	<script>
-	     $(document).ready(function(){
-	    	('#follow').click(function() {
-	    	 alert("팔로우 신청완료")						
-			})	    	 
-	    	 
-	    	 
-	     })
+	$(document).ready(function () {
+		
+	
+	})
+	
+			function ssss(e) {
+			
+			var idx = e;
+		
+		
+			$.ajax({
+				type : 'GET',
+				url : 'cody/followinsert',
+				dateType : 'json',
+				date :{
+				
+					member_idx : idx
+					
+					
+				},success: function (data){
+					  
+					var obj = new obj;
+					obj = date;
+					if(obj!=null){
+						//성공
+						alert('팔로우 신청이 완료되었습니다');
+						
+					}else{
+						//에러 
+					}
+								
+				          
+				}
+						
+				
+			});		
+		
+			};
 	
 	
+	
+	/* $(function(){
+		$('#follow').click(function() {
+
+			$.ajax({
+				type : 'GET',
+				url : '/cody/followinsert',
+				dateType : 'json',
+				date : {
+					
+				
+				}
+				}
+			})
+
+			.done(function() {
+				alert("팔로우 신청완료")
+
+			});
+
+		} */
+		
 	</script>
-		
-		
+
+
 
 
 </body>
