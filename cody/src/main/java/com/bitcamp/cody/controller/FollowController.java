@@ -33,28 +33,23 @@ public class FollowController {
 		// 신청하는 사람
 	@RequestMapping(value = "cody/followinsert", method = RequestMethod.GET,produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String followrequest( @RequestParam(value="member_idx",defaultValue ="0") int m_response, 
+	public String followrequest( @RequestParam(value="member_idx") int m_response, 
 			HttpSession session, Model model) {
-		System.out.println(m_response);
-		System.out.println(m_response);
-		System.out.println(m_response);
-		System.out.println(m_response);
-		System.out.println(m_response);
-		System.out.println(m_response);
+			System.out.println(m_response);
+		
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); // 로그인된 아이디값 가져오기
 
 		int m_request = member.getMember_idx();
 
 		System.out.println("memberIdx : " + m_request);
-		/*HashMap<String, Integer> map = new HashMap();*/
-		JSONObject obj = new JSONObject();
+		HashMap<String, Integer> map = new HashMap();
+	
 
-		obj.put("m_request", m_request);
-		obj.put("m_response", m_response);// 변경해야됨
+		map.put("m_request", m_request);
+		map.put("m_response", m_response);// 변경해야됨
 		
-		int resultCnt = requestandnresponse.insertFollow(obj);
-		System.out.println(obj.toString());
-
+		int resultCnt = requestandnresponse.insertFollow(map);
+		
 		String msg = "정상적 팔로우가 신청되었습니다.";
 
 		if (resultCnt < 1)
@@ -63,7 +58,9 @@ public class FollowController {
 
 		model.addAttribute("msg", msg);
 
-		return obj.toString();
+		return "time/codyTimeList";
+		
+		
 		/*return "follow/followinsert";*/
 	}
 

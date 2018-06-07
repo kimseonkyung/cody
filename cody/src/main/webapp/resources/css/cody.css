@@ -3,6 +3,9 @@
     2018.05.01
     Drop The Table
 */
+
+
+
 #main_content {
 	width: 100%;
 	overflow: hidden;
@@ -32,4 +35,3 @@
 .card-item {
 	height: 300px;
 }
-
