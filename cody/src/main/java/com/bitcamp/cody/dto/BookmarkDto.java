@@ -2,7 +2,7 @@ package com.bitcamp.cody.dto;
 
 public class BookmarkDto {
 
-	private int bookmark_idx = -99;
+	private int bookmark_idx;
 	private int member_idx;
 	private int cody_idx;
 	private String cody_image;

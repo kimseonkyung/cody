@@ -1,5 +1,9 @@
 package com.bitcamp.cody.service;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +19,7 @@ public class BookmarkService {
 	
 		
 
-	public int insertBookmark(BookmarkDto bookmarkVo) {
+	public int insertBookmark(BookmarkDto bookmarkVo, HttpSession session) {
 		
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 		
@@ -37,6 +41,20 @@ public class BookmarkService {
 
 	}
 
+
+	public List<BookmarkDto> selectByMemberIdx(int memberIdx) {
+		
+		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
+		
+		List<BookmarkDto> bookmark = dao.selectByMemberIdx(memberIdx);
+		
+		return bookmark;
+	}
+
+
+	
+
+	
 
 
 

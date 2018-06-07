@@ -11,7 +11,7 @@
 
 <title>Insert title here</title>
 
-<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
 
 
 
@@ -32,28 +32,17 @@
 			</tr>
 
 			<!-- 회원 정보 출력반복 시작 -->
+			
 			<c:forEach var="bookmark" items="${bookmarks}">
-				
+			
 				<tr>
 				<td><c:if test="${bookmark.cody_image !=null }">
-							<img
+							<img 
 								src="${pageContext.request.contextPath }/uploadfile/codyphoto/${bookmark.cody_image}"
 								width="500">
 					</c:if></td> 
 					
-					
-
-					
-
-
-
-					<!--<c:set var="data" value="${bookmark_idx }" />
-					<c:choose>
-						<c:when test="${data eq true}">
-						</c:when>
-					</c:choose> -->
-
-					<td> 
+								<td> 
 						<a
 						href="${pageContext.request.contextPath }/codyListView?cody_idx=${bookmark.cody_idx}">상세보기</a>
 						<a
@@ -62,13 +51,14 @@
 						
 					</td>
 				</tr>
+				
 				</c:forEach>
-		
+					
 			<!-- 회원 정보 출력 반복 끝 -->
 
 		</table>
 
-	<a href="../cody">home</a>	
+	<a href="../cody/main">home</a>	
 	</form>
 </body>
 </html>

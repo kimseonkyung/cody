@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.BookmarkDao;
 import com.bitcamp.cody.dao.CodyDao;
+import com.bitcamp.cody.dao.ItemDao;
 import com.bitcamp.cody.dto.BookmarkDto;
 import com.bitcamp.cody.dto.CodyDto;
+import com.bitcamp.cody.dto.ItemDto;
 
 public class BookmarkListService {
 
@@ -19,22 +21,22 @@ public class BookmarkListService {
 	
 	private CodyDao Cdao;
 	
-	public List<BookmarkDto> BookmarkList(){
+	public List<BookmarkDto> selectByMemberIdx(int memberIdx){
 	
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 		
-		List<BookmarkDto> list = dao.selectList();
+		List<BookmarkDto> list = dao.selectList(memberIdx);
 		
 		return list;
 		
 		
 	}
 	
-	public List<CodyDto> CodyList(){
+	public List<CodyDto> CodyList(int memberIdx){
 		
 		Cdao = sqlSessionTemplate.getMapper(CodyDao.class);
 		
-		List<CodyDto> list = Cdao.selectList();
+		List<CodyDto> list = Cdao.selectByMemberIdx(memberIdx);
 		
 		
 		
@@ -43,6 +45,9 @@ public class BookmarkListService {
 		
 		
 	}
+
 	
+	
+
 	
 }

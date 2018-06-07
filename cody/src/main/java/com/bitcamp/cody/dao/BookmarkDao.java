@@ -9,7 +9,8 @@ public interface BookmarkDao {
 	public int insertBookmark(BookmarkDto dto);
 	public int deleteBookmark(int idx);
 	public BookmarkDto selectByIdx(int idx);
-	public List<BookmarkDto> selectList();
+	public List<BookmarkDto> selectList(int memberIdx);
+	public List<BookmarkDto> selectByMemberIdx(int memberIdx);
 	
 	
 	

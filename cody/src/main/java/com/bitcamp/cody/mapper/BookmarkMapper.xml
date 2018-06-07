@@ -11,7 +11,7 @@
 		지정 -->
 
 	<select id="selectList" resultType="com.bitcamp.cody.dto.BookmarkDto">
-		select * from bookmark
+		select * from bookmark where member_idx = #{member_idx}
 	</select>
 	
 	<insert id="insertBookmark" parameterType="com.bitcamp.cody.dto.BookmarkDto">
@@ -20,7 +20,7 @@
 	</insert>
 	
 	<delete id="deleteBookmark" parameterType="int">
-		delete from bookmark where bookmark_idx = #{bookmark_idx}
+		delete from bookmark where bookmark_idx = #{idx}
 	</delete>
 	
 
