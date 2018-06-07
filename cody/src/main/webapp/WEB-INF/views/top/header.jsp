@@ -137,7 +137,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 		<div
 			class="d-flex flex-column flex-md-row align-items-center px-md-3 mb-2 border-bottom fixed-top bg-white">
 			<div class="container">
-				<nav class="navbar navbar-expand-lg navbar">
+				<nav class="navbar navbar-expand-lg navbar" style="padding: 0;">
 					<div class="d-flex flex-column flex-md-row mr-auto">
 
 						<!-- 검색 -->
@@ -168,7 +168,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 
 
 					<a class="navbar-brand mr-auto" style="font-weight:800;color: black;"
-						href="${pageContext.request.contextPath}/main">CODY</a>
+						href="${pageContext.request.contextPath}/main"><h1 style="margin: 0;">CODY</h1></a>
 
 
 					<div class="my-2 my-md-0 mr-md-3" id="navbarsExampleDefault">
@@ -176,12 +176,10 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 						<ul class="navbar-nav mr-auto">
 <c:choose>
 			<c:when test="${not empty sessionScope.loginInfo}" >
-			     <li class="nav-item">
-			     <img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }" style="width:40px; height: 40px;margin-top: 5px;">
-			     </li>
 			     <li class="nav-item dropdown">
-    			    <a	class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" 
-			     aria-haspopup="true" aria-expanded="false" style="color: black;">${loginInfo.member_id }</a>
+    			    <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" 
+			     aria-haspopup="true" aria-expanded="false" style="color: black; padding-right: 20px;">
+			     <img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }" style="width:35px; height: 35px; margin: 0 10px 0 0;"><h4 style="display: inline-block;">${loginInfo.member_id }</h4></a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">마이페이지</a>
 					<a class="dropdown-item" href="#">Another action</a>
