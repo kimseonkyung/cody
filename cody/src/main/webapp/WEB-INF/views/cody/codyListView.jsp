@@ -113,12 +113,8 @@
 }
 
 #bookmark {
-	width: 50px;
-	height: 30px;
-	border-radius: 3px;
-	font-weight: 400;
+	border-radius: 3px;	
 	border-color: transparent;
-	font-size: 10px;
 	background: #007bff;
 	color: #fff;
 	cursor: pointer;
@@ -315,13 +311,13 @@ margin: 0 auto;
 								</div>
 
 								<div id="funtion">									
-																			
-										<a
-										href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">
-										<input id="bookmark" type="button" value="스크랩"></a>
+										
+										<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">									
+										<button id="bookmark" class="btn btn-primary" style="right: 140px;margin-top: 8px;margin-right: 57px;">
+										즐겨찾기</button></a>
 										
 										
-										<button id="repleShow" class="btn btn-primary" style="float:right;">코멘트</button>		
+										<button id="repleShow" class="btn btn-primary" style="float:right;margin-top: 8px;margin-right: 12px;"">코멘트</button>		
 										
 									</div>
 										
