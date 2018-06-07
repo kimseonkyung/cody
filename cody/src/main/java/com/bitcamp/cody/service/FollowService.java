@@ -92,5 +92,11 @@ public class FollowService {
 		return result;
 	}
 
+	public FollowDto selectinfo() {
+		dao = sqlSessionTemplate.getMapper(FollowDao.class);
+		FollowDto result = dao.selectfollowinfos();
+		return result;
+	}
+
 
 }

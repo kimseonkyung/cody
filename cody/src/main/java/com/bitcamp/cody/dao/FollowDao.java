@@ -29,5 +29,7 @@ public interface FollowDao {
 	
 	public int followrpCount(int m_response);
 
+	public FollowDto selectfollowinfos();
+
 
 }

@@ -405,8 +405,9 @@ $('#gFollower').click(function () {
 							+ '<div class="card-body" style="height: 100%">'
 							+ e.followrp_id		
 							+ '<br>'
-							+ e.followrp_birth
-							+ '</div>'
+							+'<button class="btn btn-primary"style="float: right;" onclick="idx(${irr.memberidx})">팔로잉</button>'
+                            + e.followrp_birth
+							+ '</div>'							
 							+ '</div>');
 				});
 			})
@@ -434,6 +435,9 @@ $('#gFollow').click(function () {
 							+ e.followrq_id		
 							+ '<br>'
 							+ e.followrq_birth
+							if( tr == 1)
+							+'<button class="btn btn-primary"style="float: right;" >팔로잉</button>'
+							
 							+ '</div>'
 							+ '</div>');
 				});

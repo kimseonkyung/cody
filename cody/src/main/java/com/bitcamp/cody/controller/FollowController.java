@@ -135,6 +135,7 @@ public class FollowController {
 		
 		for(FollowDto request : requestLsit) {
 			MemberDto memberrespons = requestandnresponse.selectresponse(request.getM_response());
+			FollowDto follow = requestandnresponse.selectinfo();
 			JSONObject obj = new JSONObject();
 			
 			obj.put("followrq_idx",memberrespons.getMember_idx());
