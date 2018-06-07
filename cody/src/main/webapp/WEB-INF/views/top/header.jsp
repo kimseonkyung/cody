@@ -167,8 +167,8 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 					</div>
 
 
-					<a class="navbar-brand mr-auto" style=""
-						href="${pageContext.request.contextPath}/main">Cody</a>
+					<a class="navbar-brand mr-auto" style="font-weight:800;color: black;"
+						href="${pageContext.request.contextPath}/main">CODY</a>
 
 
 					<div class="my-2 my-md-0 mr-md-3" id="navbarsExampleDefault">
@@ -176,9 +176,12 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 						<ul class="navbar-nav mr-auto">
 <c:choose>
 			<c:when test="${not empty sessionScope.loginInfo}" >
+			     <li class="nav-item">
+			     <img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }" style="width:40px; height: 40px;margin-top: 5px;">
+			     </li>
 			     <li class="nav-item dropdown">
-			     <a	class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" 
-			     aria-haspopup="true" aria-expanded="false">아이디</a>
+    			    <a	class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" 
+			     aria-haspopup="true" aria-expanded="false" style="color: black;">${loginInfo.member_id }</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">마이페이지</a>
 					<a class="dropdown-item" href="#">Another action</a>
@@ -201,8 +204,9 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 				</c:when>
 				
 				<c:otherwise>
-				 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal">회원가입</a></li>
-				 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">로그인</a></li>
+				 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal" style="color: black;">로그인</a></li>
+				 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal" style="color: black;">회원가입</a></li>
+				 
 				 
 				  
                 
