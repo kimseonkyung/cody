@@ -190,15 +190,8 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 				</div>
 				</li>
 				<li class="nav-item">
-				<div>
-					<form action="${pageContext.request.contextPath}/noticeList" method="post">
-					<input type="hidden" value="sk">
-					<input type="submit" value="알림">
-					</form>
-				</div>
-				<li class="nav-item">
-					<div id="ok" style="font-size:2em;">
-  					<i class="fa fa-bell-o" aria-hidden="true"></i>
+					<div style="font-size:1.8em;">
+  					<a href="${pageContext.request.contextPath}/noticeList"><i id="ok"  class="fa fa-bell-o" aria-hidden="true" style="color: black; border-left: 1px solid #888; padding-left: 20px;"></i></a>
 					</div>
 				</li>
 				</c:when>
