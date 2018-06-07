@@ -327,7 +327,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 								<div class="form-group">
 									<div class="col-xl-12ss">
 										<button type="submit" class="btn btn-primary p-3"
-											style="background-color: #01D1FE; color: white; border: none; width: 90%; font-size: 20px;">가입</button>
+											style="background-color: #01D1FE; color: white; border: none; width: 100%; font-size: 20px;">가입</button>
 									</div>
 								</div>
 
@@ -389,16 +389,9 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 								<div class="form-group">
 									<div class="col-xl-12ss">
 										<button type="submit" class="btn btn-primary p-3"
-											style="background-color: #01D1FE; color: white; border: none; width: 90%; font-size: 20px;">Login</button>
+											style="background-color: #01D1FE; color: white; border: none; width: 100%; font-size: 20px;">Login</button>
 									</div>
 								</div>
-								
-					
-								    
-								
-							
-					
-								
 								
 							</form>
 
@@ -410,42 +403,20 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-2">
 							<div
 								class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 row justify-content-center align-items-center">
-								<!-- <div
-									class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row justify-content-center align-items-center p-2">
-									<form action="/connect/facebook" method="post"
-										id="facebook-form">
-										<input type="hidden" name="scope"
-											value="public_profile, email" /> 
-										<button type="submit" style="border:none;" class="row">
-											<img src="../../resources/icon/facebook.svg"
-											class="img-fluid row justify-content-center align-items-center col-12">
-										</button>
-									</form>
-								</div> -->
-								<!-- <div
-									class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row justify-content-center align-items-center p-2">
-									<form method="get" id="naver-form">
-										<a href="/user/naverLogin"> <img
-											src="../../resources/icon/naver.svg"
-											class="img-fluid row justify-content-center align-items-center col-12">
-										</a>
-									</form>
-								</div> -->
-							
-							<div>
-                                    
-                                    <a id="kakao-login-btn">카카오 로그인2</a>
-							</div>
+								 <div>
+                               <div>
+                                 <a href="#none" ><img src="${pageContext.request.contextPath}/resources/icon/naver.PNG" style="width: 110%;"/></a>
+                               </div>
+                                <br>
+                               <div>
+                                 <a href="#none" ><img src="${pageContext.request.contextPath}/resources/icon/facebook.PNG" style="width: 110%;"/></a>
+                               </div>
+                                <br>
+                               <div>                            
+                                 <a href="${pageContext.request.contextPath}/member/kakaologin" id="kakao-login-btn"><img src="${pageContext.request.contextPath}/resources/icon/kakao.PNG" style="width: 110%;"/> </a>
+                               </div>
+                           </div>
 								
-								<!-- <div
-									class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row justify-content-center align-items-center p-2">
-									<form action="/user/googleLogin" method="post" id="google-form">
-										<button type="submit" style="border:none;" class="row"> <img
-											src="../../resources/icon/google.svg"
-											class="img-fluid row justify-content-center align-items-center col-12">
-										</button>
-									</form>
-								</div> -->
 							</div>							
 						</div>	
 						</div>
