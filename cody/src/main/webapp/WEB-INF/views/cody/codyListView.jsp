@@ -109,39 +109,21 @@
 #bookmark {
 	position: absolute;
 	margin-top: 14px;
-	margin-left: 20px;
+	margin-right: 50px;
 }
 
 #bookmark {
-	width: 80px;
-	height: 30px;
-	border-radius: 3px;
-	font-weight: 600;
-	border-color: transparent;
-	font-size: 10px;
-	background: blue;
-	color: #fff;
-	cursor: pointer;
-}
-
-#clickLike {
-	position: absolute;
-	right: 0;
-	margin-top: 14px;
-	margin-right: 80px;
-}
-
-#clickLike {
 	width: 50px;
 	height: 30px;
 	border-radius: 3px;
-	font-weight: 600;
+	font-weight: 400;
 	border-color: transparent;
 	font-size: 10px;
-	background: blue;
+	background: #007bff;
 	color: #fff;
 	cursor: pointer;
 }
+
 
 #comment {
 	position: absolute;
@@ -333,12 +315,10 @@ margin: 0 auto;
 								</div>
 
 								<div id="funtion">									
-									
-										<input id="cody_idx" type="hidden" value="${cody.cody_idx }">
-										<button class ="clickLike">좋아요</button>
+																			
 										<a
 										href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">
-										<input id="bookmark" type="button" value="북마크"></a>
+										<input id="bookmark" type="button" value="스크랩"></a>
 										
 										
 										<button id="repleShow" class="btn btn-primary" style="float:right;">코멘트</button>		
