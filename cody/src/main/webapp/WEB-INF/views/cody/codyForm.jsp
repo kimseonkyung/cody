@@ -36,7 +36,7 @@ a {
 <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script"
 	rel="stylesheet">
 <!-- CODY CSS -->
-<link href="resources/css/cody.css" type="text/css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/cody.css" type="text/css" rel="stylesheet">
 
 
 
@@ -347,8 +347,7 @@ a {
 	text-align: left;
 	vertical-align: middle;
 }
-</style>
-<style>
+
 input:focus, textarea:focus {
 	resize: none, outline: none;
 }
@@ -357,9 +356,15 @@ input:focus, textarea:focus {
 	 border: 1px solid blue!important;
 }
 
+.itemTable td {
+	padding: 3px 0 3px 25px;
+}
+
+.itemTable img {
+	width: 150px;
+}
 
 </style>
-
 
 
 
@@ -444,9 +449,7 @@ input:focus, textarea:focus {
 				  <div id="item">
 				  				<!-- 항목 추가 아이템 테이블 -->
 								<div>
-									<table class="table table-bordered">
-										<tbody id="codyTable">
-										</tbody>
+									<table id="codyTable" class="itemTable">
 									</table>
 								</div>
 								

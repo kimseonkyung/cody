@@ -7,11 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>코디수정</title>
-<style>
-</style>
 
-    <!--헤더 스타일-->
-    
+<!-- CODY CSS -->
+<link href="${pageContext.request.contextPath}/resources/css/cody.css" type="text/css" rel="stylesheet">
+
+
     <!--초기화 코드-->
     <style>
         * {
@@ -347,6 +347,14 @@ input:focus, textarea:focus{resize: none, outline: none;}
 	 border: 1px solid blue!important;
 }
 
+.itemTable td {
+	padding: 3px 0 3px 25px;
+}
+
+.itemTable img {
+	width: 150px;
+}
+
 </style>
 
 
@@ -429,7 +437,7 @@ input:focus, textarea:focus{resize: none, outline: none;}
 				  <div id="item">
 				 <!-- 항목 추가 아이템 테이블 -->
 								<div>
-									<table id="codyTable" class="table table-bordered">
+									<table id="codyTable" class="itemTable">
 										<c:forEach var="item" items="${codyItems }" varStatus="status">
 										<tbody id="codyDiv${status.index }">
 												<tr>
@@ -441,13 +449,15 @@ input:focus, textarea:focus{resize: none, outline: none;}
 												<tr><td>색상 : ${item.item_color }</td></tr>
 												<tr><td>가격 : ${item.item_price }</td></tr>
 												<tr><td><button class="btn btn-dark" type="button" onclick="itemRemove(${status.index })">삭제</button>
-													<input type="hidden" name="itemList[${status.index }].item_image" value="'${item.item_image }">	
+													<input type="hidden" name="itemList[${status.index }].item_image" value="'${item.item_image }">
 													<input type="hidden" name="itemList[${status.index }].item_name" value="'${item.item_name }">	
 													<input type="hidden" name="itemList[${status.index }].item_brand" value="'${item.item_brand }">	
 													<input type="hidden" name="itemList[${status.index }].item_category" value="'${item.item_category }">	
 													<input type="hidden" name="itemList[${status.index }].item_color" value="'${item.item_color }">	
 													<input type="hidden" name="itemList[${status.index }].item_price" value="'${item.item_price }">	
 												</td></tr>
+												<tr><td style="height: 30px;"></td></tr>
+												<tr><td colspan="2" style="border-top:1px dashed #666; height: 30px;"></td></tr>
 										</tbody>
 										</c:forEach>
 									</table>

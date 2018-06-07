@@ -224,7 +224,7 @@ function naverSearchOk() {
 			$.each(data, function(i, row) {
 				var $div = $('<tbody id="codyDiv'+idx+'">');
 				var $tr = $('<tr>').append(
-					$('<td rowspan="6">').html('<img src="'+row.image+'" width="100">'),
+					$('<td rowspan="6">').html('<img src="'+row.image+'">'),
 					$('<td>').html('이름 : '+row.title)
 				); $tr.appendTo($div);
 					$tr = $('<tr>').append(
@@ -253,11 +253,13 @@ function naverSearchOk() {
 								+'<option value="navy">남색</option>'
 								+'<option value="purple">보라색</option></select>')
 				); $tr.appendTo($div);	
-					$tr = $('<tr>').append(
-						$('<td>').html('가격 : '+row.lprice)
+					$tr = $('<tr>').append($('<td>').html('가격 : '+row.lprice)
 				); $tr.appendTo($div);
-					$tr = $('<tr>').append(
-						$('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
+					$tr = $('<tr>').append($('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
+				); $tr.appendTo($div);
+					$tr = $('<tr>').append($('<td style="height: 30px;">')
+				); $tr.appendTo($div);
+					$tr = $('<tr>').append($('<td colspan="2" style="border-top:1px dashed #666; height: 30px;">')
 				); $tr.appendTo($div);
 				/* 태그제거 */
 				var name = strip_tag(row.title);
@@ -304,6 +306,10 @@ $('#myItemOk').click(function () {
 				); $tr.appendTo($div);
 					$tr = $('<tr>').append($('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
 				); $tr.appendTo($div);
+					$tr = $('<tr>').append($('<td style="height: 30px;">')
+				); $tr.appendTo($div);
+					$tr = $('<tr>').append($('<td colspan="2" style="border-top:1px dashed #666; height: 30px;">')
+				); $tr.appendTo($div);
 				var $hidden = $('<div>').html('<input type="hidden" name="itemList['+idx+'].item_image" value="'+image+'">'
 										  	 +'<input type="hidden" name="itemList['+idx+'].item_name" value="'+name+'">'		
 											 +'<input type="hidden" name="itemList['+idx+'].item_brand" value="'+brand+'">'		
@@ -313,6 +319,8 @@ $('#myItemOk').click(function () {
 				 $hidden.appendTo($div);
 				 $div.appendTo($table);
 				 idx++;
+				 
+				 
 
 				 $("#ClosetModal").modal('hide');
 			
