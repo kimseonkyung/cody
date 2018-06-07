@@ -544,10 +544,10 @@ input:focus, textarea:focus{resize: none, outline: none;}
 			</c:forEach>
 			</select>
 		</div>
-		<input type="hidden" name="cody_idx" value="${cody.cody_idx }">
-    	<input type="hidden" name="member_idx" value="${cody.member_idx }">
 	</div>
 	</div>
+		<input type="text" name="cody_idx" value="${cody.cody_idx }">
+    	<input type="text" name="member_idx" value="${cody.member_idx }">
 	
 	</div>
    			

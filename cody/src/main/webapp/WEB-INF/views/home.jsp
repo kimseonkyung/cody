@@ -264,19 +264,10 @@
 </div>
 
 	</main>
+
+	<!-- 인클루드 footer -->
+	<%@ include file="./bottom/footer.jsp" %>
 	
-    <!--------------------- 푸터 ----------------------->	
-<footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">Bitcamp 2018 Project for <a href="${pageContext.request.contextPath }">Cody</a> 
-    by <a href="https://twitter.com/mdo">Drop the table</a>.</p>
-      <p>
-       <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-        </p>
-        </footer>
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf07583f54f2c24af21a8eca095b6fb2&libraries=services"></script>
 <script>
