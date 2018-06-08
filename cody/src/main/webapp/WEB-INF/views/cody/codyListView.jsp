@@ -314,7 +314,7 @@ margin: 0 auto;
 										
 										<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">									
 										<button id="bookmark" class="btn btn-primary" style="right: 140px;margin-top: 8px;margin-right: 57px;">
-										즐겨찾기</button></a>
+										스크랩</button></a>
 										
 										
 										<button id="repleShow" class="btn btn-primary" style="float:right;margin-top: 8px;margin-right: 12px;"">코멘트</button>		
