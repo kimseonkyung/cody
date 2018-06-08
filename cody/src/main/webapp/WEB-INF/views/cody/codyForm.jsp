@@ -19,15 +19,12 @@
 	padding: 0;
 	border: 0;
 }
-
 body {
 	font-family: 'Times New Roman', serif;
 }
-
 li {
 	list-style: none;
 }
-
 a {
 	text-decoration: none;
 }
@@ -45,8 +42,9 @@ a {
 #content {
 	border: 2px solid darkgray;
 	border-radius: 5px 5px 5px 5px;
-	max-width: 920px;
-	display: flex;
+	min-width: 842px;
+	min-height: 1500px;
+	position: relative;
 	/*border: 1px solid gray;*/
 	/*중앙정렬*/
 	margin: 0 auto;
@@ -54,34 +52,33 @@ a {
 	overflow: hidden;
 	margin-top: 10px;
 }
-
-#image {
-	width: 920px;
-	height: 460px;
-
-}
-
 .side1 {
 	margin-top: 45px;
 	margin-left: 90px;
-	position: relative;
-	float: left;
 }
-
-#image_main{
-    width: 610px;
-    height: 460px;
-    position: relative;
-	float: right;
-
+.side2 {
+	margin-top: 420px;
+	margin-left: 90px;
 }
-
+.side3 {
+	margin-top: 75px;
+	margin-left: 115px;
+}
+#main {
+	width: 550px;
+	min-height: 1312px;
+	right: 0;
+	position: absolute;
+}
+#image {
+	width: 550px;
+	height: 460px;
+}
 #image_frame {
-	width: 610px;
+	width: 550px;
 	height: 460px;
 	position: absolute;
 }
-
 #image_block {
 	width: 284px;
 	height: 364px;
@@ -91,44 +88,51 @@ a {
 	margin-top: 45px;
 	border-radius: 5px 5px 5px 5px;
 }
-
 #image_input {
 	width: 160px;
 	height: 38px;
 	position: absolute;
-	right: 61px;
+	right: 40px;
 	margin-top: 180px;
 	margin-left: 50px;
 }
-
 .sub1 {
-	margin-top: 226px;
+	margin-top: 240px;
 	position: absolute;
-	right: 24px;
+	right: -20px;
 }
-
 .sub2 {
-	margin-top: 251px;
+	margin-top: 260px;
 	position: absolute;
-	right: 82px;
+	right: 45px;
 }
-#item_container{
-    width: 920px;
-	diplay: flex;
+#replace {
+	/*button tag 에 원하는 스타일 적용*/
+	position: absolute;
+	width: 160px;
+	height: 38px;
+	font-weight: 600;
+	border-color: transparent;
+	font-size: 16px;
+	background: blue;
+	color: #fff;
+	cursor: pointer;
+}
+#input_image {
+	width: 160px;
+	height: 38px;
+	vertical-align: middle;
+	font-size: 16px;
+	border-color: transparent;
+	opacity: 0;
+	/*input type="file" tag 투명하게 처리*/
+	position: relative;
+	cursor: pointer;
 }
 #item {
-	width: 610px;
+	width: 550px;
 	min-height: 100px;
-	float:right;
-	position:relative;
-	margin-left: 80px;
-}
-.side2 {
-	margin-top: 20px;
-	margin-left: 84px;
-	float: left;
-	position: relative;
-
+	left: 0;
 }
 #input_item {
 	margin-left: 20px;
@@ -144,55 +148,10 @@ a {
 	color: #fff;
 	cursor: pointer;
 }
-
 #item_intro {
 	margin-left: 20px;
 	margin-top: 8px;
 }
-
-#main {
-	width: 920px;
-	display: flex;
-}
-#main_container {
-	width: 610px;
-    position: relative;
-	float: right;
-	margin-left: 70px;
-
-}
-.side3 {
-	margin-top: 40px;
-	margin-left: 135px;
-	float: left;
-	position: relative;
-}
-
-#replace {
-	/*button tag 에 원하는 스타일 적용*/
-	position: absolute;
-	width: 160px;
-	height: 38px;
-	font-weight: 600;
-	border-color: transparent;
-	font-size: 16px;
-	background: blue;
-	color: #fff;
-	cursor: pointer;
-}
-
-#input_image {
-	width: 160px;
-	height: 38px;
-	vertical-align: middle;
-	font-size: 16px;
-	border-color: transparent;
-	opacity: 0;
-	/*input type="file" tag 투명하게 처리*/
-	position: relative;
-	cursor: pointer;
-}
-
 #modal-dialog {
 	width: 400px;
 	height: 300px;
@@ -201,24 +160,20 @@ a {
 	width: 550px;
 	height: 100px;
 }
-
 #title_name {
 	margin-left: 20px;
 	margin-top: 16px;
 }
-
 #title_input {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #input_title {
 	border: 2px solid darkgray;
 	height: 25px;
 	width: 462px;
 	border-radius: 5px 5px 5px 5px;
 }
-
 #intro {
 	width: 550px;
 	height: 400px;
@@ -226,34 +181,28 @@ a {
 	overflow: hidden;
 	position: relative;
 }
-
 #intro_name {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #intro_input {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #intro_text {
 	border: 2px solid darkgray;
-	width: 462px;
-	height: 316px;
+	max-width: 462px;
+	max-height: 316px;
 	border-radius: 3px 3px 3px 3px;
 	margin-left: 2px;
 }
-
 #text {
 	margin: 0 auto;
 }
-
 #intro_sub {
 	margin-left: 2px;
 	margin-top: 10px;
 }
-
 #gender {
 	width: 550px;
 	height: 80px;
@@ -261,17 +210,14 @@ a {
 	overflow: hidden;
 	position: relative;
 }
-
 #gender_name {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #gender_input {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #height {
 	width: 550px;
 	height: 80px;
@@ -279,24 +225,20 @@ a {
 	overflow: hidden;
 	position: relative;
 }
-
 #height_name {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #height_input {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #input_height {
 	border: 2px solid darkgray;
 	height: 21px;
 	width: 180px;
 	border-radius: 5px 5px 5px 5px;
 }
-
 #age {
 	width: 550px;
 	height: 80px;
@@ -304,38 +246,33 @@ a {
 	overflow: hidden;
 	position: relative;
 }
-
 #age_name {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #age_input {
 	margin-left: 20px;
 	margin-top: 10px;
 }
-
 #input_age {
 	border: 2px solid darkgray;
 	height: 21px;
 	width: 180px;
 	border-radius: 5px 5px 5px 5px;
 }
-
 #input {
-	bottom: 0;
-	left: 35%;
 	height: 80px;
+	overflow: hidden;
+	bottom: 0;
 }
-
 #upload_input {
 	width: 240px;
 	height: 48px;
 	margin: 0 auto;
 	margin-top: 14px;
 }
-
 #input_upload {
+	position: absolute;
 	width: 240px;
 	height: 48px;
 	border-radius: 3px;
@@ -346,11 +283,9 @@ a {
 	color: #fff;
 	cursor: pointer;
 }
-
 .modal {
 	text-align: center;
 }
-
 @media screen and (min-width: 768px) {
 	.modal:before {
 		display: inline-block;
@@ -359,29 +294,23 @@ a {
 		height: 100%;
 	}
 }
-
 .modal-dialog {
 	display: inline-block;
 	text-align: left;
 	vertical-align: middle;
 }
-
 input:focus, textarea:focus {
 	resize: none, outline: none;
 }
-
 .checkedItem {
 	 border: 1px solid blue!important;
 }
-
 .itemTable td {
 	padding: 3px 0 3px 25px;
 }
-
 .itemTable img {
 	width: 150px;
 }
-
 </style>
 
 
@@ -410,23 +339,39 @@ input:focus, textarea:focus {
 			<h5 class="mb-0 text-white lh-100">CODY</h5><small>bitcamp 2018</small>
 		</div>
 	</div>
-
+	<div class="my-3 p-3 bg-white rounded">
 	
 	<div id="content">
 		<form  role="codyForm" enctype="multipart/form-data" onkeydown="return capturekey(event)">
 			
+			<div class="row">
 			
-			
-			<!--------------------메인--------------------->
-
-				<div class="row">
-				<div class="col-md-12 order-md-1">
+			<!--------------------- 메인 사이드 ----------------------->
+				<div class="col-md-4 order-md-1 mr-auto">
 				
-				<div id="image">
-					 <div class="side1">
+					   <div class="my-3 p-3 bg-white rounded">
+						<div class="side1">
 							<h4>코디 이미지※</h4>
 						</div>
-						<div id=image_main>
+						</div>
+					
+					   <div class="my-3 p-3 bg-white rounded">
+						<div class="side2">
+							<h4>착용 아이템※</h4>
+						</div>
+						</div>
+						
+						<div class="my-3 p-3 bg-white rounded">
+						<div class="side3">
+                        <h4>코디 상세</h4>
+                        </div>
+                        </div>
+					
+				</div>
+			<!--------------------메인--------------------->
+			<div class="col-md-7 order-md-2">
+			<div class="my-3 p-3 bg-white rounded">
+				<div id="image">
 					<div id="image_frame">
 						<div id="image_block">
 							<img id="preview" src="#" width="280" height="360">
@@ -443,14 +388,9 @@ input:focus, textarea:focus {
 									</div>
 								</div>
 							</div>
-							</div>
-							
-
-				
-				<div id="item_container">
-				        <div class="side2">
-							<h4>착용 아이템※</h4>
 						</div>
+				
+				<div class="my-3 p-3 bg-white rounded">
 				  <div id="item">
 				  				<!-- 항목 추가 아이템 테이블 -->
 								<div>
@@ -476,18 +416,8 @@ input:focus, textarea:focus {
 							</div>
 						</div>
 						</div>
-						
-						
 
-    <div id="main">
-    <div class="side3">
-         <h4>코디 상세</h4>
-    </div>
-    
-    <div id="main_container">
->
-    
-                   
+    <div class="my-3 p-3 bg-white rounded">
 	<div id="title">
 		<div id="title_name">
 			<h4>코디 제목</h4>
@@ -497,8 +427,9 @@ input:focus, textarea:focus {
 				onkeyup="limit1(this)">
 		</div>
 	</div>
+	</div>
 	
-
+	<div class="my-3 p-3 bg-white rounded">		
 	<div id="intro">
 		<div id="intro_name">
 			<h4>코디 소개문</h4>
@@ -513,8 +444,9 @@ input:focus, textarea:focus {
 			</div>
 		</div>
 	</div>
-
-			
+	</div>
+	
+	<div class="my-3 p-3 bg-white rounded">	
 	<div id="gender">
 		<div id="gender_name">
 			<h4>성별※</h4>
@@ -523,10 +455,10 @@ input:focus, textarea:focus {
 			<label><input type="radio" id="gender1" name="cody_gender" value="true">Man</label> <label>
 				<input type="radio" id="gender2" name="cody_gender" value="false">Woman</label>
 		</div>
-		</div>
-		
-
+	</div>
+	</div>
 	
+    <div class="my-3 p-3 bg-white rounded">
 	<div id="height">
 		<div id="height_name">
 			<h4>신장</h4>
@@ -540,9 +472,9 @@ input:focus, textarea:focus {
 			</select>
 		</div>
 	</div>
+	</div>
 	
-
-	
+	<div class="my-3 p-3 bg-white rounded">
 	<div id="age">
 		<div id="age_name">
 			<h4>나이</h4>
@@ -560,23 +492,21 @@ input:focus, textarea:focus {
 	</div>
 	
 
-
 	<!--------------------업로드--------------------->
-	<div class="col-md-12 order-md-2">
-	
+<div class="col-md-12 order-md-3">
+		<div class="my-3 p-3 bg-white rounded">
 	<div id="input">
 		<div id="upload_input">
 			<input id="input_upload" type="submit" onclick="codyInsert()" value="등록">
 		</div>
 	</div>
 	</div>
-			
+</div>
+		</div>
 		
-		</div>
-		</div>
 		</form>
 		</div>
-	
+		</div>
 		</main>
 	<!--------------------- 푸터 ----------------------->
      <!-- 인클루드 footer -->
