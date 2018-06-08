@@ -80,6 +80,11 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+iframe {
+   width: 100%!important;
+   height: 50px!important;
+   
+}
 </style>
 </head>
 
@@ -194,9 +199,7 @@
 						<a href="${pageContext.request.contextPath}/repleList?cody_idx=1">답글</a><br>
 						<a href="${pageContext.request.contextPath}/codyTimeList">타임라인</a><br>
 						<a href="boardList">게시판(공지사항)</a><br>
-						<a href="${pageContext.request.contextPath}/followinsert">팔로우 신청</a><br>
-						<a href="${pageContext.request.contextPath}/followUpDate">팔로우 수락</a><br>
-						<a href="${pageContext.request.contextPath}/followDelete">팔로우 삭제</a><br>
+					
 		
 	<!------------------ 전체 리스트 반복 출력 ----------------------->			
 			<h6 class="border-bottom border-gray pb-2 mb-0">전체 리스트</h6>
@@ -443,4 +446,59 @@ function removeAllChildNods(el) {
 };
 
 </script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	 <script>
+   //<![CDATA[
+   // 사용할 앱의 JavaScript 키를 설정해 주세요.
+   Kakao.init('25e3cdf97fe0c1f3efadeb6d1cbf3671');
+   // 카카오 로그인 버튼을 생성합니다.
+   Kakao.Auth.createLoginButton({
+     container: '#kakao-login-btn',
+     size:'large',
+         success: function(authObj) {
+           // 로그인 성공시, API를 호출합니다.
+           Kakao.API.request({
+             url: '/v1/user/me',
+             success: function(res) {
+            	 var jsonval = JSON.parse(JSON.stringify(res));
+              /*  alert(JSON.stringify(res));
+               
+               alert(jsonval);
+               alert(jsonval.kaccount_email);
+               alert(jsonval.properties.thumbnail_image);
+               alert(jsonval.properties.nickname);  */  
+               
+               
+               // 내부 서버로 데이터를 넘겨 세션을 만들어준다. 내부서버에는 해당 데이터들을 받아 처리할 controller 필요.
+              $.ajax({
+                type : "POST",
+                data : 
+                	
+                "kakaoEmail="+jsonval.kaccount_email+
+                "&kaccount_email_verified="+jsonval.kaccount_email_verified+
+                "&id="+jsonval.id+
+                "&profile_image="+jsonval.properties.profile_image+
+                "&nickname="+jsonval.properties.nickname+
+                "&thumbnail_image="+jsonval.properties.thumbnail_image,
+                
+                
+                url : "kakaologin",
+                success : function(){
+                 alert("카카오 로그인에 성공하였습니다.");
+                 window.location.href = "http://localhost:8080/cody/";
+                 }
+                });
+             },
+             fail: function(error) {
+               alert(JSON.stringify(error));
+             }
+           });  
+     
+    },
+    fail : function(err) {
+     alert(JSON.stringify(err));
+    }
+   });
+   //]]>
+  </script>
 </html>

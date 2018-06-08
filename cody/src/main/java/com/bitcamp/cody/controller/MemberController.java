@@ -168,10 +168,10 @@ public class MemberController {
 		
 		
 		@RequestMapping("/member/memberDelete")
-		public String deleteMember(Model model, @RequestParam("id") String id) {
+		public String deleteMember(Model model, @RequestParam("id") String id, HttpSession session) {
 			
 			int resultCnt = service.deleteMember(id);
-			
+			session.removeAttribute("loginInfo");
 			String msg = "정보삭제 완료";
 
 			if (resultCnt == 0)
@@ -200,13 +200,10 @@ public class MemberController {
 		
 		
 		/*카카오 로그인*/
-		
-		@RequestMapping(value = "/kakaologin", method=RequestMethod.GET)
+		/*@RequestMapping(value = "/kakaologin", method=RequestMethod.GET)
 		public String kakaologinform() {
 			return "member/kakaologin";
-		}
-		
-		
+		}*/
 		
 		
 		
