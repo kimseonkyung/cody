@@ -111,9 +111,9 @@ iframe {
 	<div class="nav-scroller bg-white">
 	<div class="container">
 		<nav class="nav nav-underline">
-			<a class="nav-link col-4 mr-auto" href="#">all</a> 
-			<a class="nav-link col-4 mr-auto" href="#">men</a>
-			<a class="nav-link col-4 mr-auto" href="boardList">게시판(공지사항">women</a>
+			<a class="nav-link col-4 mr-auto" href="#">men</a> 
+			<a class="nav-link col-4 mr-auto" href="#">women</a>
+			<a class="nav-link col-4 mr-auto" href="boardList">공지사항</a>
 		</nav>
 	</div>
 </div>
