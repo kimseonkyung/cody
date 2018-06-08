@@ -161,9 +161,18 @@
 
 
                         <div class="card-main" style="float: left; height: 40px;">
-                           <img class="rounded-circle"
+                           <c:choose>
+			<c:when test="${not empty irr.memberphoto}" >
+		<img class="rounded-circle"
                               src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.memberphoto }"
-                              style="border: 1px solid darkgray; width: 40px; height: 40px;">
+                              style="width: 40px; height: 40px;">
+		</c:when>
+		<c:otherwise>
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/member.png" style="width: 40px; height: 40px;"> 
+		
+		</c:otherwise>
+		</c:choose>
+                           
                            <div style="float: right; padding-left: 15px;">
                               <div>
                                  <p
