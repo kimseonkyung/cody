@@ -256,8 +256,27 @@ margin: 0 auto;
 	width: 70px;
 	height: 113px;
 	text-align: center;
-	border: 1px solid #aaa;
-	margin-left: 5px;
+	width: 50px;
+	height: 50px;
+ 	border: 1px solid #aaa;
+ 	margin-left: 5px;
+ }
+ 
+#reple {
+	margin: 20px 0;
+}
+
+#reple img {
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	vertical-align: bottom;
+	
+}
+
+#reple textarea {
+	width: 300px;
+	margin: 0 20px;
 }
 
 

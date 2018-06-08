@@ -28,7 +28,6 @@ import com.bitcamp.cody.service.ItemService;
 import com.bitcamp.cody.service.MemberService;
 import com.bitcamp.cody.service.RepleService;
 
-/*-----------입력---------------*/
 @Controller
 public class CodyController {
 
@@ -45,7 +44,8 @@ public class CodyController {
 	@Autowired
 	RepleService repleService;
 	
-
+	
+	/*-----------입력---------------*/
 	@RequestMapping(value = "/codyForm", method = RequestMethod.GET)
 	public String codyForm(Model model, HttpSession session) {
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); 
@@ -59,10 +59,10 @@ public class CodyController {
 	}
 
 	@RequestMapping(value = "/codyForm", method = RequestMethod.POST)
-	public String codyInsert(Model model, HttpSession session, CodyDto cody, ItemList list)
+	public String codyInsert(Model model, HttpSession session, CodyDto cody)
 			throws IllegalStateException, IOException {
 		
-		List<ItemDto> itemList = list.getItemList();
+		List<ItemDto> itemList = cody.getItemList();
 		System.out.println("list테스트 : " + itemList);
 		for(int i=0; i<itemList.size(); i++) {
 			if(itemList.get(i).getItem_name() == null) {
@@ -83,7 +83,7 @@ public class CodyController {
 		cody.setMember_idx(memberIdx);
 		int resultCnt = codyservice.codyInsert(cody, session);
 		int codyIdx = codyservice.maxCodyIdx();					// 최근에 등록한 코디 idx 찾기
-		ArrayList<ItemDto> arr = new ArrayList<>();
+		List<ItemDto> arr = new ArrayList<>();
 		for(ItemDto item  : itemList) {	
 			item.setCody_idx(codyIdx);
 			item.setMember_idx(memberIdx);
@@ -191,8 +191,10 @@ public class CodyController {
 /*--------------수정-----------------*/
 
 
-	@RequestMapping(value="/codyUpdate", method = RequestMethod.GET)
+	@RequestMapping(value="/codyUpdate")
 	public String codyUpdate(Model model,HttpSession session , @RequestParam("cody_idx") int idx) {
+		
+		
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); 
 		int memberIdx = member.getMember_idx();
 		
@@ -205,25 +207,27 @@ public class CodyController {
 		model.addAttribute("cody", cody);
 		model.addAttribute("codyItems", codyItems);
 		
-		System.out.println("cody : "+cody);
-		
 		return "cody/codyUpdate";
 	}
-	@RequestMapping(value = "/codyUpdate", method = RequestMethod.POST)
-	public String codyUpdate(Model model, HttpSession session, CodyDto cody, ItemList list)
-			throws IllegalStateException, IOException {
+	@RequestMapping(value = "/codyUpdateOk")
+	public String codyUpdate(Model model, HttpSession session, CodyDto cody) throws IllegalStateException, IOException {
 		
-		List<ItemDto> itemList = list.getItemList();
+		System.out.println("cody 수정 : " + cody);
+		System.out.println("ItemList 수정 : " + cody.getItemList());
+		
+		List<ItemDto> itemList = cody.getItemList();
 		for(int i=0; i<itemList.size(); i++) {
 			if(itemList.get(i).getItem_name() == null) {
 				itemList.remove(i);
 			}
 		}
 		
-		int resultCnt = codyservice.codyUpdate(cody, session);
+		codyservice.codyUpdate(cody, session);
 		
-		ArrayList<ItemDto> arr = new ArrayList<>();
+		List<ItemDto> arr = new ArrayList<>();
 		for(ItemDto item  : itemList) {	
+			item.setCody_idx(cody.getCody_idx());
+			item.setMember_idx(cody.getMember_idx());
 			arr.add(item);
 		}
 		

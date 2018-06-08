@@ -26,6 +26,7 @@ import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
+import com.bitcamp.cody.service.MemberService;
 import com.bitcamp.cody.service.NeverItemService;
 
 @Controller
@@ -37,6 +38,8 @@ public class ItemController {
 	ItemListService itemListService;
 	@Autowired
 	NeverItemService naverItemService; 
+	@Autowired
+	MemberService memberService; 
 
 
 
@@ -82,6 +85,7 @@ public class ItemController {
 
 		List<ItemDto> items = itemListService.getItemList();
 
+		
 		System.out.println("전체리스트 : " + items.toString());
 		model.addAttribute("items", items);
 
@@ -92,9 +96,12 @@ public class ItemController {
 	public String listView(Model model, @RequestParam("item_idx") int idx) {
 
 		ItemDto item = itemListService.getListView(idx);
+		// 아이템주인 정보 가져오기
+		MemberDto member = memberService.selectByIdx(item.getMember_idx());
 
 		System.out.println("상세보기 : " + item.toString());
 		model.addAttribute("item", item);
+		model.addAttribute("member", member);
 
 		return "item/itemListView";
 	}

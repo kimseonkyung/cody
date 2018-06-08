@@ -2,6 +2,7 @@ package com.bitcamp.cody.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,7 +33,7 @@ public class ItemService {
 		return resultCnt;
 	}
 	
-	public int itemListInsert(ArrayList<ItemDto> list) {
+	public int itemListInsert(List<ItemDto> list) {
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 		
 		int resultCnt = dao.insertListItem(list);

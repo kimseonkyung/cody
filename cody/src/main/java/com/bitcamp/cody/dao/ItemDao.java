@@ -12,7 +12,7 @@ public interface ItemDao {
 	public int updateItem(ItemDto item);
 	public int deleteItem(int itemIdx);
 	public int deleteCodyItem(int codyIdx);
-	public int insertListItem(ArrayList<ItemDto> list);
+	public int insertListItem(List<ItemDto> list);
 	public List<ItemDto> selectByMemberIdx(int memberIdx);
 	public List<ItemDto> selectList();
 	public List<ItemDto> selectByName(String name);

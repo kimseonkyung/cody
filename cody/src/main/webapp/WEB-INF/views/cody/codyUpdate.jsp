@@ -384,7 +384,7 @@ input:focus, textarea:focus{resize: none, outline: none;}
 	<div class="my-3 p-3 bg-white rounded">
 	
 	<div id="content">
-		<form role="codyUpdate" enctype="multipart/form-data" onkeydown="return capturekey(event)">
+		<form action="${pageContext.request.contextPath}/codyUpdateOk" method="post" enctype="multipart/form-data" onkeydown="return capturekey(event)">
 			
 			<div class="row">
 			
@@ -449,12 +449,12 @@ input:focus, textarea:focus{resize: none, outline: none;}
 												<tr><td>색상 : ${item.item_color }</td></tr>
 												<tr><td>가격 : ${item.item_price }</td></tr>
 												<tr><td><button class="btn btn-dark" type="button" onclick="itemRemove(${status.index })">삭제</button>
-													<input type="hidden" name="itemList[${status.index }].item_image" value="'${item.item_image }">
-													<input type="hidden" name="itemList[${status.index }].item_name" value="'${item.item_name }">	
-													<input type="hidden" name="itemList[${status.index }].item_brand" value="'${item.item_brand }">	
-													<input type="hidden" name="itemList[${status.index }].item_category" value="'${item.item_category }">	
-													<input type="hidden" name="itemList[${status.index }].item_color" value="'${item.item_color }">	
-													<input type="hidden" name="itemList[${status.index }].item_price" value="'${item.item_price }">	
+													<input type="hidden" name="itemList[${status.index }].item_image" value="${item.item_image }">
+													<input type="hidden" name="itemList[${status.index }].item_name" value="${item.item_name }">	
+													<input type="hidden" name="itemList[${status.index }].item_brand" value="${item.item_brand }">	
+													<input type="hidden" name="itemList[${status.index }].item_category" value="${item.item_category }">	
+													<input type="hidden" name="itemList[${status.index }].item_color" value="${item.item_color }">	
+													<input type="hidden" name="itemList[${status.index }].item_price" value="${item.item_price }">	
 												</td></tr>
 												<tr><td style="height: 30px;"></td></tr>
 												<tr><td colspan="2" style="border-top:1px dashed #666; height: 30px;"></td></tr>
@@ -550,14 +550,14 @@ input:focus, textarea:focus{resize: none, outline: none;}
     	<input type="text" name="member_idx" value="${cody.member_idx }">
 	
 	</div>
-   			
+   	
 
 	<!--------------------업로드--------------------->
 <div class="col-md-12 order-md-3">
 	<div class="my-3 p-3 bg-white rounded">
 	<div id="input">
 		<div id="upload_input">
-			<input id="input_upload" type="submit" onclick="codyUpdate()" value="확인">
+			<input id="input_upload" type="submit" value="확인">
 		</div>
 	</div>
 	</div>
@@ -565,9 +565,9 @@ input:focus, textarea:focus{resize: none, outline: none;}
 
 
        </div>
-       </form>
+		</form>
+       
         </div>
-		
 	
 		</div>
 		
@@ -634,119 +634,6 @@ input:focus, textarea:focus{resize: none, outline: none;}
 		</div>
 	</div>
 
-	<!--------------------상품검색--------------------->
-	<div class="container" style="float: left">
-		<div class="modal fade" id="SearchModal" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">상품 검색</h4>
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-					<form action="${pageContext.request.contextPath }/shoppingList">
-			<input type="text" name="keyword"> <button type="submit">검색</button>
-		</form>
-
-	<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">사진</th>
-      <th scope="col">제목</th>
-      <th scope="col">가격</th>
-      <th scope="col">판매mall</th>
-    </tr>
-  </thead>
-  <tbody>
- 
-    <tr>
-      <th scope="row"><a href="${naver_link}"><img src="${naver_image}" width="100px"
-					height="100px"></a></th>
-      <td><a href="${naver_link}">${naver_title}</a></td>
-      <td>${naver_lprice}</td>
-      <td>${naver_mallName}</td>
-    </tr>
-
-    </tbody>
-    
-    </table>
-					</div>
-					<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
-									</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--------------------신규 아이템--------------------->
-	<div class="container" style="float: left">
-		<div class="modal fade" id="NewitemModal" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">신규 아이템 등록</h4>
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form action="${pageContext.request.contextPath }/itemForm"
-							method="post" enctype="multipart/form-data"
-							onkeydown="return capturekey(event)">
-							<div>
-								이미지 : <input type="file" name="photofile">
-							</div>
-							<div>
-								이름 : <input type="text" id="item_name" name="item_name">
-							</div>
-							<div>
-								브랜드 : <input type="text" name="item_brand">
-							</div>
-							<div>
-								가격 : <input type="text" name="item_price">
-							</div>
-							<div>
-								카테고리 : <select id="input_category" name="item_category">
-									<option>선택해주세요</option>
-									<option value='모자'>모자</option>
-									<option value='상의'>상의</option>
-									<option value='하의'>하의</option>
-									<option value='아우터'>아우터</option>
-									<option value='신발'>신발</option>
-									<option value='악세사리'>악세사리</option>
-								</select>
-							</div>
-							<div>
-								색상 : <select id="item_color" name="item_color">
-									<option>선택해주세요</option>
-									<option value='흰색'>흰색</option>
-									<option value='검은색'>검은색</option>
-									<option value='빨간색'>빨간색</option>
-									<option value='주황색'>주황색</option>
-									<option value='노랑색'>노랑색</option>
-									<option value='초록색'>초록색</option>
-									<option value='파랑색'>파랑색</option>
-									<option value='남색'>남색</option>
-									<option value='보라색'>보라색</option>
-								</select>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary">Upload</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 	<!--------------------네이버 아이템--------------------->

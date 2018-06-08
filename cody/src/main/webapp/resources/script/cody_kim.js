@@ -352,17 +352,6 @@ function codyInsert() {
 	formObj.submit();
 }; 
 
-/* 코디 수정 */
-function codyUpdate() {
-	var formObj = $('form[role="codyUpdate"]');
-	
-	console.log(formObj);
-	
-	formObj.attr("action", "codyUpdate");
-	formObj.attr("method", "post");
-	formObj.submit();
-}; 
-
 // 옷장 아이템 선택 이벤트
 $(".card").click(function () {
 	
