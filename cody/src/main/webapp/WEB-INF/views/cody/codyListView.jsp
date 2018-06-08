@@ -249,28 +249,13 @@ margin: 0 auto;
 }
 
 .saveBtn {
-	width: 50px;
-	height: 50px;
+	width: 70px;
+	height: 113px;
+	text-align: center;
 	border: 1px solid #aaa;
 	margin-left: 5px;
 }
 
-#reple {
-	margin: 20px 0;
-}
-
-#reple img {
-	border-radius: 50%;
-	width: 40px;
-	height: 40px;
-	vertical-align: bottom;
-	
-}
-
-#reple textarea {
-	width: 300px;
-	margin: 0 20px;
-}
 
 </style>
 </head>
@@ -297,7 +282,16 @@ margin: 0 auto;
 	<div class="row">
 		<div class="row mb-2 col-md-12 order-md-1">
 		<div class="col-md-3 mr-auto">
-		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${member.member_photo}" width="45" height="45"> ${member.member_id} ${cody.cody_height}cm
+		<c:choose>
+			<c:when test="${not empty member.member_photo}" >
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${member.member_photo}" width="45" height="45">
+		</c:when>
+		<c:otherwise>
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/member.png" width="45" height="45"> 
+		
+		</c:otherwise>
+		</c:choose>
+		${member.member_id} ${cody.cody_height}cm
 		</div>
 		
 					<c:choose>

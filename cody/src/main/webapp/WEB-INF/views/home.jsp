@@ -163,7 +163,16 @@ iframe {
 						<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
 						
 						<div class="card-main" style="float:left;height: 40px;">
-						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${cody.member_photo }" style="border: 1px solid darkgray; width:40px; height: 40px;">
+						<c:choose>
+			<c:when test="${not empty cody.member_photo}" >
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${cody.member_photo }" style="width:40px; height: 40px;">
+		</c:when>
+		<c:otherwise>
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/member.png" width="40" height="40"> 
+		
+		</c:otherwise>
+		</c:choose>
+						
 						 
 						 <div style="float:right; padding-left: 15px;">
 						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${cody.member_id}</p></div>
@@ -197,7 +206,16 @@ iframe {
 							<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
 						
 						<div class="card-main" style="float:left;height: 40px;">
-						<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.photo }" style="border: 1px solid darkgray; width:40px; height: 40px;">
+						<c:choose>
+			<c:when test="${not empty irr.photo}" >
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.photo }" style="width:40px; height: 40px;">
+		</c:when>
+		<c:otherwise>
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/member.png" width="40" height="40"> 
+		
+		</c:otherwise>
+		</c:choose>
+				
 						 
 						 <div style="float:right; padding-left: 15px;">
 						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.id}</p></div>
