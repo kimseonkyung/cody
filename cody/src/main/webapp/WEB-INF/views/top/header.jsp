@@ -177,9 +177,12 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 <c:choose>
 			<c:when test="${not empty sessionScope.loginInfo}" >
 			     <li class="nav-item dropdown">
-    			    <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" 
+    			    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" 
 			     aria-haspopup="true" aria-expanded="false" style="color: black; padding-right: 20px;">
-			     <img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }" style="width:35px; height: 35px; margin: 0 10px 0 0;"><h4 style="display: inline-block;">${loginInfo.member_id }</h4></a>
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }" style="width:35px; height: 35px; margin: 0 10px 0 0;">
+		<h4 style="display: inline-block;">${loginInfo.member_id }</h4>
+		</a>
+
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">마이페이지</a>
 					<a class="dropdown-item" href="#">Another action</a>
