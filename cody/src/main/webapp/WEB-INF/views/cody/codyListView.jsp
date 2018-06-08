@@ -327,7 +327,7 @@ margin: 0 auto;
 								
 								
 								
-								<div class="bg-white rounded box-shadow" id="left3" style="width: 556px; border: 1px solid #ddd;">
+								<div class="bg-white rounded box-shadow" id="left3" style="max-width: 556px; border: 2px solid darkgray;">
 								<div>
 						
 												<!------------------------ 답글 리스트 ---------------------------->
@@ -357,7 +357,7 @@ margin: 0 auto;
 						<input type="hidden" name="reparent" value=${repleList.reple_idx }>
 						<input type="hidden" name="redepth" value="${repleList.redepth }">
 						<input type="hidden" name="reorder" value="${repleList.reorder }">
-						<textarea class="border border-secondary rounded" name="reple_contents" rows="3" cols="40" maxlength="450"></textarea>
+						<textarea class="border border-secondary rounded" name="reple_contents" rows="3" maxlength="450" style="width:100%;"></textarea>
 					</form>
 						<button id="re_repleSave"  onclick="re_repleSave(${repleList.reple_idx })">저장</button>
 					</div>
@@ -410,7 +410,7 @@ margin: 0 auto;
 						</div>
 	
 			
-						<div class="bg-white rounded box-shadow" style="max-width: 445px;margin-top:20px;border: 2px solid darkgray;overflow: hidden;">
+						<div class="bg-white rounded box-shadow" style="max-width: 445px;margin-top:20px;border: 2px solid darkgray;overflow: hidden;margin:  0 auto;">
 							<div id="item_name"><h2>착용아이템( ${itemSize } )</h2></div>
 							
 							<ul style="list-style: none;">
