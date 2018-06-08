@@ -817,4 +817,29 @@ $(document).ready(function(){
 		
 	});
 	</script>
+	<script>
+	$(document).ready(function(){
+		$('#memberForm_pw').keyup(function() {
+			$('font[name=check]').text('');
+		}); //#user_pass.keyup
+
+		$('#chpw').keyup(function() {
+			if ($('#memberForm_pw').val() != $('#chpw').val()) {
+				$('font[name=check]').text('');
+
+			}
+			; //#user_pass.keyup
+
+			$('#chpw').keyup(function() {
+				if ($('#memberForm_pw').val() != $('#chpw').val()) {
+					$('font[name=check]').text('');
+					$('font[name=check]').html("비밀번호가 일치하지 않습니다.");
+				} else {
+					$('font[name=check]').text('');
+					$('font[name=check]').html("");
+				}
+			}); //#chpass.keyup
+		});
+	});
+	</script>
 </html>
