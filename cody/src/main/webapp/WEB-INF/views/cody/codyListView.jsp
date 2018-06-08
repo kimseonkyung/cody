@@ -249,13 +249,28 @@ margin: 0 auto;
 }
 
 .saveBtn {
-	width: 70px;
-	height: 113px;
-	text-align: center;
+	width: 50px;
+	height: 50px;
 	border: 1px solid #aaa;
 	margin-left: 5px;
 }
 
+#reple {
+	margin: 20px 0;
+}
+
+#reple img {
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	vertical-align: bottom;
+	
+}
+
+#reple textarea {
+	width: 300px;
+	margin: 0 20px;
+}
 
 </style>
 </head>
@@ -369,12 +384,13 @@ margin: 0 auto;
 		<div id="reple">
 		<table  style="margin: 10px auto;">
 		<tr>
+		<td><img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }"></td>
 		<td>
-		<input type="hidden" name="reple_cody_idx" value="${cody.cody_idx }">
+			<input type="hidden" name="reple_cody_idx" value="${cody.cody_idx }">
 			<input type="hidden" name="reple_member_idx" value="${loginInfo.member_idx }">
 			<input type="hidden" name="reple_member_id" value="${loginInfo.member_id }">
 			<input type="hidden" name="reple_member_photo" value="${loginInfo.member_photo }">
-			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" rows="5" cols="60" maxlength="500"></textarea>
+			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents"></textarea>
 		</td>
 		<td><button class="btn-outline-dark saveBtn border-secondary rounded" type="button" id="repleSave">저장</button></td>
 		</tr>
