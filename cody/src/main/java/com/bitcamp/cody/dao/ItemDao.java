@@ -18,5 +18,6 @@ public interface ItemDao {
 	public List<ItemDto> selectByName(String name);
 	public List<ItemDto> selectByCodyIdx(int codyIdx);
 	public int itemCount(int memberIdx);
+	
 }
     

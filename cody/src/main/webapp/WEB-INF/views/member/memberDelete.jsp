@@ -12,7 +12,7 @@
 <body>
 <script>
   alert('${msg}'); 
-  location.href='${pageContext.request.contextPath }';
+  location.href='${pageContext.request.contextPath }/main';
   </script>
 
 </body>
