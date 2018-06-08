@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.MemberDto;
+import com.bitcamp.cody.service.BookmarkService;
 import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.FollowService;
 import com.bitcamp.cody.service.ItemListService;
@@ -32,6 +33,9 @@ public class MypageController {
 	ItemListService itemListService;
 	@Autowired	
 	FollowService requestandnresponse;
+	@Autowired
+	BookmarkService bookmarkService;
+	
 	
 	
 	@RequestMapping("/myPage")
@@ -45,11 +49,13 @@ public class MypageController {
 		int codyCount = codyListService.getCodyCount(idx);
 		int followrqCount = requestandnresponse.getfollowrqCount(idx);
 		int followrpCount = requestandnresponse.getfollowrpCount(idx);
+		int bookmarkCount = bookmarkService.getbookmarkCount(idx);
 		
 		model.addAttribute("itemCount", itemCount);
 		model.addAttribute("codyCount", codyCount);
 		model.addAttribute("followrqCount", followrqCount);
 		model.addAttribute("followrpCount", followrpCount);
+		model.addAttribute("bookmarkCount", bookmarkCount);
 		
 		
 		return "cody/myPage";
@@ -102,6 +108,7 @@ public class MypageController {
 		
 		return arr.toString();
 	}
+	
 	
 
 }

@@ -52,6 +52,15 @@ public class BookmarkService {
 	}
 
 
+	public int getbookmarkCount(int idx) {
+		
+		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
+		int result = dao.bookmarkCount(idx);
+		
+		return result;
+	}
+
+
 	
 
 	

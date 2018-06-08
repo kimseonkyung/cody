@@ -167,7 +167,7 @@ input:focus, textarea:focus {
 		<div class="btn-group btn-group-myPage" role="group" style="display:table; margin-left: auto; margin-right: auto;">
     			<button type="button" class="btn myBtn-secondary" id="gCody" style="border: 1px solid #ccc; margin: 0;"> <strong>코디</strong><br>${codyCount }</button>
     			<button type="button" class="btn myBtn-secondary" id="gCloset" style="border: 1px solid #ccc; margin: 0;"> <strong>옷장</strong><br>${itemCount }</button>
-    			<button type="button" class="btn myBtn-secondary" id="gLike" style="border: 1px solid #ccc; margin: 0;"> <strong>좋아요</strong><br>d</button>
+    			<button type="button" class="btn myBtn-secondary" id="gBookmark" style="border: 1px solid #ccc; margin: 0;"> <strong>스크랩</strong><br>${bookmarkCount}</button>
     			<button type="button" class="btn myBtn-secondary" id="gFollow" style="border: 1px solid #ccc; margin: 0;"> <strong>팔로우</strong><br>${followrpCount}</button>
     			<button type="button" class="btn myBtn-secondary" id="gFollower" style="border: 1px solid #ccc; margin: 0;"> <strong>팔로워</strong><br>${followrqCount}</button>
     			
@@ -383,10 +383,38 @@ $('#gCloset').click(function () {
 	 
 }) 
 
-$('#gLike').click(function () {
+$('#gBookmark').click(function(){
+	
+	$.ajax({
+		
+		type : 'get',
+		url : '/cody/bookmarkList',
+		dataType : 'json',
+		data : {}
+	})
+	.done(function(data){
+	 	$('#myPageList').empty();
+	 	
+	 	$.each(data, function(i, e ){
+	 		$('#myPageList').append('<div class="myCard">'
+	 				+ '<a href="/cody/bookmark?cody_idx='+e.bookmark_idx+ '&member_idx='+e.member_idx+'&cody_image='+e.cody_image+'"><img class="card-img-top" src="/cody/uploadfile/codyphoto/'+ e.cody_image +'" style="height: 300px;" alt="Card image cap"></a>'
+	 				+ '<div class="card-body" style="height: 100%">'
+	 				+ e.cody_image
+	 				+ '</div>'
+	 				+ '</div>');
+	 	});
+	
+	})
+	.fail(function(err){
+		console.log(err);
+		
+	
+	});
 	
 	
-}) 
+	
+})
+
 
 $('#gFollower').click(function () {
 	
@@ -435,7 +463,7 @@ $('#gFollow').click(function () {
 							+ e.followrq_id		
 							+ '<br>'
 							+ e.followrq_birth
-							if( tr == 1)
+				
 							+'<button class="btn btn-primary"style="float: right;" >팔로잉</button>'
 							
 							+ '</div>'

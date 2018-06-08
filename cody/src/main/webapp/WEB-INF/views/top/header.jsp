@@ -183,7 +183,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">마이페이지</a>
 					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="../member/memberDelete?id=${member.member_id}">회왼탈퇴</a>
+					<a class="dropdown-item" href="member/memberDelete?id=${loginInfo.member_id}">회원탈퇴</a>
 					<a class="dropdown-item btn btn-default btn-logiut" href="${pageContext.request.contextPath}/member/memberlogout"><span class="glyphicon glyphicon-log-out">로그아웃</span></a>
 				</div>
 				</li>
@@ -403,8 +403,10 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
                                  <a href="#none" ><img src="${pageContext.request.contextPath}/resources/icon/facebook.PNG" style="width: 110%;"/></a>
                                </div>
                                 <br>
-                               <div>                            
-                                 <a href="${pageContext.request.contextPath}/member/kakaologin" id="kakao-login-btn"><img src="${pageContext.request.contextPath}/resources/icon/kakao.PNG" style="width: 110%;"/> </a>
+                                <div>
+                                                           
+                                 <a id="kakao-login-btn"></a>
+                                 
                                </div>
                            </div>
 								
