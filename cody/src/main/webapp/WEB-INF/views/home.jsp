@@ -113,7 +113,7 @@ iframe {
 		<nav class="nav nav-underline">
 			<a class="nav-link col-4 mr-auto" href="#">all</a> 
 			<a class="nav-link col-4 mr-auto" href="#">men</a>
-			<a class="nav-link col-4 mr-auto" href="#">women</a>
+			<a class="nav-link col-4 mr-auto" href="boardList">게시판(공지사항">women</a>
 		</nav>
 	</div>
 </div>
@@ -123,28 +123,28 @@ iframe {
 		  <div class="my-3 p-3 bg-white rounded box-shadow">
 			<h3>사용자</h3>
 			<ul>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
+				<li><a href="${pageContext.request.contextPath}/itemForm">아이템저장</a></li>
+				<li><a href="${pageContext.request.contextPath}/itemListView?item_idx=2">아이템 상세보기</a></li>
+				<li><a href="itemForm">아이템 수정</a></li>
+				<li><a href="itemDelete?item_idx=5">아이템 삭제</a></li>
 				<li><a href="#">데이터</a></li>
 			</ul>
 			</div>
           <div class="my-3 p-3 bg-white rounded box-shadow">
 			<h3>카테고리</h3>
 			<ul>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
+				<li><a href="${pageContext.request.contextPath}/codyList">코디리스트</a><br>
+				<li><a href="${pageContext.request.contextPath}/itemList">아이템 전체 리스트</a><br> 
+				<li><a href="${pageContext.request.contextPath}/codyTimeList">타임라인</a><br>
+				<li><a href="bookmarkList">즐겨찾기</a></li>
 				<li><a href="#">데이터</a></li>
 			</ul>
 			</div>
 		 <div class="my-3 p-3 bg-white rounded box-shadow">
 			<h3>브랜드</h3>
 			<ul>
-				<li><a href="#">데이터</a></li>
-				<li><a href="#">데이터</a></li>
+				<li><a href="${pageContext.request.contextPath}/codyForm">코디등록</a></li>
+				<li><a href="${pageContext.request.contextPath}/repleList?cody_idx=1">답글</a></li>
 				<li><a href="#">데이터</a></li>
 				<li><a href="#">데이터</a></li>
 				<li><a href="#">데이터</a></li>
@@ -182,25 +182,7 @@ iframe {
 						</div>
 				</li>
             </c:forEach>
-			</ol>
-					
-					<a href="${pageContext.request.contextPath}/itemForm">아이템저장</a><br> 
-					<a href="${pageContext.request.contextPath}/codyList">코디리스트</a><br>
-					<a href="${pageContext.request.contextPath}/listSearch?cody_title=샤랄라">코디 검색</a><br> 
-					<a href="${pageContext.request.contextPath}/codyForm">코디등록</a><br>
-					<a href="${pageContext.request.contextPath}/itemList">아이템 전체 리스트</a><br> 
-					<a href="${pageContext.request.contextPath}/itemListView?item_idx=2">아이템 상세보기</a><br>
-					<a href="${pageContext.request.contextPath}/itemSearch?item_name=1">아이템 검색</a><br>
-					<a href="itemForm">아이템 수정</a><br>
-					<a href="itemDelete?item_idx=5">아이템 삭제</a><br> 
-					
-						<a href="member/memberList">회원 리스트</a><br> 
-						<a href="bookmarkList">즐겨찾기</a><br>
-						<a href="${pageContext.request.contextPath}/repleList?cody_idx=1">답글</a><br>
-						<a href="${pageContext.request.contextPath}/codyTimeList">타임라인</a><br>
-						<a href="boardList">게시판(공지사항)</a><br>
-					
-		
+			</ol>		
 	<!------------------ 전체 리스트 반복 출력 ----------------------->			
 			<h6 class="border-bottom border-gray pb-2 mb-0">전체 리스트</h6>
 			<ol class="card-item-ol" >
