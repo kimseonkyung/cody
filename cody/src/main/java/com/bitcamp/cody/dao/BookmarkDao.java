@@ -11,6 +11,7 @@ public interface BookmarkDao {
 	public BookmarkDto selectByIdx(int idx);
 	public List<BookmarkDto> selectList(int memberIdx);
 	public List<BookmarkDto> selectByMemberIdx(int memberIdx);
+	public int bookmarkCount(int idx);
 	
 	
 	

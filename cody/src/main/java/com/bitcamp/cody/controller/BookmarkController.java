@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,11 +45,11 @@ public class BookmarkController {
 		
 				
 										
-		String msg1 = "즐겨찾기가 등록되었습니다.";
+		String msg1 = "스크랩 완료!.";
 
 		if (resultCnt == 0) {
 		
-			msg1 = "즐겨찾기 등록실패";
+			msg1 = "스크랩 실패! 관리자에게 문의하세요!";
 		
 		}	
 
@@ -85,23 +87,36 @@ public class BookmarkController {
 	}
 
 	@RequestMapping(value="/bookmarkList", method=RequestMethod.GET)
-		
+	@ResponseBody	
 	public String bookmarkList(Model model, HttpSession session) {
 		
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo");    // 로그인된 사용자 정보 가져오기
 		int memberIdx = member.getMember_idx();
 		
 		List<BookmarkDto> bookmarks = bservice.selectByMemberIdx(memberIdx);
+		JSONArray arr = new JSONArray();
+		
+		for(BookmarkDto bookmark : bookmarks) {
+			JSONObject obj = new JSONObject();
+			obj.put("bookmark_idx", bookmark.getBookmark_idx());
+			obj.put("member_idx", bookmark.getMember_idx());
+			obj.put("cody_idx", bookmark.getCody_idx());
+			obj.put("cody_image", bookmark.getCody_image());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		
+		//List<CodyDto> codys = bservice.CodyList(memberIdx);
 
-		System.out.println(bookmarks);
-		List<CodyDto> codys = bservice.CodyList(memberIdx);
+		//model.addAttribute("codys", codys);
+		//model.addAttribute("bookmarks", bookmarks);
 
-		model.addAttribute("bookmarks", bookmarks);
-
-		model.addAttribute("codys", codys);
+		
 		
 	
-		return "cody/bookmarkList";
+		return arr.toString();
 
 	}
 

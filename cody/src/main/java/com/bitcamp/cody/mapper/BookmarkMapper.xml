@@ -23,6 +23,9 @@
 		delete from bookmark where bookmark_idx = #{idx}
 	</delete>
 	
+	<select id="bookmarkCount" resultType="int">
+		select count(*) from bookmark where member_idx = #{memberIdx}
+	</select>
 
 	
 </mapper>	
