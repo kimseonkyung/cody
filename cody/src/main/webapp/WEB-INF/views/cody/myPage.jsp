@@ -435,7 +435,7 @@ $('#gFollow').click(function () {
 							+ e.followrq_id		
 							+ '<br>'
 							+ e.followrq_birth
-							if( tr == 1)
+				
 							+'<button class="btn btn-primary"style="float: right;" >팔로잉</button>'
 							
 							+ '</div>'
