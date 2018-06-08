@@ -98,6 +98,7 @@
 	max-width:556px; 
 	max-height:724px;
 	overflow: hidden;
+	margin-bottom: 10px;
 }
 
 #funtion {
@@ -143,12 +144,14 @@
 max-width: 556px;
 	min-height: 58px;
 	border: 2px solid darkgray;
+	margin-bottom: 10px;
 }
 
 #like_list {
 	max-width: 556px;
 	min-height: 58px;
 	border: 2px solid darkgray;
+	margin-bottom: 10px;
 }
 
 #reple {
@@ -174,8 +177,9 @@ margin: 0 auto;
 
 #content_1{
 border: 2px solid darkgray;
-max-width: 445px;
+max-width: 556px;
 margin: 0 auto;
+margin-bottom: 50px;
 }
 
 #content_name{
@@ -212,7 +216,7 @@ min-height: 120px;
 }
 
 #item_name{
-width: 380px;
+width: 400px;
 min-height: 30px;
 margin: 0 auto;
 margin-top: 5px;
@@ -420,8 +424,8 @@ margin: 0 auto;
 						</div>
 	
 			
-						<div class="bg-white rounded box-shadow" style="max-width: 445px;margin-top:20px;border: 2px solid darkgray;overflow: hidden;margin:  0 auto;">
-							<div id="item_name"><h2>착용아이템( ${itemSize } )</h2></div>
+						<div class="bg-white rounded box-shadow" style="max-width: 556px;margin-top:20px;border: 2px solid darkgray;overflow: hidden;margin:  0 auto;">
+							<div id="item_name"><h4>착용아이템( ${itemSize } )</h4></div>
 							
 							<ul style="list-style: none;">
 							<c:forEach var="item" items="${items }">
