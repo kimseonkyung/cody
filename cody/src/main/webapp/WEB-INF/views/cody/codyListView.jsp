@@ -401,7 +401,16 @@ margin: 0 auto;
 		<div id="reple">
 		<table  style="margin: 10px auto;">
 		<tr>
-		<td><img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }"></td>
+		<td>
+		<c:choose>
+			<c:when test="${not empty loginInfo.member_photo}" >
+		<img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }">
+		</c:when>
+		<c:otherwise>
+		<img src="${pageContext.request.contextPath }/uploadfile/member.png"> 		
+		</c:otherwise>
+		</c:choose>
+        </td>
 		<td>
 			<input type="hidden" name="reple_cody_idx" value="${cody.cody_idx }">
 			<input type="hidden" name="reple_member_idx" value="${loginInfo.member_idx }">
