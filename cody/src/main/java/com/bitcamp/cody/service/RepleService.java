@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.bitcamp.cody.dao.BoardDao;
 import com.bitcamp.cody.dao.RepleDao;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.dto.RepleDto;
@@ -105,10 +106,24 @@ public class RepleService {
 		return cnt;
 	}
 
-	public List<RepleDto> noticeList(int idx) {
+	public List<RepleDto> noticeList(int idx, int offset, int noOfRecords) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
-		List<RepleDto> list = dao.noticeList(idx);
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("offset", offset);
+		params.put("noOfRecords", noOfRecords);
+		params.put("idx", idx);
+		List<RepleDto> list = dao.noticeList(params);
+
 		return list;
+	}
+
+	// 게시물 총 개수
+	public int totalCount() {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		int cnt = dao.totalCnt();
+
+		return cnt;
 	}
 
 }

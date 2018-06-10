@@ -359,4 +359,24 @@ $(".card").click(function () {
 	$(this).addClass("checkedItem");
 }); 
 
+// 페이징 처리(원하는 페이지로 이동)
+function gopage(pages, lines) {
+    location.href = '?' + "pages=" + pages;
+}
+
+// 알림페이지 일괄확인
+function receptionOk() {
+	
+	$.ajax({
+		type : 'post',
+		url : '${pageContext.request.contextPath}/receptionOk',
+		dataType : 'text',
+		data : {
+			},
+		success : function(data) {
+			alert("확인완료");
+			location.reload(true);
+		}
+	});
+}
 

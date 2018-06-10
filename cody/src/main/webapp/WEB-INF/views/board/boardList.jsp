@@ -89,10 +89,7 @@
 		</c:when>
 		</c:choose>
 	</div>
-<script>
-function gopage(pages, lines) {
-    location.href = '?' + "pages=" + pages;
-}
-</script>
 </body>
+
+<script	src="${pageContext.request.contextPath}/resources/script/cody_kim.js"></script>
 </html>

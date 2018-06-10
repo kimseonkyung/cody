@@ -24,7 +24,7 @@ public class BoardService {
 		params.put("offset", offset);
 		params.put("noOfRecords", noOfRecords);
 
-		System.out.println("offset,noOfRecords : " + offset + ", " + noOfRecords);
+		System.out.println("offset, noOfRecords : " + offset + ", " + noOfRecords);
 		List<BoardDto> list = dao.selectList(params);
 
 		return list;

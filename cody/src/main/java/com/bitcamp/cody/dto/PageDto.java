@@ -15,8 +15,8 @@ public class PageDto {
 
 	public PageDto(int currentPageNo, int maxPost) {
 		this.currentPageNo = currentPageNo;
-		this.sizeOfPage = 5; // 기본 페이지를 3개로 표시함
-		this.maxPost = (maxPost != 0) ? maxPost : 10;
+		this.sizeOfPage = 3; // 기본 페이지를 3개로 표시함
+		this.maxPost = (maxPost != 0) ? maxPost : 5;
 		// 게시물 최대 개수가 0개가 아니라면 현재 게시물 개수(maxPost)이고, 만약 게시물수가 0개라면 10
 	}
 
@@ -109,7 +109,7 @@ public class PageDto {
 			return; // 그냥 현재 그 값을 반환하여 페이징을 표시하지 않는다.
 
 		if (maxPost == 0) // 페이지당 표시되는 최대 게시물 수가 0개라면
-			setMaxPost(10); // 최대 표시되는 게시물 수를 10개로 설정한다. (기본 값 설정)
+			setMaxPost(5); // 최대 표시되는 게시물 수를 10개로 설정한다. (기본 값 설정)
 
 		int finalPage = (numberOfRecords + (maxPost - 1)) / maxPost;
 		// 게시물이 81개인 경우 => (81 + (10-1))/10 = 9 =>즉, 게시물이 81개면 총 9페이지 까지 표시

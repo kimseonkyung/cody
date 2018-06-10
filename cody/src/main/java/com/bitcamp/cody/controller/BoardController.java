@@ -28,7 +28,7 @@ public class BoardController {
 	public String boardList(Model model, HttpServletRequest req) {
 
 		int currentPageNo = 1; // /(localhost:8080)페이지로 오면 처음에 표시할 페이지 (1 = 첫번째 페이지)
-		int maxPost = 5; // 페이지당 표시될 게시물 최대 갯수
+		int maxPost = 10; // 페이지당 표시될 게시물 최대 갯수
 
 		if (req.getParameter("pages") != null) // 게시물이 1개도없으면(=페이지가 생성이 안되었으면)이 아니라면 == 페이징이 생성되었다면
 			currentPageNo = Integer.parseInt(req.getParameter("pages")); // pages에있는 string 타입 변수를 int형으로 바꾸어서

@@ -37,11 +37,14 @@ public interface RepleDao {
 	int selectReception();
 
 	// 알림 리스트 정보 가져오기
-	List<RepleDto> noticeList(int idx);
+	List<RepleDto> noticeList(HashMap<String, Object> params);
 
 	// 첫댓글 저장된 댓글찾기
 	RepleDto selectinfo(RepleDto reple);
 
 	int repleUpdate(RepleDto re);
+
+	// 알림글 총 개수
+	int totalCnt();
 
 }
