@@ -35,6 +35,9 @@
 <!-- CODY CSS -->
 <link href="resources/css/cody.css" type="text/css" rel="stylesheet">
 
+<!-- icon사용  -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
 <style>
 #searchbox {
 	width: 120px;
@@ -192,7 +195,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 				</li>
 				<li class="nav-item">
 					<div style="font-size:1.8em;">
-  					<a href="${pageContext.request.contextPath}/noticeList"><i id="ok"  class="fa fa-bell-o" aria-hidden="true" style="color: black; border-left: 1px solid #888; padding-left: 20px;"></i></a>
+  					<a href="${pageContext.request.contextPath}/noticeList"><i id="ok"  class="far fa-bell" aria-hidden="true" style="color: black; border-left: 1px solid #888; padding-left: 20px;"></i></a>
 					</div>
 				</li>
 				</c:when>

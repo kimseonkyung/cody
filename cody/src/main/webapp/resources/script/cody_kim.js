@@ -352,6 +352,8 @@ function codyInsert() {
 	formObj.submit();
 }; 
 
+
+
 // 옷장 아이템 선택 이벤트
 $(".card").click(function () {
 	
@@ -376,6 +378,22 @@ function receptionOk() {
 			},
 		success : function(data) {
 			alert("확인완료");
+			location.reload(true);
+		}
+	});
+}
+
+//알림페이지 확인
+function receptionOk(idx) {
+	
+	$.ajax({
+		type : 'post',
+		url : '${pageContext.request.contextPath}/recepOk',
+		dataType : 'text',
+		data : {
+			reple_idx : idx
+		},
+		success : function(data) {
 			location.reload(true);
 		}
 	});

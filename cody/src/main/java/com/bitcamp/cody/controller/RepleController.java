@@ -115,7 +115,8 @@ public class RepleController {
 		
 		// 내 코디에 작성된 댓글리스트 가져오기
 		List<RepleDto> list = repleService.noticeList(idx, offset, noOfRecords);
-
+		System.out.println(list);
+		
 		paging.setNumberOfRecords(totalCnt); // 페이지를 표시하기 위해 전체 게시물 수를 파악하기 위한것
 		paging.makePaging(); 
 		
@@ -135,6 +136,8 @@ public class RepleController {
 
 			map.put("cody_title", cody.getCody_title());
 			map.put("cody_image", cody.getCody_image());
+			map.put("cody_idx", cody.getCody_idx());
+			map.put("reple_idx", notice.getReple_idx());
 			map.put("reple_date", date);
 			map.put("member_id", member.getMember_id());
 			page.add(map);
@@ -159,7 +162,7 @@ public class RepleController {
 		return cnt;
 	}
 
-	// 수신 확인
+	// 일괄 확인
 	@RequestMapping("/receptionOk")
 	@ResponseBody
 	public String receptionOK() {
@@ -169,5 +172,17 @@ public class RepleController {
 
 		return "";
 	}
+	
+	// 수신 확인
+	@RequestMapping("/recepOk")
+	@ResponseBody
+	public String recepOK(@RequestParam("reple_idx") int idx) {
+		
+		// 수신여부 true로 변경
+		repleService.recepUpdate(idx);
+		
+		return "";
+	}
 
+	
 }

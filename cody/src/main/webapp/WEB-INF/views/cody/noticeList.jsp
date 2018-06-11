@@ -108,7 +108,7 @@
 		<div id="notice" class="m-3 bg-white rounded box-shadow">
 		<div style="border-bottom: 1px solid #ddd; padding: 10px; height: 70px;">
 		<h2 style="float: left; margin: 10px 0 0 10px; color: #555">알림</h2>
-		<button class="btn btn-outline-secondary" style="float: right; margin: 10px 10px 0 0; border-color: #ccc" onclick="receptionOk()">일괄확인</button>
+		<button class="btn btn-outline-secondary" style="float: right; margin: 10px 10px 0 0; border-color: #ccc;" onclick="receptionOk()">일괄확인</button>
 		</div>
 		<div style="padding: 20px;">
 		<ul style="margin: 0; padding: 0;">
@@ -116,12 +116,13 @@
 				<li class="activity">
 				<div style="margin: 10px 0 10px 0;">
 					<div style="width: 70px;">
-					<img src="${pageContext.request.contextPath}/uploadfile/codyphoto/${notice.cody_image }" style="width: 100%;">
+					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${notice.cody_idx}"><img src="${pageContext.request.contextPath}/uploadfile/codyphoto/${notice.cody_image }" style="width: 100%;"></a>
 					</div>
 					<div style="vertical-align: middle; padding-left: 18px;">
 					<h6>${notice.cody_title }코디에 ${notice.member_id }가 댓글을 달았습니다.</h6>
-					<h6>${notice.reple_date }</h6>
+					<div><i class="fa fa-plus-circle"></i>&ensp;<h6 style="display: inline-block;">${notice.reple_date }</h6></div>
 					</div>
+					<div><button class="btn btn-outline-secondary" style="float: right; margin: 10px 10px 0 0; border-color: #ccc;" onclick="recepOk(${notice.reple_idx})">확인</button></div>
 				</div>
 				</li>
 			</c:forEach>
@@ -177,8 +178,11 @@
     		asdasd<br>
     		sadasd<br>
     		sadasd<br>
-    		asdasd
-
+    		asdasd<i style="font-size: 2em;" class="fas fa-crown"></i>
+    		<i class="fa fa-heart"></i>
+    		<i class="fa fa-chess-queen"></i>
+			<i class="fa-crown"></i>
+			<i class="fa fa-crown"></i>
     		
     	
     	</div>

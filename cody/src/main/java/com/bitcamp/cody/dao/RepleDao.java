@@ -30,9 +30,12 @@ public interface RepleDao {
 	// 댓글 삭제
 	int repleDelete(int idx);
 
-	// 알림 확인후 수신여부값 변경
+	// 알림 확인후 수신여부값 모두 변경
 	int receptionUpdate();
 
+	// 알림 확인후 수신여부값 변경
+	int recepUpdate(int idx);
+	
 	// 알림 수신여부 확인하기
 	int selectReception();
 
@@ -48,5 +51,7 @@ public interface RepleDao {
 	int totalCnt();
 
 	int repleAllDelete(int idx);
+
+	
 
 }

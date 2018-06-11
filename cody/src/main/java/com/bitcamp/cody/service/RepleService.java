@@ -136,4 +136,11 @@ public class RepleService {
 		return cnt;
 	}
 
+	public int recepUpdate(int idx) {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		int result = dao.recepUpdate(idx);
+		
+		return result;
+	}
+
 }
