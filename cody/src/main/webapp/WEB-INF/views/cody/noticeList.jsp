@@ -59,7 +59,7 @@
 <%@ include file="../top/header.jsp" %>
 
 
-<main role="main" class="container"  style="overflow: hidden;">
+<main role="main" class="container">
 	<!--------------------- 메인 배너 ----------------------->
 	<div
 		class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" 
@@ -74,14 +74,14 @@
 	
 </main>
 <header style="border-bottom: 1px solid #ddd; padding: 50px 0 30px 0;">
-	<div class="container">
+	<div class="container" s>
 	<div>
 		<h1><i class="fa fa-bell-o" aria-hidden="true"></i> 공지 사항</h1>
 		<button onclick="receptionOk()">일괄확인</button>
 	</div>
 	</div>
 </header>
-	<div class="container">
+	<div class="container" style="height: 700px;">
 	<div id="page_container">
 		<div id="notice" class="m-3 p-3 bg-white rounded box-shadow">
 		<ul style="margin: 0; padding: 0;">
