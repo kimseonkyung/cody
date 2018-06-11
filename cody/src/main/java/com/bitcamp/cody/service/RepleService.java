@@ -89,7 +89,17 @@ public class RepleService {
 
 		return result;
 	}
+	
+	// 코디댓글 전체삭제
+	public int repleAllDelete(int idx) {
+		dao = sqlSessionTemplate.getMapper(RepleDao.class);
+		int result = dao.repleAllDelete(idx);
+		
+		return result;
+	}
 
+	
+	
 	// 알림 확인후 수신여부값 변경
 	public int receptionUpdate() {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);

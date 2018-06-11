@@ -243,6 +243,7 @@ public class CodyController {
 	@RequestMapping("/codyDelete")
 	public String codyDelete(Model model, @RequestParam("cody_idx") int idx) {
 
+		repleService.repleAllDelete(idx);
 		itemService.itemCodyDelete(idx);
 		int resultCnt = codyservice.codyDelete(idx);
 

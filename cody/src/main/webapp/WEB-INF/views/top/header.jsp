@@ -31,6 +31,7 @@
 <!--웹폰트 추가 : 구글 폰트-->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script"
 	rel="stylesheet">
+	
 <!-- CODY CSS -->
 <link href="resources/css/cody.css" type="text/css" rel="stylesheet">
 
