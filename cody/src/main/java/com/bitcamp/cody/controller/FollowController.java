@@ -71,10 +71,11 @@ public class FollowController {
 	public String followresponse(HttpSession session/*, Model model*/) {
 
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo");
-
+										
 		int m_response = member.getMember_idx();// session에서 idx 구하기
-
-		System.out.println("memberIdx: " + m_response);
+		
+		
+	 	System.out.println("memberIdx: " + m_response);
 
 		List<FollowDto> responseList = requestandnresponse.getListrespons(m_response);
 		JSONArray arr = new JSONArray();
@@ -82,15 +83,19 @@ public class FollowController {
 		
 		for (FollowDto response : responseList) {
 			MemberDto memberrequst = requestandnresponse.selectrequest(response.getM_request());
-			JSONObject obj = new JSONObject();
+		 	JSONObject obj = new JSONObject();
 			obj.put("followrp_idx", memberrequst.getMember_idx());
 			obj.put("followrp_id", memberrequst.getMember_id());
 			obj.put("followrp_imag",memberrequst.getMember_photo());
 			obj.put("followrp_birth",memberrequst.getMember_birth());
+			obj.put("followinfop",response.getFollowinfo());
+			obj.put("followidxp", response.getFollow_idx());
 			arr.put(obj);
+		
 		}
 		
 		System.out.println("arr : " + arr);
+		
 		
 		return arr.toString();
 			
@@ -122,7 +127,7 @@ public class FollowController {
 	
 	// 하는 사람 팔로우
 
-	@RequestMapping(value="/myFollowerrq", method= RequestMethod.POST,produces = "application/text; charset=utf8")
+	@RequestMapping(value="/myFollowerrq", method= RequestMethod.POST, produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String requestList(/*Model model,*/ HttpSession session) {
 
@@ -135,16 +140,16 @@ public class FollowController {
 		
 		for(FollowDto request : requestLsit) {
 			MemberDto memberrespons = requestandnresponse.selectresponse(request.getM_response());
-			FollowDto follow = requestandnresponse.selectinfo();
 			JSONObject obj = new JSONObject();
 			
 			obj.put("followrq_idx",memberrespons.getMember_idx());
 			obj.put("followrq_id",memberrespons.getMember_id());
 			obj.put("followrq_imge",memberrespons.getMember_photo());
 			obj.put("followrq_birth",memberrespons.getMember_birth());
+			obj.put("followinfoq",request.getFollowinfo());
+			obj.put("followidxq", request.getFollow_idx());
 			arr.put(obj);			
-		}
-		
+		}		
 		System.out.println("arr : " + arr);
 				
 		return arr.toString();
@@ -178,7 +183,8 @@ public class FollowController {
 
 		int m_response = member.getMember_idx();
 
-		System.out.println("member : " + m_response);
+		System.out.println("m_response : " + m_response);
+		System.out.println("m_request : " + m_request);
 		HashMap<String, Integer> map = new HashMap();
 
 		map.put("m_response", m_response);
@@ -193,17 +199,19 @@ public class FollowController {
 
 		model.addAttribute("msg", msg);
 
-		return "follow/followUpDate";
+		return "cody/myPage";
 
 	}
 	// 팔로우 삭제
 
-	@RequestMapping("/followDelete")
+	@RequestMapping(value="/followDelete",method = RequestMethod.GET)
 
 	public String deleteFollow(Model model , @RequestParam("fallow_idx") int followidx ) {
 
 		int resultCnt = requestandnresponse.getdeleteFollow(followidx);
-
+		
+		System.out.println(resultCnt);
+		
 		String msg1 = "삭제 완료 되었습니다.";
 
 		if (resultCnt == 0)
@@ -213,7 +221,7 @@ public class FollowController {
 
 		System.out.println(msg1.toString());
 
-		return "follow/followDelete";
+		return "cody/myPage";
 
 	}
 }
