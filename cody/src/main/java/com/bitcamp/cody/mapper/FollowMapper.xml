@@ -9,7 +9,7 @@
    <insert id="insertfollowin" parameterType="Hashmap">
    
    	insert into follow(m_request, m_response)
-   	values( #{m_request}, #{m_response})   
+   	select #{m_request}, #{m_response} FROM DUAL WHERE NOT EXISTS(select* from follow where m_request = #{m_request} and m_response = #{m_response});  
    
    </insert>
    
