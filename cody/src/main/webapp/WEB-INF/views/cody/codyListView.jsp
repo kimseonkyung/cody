@@ -99,12 +99,9 @@
 	max-height:724px;
 	overflow: hidden;
 	margin-bottom: 10px;
-}
-
-#funtion {
-	max-width: 556px;
-	max-height: 58px;
-	border: 2px solid darkgray;
+	border-radius: 0.25rem;
+	border:1px solid darkgray;
+	
 }
 
 #bookmark {
@@ -143,15 +140,17 @@
 #funtion{
 max-width: 556px;
 	min-height: 58px;
-	border: 2px solid darkgray;
+	border: 1px solid darkgray;
 	margin-bottom: 10px;
+	border-radius: 0.25rem
 }
 
 #like_list {
 	max-width: 556px;
 	min-height: 58px;
-	border: 2px solid darkgray;
+	border: 1px solid darkgray;
 	margin-bottom: 10px;
+	border-radius: 0.25rem
 }
 
 #reple {
@@ -176,10 +175,11 @@ margin: 0 auto;
 }
 
 #content_1{
-border: 2px solid darkgray;
+border: 1px solid darkgray;
 max-width: 556px;
 margin: 0 auto;
 margin-bottom: 50px;
+border-radius: 0.25rem
 }
 
 #content_name{
@@ -314,7 +314,7 @@ margin: 0 auto;
 		
 		</c:otherwise>
 		</c:choose>
-		${member.member_id} ${cody.cody_height}cm
+		&emsp;${member.member_id}&emsp; ${cody.cody_height}cm
 		</div>
 		
 					<c:choose>
@@ -338,11 +338,11 @@ margin: 0 auto;
                        <div class="col-md-7 order-md-2 mr-auto" style="margin-bottom: 20px; margin-top: 20px">
                        <div id="image">
 									<c:if test="${cody.cody_image != null}">
-										<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"style="width: 100%; object-fit: contain; border:2px solid darkgray;">
+										<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"style="width: 100%; object-fit: contain;">
 									</c:if>
 								</div>
 
-								<div id="funtion">									
+								<div id="funtion" class="bg-white">									
 										
 										<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">									
 										<button id="bookmark" class="btn btn-primary" style="right: 140px;margin-top: 8px;margin-right: 57px;">
@@ -354,16 +354,16 @@ margin: 0 auto;
 									</div>
 										
 									
-								<div id="like_list">
+								<div id="like_list" class="bg-white">
 								</div>	
 								
 								
 								
-								<div class="bg-white rounded box-shadow" id="left3" style="max-width: 556px; border: 2px solid darkgray;">
+								<div class="bg-white rounded box-shadow" id="left3" style="max-width: 556px; border: 1px solid darkgray;border-radius: 0.25rem">
 								<div>
 						
 												<!------------------------ 답글 리스트 ---------------------------->
-		<div id="repleList">
+		<div id="repleList" class="bg-white">
 			<c:forEach var="repleList" items="${repleList }">
 				<div id="repleView" style="margin-left: ${40*repleList.redepth}px;">
 					<div class="repleDiv">
@@ -398,7 +398,7 @@ margin: 0 auto;
 			</c:forEach>
 		</div>
 
-		<div id="reple">
+		<div id="reple" class="bg-white">
 		<table  style="margin: 10px auto;">
 		<tr>
 		<td>
@@ -430,10 +430,10 @@ margin: 0 auto;
 						
 						<!--------------------오른쪽--------------------->
 						<div class="col-md-5 order-md-3" style="margin-bottom: 20px; margin-top: 20px">
-						<div id= content_1>
+						<div id= "content_1" class="bg-white">
 							<div id=content_name><h4>${cody.cody_title}</h4></div>											
 								<div id="content_sub">
-								모델정보:${cody.cody_height}cm
+								모델정보:&ensp;${cody.cody_height}cm
 								<c:set var="data" value="${cody.cody_gender}" />
 								<c:choose>
 									<c:when test="${data eq true}">
@@ -452,7 +452,7 @@ margin: 0 auto;
 						</div>
 	
 			
-						<div class="bg-white rounded box-shadow" style="max-width: 556px;margin-top:20px;border: 2px solid darkgray;overflow: hidden;margin:  0 auto;">
+						<div class="bg-white rounded box-shadow" style="max-width: 556px;margin-top:20px;border: 1px solid darkgray;overflow: hidden;margin:  0 auto;border-radius: 0.25rem">
 							<div id="item_name"><h4>착용아이템( ${itemSize } )</h4></div>
 							
 							<ul style="list-style: none;">

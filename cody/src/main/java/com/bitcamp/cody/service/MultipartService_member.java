@@ -33,6 +33,7 @@ public class MultipartService_member {
 			member.setMember_photo(fileName);
 			
 		}
+		
 			
 
 		return member;

@@ -69,6 +69,11 @@
 	<delete id="repleDelete" parameterType="com.bitcamp.cody.dto.RepleDto">
 		delete from reple where reple_idx = #{idx}
 	</delete>
+	
+	<!-- 코디댓글 전체삭제 -->
+	<delete id="repleAllDelete" parameterType="com.bitcamp.cody.dto.RepleDto">
+		delete from reple where cody_idx = #{idx}
+	</delete>
 
 	<!-- 알림 확인후 수신여부값 변경 -->
 	<update id="receptionUpdate" parameterType="com.bitcamp.cody.dto.RepleDto">
