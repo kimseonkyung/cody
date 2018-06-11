@@ -392,7 +392,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 
 							<div class = "col-xl-12 row justify-content-center align-items-center my-3">
 								<a href = "findId">아이디 찾기&nbsp;</a>&nbsp; / &nbsp;&nbsp;
-								<a href = "findPw">비밀번호 찾기</a>
+								<a href = "findpw">비밀번호 찾기</a>
 							</div>
 							
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-2">
