@@ -18,7 +18,7 @@
 	
 	<select id="searchMember"
 		resultType="com.bitcamp.cody.dto.MemberDto">
-		SELECT * FROM MEMBER WHERE member_name LIKE CONCAT('%',#{keyword3},'%');
+		SELECT * FROM MEMBER WHERE member_id LIKE CONCAT('%',#{keyword3},'%');
 		
 	</select>
 

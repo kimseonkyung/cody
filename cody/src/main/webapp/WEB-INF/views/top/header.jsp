@@ -160,7 +160,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 										</section>
 									</div>
 								</div>
-								<button class="btn btn-outline-success my-2 my-sm-0"
+								<button style="WIDTH: 60pt; HEIGHT: 30pt" class="btn btn-outline-success my-2 my-sm-0" 
 									type="submit">검색</button>
 							</div>
 
