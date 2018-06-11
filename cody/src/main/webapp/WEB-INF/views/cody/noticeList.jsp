@@ -24,8 +24,7 @@
 	width: 100%;
 	height: 100px;
 	display: table;
-	border-bottom: 1px solid #eee;
-	padding: 0 0 0 18px;
+	border-bottom: 1px solid #red;
 	
 }
 
@@ -33,17 +32,11 @@
 	display: inline-block;
 }
 
-#notice ul {
-	list-style: none;
-}
-
 .pageNum>.active>a, .pageNum>.active>a:focus, .pageNum>.active>a:hover, 
 .pageNum>.active>span, .pageNum>.active>span:focus, .pageNum>.active>span:hover {
 	background-color:#005aab;
 	border-color:#005aab;
 	}
-#page {
-}
 
 .pageNum li{
 	display: inline-block;
@@ -57,7 +50,7 @@
 
 .new {
 	border-radius: 3px;
-	border: 1px solid #ddd;
+	border: 1px solid #red;
 }
 </style>
 
@@ -91,15 +84,15 @@
 	<div class="container">
 	<div id="page_container">
 		<div id="notice" class="m-3 p-3 bg-white rounded box-shadow">
-		<ul>
+		<ul style="margin: 0; padding: 0;">
 			<c:forEach var="notice" items="${page }">
 				<li class="activity">
-					<div style="width: 100px;">
+					<div style="width: 70px;">
 					<img src="${pageContext.request.contextPath}/uploadfile/codyphoto/${notice.cody_image }" style="width: 100%;">
 					</div>
-					<div>
-					<p>${notice.cody_title }코디에 ${notice.member_id }가 댓글을 달았습니다.</p>
-					<p>${notice.reple_date }</p>
+					<div style="vertical-align: middle; padding-left: 18px;">
+					<h6>${notice.cody_title }코디에 ${notice.member_id }가 댓글을 달았습니다.</h6>
+					<h6>${notice.reple_date }</h6>
 					</div>
 				</li>
 			</c:forEach>
@@ -120,7 +113,7 @@
 					<c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1"> <!-- 변수선언 (var="i"), 조건식, 증감식 -->
 		            <c:choose>
 		                <c:when test="${i eq paging.currentPageNo}"> 
-		                      <li class="active"><a href="javascript:gopage(${i}, ${paging.maxPost})">${i}</a></li> <!-- 1페이지부터 10개씩 뽑아내고, 1,2,3페이지순으로 나타내라-->
+		                      <li class="active"><a href="javascript:gopage(${i}, ${paging.maxPost})">${i}</a></li> <!-- 1페이지부터 5개씩 뽑아내고, 1,2,3페이지순으로 나타내라-->
 		                </c:when>
 		                	<c:otherwise>
 		                    <li><a href="javascript:gopage(${i}, ${paging.maxPost})">${i}</a></li> 
