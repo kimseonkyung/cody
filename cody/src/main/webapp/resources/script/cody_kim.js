@@ -362,6 +362,7 @@ $(".card").click(function () {
 // 페이징 처리(원하는 페이지로 이동)
 function gopage(pages, lines) {
     location.href = '?' + "pages=" + pages;
+    $('#active span').css('color','red');
 }
 
 // 알림페이지 일괄확인

@@ -175,7 +175,11 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 			     <li class="nav-item dropdown">
     			    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" 
 			     aria-haspopup="true" aria-expanded="false" style="color: black; padding-right: 20px;">
-		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo }" style="width:35px; height: 35px; margin: 0 10px 0 0;">
+			     <c:set var="photo" value="${loginInfo.member_photo }"/>
+			     <c:if test="${photo eq null }">
+			     <c:set var="photo" value="member.png"/>
+			     </c:if>
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${photo }" style="width:35px; height: 35px; margin: 0 10px 0 0;">
 		<h4 style="display: inline-block;">${loginInfo.member_id }</h4>
 		</a>
 
