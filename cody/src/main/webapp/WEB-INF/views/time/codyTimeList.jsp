@@ -65,17 +65,20 @@
 <style>
 .card-item-ol {
    overflow: hidden;
+   column-width:240px;
+   column-gap: 15px;
 }
 
 .card-item-li {
    width: 240px;
-   float: left;
-   margin: 0 10px 10px 10px;
+   padding:10px;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
 }
 
 .card-item {
    height: 300px;
 }
+
 </style>
 </head>
 <body class="bg-light">
@@ -138,7 +141,7 @@
 
                <c:forEach var="irr" items="${irr}">
 
-                  <li class="card card-item-li"><a
+                  <li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;"><a
                      href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.codyidx}">
                         <img class="card-img-top card-item"
                         src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"
@@ -194,7 +197,7 @@
                            </c:when>
                            <c:otherwise>
                               <button id="follow" class="btn btn-primary" 
-                                 style="float: right;" onclick="idx(${irr.memberidx})">팔로우하기</button>
+                                 style="float: right;" onclick="idx(${irr.memberidx})">팔로우</button>
                               
                            </c:otherwise>
                         </c:choose>
