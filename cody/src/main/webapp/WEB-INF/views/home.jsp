@@ -29,21 +29,17 @@
 
 
 <style>
-.card-item-ol {
-   overflow: hidden;
-   column-width:240px;
-   column-gap: 15px;
+#ranking{
+width: 25px;
+height: 25px;
+border-radius: 18px 18px 18px 18px;
+background-color: black;
+position: absolute;
+top: 10px;
+left: 10px;
+text-align: center;
 }
 
-.card-item-li {
-   width: 240px;
-   padding:10px;
-   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
-}
-
-.card-item {
-   height: 300px;
-}
 </style>
  <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -127,12 +123,15 @@ iframe {
     <!--------------------- 메인 내용1 ----------------------->
 <div class="col-md-10 order-md-2">
 	 <div class="my-3 p-3 bg-white rounded box-shadow">
-		<h6 class="border-bottom border-gray pb-2 mb-0">랭킹 리스트</h6>
+		<p class="border-bottom border-gray pb-2 mb-0" style="vertical-align: inherit;font-size:30px; text-align: center;">랭킹 리스트</p>
 	<!------------------ 랭킹리스트 반복 출력 ----------------------->			
 			<ol class="card-item-ol" >
-			<c:forEach var="cody" items="${arr }" begin="0" end="2" step="1">		
-				<li class="card card-item-li">
-					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap"></a>
+			<c:forEach var="cody" items="${arr }" begin="0" end="2" step="1" varStatus="status">		
+				<li class="card card-item-li" id="ranking${status.index }">
+					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><div id="ranking"><font style="vertical-align: inherit; color: white;">${status.index }</font></div><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap">
+					<c:set var="ranking" value="${status.index }+1"/>
+					
+					</a>
 						<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
 						
 						<div class="card-main" style="float:left;height: 40px;">
@@ -155,11 +154,10 @@ iframe {
 					    </div>
 			<c:choose>
 			<c:when test="${loginInfo.member_idx eq cody.member_idx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-primary" style="float:right;">수정</a>						
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;">수정</a>						
 			</c:when>
 			<c:otherwise>
-					<button id="follow" class="btn btn-primary" 
-                                 style="float: right;" onclick="idx(${cody.member_idx})">팔로우</button>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;">팔로우</a>
 			</c:otherwise>
 			</c:choose>			
 						</div>
@@ -167,7 +165,7 @@ iframe {
             </c:forEach>
 			</ol>		
 	<!------------------ 전체 리스트 반복 출력 ----------------------->			
-			<h6 class="border-bottom border-gray pb-2 mb-0">전체 리스트</h6>
+			<p class="border-bottom border-gray pb-2 mb-0" style="vertical-align: inherit;font-size:30px; text-align: center;">전체 리스트</p>
 			<ol class="card-item-ol" >
 					<c:forEach var="irr" items="${irr}">
 
@@ -200,11 +198,10 @@ iframe {
 					    
 				<c:choose>
 			<c:when test="${loginInfo.member_idx eq irr.memberidx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-primary" style="float:right;">수정</a>						
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right;">수정</a>						
 			</c:when>
 			<c:otherwise>
-					<button id="follow" class="btn btn-primary" 
-                                 style="float: right;" onclick="idx(${irr.memberidx})">팔로우</button>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.codyidx}&member_idx=${irr.memberidx}" class="btn btn-info" style="float:right;">팔로우</a>
 			</c:otherwise>
 			</c:choose>			
 						</div>

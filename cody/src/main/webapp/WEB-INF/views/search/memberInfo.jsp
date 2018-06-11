@@ -18,18 +18,7 @@
 	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
 	rel="stylesheet">
 <style>
-.card-item-ol {
-	overflow: hidden;
-}
 
-.card-item-li {
-	width: 240px;
-	float: left;
-	margin: 0 10px 10px 10px;
-}
-
-.card-item {
-	height: 300px;
 }
 </style>
 </head>
@@ -82,7 +71,10 @@
 
 								<div>메일: ${MemberLsit.member_email}</div>
 								<div>가입일: ${MemberLsit.member_reg}</div>
-								<button id="follow" class="btn btn-primary"   style="float: right;" onclick="idx(${MemberLsit.member_idx})">팔로우</button>
+								<a
+									href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}"
+									class="btn btn-info"
+									style="position: absolute; right: 20px; bottom: 20px">팔로우</a>
 							</div>
 						</li>
 					</c:forEach>
@@ -106,7 +98,6 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
-		
 
 </body>
 </html>

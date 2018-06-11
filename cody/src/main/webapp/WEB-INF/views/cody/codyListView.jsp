@@ -113,7 +113,7 @@
 #bookmark {
 	border-radius: 3px;	
 	border-color: transparent;
-	background: #007bff;
+	background: #17a2b8;
 	color: #fff;
 	cursor: pointer;
 }
@@ -153,14 +153,9 @@ max-width: 556px;
 	border-radius: 0.25rem
 }
 
-#reple {
-	
-}
-
 #right_content {
 	width: 414px;
 	border: 1px solid darkgray;
-
 }
 
 #info {
@@ -321,13 +316,13 @@ margin: 0 auto;
 					<c:when test="${loginInfo.member_idx eq cody.member_idx }">
 					<div class="col-md-3">
 					<div style="float: right;">
-					<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}"><input class="btn btn-primary" type="button" value="수정"></a>
-					<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}"><input class="btn btn-primary" type="button" value="삭제"></a>
+					<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}"><input class="bit btn-info" type="button" value="수정"></a>
+					<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}"><input class="bit btn-info" type="button" value="삭제"></a>
 					</div>
 					</div>
 					</c:when>
 					<c:when test="${loginInfo ne null }">
-					<div class="col-md-3"><a href="#"><input class="btn btn-primary" type="button" value="팔로우하기" style="float:right;"></a>	</div>
+					<div class="col-md-3"><a href="#"><input class="bit btn-info" type="button" value="팔로우하기" style="float:right;"></a>	</div>
 					</c:when>
 					</c:choose>
 			
@@ -345,11 +340,11 @@ margin: 0 auto;
 								<div id="funtion" class="bg-white">									
 										
 										<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">									
-										<button id="bookmark" class="btn btn-primary" style="right: 140px;margin-top: 8px;margin-right: 57px;">
+										<button id="bookmark" class="bit btn-info" style="right: 140px;margin-top: 8px;margin-right: 57px;">
 										스크랩</button></a>
 										
 										
-										<button id="repleShow" class="btn btn-primary" style="float:right;margin-top: 8px;margin-right: 12px;"">코멘트</button>		
+										<button id="repleShow" class="bit btn-info" style="float:right;margin-top: 8px;margin-right: 12px;">코멘트</button>		
 										
 									</div>
 										
@@ -463,7 +458,7 @@ margin: 0 auto;
 							${item.item_name }<br>
 							${item.item_category }( ${item_color } )<br>
 							${item.item_price }<br>
-							<button class="btn btn-dark" onclick="location.href='${item.item_link}'">구입</button>
+							<button class="btn btn-info" onclick="location.href='${item.item_link}'">구입</button>
 							</p>
 							</li>
 							

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.CodyTimeListDao;
 import com.bitcamp.cody.dto.ItemDto;
+import com.bitcamp.cody.dto.MemberDto;
 
 public class CodyItemListService {
 	

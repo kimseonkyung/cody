@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 
@@ -83,13 +80,11 @@ a {
 }
 
 #image_block {
-	width: 284px;
-	height: 364px;
-	border: 2px solid darkgray;
+	max-width: 284px;
+	max-height: 364px;
 	position: absolute;
 	left: 20px;
 	margin-top: 45px;
-	border-radius: 5px 5px 5px 5px;
 }
 
 #image_input {
@@ -139,7 +134,7 @@ a {
 	font-size: 15px;
 	font-weight: 600;
 	border-color: transparent;
-	background: blue;
+	background: #17a2b8;
 	border-radius: 3px;
 	color: #fff;
 	cursor: pointer;
@@ -176,13 +171,14 @@ a {
 	font-weight: 600;
 	border-color: transparent;
 	font-size: 16px;
-	background: blue;
+	background: #17a2b8;
 	color: #fff;
 	cursor: pointer;
+	border-radius: 0.25rem;
 }
 
 #input_image {
-	width: 160px;
+	width: 242px;
 	height: 38px;
 	vertical-align: middle;
 	font-size: 16px;
@@ -191,6 +187,8 @@ a {
 	/*input type="file" tag 투명하게 처리*/
 	position: relative;
 	cursor: pointer;
+	right: 83px;
+	overflow: hidden;
 }
 
 #modal-dialog {
@@ -238,10 +236,8 @@ a {
 }
 
 #intro_text {
-	border: 2px solid darkgray;
-	width: 462px;
-	height: 316px;
-	border-radius: 3px 3px 3px 3px;
+	max-width: 462px;
+	max-height: 316px;
 	margin-left: 2px;
 }
 
@@ -342,7 +338,7 @@ a {
 	font-weight: 600;
 	border-color: transparent;
 	font-size: 20px;
-	background: blue;
+	background: #17a2b8;
 	color: #fff;
 	cursor: pointer;
 }
@@ -429,7 +425,7 @@ input:focus, textarea:focus {
 						<div id="image_main">
 					<div id="image_frame">
 						<div id="image_block">
-							<img id="preview" src="#" width="280" height="360">
+							<img id="preview" src="#" style="width:284px; height:380px; border:2px solid darkgray; border-radius: 5px 5px 5px 5px;">
 						</div>
 						<div id="image_input">
 										<button id="replace">사진 업로드</button>
@@ -503,7 +499,7 @@ input:focus, textarea:focus {
 		</div>
 		<div id="intro_input">
 			<div id="intro_text">
-				<textarea class="text" style="resize: none" rows="13" cols="63"
+				<textarea class="text" style="resize: none; width:100%; border:2px solid darkgray; border-radius: 5px 5px 5px 5px;" rows="13"
 					name="cody_intro" onkeyup="limit2(this)"></textarea>
 			</div>
 			<div id="intro_sub">

@@ -24,21 +24,6 @@
 	
 
 <style>
-.card-item-ol {
-   overflow: hidden;
-   column-width:240px;
-   column-gap: 15px;
-}
-
-.card-item-li {
-   width: 240px;
-   padding:10px;
-   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
-}
-
-.card-item {
-   height: 300px;
-}
 
 </style>
 
@@ -97,7 +82,7 @@
 						<div class="card-body" style="overflow: hidden; position: relative;">
 						 <h5 class="card-title" style="float: left;"></h5>
 							${ItemLists.item_name }<br> ${ItemLists.item_category }<br> ${ItemLists.item_price }원
-							<a href="#" class="btn btn-primary"	style="position: absolute; right: 20px;">구입</a>
+							<a href="#" class="btn btn-info"	style="position: absolute; right: 20px;">구입</a>
 						</div>
 				</li>
 

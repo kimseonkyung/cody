@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bitcamp.cody.dao.CodyTimeListDao;
 import com.bitcamp.cody.dto.CodyDto;
+import com.bitcamp.cody.dto.MemberDto;
 
 public class CodyTimeListService {
 
@@ -19,5 +20,14 @@ public class CodyTimeListService {
 		dao = sqlSessionTemplate.getMapper(CodyTimeListDao.class);
 		List<CodyDto> list = dao.selectList();
 		return list; 
+	}
+
+    public MemberDto getId(int member_idx){
+		
+		dao = sqlSessionTemplate.getMapper(CodyTimeListDao.class);
+		
+		MemberDto list = dao.selectId(member_idx);
+		
+		return list;
 	}
 }	  

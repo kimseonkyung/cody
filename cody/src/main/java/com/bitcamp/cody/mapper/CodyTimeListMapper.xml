@@ -20,6 +20,10 @@
 		resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where cody_idx = #{cody_idx};
 	</select>
+	
+	<select id="selectId" resultType="com.bitcamp.cody.dto.MemberDto">
+		select * from member where member_idx = #{member_idx}
+	</select>
 
 
 </mapper>  

@@ -63,21 +63,6 @@
 </script>
 
 <style>
-.card-item-ol {
-   overflow: hidden;
-   column-width:240px;
-   column-gap: 15px;
-}
-
-.card-item-li {
-   width: 240px;
-   padding:10px;
-   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
-}
-
-.card-item {
-   height: 300px;
-}
 
 </style>
 </head>
@@ -131,7 +116,7 @@
                            <div style="padding-bottom: 10px;">
                               <img src="${item.item_image}"
                                  style="width: 40px; height: 50px">
-                              &emsp;${item.item_price}원<a href="#" class="btn btn-primary"
+                              &emsp;${item.item_price}원<a href="#" class="btn btn-info"
                                  style="position: absolute; right: 10px;">구입</a>
                            </div>
 
@@ -168,10 +153,10 @@
                            <c:when test="${loginInfo.member_idx eq irr.memberidx}">
                               <a
                                  href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}"
-                                 class="btn btn-primary" style="float: right;">수정</a>
+                                 class="btn btn-info" style="float: right;">수정</a>
                            </c:when>
                            <c:otherwise>
-                              <button id="follow" class="btn btn-primary" 
+                              <button id="follow" class="btn btn-info" 
                                  style="float: right;" onclick="idx(${irr.memberidx})">팔로우</button>
                               
                            </c:otherwise>
@@ -192,7 +177,7 @@
    <!-- Bootstrap core JavaScript
     ================================================== -->
    <!-- Placed at the end of the document so the pages load faster -->
-<!--    <script>
+   <script>
    $(document).ready(function () {
          
    })  
@@ -246,7 +231,7 @@
       } */
       
    </script>
- -->
+
 
 
 

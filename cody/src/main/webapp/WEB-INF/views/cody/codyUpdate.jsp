@@ -7,7 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>코디수정</title>
-
+<!--웹폰트 추가 : 구글 폰트-->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script">
 <!-- CODY CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/cody.css" type="text/css" rel="stylesheet">
 
@@ -39,9 +40,8 @@
 #content {
 	border: 2px solid darkgray;
 	border-radius: 5px 5px 5px 5px;
-	min-width: 842px;
-	min-height: 1500px;
-	position: relative;
+	max-width: 920px;
+	display: flex;
 	/*border: 1px solid gray;*/
 	/*중앙정렬*/
 	margin: 0 auto;
@@ -50,103 +50,79 @@
 	margin-top: 10px;
 }
 
+#image {
+	width: 920px;
+	height: 460px;
 
+}
 
 .side1 {
 	margin-top: 45px;
 	margin-left: 90px;
+	position: relative;
+	float: left;
 }
 
-.side2 {
-	margin-top: 420px;
-	margin-left: 90px;
-}
+#image_main{
+    width: 610px;
+    height: 460px;
+    position: relative;
+	float: right;
 
-.side3 {
-	margin-top: 75px;
-	margin-left: 115px;
-}
-
-#main {
-	width: 550px;
-	min-height: 1312px;
-	right: 0;
-	position: absolute;
-}
-
-#image {
-	width: 550px;
-	height: 460px;
 }
 
 #image_frame {
-	width: 550px;
+	width: 610px;
 	height: 460px;
 	position: absolute;
 }
 
 #image_block {
-	width: 284px;
-	height: 364px;
-	border: 2px solid darkgray;
+	max-width: 284px;
+	max-height: 364px;
 	position: absolute;
 	left: 20px;
 	margin-top: 45px;
-	border-radius: 5px 5px 5px 5px;
 }
 
 #image_input {
 	width: 160px;
 	height: 38px;
 	position: absolute;
-	right: 40px;
+	right: 61px;
 	margin-top: 180px;
 	margin-left: 50px;
 }
 
 .sub1 {
-	margin-top: 240px;
+	margin-top: 226px;
 	position: absolute;
-	right: -20px;
+	right: 24px;
 }
 
 .sub2 {
-	margin-top: 260px;
+	margin-top: 251px;
 	position: absolute;
-	right: 45px;
+	right: 82px;
 }
-
-#replace {
-	/*button tag 에 원하는 스타일 적용*/
-	position: absolute;
-	width: 160px;
-	height: 38px;
-	font-weight: 600;
-	border-color: transparent;
-	font-size: 16px;
-	background: blue;
-	color: #fff;
-	cursor: pointer;
+#item_container{
+    width: 920px;
+	diplay: flex;
 }
-
-#input_image {
-	width: 160px;
-	height: 38px;
-	vertical-align: middle;
-	font-size: 16px;
-	border-color: transparent;
-	opacity: 0;
-	/*input type="file" tag 투명하게 처리*/
-	position: relative;
-	cursor: pointer;
-}
-
 #item {
-	width: 550px;
+	width: 610px;
 	min-height: 100px;
-	left: 0;
+	float:right;
+	position:relative;
+	margin-left: 80px;
 }
+.side2 {
+	margin-top: 20px;
+	margin-left: 84px;
+	float: left;
+	position: relative;
 
+}
 #input_item {
 	margin-left: 20px;
 	margin-top: 20px;
@@ -156,7 +132,7 @@
 	font-size: 15px;
 	font-weight: 600;
 	border-color: transparent;
-	background: blue;
+	background: #17a2b8;
 	border-radius: 3px;
 	color: #fff;
 	cursor: pointer;
@@ -167,11 +143,56 @@
 	margin-top: 8px;
 }
 
+#main {
+	width: 920px;
+	display: flex;
+}
+#main_container {
+	width: 610px;
+    position: relative;
+	float: right;
+	margin-left: 70px;
+
+}
+.side3 {
+	margin-top: 40px;
+	margin-left: 135px;
+	float: left;
+	position: relative;
+}
+
+#replace {
+	/*button tag 에 원하는 스타일 적용*/
+	position: absolute;
+	width: 160px;
+	height: 38px;
+	font-weight: 600;
+	border-color: transparent;
+	font-size: 16px;
+	background: #17a2b8;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 0.25rem;
+}
+
+#input_image {
+	width: 242px;
+	height: 38px;
+	vertical-align: middle;
+	font-size: 16px;
+	border-color: transparent;
+	opacity: 0;
+	/*input type="file" tag 투명하게 처리*/
+	position: relative;
+	cursor: pointer;
+	right: 83px;
+	overflow: hidden;
+}
+
 #modal-dialog {
 	width: 400px;
 	height: 300px;
 }
-
 #title {
 	width: 550px;
 	height: 100px;
@@ -213,10 +234,8 @@
 }
 
 #intro_text {
-	border: 2px solid darkgray;
-	width: 462px;
-	height: 316px;
-	border-radius: 3px 3px 3px 3px;
+	max-width: 462px;
+	max-height: 316px;
 	margin-left: 2px;
 }
 
@@ -298,9 +317,9 @@
 }
 
 #input {
-	height: 80px;
-	overflow: hidden;
 	bottom: 0;
+	left: 35%;
+	height: 80px;
 }
 
 #upload_input {
@@ -311,14 +330,13 @@
 }
 
 #input_upload {
-	position: absolute;
 	width: 240px;
 	height: 48px;
 	border-radius: 3px;
 	font-weight: 600;
 	border-color: transparent;
 	font-size: 20px;
-	background: blue;
+	background: #17a2b8;
 	color: #fff;
 	cursor: pointer;
 }
@@ -341,7 +359,10 @@
 	text-align: left;
 	vertical-align: middle;
 }
-input:focus, textarea:focus{resize: none, outline: none;} 
+
+input:focus, textarea:focus {
+	resize: none, outline: none;
+}
 
 .checkedItem {
 	 border: 1px solid blue!important;
@@ -380,44 +401,23 @@ input:focus, textarea:focus{resize: none, outline: none;}
 			<h5 class="mb-0 text-white lh-100">CODY</h5><small>bitcamp 2018</small>
 		</div>
 	</div>
-
-	<div class="my-3 p-3 bg-white rounded">
 	
 	<div id="content">
 		<form action="${pageContext.request.contextPath}/codyUpdateOk" method="post" enctype="multipart/form-data" onkeydown="return capturekey(event)">
 			
-			<div class="row">
-			
-			<!--------------------- 메인 사이드 ----------------------->
-				<div class="col-md-4 order-md-1 mr-auto">
+			<!--------------------메인--------------------->
+
+				<div class="row">
+				<div class="col-md-12">
 				
-					   <div class="my-3 p-3 bg-white rounded">
-						<div class="side1">
+				<div id="image">
+					 <div class="side1">
 							<h4>코디 이미지※</h4>
 						</div>
-						</div>
-					
-					   <div class="my-3 p-3 bg-white rounded">
-						<div class="side2">
-							<h4>착용 아이템※</h4>
-						</div>
-						</div>
-						
-						<div class="my-3 p-3 bg-white rounded">
-						<div class="side3">
-                        <h4>코디 상세</h4>
-                        </div>
-                        </div>
-					
-				</div>
-
-		<!--------------------메인--------------------->
-			<div class="col-md-7 order-md-2">
-			<div class="my-3 p-3 bg-white rounded">
-				<div id="image">
+						<div id="image_main">
 					<div id="image_frame">
 						<div id="image_block">
-							<img id="preview" src="" width="280" height="360">
+							<img id="preview" src="#" style="width:284px; height:380px; border:2px solid darkgray; border-radius: 5px 5px 5px 5px;">
 						</div>
 						<div id="image_input">
 										<button id="replace">사진 업로드</button>
@@ -431,9 +431,13 @@ input:focus, textarea:focus{resize: none, outline: none;}
 									</div>
 								</div>
 							</div>
-						</div>
+							</div>
 				
-				<div class="my-3 p-3 bg-white rounded">
+				
+				<div id="item_container">
+				        <div class="side2">
+							<h4>착용 아이템※</h4>
+						</div>
 				  <div id="item">
 				 <!-- 항목 추가 아이템 테이블 -->
 								<div>
@@ -481,30 +485,35 @@ input:focus, textarea:focus{resize: none, outline: none;}
 						</div>
 						</div>
 
-    <div class="my-3 p-3 bg-white rounded">
+    <div id="main">
+    <div class="side3">
+         <h4>코디 상세</h4>
+    </div>
+    
+    <div id="main_container">
+    
 			 <div id="title">
                     <div id="title_name">
                         <h4>코디 제목</h4>
                     </div>
                     <div id="title_input"><input id="input_title" type="text" name="cody_title" onkeyup="limit1(this)" value="${cody.cody_title}"></div>
                 </div>
-                </div>
     
-     <div class="my-3 p-3 bg-white rounded">	           
+               
 				 <div id="intro">
                     <div id="intro_name">
                         <h4>코디 소개문</h4>
                     </div>
                     <div id="intro_input"><div id="intro_text">
-                    <textarea class="text" style= "resize: none" rows="13" cols="63"  onkeyup="limit2(this)" name="cody_intro" id="cody_intro">${cody.cody_intro}</textarea></div>
+                    <textarea class="text" style= "resize: none; width:100%; border:2px solid darkgray; border-radius: 5px 5px 5px 5px;" rows="13"
+					name="cody_intro" onkeyup="limit2(this)">${cody.cody_intro}</textarea></div>
                     <div id="intro_sub">
                     <h6>※ 500 자 이내로 입력하십시오.</h6>
                     </div>
                     </div>
                 </div>
-                </div>
       
-      <div class="my-3 p-3 bg-white rounded">	          
+          
 			<div id="gender">
                     <div id="gender_name">
                         <h4>성별※</h4>
@@ -513,9 +522,9 @@ input:focus, textarea:focus{resize: none, outline: none;}
                         <label><input type="radio" id="gender1" name="cody_gender" value="true">Man</label>
                         <label><input type="radio" id="gender2"  name="cody_gender" value="false">Woman</label></div>
                 </div>
-                </div>
+
         
-    <div class="my-3 p-3 bg-white rounded">
+
 	<div id="height">
 		<div id="height_name">
 			<h4>신장</h4>
@@ -529,9 +538,9 @@ input:focus, textarea:focus{resize: none, outline: none;}
 			</select>
 		</div>
 	</div>
-	</div>
+
 			
-	<div class="my-3 p-3 bg-white rounded">
+
 	<div id="age">
 		<div id="age_name">
 			<h4>나이</h4>
@@ -546,29 +555,26 @@ input:focus, textarea:focus{resize: none, outline: none;}
 		</div>
 	</div>
 	</div>
-		<input type="text" name="cody_idx" value="${cody.cody_idx }">
-    	<input type="text" name="member_idx" value="${cody.member_idx }">
+		<input type="hidden" name="cody_idx" value="${cody.cody_idx }" style="display:hidden;">
+    	<input type="hidden" name="member_idx" value="${cody.member_idx }" style="display:hidden;">
 	
 	</div>
    	
 
 	<!--------------------업로드--------------------->
 <div class="col-md-12 order-md-3">
-	<div class="my-3 p-3 bg-white rounded">
 	<div id="input">
 		<div id="upload_input">
 			<input id="input_upload" type="submit" value="확인">
 		</div>
 	</div>
 	</div>
-</div>
+
 
 
        </div>
+       </div>
 		</form>
-       
-        </div>
-	
 		</div>
 		
 		</main>

@@ -21,22 +21,6 @@
 	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
 	rel="stylesheet">
 <style>
-.card-item-ol {
-   overflow: hidden;
-   column-width:240px;
-   column-gap: 15px;
-}
-
-.card-item-li {
-   width: 240px;
-   padding:10px;
-   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
-   overflow: hidden;
-}
-
-.card-item {
-   height: 300px;
-}
 
 </style>	
 </head>
@@ -104,11 +88,10 @@
 					    
 				<c:choose>
 			<c:when test="${loginInfo.member_idx eq irr.memberidx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.cody_idx}" class="btn btn-primary" style="float:right;">수정</a>						
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.cody_idx}" class="btn btn-info" style="float:right;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<button id="follow" class="btn btn-primary" 
-                                 style="float: right;" onclick="idx(${irr.memberidx})">팔로우</button>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.cody_idx}&member_idx=${irr.member_idx}" class="btn btn-info" style="float:right;">팔로우</a>
 			</c:otherwise>
 			</c:choose>
 						</div>						
@@ -134,7 +117,6 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
-		<script src="${pageContext.request.contextPath}/resources/script/cody_lim.js"></script>
 
 </body>
 </html>

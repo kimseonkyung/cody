@@ -48,20 +48,6 @@ input:focus, textarea:focus {
 	#button2{
 	width: 300px;
 	}
-	.card-item-ol {
-		overflow: hidden;
-		
-	}
-	
-	.card-item-li {
-		width: 240px; 
-		float: left;
-		margin: 0 10px 10px 10px;
-	}
-
-	.card-item {
-		height: 300px;
-	}
 	
 	.myBtn-secondary {
  		color: #000;
@@ -150,7 +136,7 @@ input:focus, textarea:focus {
 	
 	
 	<div class="p-3 bg-white rounded box-shadow">
-          <button type="button" class="btn btn-primary" data-target="#registerupdateModal" data-toggle="modal" style="float:right;margin-top:7%;margin-right: 5%;">프로필변경</button>	
+          <button type="button" class="btn btn-info" data-target="#registerupdateModal" data-toggle="modal" style="float:right;margin-top:7%;margin-right: 5%;">프로필변경</button>	
 	      
 	      <div class="p-3 bg-white rounded box-shadow" style="width:460px;">
           <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo}" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
@@ -179,7 +165,7 @@ input:focus, textarea:focus {
 		<div class="p-3 bg-white rounded box-shadow">
          <div class="row">
         <form action="${pageContext.request.contextPath }/codyForm" method="get" style="margin: 0 auto;">
-		<button id="button2" type="submit" class="btn btn-primary btn-lg">코디등록</button>
+		<button id="button2" type="submit" class="btn btn-info btn-lg">코디등록</button>
         </form>
 		</div>		
 		</div>
@@ -301,7 +287,7 @@ input:focus, textarea:focus {
 
 								<div class="form-group">
 									<div class="col-xl-12ss">
-										<button type="submit" class="btn btn-primary p-3"
+										<button type="submit" class="btn btn-info p-3"
 											style="background-color: #01D1FE; color: white; border: none; width: 90%; font-size: 20px;">가입</button>
 									</div>
 								</div>
@@ -399,7 +385,7 @@ $('#gBookmark').click(function(){
 	 		$('#myPageList').append('<div class="myCard">'
 	 				+ '<a href="/cody/codyListView?cody_idx='+ e.cody_idx +'"><img class="card-img-top" src="/cody/uploadfile/codyphoto/'+ e.cody_image +'" style="height: 300px;" alt="Card image cap"></a>'
 	 				+ '<div class="card-body" style="height: 100%">'
-	 				+ '<a href="${pageContext.request.contextPath }/deleteBookmark?bookmark_idx='+ e.bookmark_idx +'"><button class="btn btn-primary" style="float: right;">스크랩 취소</button></a>'
+	 				+ '<a href="${pageContext.request.contextPath }/deleteBookmark?bookmark_idx='+ e.bookmark_idx +'"><button class="btn btn-info" style="float: right;">스크랩 취소</button></a>'
 	 				+ '</div>'
 	 				+ '</div>');
 	 	});
@@ -432,21 +418,13 @@ $('#gFollower').click(function () {
 							+ '<a href="/cody/listView?member_idx='+ e.followrp_idx +'"><img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrp_imag +'" style="height: 250px;" alt="Card image cap"></a>'
 							+ '<div class="card-body" style="height: 100%">'
 							+ e.followrp_id		
-							+ '<div id="dd'+e.followrq_idx+'">'
-					);
-															
-					if(e.followinfo == true) {
-						$('#dd'+e.followrq_idx).append('<button class="btn btn-primary"style="float: right;">팔로우</button>');
-					} else {
-						$('#dd'+e.followrq_idx).append('<button class="btn btn-danger"style="float: right;">팔로잉</button>');
-					}		
-					+ '</div>'
-					+ '</div>'
-							
-				
-				
-		});
-	})
+							+ '<br>'
+							+'<button class="btn btn-info"style="float: right;" onclick="idx(${irr.memberidx})">팔로잉</button>'
+                            + e.followrp_birth
+							+ '</div>'							
+							+ '</div>');
+				});
+			})
 			.fail(function(err) { // 실패
 				console.log(err);
 			});
@@ -464,25 +442,18 @@ $('#gFollow').click(function () {
 	 		.done(function(data) {
 		 		$('#myPageList').empty();
 			
-				$.each(data, function(i, e ) {
+				$.each(data, function(i, e) {
 					$('#myPageList').append('<div class="myCard">'
 							+ '<a href="/cody/listView?member_idx='+ e.followrq_idx +'"><img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrq_imge +'" style="height: 250px;" alt="Card image cap"></a>'
 							+ '<div class="card-body" style="height: 100%">'
 							+ e.followrq_id		
 							+ '<br>'
 							+ e.followrq_birth
-							+ '<br>'
-							+ '<div id="dd'+e.followrq_idx+'">'
+				
+							+'<button class="btn btn-info"style="float: right;" >팔로잉</button>'
 							
-							);																	
-							if(e.followinfo == true) {
-								$('#dd'+e.followrq_idx).append('<button class="btn btn-primary"style="float: right;" onclick="followUpdate('+e.followrq_idx +')">팔로우</button>');
-							} else {
-								$('#dd'+e.followrq_idx).append('<button class="btn btn-danger"style="float: right;">팔로잉</button>');
-							}		
 							+ '</div>'
-							+ '</div>'
-																	
+							+ '</div>');
 				});
 			})
 			.fail(function(err) { // 실패
@@ -490,16 +461,6 @@ $('#gFollow').click(function () {
 			});
 	
 })  
-
-
-
-
-
-
-
-
-
-
 	
 
 /* $('.btn-group-myPage').click(function() {
