@@ -21,20 +21,22 @@
 	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
 	rel="stylesheet">
 <style>
-	.card-item-ol {
-		overflow: hidden;
-		
-	}
-	
-	.card-item-li {
-		width: 240px; 
-		float: left;
-		margin: 0 10px 10px 10px;
-	}
+.card-item-ol {
+   overflow: hidden;
+   column-width:240px;
+   column-gap: 15px;
+}
 
-	.card-item {
-		height: 300px;
-	}
+.card-item-li {
+   width: 240px;
+   padding:10px;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+   overflow: hidden;
+}
+
+.card-item {
+   height: 300px;
+}
 
 </style>	
 </head>
@@ -100,26 +102,39 @@
 				<ol class="card-item-ol" >
 
 			<!------------------ 코디 리스트 반복 출력 ----------------------->
-			<c:forEach var="CodyLists" items="${CodyLists}">
-				<li class="card card-item-li">
-				<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${CodyLists.cody_idx}"> <img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${CodyLists.cody_image}" alt="Card image cap"></a>
-		           <div class="card-body" style="overflow: hidden; position: relative;padding-bottom: 15px;padding-left: 15px;padding-right: 15px;padding-top: 15px;height: 160px;">
-						 <h5 class="card-title" style="float: left;">${CodyLists.cody_title}</h5><br>
-							<div><c:set var="data" value="${CodyLists.cody_gender}" /> 
-					         <c:choose>
-	                           <c:when test="${data eq true}">
-					             Man
-					           </c:when>
-					           <c:otherwise>
-					            Woman
-					           </c:otherwise>
-					          </c:choose>
-					         </div> 
-					 <div>${CodyLists.cody_height}cm</div> 
-					 <div>${CodyLists.cody_age}세</div>
-							<div class="card-body" style="overflow: hidden; position: relative;height: 55px;padding-top: 15px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;">
-							<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}" class="btn btn-primary"	style="position: absolute; right: 0px;">좋아요</a>
-						</div>
+			<c:forEach var="irr" items="${irr}">
+				<li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;">
+				<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.cody_idx}"> <img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${irr.cody_image}" alt="Card image cap"></a>
+		           <div class="card-body" style="position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
+						 <h5 class="card-title">${irr.cody_title}</h5>
+							<div><c:set var="data" value="${irr.cody_gender}" /> </div> 
+					 <div class="card-main" style="float:left;height: 40px;">
+					 <c:choose>
+			<c:when test="${not empty irr.member_photo}" >
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.member_photo}" style="width:40px; height: 40px;">
+		</c:when>
+		<c:otherwise>
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/member.png" width="40" height="40"> 
+		
+		</c:otherwise>
+		</c:choose>
+				
+						 
+						 <div style="float:right; padding-left: 15px;">
+						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.member_id}</p></div>
+							
+					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.cody_height}cm ${irr.cody_age}세</p></div>
+					    </div>
+					    </div>
+					    
+				<c:choose>
+			<c:when test="${loginInfo.member_idx eq irr.memberidx}" >
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.cody_idx}" class="btn btn-primary" style="float:right;">수정</a>						
+			</c:when>
+			<c:otherwise>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.cody_idx}&member_idx=${irr.member_idx}" class="btn btn-primary" style="float:right;">팔로우</a>
+			</c:otherwise>
+			</c:choose>
 						</div>						
 				</li>
 				</c:forEach>
