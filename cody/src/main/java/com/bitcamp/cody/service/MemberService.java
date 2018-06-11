@@ -150,6 +150,26 @@ public class MemberService {
 		}
 
 
+		public ArrayList<String> findpw(MemberDto member) throws Exception {
+			// TODO Auto-generated method stub
+			dao = sqlSessionTemplate.getMapper(LoginDao.class);
+			List<MemberDto> list = dao.findpw(member);
+			ArrayList<String> findpw = new ArrayList<String>();  
+			for(int i =0; i <list.size(); i ++) {
+				String pw = list.get(i).getMember_pw();
+				findpw.add(pw);
+
+			}
+			return findpw;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		public String idchk(String str) throws Exception {
 			dao = sqlSessionTemplate.getMapper(LoginDao.class);
@@ -164,6 +184,48 @@ public class MemberService {
 
 		}
 
+		
+		 public MemberDto kakaock(MemberDto member) {
+		      dao = sqlSessionTemplate.getMapper(LoginDao.class);
+		      MemberDto memberck = dao.selectById(member.getMember_id());
+		      int cks =0;
+		      System.out.println("체크");
+		      if(memberck!=null) {
+		         //아이디 있음
+		         //memberck 값이 존재
+		         //아이디 있으면 0;
+		   
+		         
+		      }else {
+
+		         member.setMember_ph("");
+		         memberck = null;
+		         cks = dao.insertMember(member);
+		   
+		         
+		         //회원가입 가능 
+		         //insert 성공시 1 값      
+		   
+		      }
+		      
+		      return memberck;
+		   
+		   }
+
+		   public MemberDto memberCk(String member_id) {
+		      dao = sqlSessionTemplate.getMapper(LoginDao.class);
+		      MemberDto member = dao.selectById(member_id);
+		      if(member ==null) {
+		         // 없으면 
+		         member =null;
+		      }else {
+		      
+		      }
+		   
+		      return member;
+		   }
+		
+		
 		
 		
 		

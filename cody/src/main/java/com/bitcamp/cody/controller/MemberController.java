@@ -208,7 +208,7 @@ public class MemberController {
 		
 		
 		
-		@RequestMapping(value = "/kakaologin", method = RequestMethod.POST)
+		/*@RequestMapping(value = "/kakaologin", method = RequestMethod.POST)
 		public String kakaoLogin(@RequestParam(name="kakaoEmail") String email, 
 				                 @RequestParam(name="id") String id,                             
 				                 @RequestParam(name="profile_image") String profile, 
@@ -228,17 +228,111 @@ public class MemberController {
 			
 			System.out.println(session.getAttribute("loginInfo"));
 			
-			/*notifier.sendMail(member.getMember_id(), "로그인이 성공적으로 처리되었습니다.");*/
+			notifier.sendMail(member.getMember_id(), "로그인이 성공적으로 처리되었습니다.");
 
 			
 			
 			return"home";
-		}
+		}*/
 
 		
+		@RequestMapping("/kakaologin")
+		   @ResponseBody
+		   public String kakaologin(MemberDto member, HttpSession session) {
+		      // 비교 서비스
+			  MemberDto  members = service.kakaock(member);
+		      String ck = "y";
+
+		      if (members != null) {
+		         // 이미 가입된 아이디
+		         session.setAttribute("loginInfo", members);
+		         ck = "n";
+
+		      } else {
+		         // 회원가입 처리 디비 저장
+
+		         session.setAttribute("loginInfo", member);
+		         ck = "y";
+		        
+		 		
+		 		System.out.println(session.getAttribute("loginInfo"));
+
+		      }
+
+		      return ck;
+
+		   }
+
 		
+		   @RequestMapping("/member/naver")
+		   public String naverlogin(Model model) {
+
+		      String page = "member/aa";
+
+		      System.out.println("들어왔습니다");
+
+		      return page;
+		   }
+
+		   
+		   @RequestMapping("/member/naverLogin")
+		   @ResponseBody
+		   public String naverLogin(MemberDto member, HttpSession session) {
+		      // 비교 서비스
+
+			   MemberDto members = service.kakaock(member);
+
+		      String ck = "y";
+
+		      if (members != null) {
+		         // 이미 가입된 아이디
+		         session.setAttribute("user", members);
+		         ck = "n";
+
+		      } else {
+		         // 회원가입 처리 디비 저장
+
+		         session.setAttribute("user", member);
+		         ck = "y";
+
+		      }
+
+		      return ck;
+		   }
+
+		   
+		   
+		   @RequestMapping("/member/facebook")
+		   @ResponseBody
+		   public String facebookLogin(MemberDto member, HttpSession session) {
+			   MemberDto members = service.kakaock(member);
+
+		      String ck = "y";
+
+		      if (members != null) {
+		         // 이미 가입된 아이디
+		         session.setAttribute("user", members);
+		         ck = "n";
+
+		      } else {
+		         // 회원가입 처리 디비 저장
+
+		         session.setAttribute("user", member);
+		         ck = "y";
+
+		      }
+
+		      return ck;
+		   }
 		
 	
+		   
+		   
+		   
+		   
+		   
+		   
+		   
 		
 		/*아이디 찾기*/
 		
@@ -265,6 +359,42 @@ public class MemberController {
 
 			return findEmail;
 		}
+		
+		/*비밀번호 찾기*/
+		@RequestMapping(value = "/findpw", method=RequestMethod.GET)
+		public String findpwform() {
+			return "member/findpw";
+		}
+		
+		
+		
+		
+		@RequestMapping(value = "/findpw" , method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+		public @ResponseBody String findpw(@ModelAttribute MemberDto member, Model model , HttpServletResponse response)throws Exception {
+
+			System.out.println(member.toString());
+
+
+			ArrayList <String> pwList = service.findpw(member);
+			System.out.println(pwList.toString());
+			System.out.println(pwList.get(0));
+			String findpw = "{\"member_pw\":\""+pwList+"\"}";
+
+			System.out.println(findpw);
+
+			return findpw;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		/*아이디 유무 체크*/

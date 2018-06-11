@@ -37,6 +37,11 @@
     SELECT * FROM MEMBER 
     </select>
 
+<select id = "findpw" resultType = "com.bitcamp.cody.dto.MemberDto">
+    SELECT * FROM MEMBER 
+    </select>
+    
+    
 <select id = "idchk" resultType = "com.bitcamp.cody.dto.MemberDto">
      select * from member where member_id = #{member_id}
 </select>

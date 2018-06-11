@@ -17,7 +17,7 @@ public interface LoginDao {
 	public List<MemberDto> findId(MemberDto member);
 	public List<MemberDto> selectByIdx1(int idx);
     public MemberDto idchk(String str);
-
+    public List<MemberDto> findpw(MemberDto member);
 	
 	//public int selectCount();
 	
