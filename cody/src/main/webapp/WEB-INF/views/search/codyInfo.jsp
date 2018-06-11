@@ -107,7 +107,8 @@
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.cody_idx}" class="btn btn-primary" style="float:right;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.cody_idx}&member_idx=${irr.member_idx}" class="btn btn-primary" style="float:right;">팔로우</a>
+						<button id="follow" class="btn btn-primary" 
+                                 style="float: right;" onclick="idx(${irr.memberidx})">팔로우</button>
 			</c:otherwise>
 			</c:choose>
 						</div>						
@@ -133,6 +134,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
+		<script src="${pageContext.request.contextPath}/resources/script/cody_lim.js"></script>
 
 </body>
 </html>

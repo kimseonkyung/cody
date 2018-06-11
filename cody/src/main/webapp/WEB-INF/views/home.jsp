@@ -158,7 +158,8 @@ iframe {
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-primary" style="float:right;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-primary" style="float:right;">팔로우</a>
+					<button id="follow" class="btn btn-primary" 
+                                 style="float: right;" onclick="idx(${cody.member_idx})">팔로우</button>
 			</c:otherwise>
 			</c:choose>			
 						</div>
@@ -202,7 +203,8 @@ iframe {
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-primary" style="float:right;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.codyidx}&member_idx=${irr.memberidx}" class="btn btn-primary" style="float:right;">팔로우</a>
+					<button id="follow" class="btn btn-primary" 
+                                 style="float: right;" onclick="idx(${irr.memberidx})">팔로우</button>
 			</c:otherwise>
 			</c:choose>			
 						</div>

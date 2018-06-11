@@ -552,6 +552,9 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 	src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/script/cody_jeong.js"></script>
+	
+<script
+	 src="${pageContext.request.contextPath}/resources/script/cody_lim.js"></script>
 
 <script>
 	var elements = document.getElementsByTagName("div");
