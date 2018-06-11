@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script>
 		alert('${msg1}');
-		location.href = '${pageContext.request.contextPath }/bookmarkList';
+		location.href = '${pageContext.request.contextPath }/myPage';
 	</script>
 </head>
 <body>

@@ -397,9 +397,9 @@ $('#gBookmark').click(function(){
 	 	
 	 	$.each(data, function(i, e ){
 	 		$('#myPageList').append('<div class="myCard">'
-	 				+ '<a href="/cody/bookmark?cody_idx='+e.bookmark_idx+ '&member_idx='+e.member_idx+'&cody_image='+e.cody_image+'"><img class="card-img-top" src="/cody/uploadfile/codyphoto/'+ e.cody_image +'" style="height: 300px;" alt="Card image cap"></a>'
+	 				+ '<a href="/cody/codyListView?cody_idx='+ e.cody_idx +'"><img class="card-img-top" src="/cody/uploadfile/codyphoto/'+ e.cody_image +'" style="height: 300px;" alt="Card image cap"></a>'
 	 				+ '<div class="card-body" style="height: 100%">'
-	 				+ e.cody_image
+	 				+ '<a href="${pageContext.request.contextPath }/deleteBookmark?bookmark_idx='+ e.bookmark_idx +'"><button class="btn btn-primary" style="float: right;">스크랩 취소</button></a>'
 	 				+ '</div>'
 	 				+ '</div>');
 	 	});

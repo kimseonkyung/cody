@@ -45,7 +45,7 @@ public class BookmarkController {
 		
 				
 										
-		String msg1 = "스크랩 완료!.";
+		String msg1 = "스크랩 완료! myPage에서 확인하세요.";
 
 		if (resultCnt == 0) {
 		
@@ -66,11 +66,6 @@ public class BookmarkController {
 	@RequestMapping("/deleteBookmark")
 	
 	public String deleteBookmark(Model model, @RequestParam("bookmark_idx") int idx, HttpSession session) {
-		
-		MemberDto member = (MemberDto)session.getAttribute("loginInfo");
-		int memberidx = member.getMember_idx();
-		
-		System.out.println("memberIdx : " + memberidx);
 		
 		int resultCnt = service.deleteBookmark(idx);
 
