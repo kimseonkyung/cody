@@ -123,13 +123,27 @@ iframe {
     <!--------------------- 메인 내용1 ----------------------->
 <div class="col-md-10 order-md-2">
 	 <div class="my-3 p-3 bg-white rounded box-shadow">
-		<p class="border-bottom border-gray pb-2 mb-0" style="vertical-align: inherit;font-size:30px; text-align: center;">랭킹 리스트</p>
+		<div class="border-bottom border-gray pb-2 mb-0" style="vertical-align: inherit;font-size:30px; text-align: center;">랭킹 리스트</div>
 	<!------------------ 랭킹리스트 반복 출력 ----------------------->			
 			<ol class="card-item-ol" >
 			<c:forEach var="cody" items="${arr }" begin="0" end="2" step="1" varStatus="status">		
 				<li class="card card-item-li" id="ranking${status.index }">
-					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}"><div id="ranking"><font style="vertical-align: inherit; color: white;">${status.index }</font></div><img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap">
-					<c:set var="ranking" value="${status.index }+1"/>
+					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}">
+					<div id="ranking">
+					<c:choose>
+					<c:when test="${status.index eq 0}">
+					<font style="vertical-align: inherit; color: gold;">${status.index+1 }</font>
+					</c:when>
+					<c:when test="${status.index eq 1}">
+					<font style="vertical-align: inherit; color: silver;">${status.index+1 }</font>
+					</c:when>
+					<c:otherwise>
+					<font style="vertical-align: inherit; color: #CD7F32;">${status.index+1 }</font>
+					</c:otherwise>
+					</c:choose>
+					</div>
+					<img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}" alt="Card image cap">
+					<c:set var="ranking" value="${status.index }"/>
 					
 					</a>
 						<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
