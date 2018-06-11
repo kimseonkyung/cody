@@ -97,9 +97,16 @@
 					<!------------------ 코디 리스트 반복 출력 ----------------------->
 					<c:forEach var="MemberLsit" items="${MemberLsit}">
 						<li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;">
-							<img class="card-img-top card-item"
+							<c:choose>
+							<c:when test="${not empty MemberLsit.member_photo}" >
+							<img class="card-img-top card-item rounded-circle"
 							src="${pageContext.request.contextPath}/uploadfile/memberphoto/${MemberLsit.member_photo}"
 							alt="Card image cap">
+							</c:when>
+		                      <c:otherwise>
+		                      <img class="card-img-top card-item" src="${pageContext.request.contextPath}/uploadfile/member.png" alt="Card image cap">
+							  </c:otherwise>
+		                    </c:choose>
 							<div class="card-body"
 								style="overflow: hidden; position: relative; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px;">
 								<div style="text-align: center;"><font style="vertical-align: inherit;">${MemberLsit.member_id}</font></div>							

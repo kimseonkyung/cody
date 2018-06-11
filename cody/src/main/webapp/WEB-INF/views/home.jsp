@@ -29,19 +29,21 @@
 
 
 <style>
-	.card-item-ol {
-		overflow: hidden;
-		
-	}
-	
-	.card-item-li {
-		width: 240px; 
-		float: left;
-		margin: 20px 20px 20px 20px;
-	}
-	.card-item {
-		height: 300px;
-	}
+.card-item-ol {
+   overflow: hidden;
+   column-width:240px;
+   column-gap: 15px;
+}
+
+.card-item-li {
+   width: 240px;
+   padding:10px;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+}
+
+.card-item {
+   height: 300px;
+}
 </style>
  <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -168,7 +170,7 @@ iframe {
 			<ol class="card-item-ol" >
 					<c:forEach var="irr" items="${irr}">
 
-						<li class="card card-item-li"><a
+						<li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;"><a
 							href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.codyidx}"><img
 								class="card-img-top card-item"
 								src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"

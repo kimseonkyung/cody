@@ -49,10 +49,6 @@
 	border: 1px solid #ccccff;
 }
 
-.elements /*코디,아이템,회원 스타일*/ {
-	padding: 1px;
-	border: 1px solid #ccccff;
-}
 
 section.buttons {
 	overflow: hidden;
@@ -65,13 +61,12 @@ section.buttons {
 section.buttons>label {
 	/*블럭 형태로 처리*/
 	display: block;
-	width: 100px;
+	width: 100%;
 	height: 40px;
 	/*블럭의 중앙에 텍스트 위치*/
 	text-align: center;
 	line-height: 30px;
-	/* label 을 수평으로 정렬 */
-	display: inline-block;
+	
 	/*테두리 속성*/
 	box-sizing: border-box;
 	/*border: 1px solid #000000;*/
@@ -146,17 +141,17 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 							<div class="d-flex flex-column flex-md-row mr-auto">
 								<div id="section1" class="label">
 									<input class="form-control mr-sm-2" type="text"
-										placeholder="Search" id="searchbox" aria-label="Search" >
+										placeholder="Search" id="searchbox" aria-label="Search" data-toggle="dropdown">
 
 									<div id="section1b" class="elements">
 										<input id="codyinfo" type="radio"> 
 										<input id="iteminfo" type="radio" > 
 										<input id="memberinfo" type="radio">
 
-										<section class="buttons" id="section1b">
-											<label for="codyinfo" id="cody">코디</label> 
-											<label for="iteminfo" id="item">아이템</label>
-											<label for="memberinfo" id="member">회원</label>
+										<section class="buttons dropdown-menu" id="section1b" aria-labelledby="searchbox">
+											<label class="dropdown-item" for="codyinfo" id="cody">코디</label> 
+											<label class="dropdown-item" for="iteminfo" id="item">아이템</label>
+											<label class="dropdown-item" for="memberinfo" id="member">회원</label>
 										</section>
 									</div>
 								</div>
