@@ -340,11 +340,11 @@ margin: 0 auto;
 								<div id="funtion" class="bg-white">									
 										
 										<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">									
-										<button id="bookmark" class="bit btn-info" style="right: 140px;margin-top: 8px;margin-right: 57px;">
+										<button id="bookmark" class="btn btn-info" style="right: 140px;margin-top: 8px;margin-right: 57px;">
 										스크랩</button></a>
 										
 										
-										<button id="repleShow" class="bit btn-info" style="float:right;margin-top: 8px;margin-right: 12px;">코멘트</button>		
+										<button id="repleShow" class="btn btn-info" style="float:right;margin-top: 8px;margin-right: 12px;">코멘트</button>		
 										
 									</div>
 										
@@ -362,7 +362,11 @@ margin: 0 auto;
 			<c:forEach var="repleList" items="${repleList }">
 				<div id="repleView" style="margin-left: ${40*repleList.redepth}px;">
 					<div class="repleDiv">
-					<img class="rounded-circle repleImg" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${repleList.member_photo }">
+					<c:set var="photo" value="${repleList.member_photo }"/>
+			        <c:if test="${photo eq null }">
+			        <c:set var="photo" value="member.png"/>
+			        </c:if>
+					<img class="rounded-circle repleImg" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${photo }">					
 					&emsp;<p class="h3 repleId">${repleList.member_id }</p> &emsp;&emsp;${repleList.reple_date }
 					
 					<c:choose>
@@ -458,7 +462,7 @@ margin: 0 auto;
 							${item.item_name }<br>
 							${item.item_category }( ${item_color } )<br>
 							${item.item_price }<br>
-							<button class="btn btn-info" onclick="location.href='${item.item_link}'">구입</button>
+							<button class="btn btn-info" onclick="location.href='${item.item_link}'" style="float:  right; width: 100px;">구입</button>
 							</p>
 							</li>
 							
