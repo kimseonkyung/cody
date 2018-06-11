@@ -31,20 +31,21 @@
 	
 
 <style>
-	.card-item-ol {
-		overflow: hidden;
-		
-	}
-	
-	.card-item-li {
-		width: 240px; 
-		float: left;
-		margin: 0 10px 10px 10px;
-	}
+.card-item-ol {
+   overflow: hidden;
+   column-width:240px;
+   column-gap: 15px;
+}
 
-	.card-item {
-		height: 300px;
-	}
+.card-item-li {
+   width: 240px;
+   padding:10px;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+}
+
+.card-item {
+   height: 300px;
+}
 
 </style>
 
@@ -120,11 +121,11 @@
 			<!------------------ 아이템 리스트 반복 출력 ----------------------->
 			<c:forEach var="ItemLists" items="${ItemLists }">
 			
-				<li class="card card-item-li">
+				<li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;">
 					<a href="${pageContext.request.contextPath}/itemListView?item_idx=${ItemLists.item_idx}"><img class="card-img-top card-item" src="${ItemLists.item_image}" alt="Card image cap" onclick="itemListView(${item.item_idx})"></a>
 						<div class="card-body" style="overflow: hidden; position: relative;">
 						 <h5 class="card-title" style="float: left;"></h5>
-							${ItemLists.item_name }<br> ${ItemLists.item_category }<br> ${ItemLists.item_price }
+							${ItemLists.item_name }<br> ${ItemLists.item_category }<br> ${ItemLists.item_price }원
 							<a href="#" class="btn btn-primary"	style="position: absolute; right: 20px;">구입</a>
 						</div>
 				</li>

@@ -1,5 +1,7 @@
 package com.bitcamp.cody.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.MemberDto;
+import com.bitcamp.cody.service.CodyItemListService;
+import com.bitcamp.cody.service.CodyTimeListService;
 import com.bitcamp.cody.service.SearchService;
 
 @Controller
@@ -19,6 +23,10 @@ public class SearchController {
 
 	@Autowired
 	SearchService searchService;
+	@Autowired
+	CodyTimeListService codyTimeListService;
+	@Autowired
+	CodyItemListService codyItemListService;
 
 /*	// 아이템검색 뷰로 이동
 	@RequestMapping("/searchItem")
@@ -65,10 +73,31 @@ public class SearchController {
 			return "search/codyInfo";
 
 		List<CodyDto> CodyLists = searchService.getSearchCody(keyword2);
+		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
+		
+		for (CodyDto list : CodyLists) {
+			MemberDto member = searchService.getId(list.getMember_idx());
+			HashMap<Object, Object> map = new HashMap<>();
+			List<ItemDto> itemtime = new ArrayList<>();		
+			itemtime = codyItemListService.getCodyItemList(list.getCody_idx());
+			map.put(list.getCody_idx(),itemtime);	
+			map.put("cody_title",list.getCody_title());
+			map.put("cody_image",list.getCody_image());
+			map.put("cody_idx",list.getCody_idx());	
+			map.put("cody_age", list.getCody_age());
+			map.put("cody_height",list.getCody_height());
+			map.put("member_id", member.getMember_id() );
+			map.put("member_idx", list.getMember_idx() );
+			map.put("member_photo", member.getMember_photo() );
+			map.put(list, itemtime);
+			map.put("itemtime", itemtime);
+			irr.add(map);
+			
+		}
 
-		model.addAttribute("CodyLists", CodyLists);
+		model.addAttribute("irr", irr);
 
-		System.out.println("CodyLists : " + CodyLists.toString());
+		System.out.println("irr : " + irr.toString());
 
 		return "search/codyInfo";
 	}

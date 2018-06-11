@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,17 +20,19 @@
 	rel="stylesheet">
 <style>
 .card-item-ol {
-	overflow: hidden;
+   overflow: hidden;
+   column-width:240px;
+   column-gap: 15px;
 }
 
 .card-item-li {
-	width: 240px;
-	float: left;
-	margin: 0 10px 10px 10px;
+   width: 240px;
+   padding:10px;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
 }
 
 .card-item {
-	height: 300px;
+   height: 300px;
 }
 </style>
 </head>
@@ -93,22 +96,17 @@
 
 					<!------------------ 코디 리스트 반복 출력 ----------------------->
 					<c:forEach var="MemberLsit" items="${MemberLsit}">
-						<li class="card card-item-li">
-						<a href="${pageContext.request.contextPath}/listView?member_idx=${MemberLsit.member_idx}">
+						<li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;">
 							<img class="card-img-top card-item"
 							src="${pageContext.request.contextPath}/uploadfile/memberphoto/${MemberLsit.member_photo}"
-							alt="Card image cap"></a>
+							alt="Card image cap">
 							<div class="card-body"
-								style="overflow: hidden; position: relative; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px; height: 160px;">
-								<h5 class="card-title" style="float: left;">${MemberLsit.member_id}</h5>
-								<br>
-
-								<div>메일: ${MemberLsit.member_email}</div>
-								<div>가입일: ${MemberLsit.member_reg}</div>
+								style="overflow: hidden; position: relative; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px;">
+								<div style="text-align: center;"><font style="vertical-align: inherit;">${MemberLsit.member_id}</font></div>							
+								<div style="text-align: center;"><font style="vertical-align: inherit;">가입일:<fmt:formatDate value="${MemberLsit.member_reg}" pattern="yyyy-MM-dd"/></font></div>
 								<a
 									href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}"
-									class="btn btn-primary"
-									style="position: absolute; right: 20px; bottom: 20px">팔로우</a>
+									class="btn btn-primary" style="display:block;">팔로우</a>
 							</div>
 						</li>
 					</c:forEach>
