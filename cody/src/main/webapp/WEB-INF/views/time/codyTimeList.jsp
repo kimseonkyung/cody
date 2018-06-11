@@ -104,35 +104,10 @@
       </div>
    </div>
 
-   <div class="row">
-      <!--------------------- 메인 사이드 ----------------------->
-      <div class="col-md-2 order-md-1 mb-4">
-         <div class="my-3 p-3 bg-white rounded box-shadow">
-            <h1>카테고리</h1>
-            <ul>
-               <li><a href="#">데이터</a></li>
-               <li><a href="#">데이터</a></li>
-               <li><a href="#">데이터</a></li>
-               <li><a href="#">데이터</a></li>
-               <li><a href="#">데이터</a></li>
-            </ul>
+    <div class="row">
+     <!--------------------- 메인 사이드 ----------------------->
 
-            <div class="my-3 p-3 bg-white rounded box-shadow">
-               <h1>최근 글</h1>
-               <ul>
-                  <li><a href="#">데이터</a></li>
-                  <li><a href="#">데이터</a></li>
-                  <li><a href="#">데이터</a></li>
-                  <li><a href="#">데이터</a></li>
-                  <li><a href="#">데이터</a></li>
-               </ul>
-
-
-
-            </div>
-         </div>
-      </div>
-
+	<%@ include file="../top/aside.jsp" %>
 
       <div class="col-md-10 order-md-2">
          <div class="my-3 p-3 bg-white rounded box-shadow">

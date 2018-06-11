@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,19 +19,17 @@
 	rel="stylesheet">
 <style>
 .card-item-ol {
-   overflow: hidden;
-   column-width:240px;
-   column-gap: 15px;
+	overflow: hidden;
 }
 
 .card-item-li {
-   width: 240px;
-   padding:10px;
-   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+	width: 240px;
+	float: left;
+	margin: 0 10px 10px 10px;
 }
 
 .card-item {
-   height: 300px;
+	height: 300px;
 }
 </style>
 </head>
@@ -60,35 +57,12 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<!------------------------- 메인  --------------------------->
+<div class="row">
+     <!--------------------- 메인 사이드 ----------------------->
 
-		<div class="col-md-2 order-md-1 mb-4">
-			<div class="my-3 p-3 bg-white rounded box-shadow">
-				<h1>카테고리</h1>
-				<ul>
-					<li><a href="#">데이터</a></li>
-					<li><a href="#">데이터</a></li>
-					<li><a href="#">데이터</a></li>
-					<li><a href="#">데이터</a></li>
-					<li><a href="#">데이터</a></li>
-				</ul>
+	<%@ include file="../top/aside.jsp" %>
+	
 
-				<div class="my-3 p-3 bg-white rounded box-shadow">
-					<h1>최근 글</h1>
-					<ul>
-						<li><a href="#">데이터</a></li>
-						<li><a href="#">데이터</a></li>
-						<li><a href="#">데이터</a></li>
-						<li><a href="#">데이터</a></li>
-						<li><a href="#">데이터</a></li>
-					</ul>
-
-
-
-				</div>
-			</div>
-		</div>
 
 		<div class="col-md-10 order-md-2">
 			<div class="my-3 p-3 bg-white rounded box-shadow">
@@ -96,24 +70,22 @@
 
 					<!------------------ 코디 리스트 반복 출력 ----------------------->
 					<c:forEach var="MemberLsit" items="${MemberLsit}">
-						<li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;">
-							<c:choose>
-							<c:when test="${not empty MemberLsit.member_photo}" >
-							<img class="card-img-top card-item rounded-circle"
+						<li class="card card-item-li">
+						<a href="${pageContext.request.contextPath}/listView?member_idx=${MemberLsit.member_idx}">
+							<img class="card-img-top card-item"
 							src="${pageContext.request.contextPath}/uploadfile/memberphoto/${MemberLsit.member_photo}"
-							alt="Card image cap">
-							</c:when>
-		                      <c:otherwise>
-		                      <img class="card-img-top card-item" src="${pageContext.request.contextPath}/uploadfile/member.png" alt="Card image cap">
-							  </c:otherwise>
-		                    </c:choose>
+							alt="Card image cap"></a>
 							<div class="card-body"
-								style="overflow: hidden; position: relative; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px;">
-								<div style="text-align: center;"><font style="vertical-align: inherit;">${MemberLsit.member_id}</font></div>							
-								<div style="text-align: center;"><font style="vertical-align: inherit;">가입일:<fmt:formatDate value="${MemberLsit.member_reg}" pattern="yyyy-MM-dd"/></font></div>
+								style="overflow: hidden; position: relative; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px; height: 160px;">
+								<h5 class="card-title" style="float: left;">${MemberLsit.member_id}</h5>
+								<br>
+
+								<div>메일: ${MemberLsit.member_email}</div>
+								<div>가입일: ${MemberLsit.member_reg}</div>
 								<a
 									href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}"
-									class="btn btn-primary" style="display:block;">팔로우</a>
+									class="btn btn-primary"
+									style="position: absolute; right: 20px; bottom: 20px">팔로우</a>
 							</div>
 						</li>
 					</c:forEach>
