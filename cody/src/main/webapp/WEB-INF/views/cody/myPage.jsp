@@ -473,17 +473,16 @@ $('#gFollow').click(function () {
 							+ e.followrq_birth
 							+ '<br>'
 							+ '<div id="dd'+e.followrq_idx+'">'
+							
 							);																	
 							if(e.followinfo == true) {
-								$('#dd'+e.followrq_idx).append('<button class="btn btn-primary"style="float: right;">팔로우</button>');
+								$('#dd'+e.followrq_idx).append('<button class="btn btn-primary"style="float: right;" onclick="followUpdate('+e.followrq_idx +')">팔로우</button>');
 							} else {
 								$('#dd'+e.followrq_idx).append('<button class="btn btn-danger"style="float: right;">팔로잉</button>');
 							}		
 							+ '</div>'
 							+ '</div>'
-									
-						
-						
+																	
 				});
 			})
 			.fail(function(err) { // 실패
@@ -491,6 +490,16 @@ $('#gFollow').click(function () {
 			});
 	
 })  
+
+
+
+
+
+
+
+
+
+
 	
 
 /* $('.btn-group-myPage').click(function() {
