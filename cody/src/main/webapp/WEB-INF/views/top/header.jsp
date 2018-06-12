@@ -143,7 +143,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 						<form id="scarchform" class="form-inline mr-auto md-2" method ="GET">
 							<div class="d-flex flex-column flex-md-row mr-auto">
 								<div id="section1" class="label">
-									<input class="form-control mr-sm-2" type="text"
+									<input class="form-control" type="text"
 										placeholder="Search" id="searchbox" aria-label="Search" data-toggle="dropdown">
 
 									<div id="section1b" class="elements">
@@ -158,8 +158,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 										</section>
 									</div>
 								</div>
-								<button style="WIDTH: 60pt; HEIGHT: 30pt" class="btn btn-outline-success my-2 my-sm-0" 
-									type="submit">검색</button>
+								<button class="btn btn-secondary"type="submit"><i class="fas fa-search"></i></button>
 							</div>
 
 						</form>
