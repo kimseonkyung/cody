@@ -364,7 +364,6 @@ $(".card").click(function () {
 // 페이징 처리(원하는 페이지로 이동)
 function gopage(pages, lines) {
     location.href = '?' + "pages=" + pages;
-    $('#active span').css('color','red');
 }
 
 // 알림페이지 일괄확인
@@ -372,7 +371,7 @@ function receptionOk() {
 	
 	$.ajax({
 		type : 'post',
-		url : '${pageContext.request.contextPath}/receptionOk',
+		url : '/cody/receptionOk',
 		dataType : 'text',
 		data : {
 			},
@@ -384,11 +383,11 @@ function receptionOk() {
 }
 
 //알림페이지 확인
-function receptionOk(idx) {
+function recepOk(idx) {
 	
 	$.ajax({
 		type : 'post',
-		url : '${pageContext.request.contextPath}/recepOk',
+		url : '/cody/recepOk',
 		dataType : 'text',
 		data : {
 			reple_idx : idx

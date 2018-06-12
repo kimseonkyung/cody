@@ -48,7 +48,7 @@ public interface RepleDao {
 	int repleUpdate(RepleDto re);
 
 	// 알림글 총 개수
-	int totalCnt();
+	int totalCnt(int idx);
 
 	int repleAllDelete(int idx);
 

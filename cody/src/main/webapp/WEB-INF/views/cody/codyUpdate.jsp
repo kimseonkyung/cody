@@ -417,11 +417,12 @@ input:focus, textarea:focus {
 						<div id="image_main">
 					<div id="image_frame">
 						<div id="image_block">
-							<img id="preview" src="#" style="width:284px; height:380px; border:2px solid darkgray; border-radius: 5px 5px 5px 5px;">
+							<img id="preview" src="${pageContext.request.contextPath}/uploadfile/codyphoto/${cody.cody_image}" style="width:284px; height:380px; border:2px solid darkgray; border-radius: 5px 5px 5px 5px;">
 						</div>
 						<div id="image_input">
 										<button id="replace">사진 업로드</button>
 										<input id="input_image" type="file" name="photofile" accept="image/*">
+										<input type="hidden" name="cody_image" value="${cody.cody_image}" >
 									</div>
 									<div class="sub1">
 										<h6>권장 사이즈 : 가로 500 × 세로 667</h6>

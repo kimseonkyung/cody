@@ -111,7 +111,7 @@ public class RepleController {
 		int offset = (paging.getCurrentPageNo() - 1) * paging.getMaxPost(); // 게시물 몇번부터 가져올지
 
 		int noOfRecords = paging.getMaxPost();
-		int totalCnt = repleService.totalCount();
+		int totalCnt = repleService.totalCount(idx);
 		
 		// 내 코디에 작성된 댓글리스트 가져오기
 		List<RepleDto> list = repleService.noticeList(idx, offset, noOfRecords);

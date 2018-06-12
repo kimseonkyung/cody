@@ -129,9 +129,9 @@ public class RepleService {
 	}
 
 	// 게시물 총 개수
-	public int totalCount() {
+	public int totalCount(int idx) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
-		int cnt = dao.totalCnt();
+		int cnt = dao.totalCnt(idx);
 
 		return cnt;
 	}

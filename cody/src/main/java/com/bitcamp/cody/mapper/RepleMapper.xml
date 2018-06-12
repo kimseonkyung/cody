@@ -105,6 +105,7 @@
 	<!-- 알림글 총 개수 -->
 	<select id="totalCnt" resultType="int">
 		select count(*) from reple
+		where reception=true and cody_idx in (select cody_idx from cody where member_idx = #{idx})
 	</select>
 
 </mapper>

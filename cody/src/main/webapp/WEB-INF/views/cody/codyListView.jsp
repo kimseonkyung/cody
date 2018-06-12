@@ -371,10 +371,10 @@ margin: 0 auto;
 					
 					<c:choose>
 					<c:when test="${loginInfo.member_idx eq repleList.member_idx }">
-					<button class="ml-3" id="repleDelete${repleList.reple_idx }" onclick="repleDelete(${repleList.reple_idx })">삭제</button><br>
+					<a href="javascript:repleDelete(${repleList.reple_idx })"><i style="font-size: 20px; color: #444; margin-left: 10px;" class="far fa-trash-alt"></i></a>
 					</c:when>
 					<c:when test="${loginInfo ne null }">
-					<button class="ml-3" onclick="re_repleShow(${repleList.reple_idx })">답글</button>
+					<a href="javascript:re_repleShow(${repleList.reple_idx })" style="font-size: 15px; color: #444; margin-left: 10px;"><i class="fas fa-reply"></i>답글</a>
 					</c:when>
 					</c:choose>
 					
@@ -388,9 +388,9 @@ margin: 0 auto;
 						<input type="hidden" name="reparent" value=${repleList.reple_idx }>
 						<input type="hidden" name="redepth" value="${repleList.redepth }">
 						<input type="hidden" name="reorder" value="${repleList.reorder }">
-						<textarea class="border border-secondary rounded" name="reple_contents" rows="3" maxlength="450" style="width:100%;"></textarea>
+						<textarea class="border border-secondary rounded" name="reple_contents" maxlength="450" style="width:380px; height: 100px;"></textarea>
 					</form>
-						<button id="re_repleSave"  onclick="re_repleSave(${repleList.reple_idx })">저장</button>
+						<button class="btn-outline-dark saveBtn border-secondary rounded" id="re_repleSave" style="height: 100px; vertical-align: top;" onclick="re_repleSave(${repleList.reple_idx })">저장</button>
 					</div>
 					
 				</div>
@@ -415,7 +415,7 @@ margin: 0 auto;
 			<input type="hidden" name="reple_member_idx" value="${loginInfo.member_idx }">
 			<input type="hidden" name="reple_member_id" value="${loginInfo.member_id }">
 			<input type="hidden" name="reple_member_photo" value="${loginInfo.member_photo }">
-			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents"></textarea>
+			<textarea class="border border-secondary rounded" id="reple_contents" name="reple_contents" style="vertical-align: bottom; width: 360px;"></textarea>
 		</td>
 		<td><button class="btn-outline-dark saveBtn border-secondary rounded" type="button" id="repleSave">저장</button></td>
 		</tr>
