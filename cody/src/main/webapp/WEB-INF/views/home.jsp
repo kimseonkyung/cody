@@ -123,11 +123,11 @@ iframe {
     <!--------------------- 메인 내용1 ----------------------->
 <div class="col-md-10 order-md-2">
 	 <div class="my-3 p-3 bg-white rounded box-shadow">
-		<div class="border-bottom border-gray pb-2 mb-0" style="vertical-align: inherit;font-size:30px; text-align: center;">랭킹 리스트</div>
+		<p style="vertical-align: inherit;font-size:30px; text-align: center;">랭킹 리스트</p>
 	<!------------------ 랭킹리스트 반복 출력 ----------------------->			
 			<ol class="card-item-ol" >
 			<c:forEach var="cody" items="${arr }" begin="0" end="2" step="1" varStatus="status">		
-				<li class="card card-item-li" id="ranking${status.index }">
+				<li class="card card-item-li" id="ranking${status.index }" style="margin-bottom:50px;">
 					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}">
 					<div id="ranking">
 					<c:choose>
@@ -177,9 +177,11 @@ iframe {
 						</div>
 				</li>
             </c:forEach>
-			</ol>		
-	<!------------------ 전체 리스트 반복 출력 ----------------------->			
-			<p class="border-bottom border-gray pb-2 mb-0" style="vertical-align: inherit;font-size:30px; text-align: center;">전체 리스트</p>
+			</ol>
+			</div>		
+	<!------------------ 전체 리스트 반복 출력 ----------------------->
+				<div class="my-3 p-3 bg-white rounded box-shadow">
+			<p style="vertical-align: inherit;font-size:30px; text-align: center;">전체 리스트</p>
 			<ol class="card-item-ol" >
 					<c:forEach var="irr" items="${irr}">
 
