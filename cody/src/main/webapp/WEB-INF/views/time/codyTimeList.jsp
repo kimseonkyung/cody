@@ -24,45 +24,6 @@
    rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-
-<script type="text/javascript">
-   $(document).ready(function(event) {
-
-      $(window).scroll(function() {
-
-         var scrollHeight = $(window).scrollTop() + $(window).height();
-
-         var documentHeight = $(document).height();
-
-         //스크롤이 맨아래로 갔는지 아닌지 확인하는 if문
-
-         if (scrollHeight == documentHeight) {
-
-            for (var i = 0; i < 10; i++) {
-
-               $('<h1>Infinity Scroll11</h1>').appendTo('body');
-
-            }
-
-         }
-
-      });
-
-   });
-
-   //테스트를 위해 내부에 공간을 채워서 스크롤을 임의로 만듬
-
-   $(document).ready(function() {
-
-      for (var i = 0; i < 20; i++) {
-
-         $('<h1>infinity scroll</h1>').appendTo('body');
-
-      }
-
-   });
-</script>
-
 <style>
 
 </style>
@@ -83,10 +44,11 @@
 
    <div class="nav-scroller bg-white">
       <div class="container">
-         <nav class="nav nav-underline"> <a
-            class="nav-link col-4 mr-auto" href="#">all</a> <a
-            class="nav-link col-4 mr-auto" href="#">men</a> <a
-            class="nav-link col-4 mr-auto" href="#">women</a> </nav>
+         <nav class="nav nav-underline">
+			<a class="nav-link col-4 mr-auto" href="#" style="font-size: 22px; font-weight: 600;">All</a> 
+			<a class="nav-link col-4 mr-auto" href="#" style="font-size: 22px; font-weight: 600;">Men</a>
+			<a class="nav-link col-4 mr-auto" href="#" style="font-size: 22px; font-weight: 600;">Women</a>
+            </nav>
       </div>
    </div>
 
@@ -156,9 +118,7 @@
                         </div>
                         <c:choose>
                            <c:when test="${loginInfo.member_idx eq irr.memberidx}">
-                              <a
-                                 href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}"
-                                 class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>
+                              <a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right; width: 73px; height: 42px;">수정</a>
                            </c:when>
                            <c:otherwise>
                               <button class="btn btn-info" style="float: right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx})">
@@ -168,7 +128,8 @@
                            </c:otherwise>
                         </c:choose>
 
-                     </div></li>
+                     </div>
+                     </li>
                </c:forEach>
             </ol>
          </div>
