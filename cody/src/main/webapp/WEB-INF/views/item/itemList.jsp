@@ -31,20 +31,6 @@
 	
 
 <style>
-	.card-item-ol {
-		overflow: hidden;
-		
-	}
-	
-	.card-item-li {
-		width: 240px; 
-		float: left;
-		margin: 0 10px 10px 10px;
-	}
-
-	.card-item {
-		height: 300px;
-	}
 
 </style>
 
@@ -94,12 +80,12 @@
 			<!------------------ 아이템 리스트 반복 출력 ----------------------->
 			<c:forEach var="item" items="${items }">
 			
-				<li class="card card-item-li">
+				<li class="card card-item-li" style="display:inline-block; margin-bottom: 50px;">
 					<img class="card-img-top card-item" src="${item.item_image}" alt="Card image cap" onclick="itemListView(${item.item_idx})">
 						<div class="card-body" style="overflow: hidden; position: relative;">
 						 <h5 class="card-title" style="float: left;"></h5>
 							${item.item_name }<br> ${item.item_category }<br> ${item.item_price }
-							<a href="#" class="btn btn-primary"	style="position: absolute; right: 20px;">구입</a>
+							<a href="#" class="btn btn-info"	style="position: absolute; right: 20px;">구입</a>
 						</div>
 				</li>
 
