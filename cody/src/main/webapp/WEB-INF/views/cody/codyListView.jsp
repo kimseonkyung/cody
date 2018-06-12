@@ -352,9 +352,12 @@ margin: 0 auto;
 									<div class="codyLike">
 									<div style="padding: 10px 15px 10px 15px;">즐겨찾기( ${bookmarkCount } )</div>
 									<div style="padding: 10px 10px 10px 15px; border-left: 1px solid #999;">
+									<c:if test="${loginInfo eq null }">
+									<a href="javascript:bookmarkIns(${loginInfo.member_idx}, ${cody.cody_idx})"><i class="fas fa-plus" style="color: #444;"></i></a>
+									</c:if>
 									<c:if test="${loginInfo ne null }">
 										<c:if test="${bookmark ne null}">
-											<a href="javascript:bookmarkDel(${bookmark.bookmark_idx })">삭제</a>
+											<a href="javascript:bookmarkDel(${bookmark.bookmark_idx })"><i class="fas fa-minus" style="color: #444;"></i></a>
 										</c:if>
 										<c:if test="${bookmark eq null}">
 											<a href="javascript:bookmarkIns(${loginInfo.member_idx}, ${cody.cody_idx})"><i class="fas fa-plus" style="color: #444;"></i></a>
@@ -366,7 +369,7 @@ margin: 0 auto;
 									
 										
 										
-										<button id="repleShow" class="btn btn-info" style="float:right;margin-top: 8px;margin-right: 12px;">코멘트</button>		
+										<button id="repleShow" class="btn btn-info" style="float:right;margin-top: 20px;margin-right: 25px;">코멘트</button>		
 									</div>
 										
 								
