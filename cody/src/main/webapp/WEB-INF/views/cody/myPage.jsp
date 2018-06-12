@@ -432,13 +432,13 @@ $('#gFollow').click(function () {
 							+ '<br>'
 							+ e.followrq_birth
 							+ '<br>'
-							+ '<div id="dd'+e.followrq_idx+'">'
+							+ '<div id="followrq'+e.followrq_idx+'">'
 							
 							);																	
 							if(e.followinfoq == false) {
-								$('#dd'+e.followrq_idx).append('<button class="btn btn-primary"style="float: right;" onclick ="followdel2('+e.followidxq+')">수락 중/취소</button>');
+								$('#followrq'+e.followrq_idx).append('<button class="btn btn-primary"style="float: right;" onclick ="followdel2('+e.followidxq+')"><i class="fas fa-user-minus"></i><br>팔로우 취소</button>');
 							} else {
-								$('#dd'+e.followrq_idx).append('<button class="btn btn-danger"style="float: right;" onclick = "followdel3('+e.followidxq+')">팔로우 끊기</button>');
+								$('#followrq'+e.followrq_idx).append('<button class="btn btn-danger"style="float: right;" onclick = "followdel3('+e.followidxq+')"><i class="fas fa-user-check"></i><br>팔로 잉</button>');
 																
 							}		
 							+ '</div>'
@@ -512,13 +512,13 @@ $('#gFollower').click(function () {
 							+ e.followrp_id	
 							+ '<br>'
 							+ e.followrp_birth
-							+ '<div id="dd'+e.followrp_idx+'">'
+							+ '<div id="followrp'+e.followrp_idx+'">'
 					);
 															
 					if(e.followinfop == false) {
-						$('#dd'+e.followrp_idx).append('<button class="btn btn-primary"style="float: right;" onclick ="followUpdate('+e.followrp_idx+')">팔로우 수락</button>');
+						$('#followrp'+e.followrp_idx).append('<button class="btn btn-primary"style="float: right;" onclick ="followUpdate('+e.followrp_idx+')" ><i class="fas fa-user-plus"></i><br>팔로우 수락</button>');
 					} else {
-						$('#dd'+e.followrp_idx).append('<button class="btn btn-danger"style="float: right;" onclick = "followDelete('+e.followidxp+')">팔로우 끊기</button>');
+						$('#followrp'+e.followrp_idx).append('<button class="btn btn-danger"style="float: right;" onclick = "followDelete('+e.followidxp+')"><i class="fas fa-user-check"></i><br>팔로잉 </button>');
 					}		
 					+ '</div>'
 					+ '</div>'
