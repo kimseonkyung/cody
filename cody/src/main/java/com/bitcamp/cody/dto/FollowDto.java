@@ -37,7 +37,7 @@ public class FollowDto {
 	public void setM_response(int m_response) {
 		this.m_response = m_response;
 	}
-	public boolean isFollowinfo() {
+	public boolean getFollowinfo() {
 		return followinfo;
 	}
 	public void setFollowinfo(boolean followinfo) {
