@@ -29,6 +29,20 @@
 
 
 <style>
+.card-item-ol {
+   overflow: hidden;
+   column-width:240px;
+   column-gap: 15px;
+}
+
+.card-item-li {
+   width: 240px;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+}
+
+.card-item {
+   height: 320px;
+}
 #ranking{
 width: 25px;
 height: 25px;
