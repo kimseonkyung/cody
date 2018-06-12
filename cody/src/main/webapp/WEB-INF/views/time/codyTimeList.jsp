@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -123,7 +124,7 @@
                         </c:forEach>
 
 
-                        <div class="card-main" style="float: left; height: 40px;">
+                        <div class="card-main" style="float: left; height: 40px;margin-top: 3px;">
                            <c:choose>
 			<c:when test="${not empty irr.memberphoto}" >
 		<img class="rounded-circle"
@@ -138,8 +139,12 @@
                            
                            <div style="float: right; padding-left: 15px;">
                               <div>
-                                 <p
-                                    style="vertical-align: inherit; margin-bottom: 0px; height: 20px;">${irr.memberid}</p>
+                              <c:set var="memberId" value="${irr.memberid}"/>
+						      <c:set var="Id"  value="${fn:length(memberId)}"/>
+						      <c:if test="${Id > 9}">
+						      <c:set var="memberId" value="${fn:substring(memberId, 0, 8)} ..." />
+						      </c:if>
+                                 <p style="vertical-align: inherit; margin-bottom: 0px; height: 20px;">${memberId}</p>
                               </div>
 
                               <div>
@@ -153,11 +158,12 @@
                            <c:when test="${loginInfo.member_idx eq irr.memberidx}">
                               <a
                                  href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}"
-                                 class="btn btn-info" style="float: right;">수정</a>
+                                 class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>
                            </c:when>
                            <c:otherwise>
-                              <button id="follow" class="btn btn-info" 
-                                 style="float: right;" onclick="idx(${irr.memberidx})">팔로우</button>
+                              <button class="btn btn-info" style="float: right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx})">
+                              <div style="margin-top: 5px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div>
+                              <div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div></button>
                               
                            </c:otherwise>
                         </c:choose>
