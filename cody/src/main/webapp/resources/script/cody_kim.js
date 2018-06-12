@@ -448,6 +448,11 @@ function bookmarkDel(idx) {
 };
 
 
+function loginCh() {
+	alert('로그인 이후에 작성 가능합니다.');
+	$("#loginModal").modal('show');
+	return false;
+};
 
 
 
