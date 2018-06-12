@@ -21,13 +21,15 @@
 </style>
 <body>
 
+            <main role="main" class="container">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center">
 		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center my-5" style=" position:absolute; top:45%;left:30%;">
-			<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/main" style="font-size:50px;">
-			CODY
+			<a class="navbar-brand mr-auto" href="${pageContext.request.contextPath}/main">
+			<h1 style="font-size:50px;color: white;position:absolute;">CODY</h1>
 			</a>
-	
+
   </div>          
 </div>
+</main>
 </body>
 </html>

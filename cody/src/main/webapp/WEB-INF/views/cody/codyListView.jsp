@@ -316,13 +316,13 @@ margin: 0 auto;
 					<c:when test="${loginInfo.member_idx eq cody.member_idx }">
 					<div class="col-md-3">
 					<div style="float: right;">
-					<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}"><input class="bit btn-info" type="button" value="수정"></a>
-					<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}"><input class="bit btn-info" type="button" value="삭제"></a>
+					<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}"><button class="btn btn-info" type="button" >수정</button></a>
+					<a href="${pageContext.request.contextPath }/codyDelete?cody_idx=${cody.cody_idx}"><button class="btn btn-info" type="button" >삭제</button></a>
 					</div>
 					</div>
 					</c:when>
 					<c:when test="${loginInfo ne null }">
-					<div class="col-md-3"><a href="#"><input class="bit btn-info" type="button" value="팔로우하기" style="float:right;"></a>	</div>
+					<div class="col-md-3"><a href="#"><button class="btn btn-info" type="button" style="float:right;">팔로우</button></a>	</div>
 					</c:when>
 					</c:choose>
 			

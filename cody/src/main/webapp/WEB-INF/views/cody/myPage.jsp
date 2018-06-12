@@ -153,8 +153,14 @@ input:focus, textarea:focus {
           <button type="button" class="btn btn-primary" data-target="#registerupdateModal" data-toggle="modal" style="float:right;margin-top:7%;margin-right: 5%;">프로필변경</button>	
 	      
 	      <div class="p-3 bg-white rounded box-shadow" style="width:460px;">
-          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo}" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
-          
+	      <c:choose>
+	      <c:when test="${not empty member.member_photo}" >
+          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${member.member_photo}" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
+         </c:when>
+         <c:otherwise>
+         <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/member.png" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
+         </c:otherwise>
+          </c:choose>
           <div style="float:right; margin-top:9%;">
           <div><p style="vertical-align: inherit;margin-bottom: 0px; font-size:20px;">${loginInfo.member_id}</p></div>							
 		  <div><p style="vertical-align: inherit;margin-bottom: 0px; font-size:20px;"><fmt:formatDate value="${loginInfo.member_reg}" pattern="yyyy-MM-dd"/></p></div>
