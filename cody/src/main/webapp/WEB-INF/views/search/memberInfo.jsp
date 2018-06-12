@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,17 +66,18 @@
 							<img class="card-img-top card-item"
 							src="${pageContext.request.contextPath}/uploadfile/memberphoto/${MemberLsit.member_photo}"
 							alt="Card image cap"></a>
-							<div class="card-body"
-								style="overflow: hidden; position: relative; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px; height: 160px;">
-								<h5 class="card-title" style="float: left;">${MemberLsit.member_id}</h5>
-								<br>
-
-								<div>메일: ${MemberLsit.member_email}</div>
-								<div>가입일: ${MemberLsit.member_reg}</div>
-								<a
-									href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}"
-									class="btn btn-info"
-									style="position: absolute; right: 20px; bottom: 20px">팔로우</a>
+							<div class="card-body" style="overflow: hidden; position: relative; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px; height: 160px;">
+								<h5 class="card-title" style="text-align: center;">${MemberLsit.member_id}</h5>
+								<div style="text-align: center;">가입일:&ensp;<fmt:formatDate value="${MemberLsit.member_reg}" pattern="yyyy-MM-dd"/></div>
+								<c:choose>
+			                    <c:when test="${loginInfo.member_idx eq MemberLsit.member_idx}" >
+			                    <button type="button" class="btn btn-info" data-target="#modifyModal" data-toggle="modal" style="position: absolute; bottom: 20px">프로필변경</button>
+								</c:when>
+			                    <c:otherwise>
+								<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}"
+									class="btn btn-info" style="position: absolute; bottom: 20px">팔로우</a>
+							    </c:otherwise>
+			                 </c:choose>
 							</div>
 						</li>
 					</c:forEach>

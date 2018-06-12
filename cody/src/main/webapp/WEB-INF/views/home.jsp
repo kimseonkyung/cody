@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,7 +138,7 @@ iframe {
     <!--------------------- 메인 내용1 ----------------------->
 <div class="col-md-10 order-md-2">
 	 <div class="my-3 p-3 bg-white rounded box-shadow">
-		<p style="vertical-align: inherit;font-size:30px; text-align: center;">랭킹 리스트</p>
+		<p style="vertical-align: inherit;font-size:23px; margin-left: 37px; max-width: 823px; border-bottom: 1px solid darkgray;">랭킹 리스트</p>
 	<!------------------ 랭킹리스트 반복 출력 ----------------------->			
 			<ol class="card-item-ol" >
 			<c:forEach var="cody" items="${arr }" begin="0" end="2" step="1" varStatus="status">		
@@ -162,7 +163,7 @@ iframe {
 					</a>
 						<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
 						
-						<div class="card-main" style="float:left;height: 40px;">
+						<div class="card-main" style="float:left;height: 40px;margin-top: 3px;">
 						<c:choose>
 			<c:when test="${not empty cody.member_photo}" >
 		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${cody.member_photo }" style="width:40px; height: 40px;">
@@ -175,14 +176,23 @@ iframe {
 						
 						 
 						 <div style="float:right; padding-left: 15px;">
-						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${cody.member_id}</p></div>
+						 <div>
+						 <c:set var="memberId" value="${cody.member_id}"/>
+						 <c:set var="Id"  value="${fn:length(memberId)}"/>
+						 <c:if test="${Id > 9}">
+						   <c:set var="memberId" value="${fn:substring(memberId, 0, 8)} ..." />
+						  </c:if>
+						  <p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">
+						  ${memberId}
+						 </p>
+						 </div>
 							
 					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${cody.cody_height}cm ${cody.cody_age}세</p></div>
 					    </div>
 					    </div>
 			<c:choose>
 			<c:when test="${loginInfo.member_idx eq cody.member_idx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;width: 62px;">수정</a>						
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
 			</c:when>
 			<c:otherwise>
 						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;">
@@ -196,7 +206,7 @@ iframe {
 			</div>		
 	<!------------------ 전체 리스트 반복 출력 ----------------------->
 				<div class="my-3 p-3 bg-white rounded box-shadow">
-			<p style="vertical-align: inherit;font-size:30px; text-align: center;">전체 리스트</p>
+			<p style="vertical-align: inherit;font-size:23px; margin-left: 37px; max-width: 823px; border-bottom: 1px solid darkgray;">전체 리스트</p>
 			<ol class="card-item-ol" >
 					<c:forEach var="irr" items="${irr}">
 
@@ -208,7 +218,7 @@ iframe {
 							
 							<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
 						
-						<div class="card-main" style="float:left;height: 40px;">
+						<div class="card-main" style="float:left;height: 40px;margin-top: 3px;">
 						<c:choose>
 			<c:when test="${not empty irr.photo}" >
 		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.photo }" style="width:40px; height: 40px;">
@@ -221,7 +231,16 @@ iframe {
 				
 						 
 						 <div style="float:right; padding-left: 15px;">
-						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.id}</p></div>
+						 <div>
+						 <c:set var="memberId2" value="${irr.id}"/>
+						 <c:set var="Id2"  value="${fn:length(memberId2)}"/>
+						 <c:if test="${Id2 > 9}">
+						   <c:set var="memberId2" value="${fn:substring(memberId2, 0, 8)} ..." />
+						  </c:if>
+						 <p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">
+						 ${memberId2}
+						 </p>
+						 </div>
 							
 					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.codyheight}cm ${irr.codyage}세</p></div>
 					    </div>
@@ -229,7 +248,7 @@ iframe {
 					    
 				<c:choose>
 			<c:when test="${loginInfo.member_idx eq irr.memberidx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right;">수정</a>						
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
 			</c:when>
 			<c:otherwise>
 						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;">

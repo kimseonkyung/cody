@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,9 +66,14 @@
 				<li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;">
 				<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.cody_idx}"> <img class="card-img-top card-item" src="${pageContext.request.contextPath }/uploadfile/codyphoto/${irr.cody_image}" alt="Card image cap"></a>
 		           <div class="card-body" style="position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
-						 <h5 class="card-title">${irr.cody_title}</h5>
+						  <c:set var="codyTt" value="${irr.cody_title}"/>
+						 <c:set var="Tt"  value="${fn:length(codyTt)}"/>
+						 <c:if test="${Tt > 9}">
+						   <c:set var="codyTt" value="${fn:substring(codyTt, 0, 8)} ..." />
+						  </c:if>
+						 <h5 class="card-title" style="text-align: center;">${codyTt}</h5>
 							<div><c:set var="data" value="${irr.cody_gender}" /> </div> 
-					 <div class="card-main" style="float:left;height: 40px;">
+					 <div class="card-main" style="float:left;height: 40px;margin-bottom: 10px;margin-top: 3px;">
 					 <c:choose>
 			<c:when test="${not empty irr.member_photo}" >
 		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.member_photo}" style="width:40px; height: 40px;">
@@ -80,18 +86,28 @@
 				
 						 
 						 <div style="float:right; padding-left: 15px;">
-						 <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">${irr.member_id}</p></div>
+						 <div>
+						 <c:set var="memberId2" value="${irr.member_id}"/>
+						 <c:set var="Id2"  value="${fn:length(memberId2)}"/>
+						 <c:if test="${Id2 > 9}">
+						   <c:set var="memberId2" value="${fn:substring(memberId2, 0, 8)} ..." />
+						  </c:if>
+						 <p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">
+						 ${memberId2}
+						 </p>						
+						 </div>
 							
 					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.cody_height}cm ${irr.cody_age}세</p></div>
 					    </div>
 					    </div>
 					    
 				<c:choose>
-			<c:when test="${loginInfo.member_idx eq irr.memberidx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.cody_idx}" class="btn btn-info" style="float:right;">수정</a>						
+			<c:when test="${loginInfo.member_idx eq irr.member_idx}" >
+				<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.cody_idx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>							
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.cody_idx}&member_idx=${irr.member_idx}" class="btn btn-info" style="float:right;">팔로우</a>
+			    <a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.cody_idx}&member_idx=${irr.member_idx}" class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;">
+				<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;"></i></div><div><i style="font-size: 14px;">팔로우</i></div></a>					
 			</c:otherwise>
 			</c:choose>
 						</div>						
