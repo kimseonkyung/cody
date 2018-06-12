@@ -168,10 +168,11 @@ iframe {
 					    </div>
 			<c:choose>
 			<c:when test="${loginInfo.member_idx eq cody.member_idx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;">수정</a>						
+						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;width: 62px;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;"><i class="fas fa-user-alt"></i><br>팔로우</a>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;">
+						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div></a>
 			</c:otherwise>
 			</c:choose>			
 						</div>
@@ -217,7 +218,8 @@ iframe {
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${irr.codyidx}&member_idx=${irr.memberidx}" class="btn btn-info" style="float:right;"><i class="fas fa-user-alt"></i><br>팔로우</a>
+						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;">
+						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;"></i></div><div><i style="font-size: 14px;">팔로우</i></div></a>
 			</c:otherwise>
 			</c:choose>			
 						</div>
