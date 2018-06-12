@@ -150,7 +150,7 @@ input:focus, textarea:focus {
 	
 	
 	<div class="p-3 bg-white rounded box-shadow">
-          <button type="button" class="btn btn-primary" data-target="#registerupdateModal" data-toggle="modal" style="float:right;margin-top:7%;margin-right: 5%;">프로필변경</button>	
+          <button type="button" class="btn btn-primary" data-target="#modifyModal" data-toggle="modal" style="float:right;margin-top:7%;margin-right: 5%;">프로필변경</button>	
 	      
 	      <div class="p-3 bg-white rounded box-shadow" style="width:460px;">
 	      <c:choose>

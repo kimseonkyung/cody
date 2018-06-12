@@ -494,25 +494,12 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 									
 									
 								</div>
-								
-								
-								
-								
-								
-								
-								
-								
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-5">
-									<input class="p-3" id="joinBtn" type="submit" value="회원탈퇴">
-								</div>
-								
-								
-								
+
 
 								<div class="form-group">
 									<div class="col-xl-12ss">
 										<button type="submit" class="btn btn-primary p-3"
-											style="background-color: #01D1FE; color: white; border: none; width: 90%; font-size: 20px;">수정</button>
+											style="background-color: #01D1FE; color: white; border: none; width: 100%; font-size: 20px;">수정</button>
 									</div>
 								</div>
 								
