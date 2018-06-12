@@ -1,5 +1,6 @@
 package com.bitcamp.cody.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -44,6 +45,28 @@ public class BookmarkListService {
 		
 		
 		
+	}
+
+	public BookmarkDto bookTest(int memberIdx, int codyIdx) {
+		
+		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("memberIdx", memberIdx);
+		map.put("codyIdx", codyIdx);
+		
+		BookmarkDto book = dao.bookTest(map);
+		
+		return book;
+	}
+	
+	public int bookmarkCodyCount(int idx) {
+		
+		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
+		
+		int count = dao.bookmarkCodyCount(idx);
+		
+		return count;
 	}
 
 	

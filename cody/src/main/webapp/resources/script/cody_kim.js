@@ -378,6 +378,10 @@ function receptionOk() {
 		success : function(data) {
 			alert("확인완료");
 			location.reload(true);
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert("에러 발생  \n" + textStatus + " : " + errorThrown);
+			self.close();
 		}
 	});
 }
@@ -394,7 +398,61 @@ function recepOk(idx) {
 		},
 		success : function(data) {
 			location.reload(true);
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert("에러 발생  \n" + textStatus + " : " + errorThrown);
+			self.close();
 		}
 	});
 }
+
+// 즐겨찾기 추가
+function bookmarkIns(memberIdx, codyIdx) {
+	
+	$.ajax({
+		type : 'post',
+		url : '/cody/bookmark',
+		data : {
+			member_idx : memberIdx,
+			cody_idx : codyIdx,
+		},
+		success : function(data) {
+			alert('성공');
+			location.reload(true);
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert("에러 발생  \n" + textStatus + " : " + errorThrown);
+		}
+	});
+	
+};
+
+//즐겨찾기 삭제
+function bookmarkDel(idx) {
+	
+	$.ajax({
+		type : 'post',
+		url : '/cody/bookmarkDel',
+		data : {
+			bookmark_idx : idx
+		},
+		success : function(data) {
+			alert('성공');
+			location.reload(true);
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert("에러 발생  \n" + textStatus + " : " + errorThrown);
+		}
+	});
+	
+};
+
+
+
+
+
+
+
+
+
 

@@ -139,19 +139,12 @@
 }
 #funtion{
 max-width: 556px;
-	min-height: 58px;
+	min-height: 80px;
 	border: 1px solid darkgray;
 	margin-bottom: 10px;
 	border-radius: 0.25rem
 }
 
-#like_list {
-	max-width: 556px;
-	min-height: 58px;
-	border: 1px solid darkgray;
-	margin-bottom: 10px;
-	border-radius: 0.25rem
-}
 
 #right_content {
 	width: 414px;
@@ -225,7 +218,7 @@ margin: 0 auto;
 
 .repleDiv {
 	max-width:440px; 
-	margin-top: 10px;
+	margin-top: 20px;
 	border: 1px solid #aaa; 
 	border-radius: 10px;
 }
@@ -249,12 +242,12 @@ margin: 0 auto;
 
 .saveBtn {
 	width: 70px;
-	height: 113px;
+	height: 112px;
 	text-align: center;
 	width: 50px;
 	height: 50px;
  	border: 1px solid #aaa;
- 	margin-left: 5px;
+ 	vertical-align: top;
  }
  
 #reple {
@@ -273,6 +266,25 @@ margin: 0 auto;
 	width: 300px;
 	margin: 0 20px;
 }
+
+.codyLike {
+	width: 190px;
+	height: 46px;
+	text-align: center;
+	color: #888;
+	font-weight: bold;
+	border: 1px solid #999;
+	float: left;
+	margin: 15px 0 15px 20px;
+}
+
+.codyLike > div {
+	display: inline-block;
+}
+
+
+
+
 
 
 </style>
@@ -322,7 +334,7 @@ margin: 0 auto;
 					</div>
 					</c:when>
 					<c:when test="${loginInfo ne null }">
-					<div class="col-md-3"><a href="#"><button class="btn btn-info" type="button" style="float:right;">팔로우</button></a>	</div>
+					<div class="col-md-3"><a href="#"><button class="btn btn-info" type="button" style="float:right;">팔로우</button></a></div>
 					</c:when>
 					</c:choose>
 			
@@ -336,21 +348,27 @@ margin: 0 auto;
 										<img src="${pageContext.request.contextPath }/uploadfile/codyphoto/${cody.cody_image}"style="width: 100%; object-fit: contain;">
 									</c:if>
 								</div>
-
-								<div id="funtion" class="bg-white">									
+								<div id="funtion" class="bg-white">
+									<div class="codyLike">
+									<div style="padding: 10px 15px 10px 15px;">즐겨찾기( ${bookmarkCount } )</div>
+									<div style="padding: 10px 10px 10px 15px; border-left: 1px solid #999;">
+									<c:if test="${loginInfo ne null }">
+										<c:if test="${bookmark ne null}">
+											<a href="javascript:bookmarkDel(${bookmark.bookmark_idx })">삭제</a>
+										</c:if>
+										<c:if test="${bookmark eq null}">
+											<a href="javascript:bookmarkIns(${loginInfo.member_idx}, ${cody.cody_idx})"><i class="fas fa-plus" style="color: #444;"></i></a>
+										</c:if>
+									</c:if>
+									</div>
+									</div>		
 										
-										<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}&cody_image=${cody.cody_image}">									
-										<button id="bookmark" class="btn btn-info" style="right: 140px;margin-top: 8px;margin-right: 57px;">
-										스크랩</button></a>
+									
 										
 										
 										<button id="repleShow" class="btn btn-info" style="float:right;margin-top: 8px;margin-right: 12px;">코멘트</button>		
-										
 									</div>
 										
-									
-								<div id="like_list" class="bg-white">
-								</div>	
 								
 								
 								
@@ -360,7 +378,8 @@ margin: 0 auto;
 												<!------------------------ 답글 리스트 ---------------------------->
 		<div id="repleList" class="bg-white">
 			<c:forEach var="repleList" items="${repleList }">
-				<div id="repleView" style="margin-left: ${40*repleList.redepth}px;">
+				
+				<div id="repleView" style="margin-left: ${50*repleList.redepth}px;">
 					<div class="repleDiv">
 					<c:set var="photo" value="${repleList.member_photo }"/>
 			        <c:if test="${photo eq null }">
@@ -390,7 +409,7 @@ margin: 0 auto;
 						<input type="hidden" name="reorder" value="${repleList.reorder }">
 						<textarea class="border border-secondary rounded" name="reple_contents" maxlength="450" style="width:380px; height: 100px;"></textarea>
 					</form>
-						<button class="btn-outline-dark saveBtn border-secondary rounded" id="re_repleSave" style="height: 100px; vertical-align: top;" onclick="re_repleSave(${repleList.reple_idx })">저장</button>
+						<button class="btn-outline-dark saveBtn border-secondary rounded" id="re_repleSave" style="height: 100px;" onclick="re_repleSave(${repleList.reple_idx })">저장</button>
 					</div>
 					
 				</div>
@@ -398,7 +417,7 @@ margin: 0 auto;
 		</div>
 
 		<div id="reple" class="bg-white">
-		<table  style="margin: 10px auto;">
+		<table  style="margin: 50px auto 30px auto;">
 		<tr>
 		<td>
 		<c:choose>
@@ -424,7 +443,7 @@ margin: 0 auto;
 
 								</div>
 								</div>
-								</div>		
+								</div>	
 						
 						
 						<!--------------------오른쪽--------------------->

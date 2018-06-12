@@ -15,8 +15,8 @@
 	</select>
 	
 	<insert id="insertBookmark" parameterType="com.bitcamp.cody.dto.BookmarkDto">
-		insert into bookmark (member_idx, cody_idx, cody_image)
-		values ( #{member_idx}, #{cody_idx}, #{cody_image})
+		insert into bookmark (member_idx, cody_idx)
+		values ( #{member_idx}, #{cody_idx})
 	</insert>
 	
 	<delete id="deleteBookmark" parameterType="int">
@@ -26,6 +26,13 @@
 	<select id="bookmarkCount" resultType="int">
 		select count(*) from bookmark where member_idx = #{memberIdx}
 	</select>
-
+	
+	<select id="bookmarkCodyCount" resultType="int">
+		select count(*) from bookmark where cody_idx = #{codyIdx}
+	</select>
+	
+	<select id="bookTest" resultType="com.bitcamp.cody.dto.BookmarkDto" parameterType="map">
+		select * from bookmark where member_idx = #{memberIdx} and cody_idx = #{codyIdx}
+	</select>
 	
 </mapper>	

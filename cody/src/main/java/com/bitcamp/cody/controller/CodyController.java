@@ -16,17 +16,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bitcamp.cody.dto.BookmarkDto;
 import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.ItemList;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.dto.RepleDto;
+import com.bitcamp.cody.service.BookmarkListService;
 import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.CodyService;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
 import com.bitcamp.cody.service.MemberService;
 import com.bitcamp.cody.service.RepleService;
+
+import sun.util.logging.resources.logging;
 
 @Controller
 public class CodyController {
@@ -43,6 +47,8 @@ public class CodyController {
 	MemberService memberService;
 	@Autowired
 	RepleService repleService;
+	@Autowired
+	BookmarkListService bookmarkListService;
 	
 	
 	/*-----------입력---------------*/
@@ -127,7 +133,10 @@ public class CodyController {
 
 	/*---------------------코디 상세보기----------------------*/
 	@RequestMapping("/codyListView")
-	public String CodylistView(Model model, @RequestParam("cody_idx") int idx) {
+	public String CodylistView(Model model, HttpSession session, @RequestParam("cody_idx") int idx) {
+		
+		// 로그인한 사용자 정보
+		MemberDto loginInfo = (MemberDto)session.getAttribute("loginInfo");
 		
 		// 코디정보 가져오기
 		CodyDto cody = codyListService.CodyListView(idx);
@@ -145,7 +154,7 @@ public class CodyController {
 		List<RepleDto> list_r = repleService.listAll(idx);
 		
 		ArrayList<HashMap<String, Object>> repleList = new ArrayList<>();
-
+ 
 		for (RepleDto reple : list_r) {
 			MemberDto writer = memberService.selectByIdx(reple.getMember_idx());
 			HashMap<String, Object> map = new HashMap<>();
@@ -163,17 +172,26 @@ public class CodyController {
 			repleList.add(map);
 		}
 		
+		// 즐겨찾기 여부 확인
+		BookmarkDto bookmark = null;
+		if(loginInfo != null) {
+			bookmark = bookmarkListService.bookTest(loginInfo.getMember_idx(), cody.getCody_idx());
+		}
+		// 즐겨찾기 개수
+		int bookmarkCount = bookmarkListService.bookmarkCodyCount(idx);
 		// 조회수 증가
 		int result = codyListService.countAdd3(cody);
 		
+		System.out.println(bookmark);
 		// 모델객체에 담기
 		model.addAttribute("cody", cody);
 		model.addAttribute("member", member);
 		model.addAttribute("items", items);
 		model.addAttribute("itemSize", items.size());
 		model.addAttribute("repleList", repleList);
-		
-		
+		model.addAttribute("bookmark", bookmark);
+		model.addAttribute("bookmarkCount", bookmarkCount);
+		model.addAttribute("loginInfo", loginInfo);
 
 		return "cody/codyListView";
 	}

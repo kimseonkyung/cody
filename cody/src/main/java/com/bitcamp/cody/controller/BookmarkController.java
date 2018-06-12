@@ -20,6 +20,7 @@ import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.MemberDto;
 import com.bitcamp.cody.service.BookmarkListService;
 import com.bitcamp.cody.service.BookmarkService;
+import com.bitcamp.cody.service.CodyListService;
 import com.bitcamp.cody.service.MemberService;
 
 @Controller
@@ -30,21 +31,20 @@ public class BookmarkController {
 
 	@Autowired
 	BookmarkListService bservice;
+
+	@Autowired
+	CodyListService codyListService;
+	
+	
 	
 
-	@RequestMapping(value = "/bookmark", method = RequestMethod.GET)
-	public String bookmarkReg(@ModelAttribute BookmarkDto bookmarkVo,Model model, HttpSession session) {
+	// 즐겨찾기 추가
+	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
+	@ResponseBody
+	public String bookmarkReg(BookmarkDto bookmarkVo,Model model) {
 
-		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); 
+		int resultCnt = service.insertBookmark(bookmarkVo);
 		
-		int memberIdx = member.getMember_idx();
-						
-		bookmarkVo.setMember_idx(memberIdx);
-				
-		int resultCnt = service.insertBookmark(bookmarkVo, session);
-		
-				
-										
 		String msg1 = "스크랩 완료! myPage에서 확인하세요.";
 
 		if (resultCnt == 0) {
@@ -53,16 +53,21 @@ public class BookmarkController {
 		
 		}	
 
-		model.addAttribute("msg1", msg1);
-		model.addAttribute("cody_idx", bookmarkVo.getCody_idx());
-		model.addAttribute("member_idx", bookmarkVo.getMember_idx());
-		model.addAttribute("cody_image", bookmarkVo.getCody_image());		
-		System.out.println(msg1.toString()); 
-		
-		return "cody/bookmarkInsertOk";
+		return "";
 
 	}
 
+	// 코디 상세보기에서 삭제
+	@RequestMapping("/bookmarkDel")
+	@ResponseBody
+	public String bookmarkDel(Model model, @RequestParam("bookmark_idx") int idx, HttpSession session) {
+		
+		int resultCnt = service.deleteBookmark(idx);
+		
+		return "";
+	}
+	
+	// 마이페이지에서 삭제
 	@RequestMapping("/deleteBookmark")
 	
 	public String deleteBookmark(Model model, @RequestParam("bookmark_idx") int idx, HttpSession session) {
@@ -91,12 +96,14 @@ public class BookmarkController {
 		List<BookmarkDto> bookmarks = bservice.selectByMemberIdx(memberIdx);
 		JSONArray arr = new JSONArray();
 		
+		
 		for(BookmarkDto bookmark : bookmarks) {
+			CodyDto cody = codyListService.CodyListView(bookmark.getCody_idx());
 			JSONObject obj = new JSONObject();
 			obj.put("bookmark_idx", bookmark.getBookmark_idx());
 			obj.put("member_idx", bookmark.getMember_idx());
 			obj.put("cody_idx", bookmark.getCody_idx());
-			obj.put("cody_image", bookmark.getCody_image());
+			obj.put("cody_image", cody.getCody_image());
 			arr.put(obj);
 		}
 		

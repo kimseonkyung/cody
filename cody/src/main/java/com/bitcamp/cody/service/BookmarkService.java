@@ -19,7 +19,7 @@ public class BookmarkService {
 	
 		
 
-	public int insertBookmark(BookmarkDto bookmarkVo, HttpSession session) {
+	public int insertBookmark(BookmarkDto bookmarkVo) {
 		
 		dao = sqlSessionTemplate.getMapper(BookmarkDao.class);
 		
@@ -59,6 +59,8 @@ public class BookmarkService {
 		
 		return result;
 	}
+	
+	
 
 
 	
