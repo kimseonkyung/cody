@@ -14,6 +14,8 @@
 <title>코디 메인</title>
 <script src="${pageContext.request.contextPath}/resources/script/cody_seo1.js"></script>
 
+<script src="${pageContext.request.contextPath}/resources/script/cody_lim.js"></script>
+
 <!-- CODY CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/cody.css"
 	rel="stylesheet">
@@ -195,8 +197,8 @@ iframe {
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;">
-						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div></a>
+						<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;0" onclick="idx(${cody.member_idx})">
+						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
 			</c:otherwise>
 			</c:choose>			
 						</div>
@@ -251,8 +253,8 @@ iframe {
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;">
-						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;"></i></div><div><i style="font-size: 14px;">팔로우</i></div></a>
+						<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx})"}>
+						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;"></i></div><div><i style="font-size: 14px;">팔로우</i></div>
 			</c:otherwise>
 			</c:choose>			
 						</div>
