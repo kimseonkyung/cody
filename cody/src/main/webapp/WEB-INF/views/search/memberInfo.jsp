@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원</title>
-<script src="${pageContext.request.contextPath}/resources/script/cody_lim.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/cody.css"
 	rel="stylesheet">
 
@@ -21,6 +20,7 @@
 	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
 	rel="stylesheet">
 <style>
+
 }
 </style>
 </head>
@@ -48,52 +48,49 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<!--------------------- 메인 사이드 ----------------------->
+<div class="row">
+     <!--------------------- 메인 사이드 ----------------------->
 
-		<%@ include file="../top/aside.jsp"%>
-
+	<%@ include file="../top/aside.jsp" %>
+	
 
 
 		<div class="col-md-10 order-md-2">
 			<div class="my-3 p-3 bg-white rounded box-shadow">
 				<ol class="card-item-ol">
 
-					<!------------------ 코디 리스트 반복 출력 ----------------------->
+					<!------------------ 멤버 리스트 반복 출력 ----------------------->
 					<c:forEach var="MemberLsit" items="${MemberLsit}">
-						<li class="card card-item-li"><a
-							href="${pageContext.request.contextPath}/listView?member_idx=${MemberLsit.member_idx}">
-								<img class="card-img-top card-item"
-								src="${pageContext.request.contextPath}/uploadfile/memberphoto/${MemberLsit.member_photo}"
-								alt="Card image cap">
-						</a>
-							<div class="card-body"
-								style="overflow: hidden; position: relative; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px; height: 160px;">
-								<h5 class="card-title" style="text-align: center;">${MemberLsit.member_id}</h5>
-								<div style="text-align: center;">
-									가입일:&ensp;
-									<fmt:formatDate value="${MemberLsit.member_reg}"
-										pattern="yyyy-MM-dd" />
-								</div>
+						<li class="card card-item-li" style="display: inline-block;">
+						<c:choose>
+			<c:when test="${not empty MemberLsit.member_photo}" >
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${MemberLsit.member_photo }" style="width:240px; height: 240px;">
+		</c:when>
+		<c:otherwise>
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/member.png" width="240" height="240">
+		
+		</c:otherwise>
+		</c:choose>
+
+							<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;">
+						    <c:set var="memberId" value="${MemberLsit.member_id}"/>
+						    <c:set var="Id"  value="${fn:length(memberId)}"/>
+						    <c:if test="${Id > 13}">
+						    <c:set var="memberId" value="${fn:substring(memberId, 0, 12)} ..." />
+						    </c:if>	
+								<div class="card-main" style="float:left;height: 40px;margin-top: 10px;">${memberId}</div>
+								
 								<c:choose>
-									<c:when test="${loginInfo.member_idx eq MemberLsit.member_idx}">
-										<button type="button" class="btn btn-info"
-											data-target="#modifyModal" data-toggle="modal"
-											style="position: absolute; bottom: 20px">프로필변경</button>
-									</c:when>
-									<c:otherwise>
-										<button class="btn btn-info"
-											style="float: right; width: 73px; height: 42px; padding-top: 0px; padding-bottom: 0px;" onclick="idx(${MemberLsit.member_idx})">
-											<div style="height: 17px;">
-												<i class="fas fa-user-plus" style="font-size: 14px;"></i>
-											</div>
-											<div>
-												<i style="font-size: 14px;">팔로우</i>
-											</div>
-										</button>
-									</c:otherwise>
-								</c:choose>
-							</div></li>
+			                    <c:when test="${loginInfo.member_idx eq MemberLsit.member_idx}" >
+			                    <button type="button" class="btn btn-info" data-target="#modifyModal" data-toggle="modal" style="float:right;width: 73px; margin-top: 5px;height: 42px;padding-top: 0px;padding-bottom: 0px;">수정</button>
+								</c:when>
+			                    <c:otherwise>
+								<a href="${pageContext.request.contextPath }/bookmark?cody_idx=${cody.cody_idx}&member_idx=${cody.member_idx}" class="btn btn-info" style="float:right;width: 73px; margin-top: 5px;height: 42px;padding-top: 0px;padding-bottom: 0px;">
+						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div></a>
+							    </c:otherwise>
+			                 </c:choose>
+							</div>
+						</li>
 					</c:forEach>
 
 				</ol>
@@ -112,7 +109,7 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
 

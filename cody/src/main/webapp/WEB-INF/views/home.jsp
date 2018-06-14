@@ -163,7 +163,7 @@ iframe {
 					<c:set var="ranking" value="${status.index }"/>
 					
 					</a>
-						<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;;">
+						<div class="card-body" style="overflow: hidden;position: relative;padding-top: 10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;height: 65px;">
 						
 						<div class="card-main" style="float:left;height: 40px;margin-top: 3px;">
 						<c:choose>
@@ -197,8 +197,9 @@ iframe {
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;0" onclick="idx(${cody.member_idx})">
+						<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${cody.member_idx})">
 						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			            </button>
 			</c:otherwise>
 			</c:choose>			
 						</div>
@@ -253,8 +254,9 @@ iframe {
 						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
 			</c:when>
 			<c:otherwise>
-						<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx})"}>
+						<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx})">
 						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;"></i></div><div><i style="font-size: 14px;">팔로우</i></div>
+						</button>
 			</c:otherwise>
 			</c:choose>			
 						</div>
