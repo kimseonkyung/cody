@@ -185,7 +185,8 @@ iframe {
 						   <c:set var="memberId" value="${fn:substring(memberId, 0, 8)} ..." />
 						  </c:if>
 						  <p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">
-						  </p>
+						  ${memberId}
+						 </p>
 						 </div>
 					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${cody.cody_height}cm ${cody.cody_age}세</p></div>
 					    </div>
@@ -277,14 +278,13 @@ iframe {
 						   <c:set var="memberId2" value="${fn:substring(memberId2, 0, 8)} ..." />
 						  </c:if>
 						 <p style="vertical-align: inherit;margin-bottom: 0px;height: 20px;">
-						
+						 ${memberId2}
 						 </p>
 						 </div>
 							
 					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.codyheight}cm ${irr.codyage}세</p></div>
 					    </div>
-					    </div>
-					  
+					    </div>					   
 						<c:if test="${loginInfo eq null }">
 					    	<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="loginCh()">
 							<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
