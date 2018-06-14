@@ -20,7 +20,7 @@
                            
                }
             ,error: function(){
-              alert(' error 발생');
+              alert('로그인 해주세요');
             	
             }                       
                       

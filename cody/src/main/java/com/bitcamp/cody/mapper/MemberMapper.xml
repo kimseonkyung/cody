@@ -46,6 +46,11 @@
      select * from member where member_id = #{member_id}
 </select>
 
+<select id="selectList2" resultType="com.bitcamp.cody.dto.MemberDto">
+	select * from member order by member_idx DESC;
+
+</select>
+
 
 	<!-- insert 태그는 데이터베이스에 데이터를 삽입하는 insert구문을 사용할 때 사용  -->
 	<!-- 

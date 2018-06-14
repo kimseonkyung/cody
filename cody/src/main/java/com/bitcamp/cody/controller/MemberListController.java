@@ -50,8 +50,17 @@ public class MemberListController {
 		return "member/memberListSearch";
 	}
 	
+	@RequestMapping("/top/aside")
+	public String memberlist2(Model model) {
+		
+		List<MemberDto> memberst = service.getMemberListt();		
+		
+		System.out.println(memberst.toString());
+		model.addAttribute("memberst", memberst);
+		
+		return "top/aside";
+	}
 	
-	
-	
+		
 	
 }

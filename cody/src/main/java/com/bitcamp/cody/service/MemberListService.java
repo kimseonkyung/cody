@@ -48,8 +48,16 @@ public List<MemberDto> getListSearch(int idx) {
 		List<MemberDto> list = dao.selectByIdx1(idx);
 		
 		return list;
-	} 
+	}
+
+public List<MemberDto> getMemberListt() {
 	
+		dao = sqlSessionTemplate.getMapper(LoginDao.class);
+		List<MemberDto> list = dao.selectList2();
+		
+		return list;
+		
+		}	
 	
 
 }
