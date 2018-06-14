@@ -154,8 +154,8 @@ input:focus, textarea:focus {
 	      
 	      <div class="p-3 bg-white rounded box-shadow" style="width:460px;">
 	      <c:choose>
-	      <c:when test="${not empty member.member_photo}" >
-          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${member.member_photo}" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
+	      <c:when test="${loginInfo.member_photo ne null}" >
+          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo}" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
          </c:when>
          <c:otherwise>
          <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/member.png" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
