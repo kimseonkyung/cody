@@ -382,7 +382,10 @@ margin: 0 auto;
 		<div id="repleList" class="bg-white">
 			<c:forEach var="repleList" items="${repleList }">
 				
-				<div id="repleView" style="margin-left: ${50*repleList.redepth}px;">
+				<div id="repleView" style="margin-left: ${40*repleList.redepth}px;">
+					<c:if test="${repleList.redepth > 0}">
+					<div style="display: inline;">└</div>
+					</c:if>
 					<div class="repleDiv">
 					<c:set var="photo" value="${repleList.member_photo }"/>
 			        <c:if test="${photo eq null }">
