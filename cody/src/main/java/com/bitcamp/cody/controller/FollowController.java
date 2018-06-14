@@ -31,14 +31,15 @@ public class FollowController {
 	
 	
 		// 신청하는 사람
-	@RequestMapping(value = "cody/followinsert", method = RequestMethod.GET,produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/followinsert", method = RequestMethod.GET,produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String followrequest( @RequestParam(value="member_idx") int m_response, 
-			HttpSession session, Model model) {
+	public String followrequest( @RequestParam(value="member_idx") int m_response, HttpSession session, Model model) {
 			System.out.println(m_response);
 		
 		MemberDto member = (MemberDto) session.getAttribute("loginInfo"); // 로그인된 아이디값 가져오기
 
+		System.out.println(member);
+		
 		int m_request = member.getMember_idx();
 
 		System.out.println("memberIdx : " + m_request);
@@ -205,7 +206,6 @@ public class FollowController {
 	// 팔로우 삭제
 
 	@RequestMapping(value="/followDelete",method = RequestMethod.GET)
-
 	public String deleteFollow(Model model , @RequestParam("fallow_idx") int followidx ) {
 
 		int resultCnt = requestandnresponse.getdeleteFollow(followidx);

@@ -188,20 +188,57 @@ iframe {
 						  ${memberId}
 						 </p>
 						 </div>
-							
 					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${cody.cody_height}cm ${cody.cody_age}세</p></div>
 					    </div>
 					    </div>
-			<c:choose>
-			<c:when test="${loginInfo.member_idx eq cody.member_idx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
-			</c:when>
-			<c:otherwise>
-						<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${cody.member_idx})">
-						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
-			            </button>
-			</c:otherwise>
-			</c:choose>			
+					    <c:if test="${loginInfo eq null }">
+					    	<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="loginCh()">
+							<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			            	</button>
+					    </c:if>
+					    <c:if test="${loginInfo ne null }">
+							<c:if test="${loginInfo.member_idx eq cody.member_idx}" >
+							<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${cody.cody_idx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
+							</c:if>
+							<c:if test="${loginInfo.member_idx ne cody.member_idx}" >
+								
+								<!-- 둘다 없을때 신청하기 -->
+								<c:if test="${cody.follow eq null and cody.accept eq null}">
+								<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followIns(${cody.member_idx})">
+								<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			           	 		</button>
+			           	 		</c:if>
+			           	 		<!-- 상대방이 신청중인 경우 수락하기 -->
+			           	 		<c:if test="${cody.follow eq null and cody.accept ne null}">
+									<c:if test="${cody.acceptInfo eq false }">
+									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followUp(${cody.member_idx})">
+									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			           	 			</button>
+			           	 			</c:if>
+									<c:if test="${cody.acceptInfo eq true }">
+									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${cody.followIdx})">
+									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로잉</i></div>
+			           	 			</button>
+			           	 			</c:if>
+			           	 		</c:if>
+			           	 		
+			           	 		<!-- 내가 신청중인 경우 -->
+			           	 		<c:if test="${cody.follow ne null }">
+									<c:if test="${cody.followInfo eq false }">
+									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followIns(${cody.member_idx})">
+									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			           	 			</button>
+			           	 			</c:if>
+									<c:if test="${cody.followInfo eq true }">
+									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${cody.followIdx})">
+									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로잉</i></div>
+			           	 			</button>
+			           	 			</c:if>
+			           	 		</c:if>
+			           	 		
+			           	 	</c:if>
+			           	 	
+			            </c:if>
 						</div>
 				</li>
             </c:forEach>
@@ -248,19 +285,55 @@ iframe {
 					     <div><p style="vertical-align: inherit;margin-bottom: 0px;height: 20px; font-size:5px">${irr.codyheight}cm ${irr.codyage}세</p></div>
 					    </div>
 					    </div>
-					    
-				<c:choose>
-			<c:when test="${loginInfo.member_idx eq irr.memberidx}" >
-						<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
-			</c:when>
-			<c:otherwise>
-						<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx})">
-						<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;"></i></div><div><i style="font-size: 14px;">팔로우</i></div>
-						</button>
-			</c:otherwise>
-			</c:choose>			
-						</div>
-				</li>
+					    ${irr.followIdx}
+						<c:if test="${loginInfo eq null }">
+					    	<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="loginCh()">
+							<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			            	</button>
+					    </c:if>
+					    <c:if test="${loginInfo ne null }">
+							<c:if test="${loginInfo.member_idx eq irr.member_idx}" >
+							<a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.cody_idx}" class="btn btn-info" style="float:right;width: 73px;height: 42px;">수정</a>						
+							</c:if>
+							<c:if test="${loginInfo.member_idx ne irr.member_idx}" >
+								
+								<!-- 둘다 없을때 신청하기 -->
+								<c:if test="${irr.follow eq null and irr.accept eq null}">
+								<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followIns(${irr.member_idx})">
+								<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			           	 		</button>
+			           	 		</c:if>
+			           	 		<!-- 상대방이 신청중인 경우 수락하기 -->
+			           	 		<c:if test="${irr.follow eq null and irr.accept ne null}">
+									<c:if test="${irr.acceptInfo eq false }">
+									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followUp(${irr.member_idx})">
+									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			           	 			</button>
+			           	 			</c:if>
+									<c:if test="${irr.acceptInfo eq true }">
+									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${irr.followIdx})">
+									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로잉</i></div>
+			           	 			</button>
+			           	 			</c:if>
+			           	 		</c:if>
+			           	 		
+			           	 		<!-- 내가 신청중인 경우 -->
+			           	 		<c:if test="${irr.follow ne null }">
+									<c:if test="${irr.followInfo eq false }">
+									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followIns(${irr.member_idx})">
+									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div>
+			           	 			</button>
+			           	 			</c:if>
+									<c:if test="${irr.followInfo eq true }">
+									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${irr.followIdx})">
+									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로잉</i></div>
+			           	 			</button>
+			           	 			</c:if>
+			           	 		</c:if>
+			           	 		
+			           	 	</c:if>
+			           	 	
+			            </c:if>
             </c:forEach>
 			</ol>
 						
