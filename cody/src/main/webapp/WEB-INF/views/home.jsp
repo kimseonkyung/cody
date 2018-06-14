@@ -251,7 +251,7 @@ iframe {
 					<c:forEach var="irr" items="${irr}">
 
 						<li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;"><a
-							href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.codyidx}"><img
+							href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.cody_idx}"><img
 								class="card-img-top card-item"
 								src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"
 								alt="Card image cap"></a>
