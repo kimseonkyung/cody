@@ -91,12 +91,22 @@ public class FollowService {
 		int result = dao.followrpCount(m_response);
 		return result;
 	}
-
+/*
 	public FollowDto selectinfo() {
 		dao = sqlSessionTemplate.getMapper(FollowDao.class);
 		FollowDto result = dao.selectfollowinfos();
 		return result;
+	}*/
+
+	public FollowDto getfollowfo(int m_request, int m_response) {
+		dao = sqlSessionTemplate.getMapper(FollowDao.class);		
+		FollowDto follow = new FollowDto();
+		follow.setM_request(m_request);
+		follow.setM_response(m_response);		
+		FollowDto result = dao.selectfollowpq(follow);
+		return result;
+	}
+	
 	}
 
 
-}

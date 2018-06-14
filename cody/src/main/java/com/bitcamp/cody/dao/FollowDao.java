@@ -3,8 +3,6 @@ package com.bitcamp.cody.dao;
 import java.util.HashMap;
 import java.util.List;
 
-import org.json.JSONObject;
-
 import com.bitcamp.cody.dto.FollowDto;
 import com.bitcamp.cody.dto.MemberDto;
 
@@ -26,10 +24,8 @@ public interface FollowDao {
 
 	public int followrqCount(int m_request);
 
-	
 	public int followrpCount(int m_response);
 
-	public FollowDto selectfollowinfos();
-
+	public FollowDto selectfollowpq(FollowDto follow);
 
 }

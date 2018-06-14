@@ -59,5 +59,10 @@
     select count(*) from follow  where m_request = #{m_response}
     
     </select>
+    
+    <select id = "selectfollowpq"  resultType= "com.bitcamp.cody.dto.FollowDto" parameterType ="com.bitcamp.cody.dto.FollowDto">
+    select * from follow where m_request = #{m_request} and m_response = #{m_response} or  m_request = #{m_response} and m_response = #{m_request}
+        
+    </select>
    
    </mapper>
