@@ -28,4 +28,6 @@ public interface FollowDao {
 
 	public FollowDto selectfollowpq(FollowDto follow);
 
+	public FollowDto accept(FollowDto follow);
+
 }

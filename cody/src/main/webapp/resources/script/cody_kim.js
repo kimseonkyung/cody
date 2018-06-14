@@ -447,7 +447,7 @@ function bookmarkDel(idx) {
 	
 };
 
-
+//로그인 체크
 function loginCh() {
 	alert('로그인 이후에 작성 가능합니다.');
 	$("#loginModal").modal('show');
@@ -455,7 +455,80 @@ function loginCh() {
 };
 
 
+// 팔로우 추가
+function followIns(idx) {
+	
+	$.ajax({
+		type : 'get',
+		url : '/cody/followinsert',
+		data : {member_idx : idx},
+		
+		success: function (data){
+			
+			//성공
+			alert('팔로우 신청이 완료되었습니다');
+			location.reload(true);
+			
+		}
+		,error: function(){
+			alert(' error 발생');
+			
+		}                       
+		
+	});
+	
+	
+};
 
+// 팔로우 삭제
+function followDel(idx) {
+ 
+    $.ajax({
+       type : 'get',
+       url : '/cody/followDelete',
+        data : {fallow_idx : idx},
+                         
+      success: function (data){
+   	   
+   	           //성공
+             alert('팔로우 삭제가 완료되었습니다');
+   	           location.reload(true);
+                      
+          }
+       ,error: function(){
+         alert(' error 발생');
+       	
+       }                       
+                 
+       });
+                  
+ 
+    };
+    
+// 팔로우 수락
+    function followDel(idx) {
+    	
+    	$.ajax({
+    		type : 'get',
+    		url : '/cody/followUpDate',
+    		data : {member_idx : idx},
+    		
+    		success: function (data){
+    			
+    			//성공
+    			alert('팔로우 추가가 완료되었습니다');
+    			location.reload(true);
+    			
+    		}
+    		,error: function(){
+    			alert(' error 발생');
+    			
+    		}                       
+    		
+    	});
+    	
+    	
+    };
 
 
 

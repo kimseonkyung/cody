@@ -40,8 +40,6 @@ public class CodyTimeListController {
 		
 		MemberDto memberse = (MemberDto) session.getAttribute("loginInfo");
 		
-		// int m_request = memberse.getMember_idx();
-		
 		List<CodyDto> codytimes = codyTimeListService.getCodyTimeList();
 
 		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
@@ -62,10 +60,7 @@ public class CodyTimeListController {
 			map.put("memberphoto", member.getMember_photo() );
 			map.put(time, itemtime);
 			map.put("itemtime", itemtime);
-			/*if(memberse != null) {
-				FollowDto request = requestandnresponse.getfollowfo(memberse.getMember_idx(),time.getMember_idx());
-				map.put("followinfo",request.getFollowinfo());	
-			}*/
+			map.put("loginInfo", memberse);
 			irr.add(map);		
 		}
 

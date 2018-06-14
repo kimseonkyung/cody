@@ -121,7 +121,7 @@
                               <a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right; width: 73px; height: 42px;">수정</a>
                            </c:when>
                            <c:otherwise>
-                              <button class="btn btn-info" style="float: right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx})">
+                              <button class="btn btn-info" style="float: right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx}, ${irr.loginInfo})">
                               <div style="margin-top: 5px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div>
                               <div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div></button>
                               
@@ -145,35 +145,6 @@
     ================================================== -->
    <!-- Placed at the end of the document so the pages load faster -->
    <script>
-   $(document).ready(function () {
-         
-   })  
-   
-         function idx(e) {
-          
-      
-         $.ajax({
-            type : 'GET',
-            url : 'cody/followinsert',
-             data : {member_idx : e},
-                              
-           success: function (data){
-        	   
-        	           //성공
-                  alert('팔로우 신청이 완료되었습니다');
-        	           location.reload(true);
-                           
-               }
-            ,error: function(){
-              alert(' error 발생');
-            	
-            }                       
-                      
-            });
-                       
-      
-         };
-   
    
    
    /* $(function(){
