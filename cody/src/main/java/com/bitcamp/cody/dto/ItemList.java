@@ -18,6 +18,24 @@ public class ItemList {
 	public List<ItemDto> getItemList() {
 		return itemList;
 	}
+	public List<ItemDto> getItemListCap() {
+		return itemList;
+	}
+	public List<ItemDto> getItemListTop() {
+		return itemList;
+	}
+	public List<ItemDto> getItemListBot() {
+		return itemList;
+	}
+	public List<ItemDto> getItemListOut() {
+		return itemList;
+	}
+	public List<ItemDto> getItemListShoe() {
+		return itemList;
+	}
+	public List<ItemDto> getItemListAcc() {
+		return itemList;
+	}
 
 	public void setItemList(List<ItemDto> itemList) {
 		this.itemList = itemList;

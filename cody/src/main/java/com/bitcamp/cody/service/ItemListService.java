@@ -22,6 +22,48 @@ public class ItemListService {
 		
 		return list;
 	}
+	public List<ItemDto> getItemListCap() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListCap();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListTop() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListTop();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListBot() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListBot();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListOut() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListOut();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListShoe() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListShoe();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListAcc() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListAcc();
+		
+		return list;
+	}
 
 	public ItemDto getListView(int idx) {
 		

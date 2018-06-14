@@ -44,12 +44,12 @@
         <div class="my-3 p-3 bg-white rounded box-shadow">
 			<h4>Category</h4>
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/codyList">Top</a><br>
-				<li><a href="${pageContext.request.contextPath}/itemList">Out</a><br> 
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">Pants</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">Hat</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">Foot</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">Acc</a><br>
+				<li><a href="${pageContext.request.contextPath}/itemListTop">Top</a><br>
+				<li><a href="${pageContext.request.contextPath}/itemListOut">Out</a><br> 
+				<li><a href="${pageContext.request.contextPath}/itemListBot">Pants</a><br>
+				<li><a href="${pageContext.request.contextPath}/itemListCap">Hat</a><br>
+				<li><a href="${pageContext.request.contextPath}/itemListShoe">Foot</a><br>
+				<li><a href="${pageContext.request.contextPath}/itemListAcc">Acc</a><br>
 			</ul>
 		</div>     
     <div class="my-3 p-3 bg-white rounded box-shadow">
