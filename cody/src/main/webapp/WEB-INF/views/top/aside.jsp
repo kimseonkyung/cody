@@ -51,26 +51,13 @@
 				<li><a href="${pageContext.request.contextPath}/codyTimeList">Foot</a><br>
 				<li><a href="${pageContext.request.contextPath}/codyTimeList">Acc</a><br>
 			</ul>
-		</div>
-        <div>
-			<h4>카테고리</h4>
-			
-			${memberst}
-		
-			<%-- <c:forEach var= "memberst"  items="${memberst}">
-			
-				<tr>				
-				
-				<td>${memberst.member_name}<td>
-				
-				
-				</tr>
-			
-			
-			</c:forEach> --%>
-						
-		</div>
-</div>
-
+		</div>     
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+			<h4>Notice</h4>
+			<ul>
+			<li><a href="${pageContext.request.contextPath}/boardList">Board</a><br> 
+		</ul>		
+	</div>
+	</div>
 </body>
 </html>
