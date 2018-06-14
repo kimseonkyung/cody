@@ -216,7 +216,7 @@ iframe {
 			           	 			</button>
 			           	 			</c:if>
 									<c:if test="${cody.acceptInfo eq true }">
-									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${cody.followIdx})">
+									<button class="btn btn-danger" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${cody.followIdx})">
 									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로잉</i></div>
 			           	 			</button>
 			           	 			</c:if>
@@ -230,7 +230,7 @@ iframe {
 			           	 			</button>
 			           	 			</c:if>
 									<c:if test="${cody.followInfo eq true }">
-									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${cody.followIdx})">
+									<button class="btn btn-danger" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${cody.followIdx})">
 									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로잉</i></div>
 			           	 			</button>
 			           	 			</c:if>
@@ -311,7 +311,7 @@ iframe {
 			           	 			</button>
 			           	 			</c:if>
 									<c:if test="${irr.acceptInfo eq true }">
-									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${irr.followIdx})">
+									<button class="btn btn-danger" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${irr.followIdx})">
 									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로잉</i></div>
 			           	 			</button>
 			           	 			</c:if>
@@ -325,7 +325,7 @@ iframe {
 			           	 			</button>
 			           	 			</c:if>
 									<c:if test="${irr.followInfo eq true }">
-									<button class="btn btn-info" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${irr.followIdx})">
+									<button class="btn btn-danger" style="float:right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="followDel(${irr.followIdx})">
 									<div style="height: 17px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div><div><i style="font-size: 14px; vertical-align: inherit;">팔로잉</i></div>
 			           	 			</button>
 			           	 			</c:if>
