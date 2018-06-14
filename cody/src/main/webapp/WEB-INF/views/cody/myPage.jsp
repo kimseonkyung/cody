@@ -138,16 +138,6 @@ input:focus, textarea:focus {
 		</div>
 	</div>
 	
-	<div class="nav-scroller bg-white">
-	<div class="container">
-		<nav class="nav nav-underline">
-			<a class="nav-link col-4 mr-auto" href="#">all</a> 
-			<a class="nav-link col-4 mr-auto" href="#">men</a>
-			<a class="nav-link col-4 mr-auto" href="#">women</a>
-		</nav>
-	</div>
-</div>
-	
 	
 	<div class="p-3 bg-white rounded box-shadow">
           <button type="button" class="btn btn-info" data-target="#modifyModal" data-toggle="modal" style="float:right;margin-top:7%;margin-right: 5%;">프로필변경</button>	
@@ -404,8 +394,8 @@ $('#gBookmark').click(function(){
 	 	$.each(data, function(i, e ){
 	 		$('#myPageList').append('<div class="myCard">'
 	 				+ '<a href="/cody/codyListView?cody_idx='+ e.cody_idx +'"><img class="card-img-top" src="/cody/uploadfile/codyphoto/'+ e.cody_image +'" style="height: 300px;" alt="Card image cap"></a>'
-	 				+ '<div class="card-body" style="height: 100%">'
-	 				+ '<a href="${pageContext.request.contextPath }/deleteBookmark?bookmark_idx='+ e.bookmark_idx +'"><button class="btn btn-primary" style="float: right;">스크랩 취소</button></a>'
+	 				+ '<div class="card-body" style="height:80px;">'
+	 				+ '<a href="${pageContext.request.contextPath }/deleteBookmark?bookmark_idx='+ e.bookmark_idx +'"><button class="btn btn-info" style="float: right;">스크랩 취소</button></a>'
 	 				+ '</div>'
 	 				+ '</div>');
 	 	});	

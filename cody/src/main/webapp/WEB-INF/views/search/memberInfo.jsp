@@ -61,7 +61,7 @@
 
 					<!------------------ 멤버 리스트 반복 출력 ----------------------->
 					<c:forEach var="MemberLsit" items="${MemberLsit}">
-						<li class="card card-item-li" style="display: inline-block;">
+						<li class="card card-item-li" style="display: inline-block;margin-bottom:50px;">
 						<c:choose>
 			<c:when test="${not empty MemberLsit.member_photo}" >
 		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${MemberLsit.member_photo }" style="width:240px; height: 240px;">

@@ -276,6 +276,7 @@ margin: 0 auto;
 	border: 1px solid #999;
 	float: left;
 	margin: 15px 0 15px 20px;
+	border-radius: 0.25rem;
 }
 
 .codyLike > div {
@@ -350,7 +351,7 @@ margin: 0 auto;
 								</div>
 								<div id="funtion" class="bg-white">
 									<div class="codyLike">
-									<div style="padding: 10px 15px 10px 15px;">즐겨찾기( ${bookmarkCount } )</div>
+									<div style="padding: 10px 15px 10px 15px;">스크랩( ${bookmarkCount } )</div>
 									<div style="padding: 10px 10px 10px 15px; border-left: 1px solid #999;">
 									<c:if test="${loginInfo eq null }">
 									<a href="javascript:loginCh()"><i class="fas fa-plus" style="color: #444;"></i></a>
@@ -382,10 +383,7 @@ margin: 0 auto;
 		<div id="repleList" class="bg-white">
 			<c:forEach var="repleList" items="${repleList }">
 				
-				<div id="repleView" style="margin-left: ${40*repleList.redepth}px;">
-					<c:if test="${repleList.redepth > 0}">
-					<div style="display: inline;">└</div>
-					</c:if>
+				<div id="repleView" style="margin-left: ${50*repleList.redepth}px;">
 					<div class="repleDiv">
 					<c:set var="photo" value="${repleList.member_photo }"/>
 			        <c:if test="${photo eq null }">

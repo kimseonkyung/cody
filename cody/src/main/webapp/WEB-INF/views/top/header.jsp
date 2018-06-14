@@ -196,7 +196,6 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">마이페이지</a>
-					<a class="dropdown-item" href="#">Another action</a>
 					<a class="dropdown-item" href="member/memberDelete?id=${loginInfo.member_id}">회원탈퇴</a>
 					<a class="dropdown-item btn btn-default btn-logiut" href="${pageContext.request.contextPath}/member/memberlogout"><span class="glyphicon glyphicon-log-out">로그아웃</span></a>
 				</div>
