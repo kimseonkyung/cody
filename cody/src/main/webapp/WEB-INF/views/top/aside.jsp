@@ -34,34 +34,41 @@
 
 <div id="aside" class="col-md-2 order-md-1 mb-4">
 		<div class="my-3 p-3 bg-white rounded box-shadow">
-			<h4>리스트</h4>
+			<h4>List</h4>
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">코디</a></li>
-				<li><a href="${pageContext.request.contextPath}/itemList">아이템</a></li>
-				<li><a href="${pageContext.request.contextPath}/itemInfo">사용자</a></li>
+				<li><a href="${pageContext.request.contextPath}/codyTimeList"><i class="fas fa-camera" style="font-size: 21px; margin: 4px;"></i>&nbsp;&nbsp;&nbsp;Cody</a></li>
+				<li><a href="${pageContext.request.contextPath}/itemList"><i class="fas fa-tshirt" style="font-size: 17px; margin: 4px;"></i>&nbsp;&nbsp;&nbsp;Item</a></li>
+				<li><a href="${pageContext.request.contextPath}/itemInfo"><i class="fas fa-user-alt" style="font-size: 21px; margin: 4px;"></i>&nbsp;&nbsp;&nbsp;User</a></li>
 			</ul>
 		</div>
         <div class="my-3 p-3 bg-white rounded box-shadow">
-			<h4>카테고리</h4>
+			<h4>Category</h4>
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/codyList">상의</a><br>
-				<li><a href="${pageContext.request.contextPath}/itemList">아우터</a><br> 
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">하의</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">모자</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">신발</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">악세사리</a><br>
+				<li><a href="${pageContext.request.contextPath}/codyList">Top</a><br>
+				<li><a href="${pageContext.request.contextPath}/itemList">Out</a><br> 
+				<li><a href="${pageContext.request.contextPath}/codyTimeList">Pants</a><br>
+				<li><a href="${pageContext.request.contextPath}/codyTimeList">Hat</a><br>
+				<li><a href="${pageContext.request.contextPath}/codyTimeList">Foot</a><br>
+				<li><a href="${pageContext.request.contextPath}/codyTimeList">Acc</a><br>
 			</ul>
 		</div>
-        <div class="my-3 p-3 bg-white rounded box-shadow">
+        <div>
 			<h4>카테고리</h4>
-			<ul>
-				<li><a href="${pageContext.request.contextPath}/codyList">상의</a><br>
-				<li><a href="${pageContext.request.contextPath}/itemList">아우터</a><br> 
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">하의</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">모자</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">신발</a><br>
-				<li><a href="${pageContext.request.contextPath}/codyTimeList">악세사리</a><br>
-			</ul>
+			
+			${memberst}
+		
+			<%-- <c:forEach var= "memberst"  items="${memberst}">
+			
+				<tr>				
+				
+				<td>${memberst.member_name}<td>
+				
+				
+				</tr>
+			
+			
+			</c:forEach> --%>
+						
 		</div>
 </div>
 
