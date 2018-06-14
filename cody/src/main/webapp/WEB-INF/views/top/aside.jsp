@@ -38,7 +38,7 @@
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/codyTimeList"><i class="fas fa-camera" style="font-size: 21px; margin: 4px;"></i>&nbsp;&nbsp;&nbsp;Cody</a></li>
 				<li><a href="${pageContext.request.contextPath}/itemList"><i class="fas fa-tshirt" style="font-size: 17px; margin: 4px;"></i>&nbsp;&nbsp;&nbsp;Item</a></li>
-				<li><a href="${pageContext.request.contextPath}/itemInfo"><i class="fas fa-user-alt" style="font-size: 21px; margin: 4px;"></i>&nbsp;&nbsp;&nbsp;User</a></li>
+				<li><a href="${pageContext.request.contextPath}/memberInfo?keyword3"><i class="fas fa-user-alt" style="font-size: 21px; margin: 4px;"></i>&nbsp;&nbsp;&nbsp;User</a></li>
 			</ul>
 		</div>
         <div class="my-3 p-3 bg-white rounded box-shadow">
