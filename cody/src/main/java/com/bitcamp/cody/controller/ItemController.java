@@ -91,6 +91,72 @@ public class ItemController {
 
 		return "item/itemList";
 	}
+	@RequestMapping("/itemListCap")
+	public String itemListCap(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListCap();
+
+		
+		System.out.println("전체리스트 : " + items.toString());
+		model.addAttribute("items", items);
+
+		return "item/itemListCap";
+	}
+	@RequestMapping("/itemListTop")
+	public String itemListTop(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListTop();
+
+		
+		System.out.println("전체리스트 : " + items.toString());
+		model.addAttribute("items", items);
+
+		return "item/itemListTop";
+	}
+	@RequestMapping("/itemListBot")
+	public String itemListBot(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListBot();
+
+		
+		System.out.println("전체리스트 : " + items.toString());
+		model.addAttribute("items", items);
+
+		return "item/itemListBot";
+	}
+	@RequestMapping("/itemListOut")
+	public String itemListOut(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListOut();
+
+		
+		System.out.println("전체리스트 : " + items.toString());
+		model.addAttribute("itemsOut", items);
+
+		return "item/itemListOut";
+	}
+	@RequestMapping("/itemListShoe")
+	public String itemListShoe(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListShoe();
+
+		
+		System.out.println("전체리스트 : " + items.toString());
+		model.addAttribute("items", items);
+
+		return "item/itemListShoe";
+	}
+	@RequestMapping("/itemListAcc")
+	public String itemListAcc(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListAcc();
+
+		
+		System.out.println("전체리스트 : " + items.toString());
+		model.addAttribute("items", items);
+
+		return "item/itemListAcc";
+	}
 	
 	@RequestMapping("/itemListView")
 	public String listView(Model model, @RequestParam("item_idx") int idx) {

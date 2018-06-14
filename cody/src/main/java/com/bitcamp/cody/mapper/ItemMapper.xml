@@ -26,6 +26,26 @@
 	<select id="selectList" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item
 	</select>
+	
+	<select id="selectListCap" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from item where item_category = "모자"
+	</select>
+	<select id="selectListTop" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from item where item_category = "상의"
+	</select>
+	<select id="selectListBot" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from item where item_category = "하의"
+	</select>
+	<select id="selectListOut" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from item where item_category = "아우터"
+	</select>
+	<select id="selectListShoe" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from item where item_category = "신발"
+	</select>
+		<select id="selectListAcc" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from item where item_category = "악세사리"
+	</select>
+	
 
 	<select id="selectByName" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where item_name = #{name}

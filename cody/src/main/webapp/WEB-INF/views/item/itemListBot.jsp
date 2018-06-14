@@ -50,7 +50,7 @@
 			<h5 class="mb-0 text-white lh-100">CODY</h5><small>bitcamp 2018</small>
 		</div>
 	</div>
-
+	
 
 <div class="row">
      <!--------------------- 메인 사이드 ----------------------->
