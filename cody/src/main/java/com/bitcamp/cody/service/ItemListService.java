@@ -29,6 +29,20 @@ public class ItemListService {
 		
 		return list;
 	}
+	public List<ItemDto> getItemListCapMan() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListCapMan();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListCapWoman() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListCapWoman();
+		
+		return list;
+	}
 	public List<ItemDto> getItemListTop() {
 
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
@@ -36,10 +50,39 @@ public class ItemListService {
 		
 		return list;
 	}
+	public List<ItemDto> getItemListTopMan() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListTopMan();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListTopWoman() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListTopWoman();
+		
+		return list;
+	}
+	
 	public List<ItemDto> getItemListBot() {
 
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 		List<ItemDto> list = dao.selectListBot();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListBotMan() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListBotMan();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListBotWoman() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListBotWoman();
 		
 		return list;
 	}
@@ -50,6 +93,20 @@ public class ItemListService {
 		
 		return list;
 	}
+	public List<ItemDto> getItemListOutMan() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListOutMan();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListOutWoman() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListOutWoman();
+		
+		return list;
+	}
 	public List<ItemDto> getItemListShoe() {
 
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
@@ -57,10 +114,38 @@ public class ItemListService {
 		
 		return list;
 	}
+	public List<ItemDto> getItemListShoeMan() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListShoeMan();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListShoeWoman() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListShoeWoman();
+		
+		return list;
+	}
 	public List<ItemDto> getItemListAcc() {
 
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);
 		List<ItemDto> list = dao.selectListAcc();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListAccMan() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListAccMan();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListAccWoman() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListAccWoman();
 		
 		return list;
 	}

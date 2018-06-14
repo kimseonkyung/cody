@@ -21,9 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.Item;
 import com.bitcamp.cody.dto.ItemDto;
 import com.bitcamp.cody.dto.MemberDto;
+import com.bitcamp.cody.service.CodyItemListService;
+import com.bitcamp.cody.service.CodyListService;
+import com.bitcamp.cody.service.CodyTimeListService;
 import com.bitcamp.cody.service.ItemListService;
 import com.bitcamp.cody.service.ItemService;
 import com.bitcamp.cody.service.MemberService;
@@ -39,7 +43,9 @@ public class ItemController {
 	@Autowired
 	NeverItemService naverItemService; 
 	@Autowired
-	MemberService memberService; 
+	MemberService memberService;
+	@Autowired
+	CodyTimeListService codyTimeListService;
 
 
 
@@ -102,6 +108,48 @@ public class ItemController {
 
 		return "item/itemListCap";
 	}
+	@RequestMapping(value="/itemListCapMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListCapMan(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListCapMan();
+        JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+			obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
+	@RequestMapping(value="/itemListCapWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListCapWoman(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListCapWoman();
+        JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+			obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
 	@RequestMapping("/itemListTop")
 	public String itemListTop(Model model) {
 
@@ -112,6 +160,48 @@ public class ItemController {
 		model.addAttribute("items", items);
 
 		return "item/itemListTop";
+	}
+	@RequestMapping(value="/itemListTopMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListTopMan(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListTopMan();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+			obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
+	@RequestMapping(value="/itemListTopWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListTopWoman(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListTopWoman();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
 	}
 	@RequestMapping("/itemListBot")
 	public String itemListBot(Model model) {
@@ -124,6 +214,48 @@ public class ItemController {
 
 		return "item/itemListBot";
 	}
+	@RequestMapping(value="/itemListBotMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListBotMan(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListBotMan();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
+	@RequestMapping(value="/itemListBotWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListBotWoman(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListBotWoman();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
 	@RequestMapping("/itemListOut")
 	public String itemListOut(Model model) {
 
@@ -134,6 +266,48 @@ public class ItemController {
 		model.addAttribute("itemsOut", items);
 
 		return "item/itemListOut";
+	}
+	@RequestMapping(value="/itemListOutMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListOutMan(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListOutMan();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
+	@RequestMapping(value="/itemListOutWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListOutWoman(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListOutWoman();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
 	}
 	@RequestMapping("/itemListShoe")
 	public String itemListShoe(Model model) {
@@ -146,6 +320,48 @@ public class ItemController {
 
 		return "item/itemListShoe";
 	}
+	@RequestMapping(value="/itemListShoeMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListShoeMan(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListShoeMan();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
+	@RequestMapping(value="/itemListShoeWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListShoeWoman(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListShoeWoman();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
 	@RequestMapping("/itemListAcc")
 	public String itemListAcc(Model model) {
 
@@ -156,6 +372,48 @@ public class ItemController {
 		model.addAttribute("items", items);
 
 		return "item/itemListAcc";
+	}
+	@RequestMapping(value="/itemListAccMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListAccMan(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListAccMan();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
+	@RequestMapping(value="/itemListAccWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListAccWoman(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListAccWoman();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
 	}
 	
 	@RequestMapping("/itemListView")

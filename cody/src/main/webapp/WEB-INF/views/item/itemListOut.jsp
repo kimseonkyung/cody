@@ -26,7 +26,15 @@
 	
 
 <style>
-
+.myCard {
+		width: 240px; 
+		display: inline-table; 
+		margin: 10px;
+  		background-color: #fff;
+  		border: 1px solid rgba(0, 0, 0, 0.125);
+  		border-radius: 0.25rem;
+  		
+	}
 </style>
 
 
@@ -51,12 +59,82 @@
 		</div>
 	</div>
 
+<div class="nav-scroller bg-white">
+	<div class="container">
+		<nav class="nav nav-underline">
+			<a class="nav-link col-4 mr-auto" id="all" href="${pageContext.request.contextPath}/itemListOut" style="font-size: 22px; font-weight: 600;">All</a> 
+			<button type="button" class="nav-link col-4 mr-auto btn btn-link" id="man" style="font-size: 22px; font-weight: 600;">Man</button>
+			<button type="button" class="nav-link col-4 mr-auto btn btn-link" id="woman" style="font-size: 22px; font-weight: 600;">Woman</button>
+		</nav>
+		</div>
+</div>
 <div class="row">
      <!--------------------- 메인 사이드 ----------------------->
 
 	<%@ include file="../top/aside.jsp" %>
 		<div class="col-md-10 order-md-2">
-			<div class="my-3 p-3 bg-white rounded box-shadow">
+		<div id="itemList"class="my-3 p-3 bg-white rounded box-shadow">
+			<script>
+	$('#man').click(function () {
+		
+		 $.ajax({
+				type : 'post',
+				url : '/cody/itemListOutMan',
+				dataType : 'json',
+				data : {}
+		 		})
+		 		.done(function(data) {
+			 		$('#itemList').empty();
+				
+					$.each(data, function(i, e) {
+						$('#itemList').append('<div class="myCard">'
+								+ '<img class="card-img-top" src="'+ e.item_image +'" style="height: 250px;" alt="Card image cap">'
+								+ '<div class="card-body" style="height: 100%">'
+								+ e.item_name
+								+ '<br>'
+								+ e.item_category
+								+ '<br>'
+								+ e.item_price +'원'
+								+ '</div>'
+								+ '</div>');
+					});
+				})
+				.fail(function(err) { // 실패
+					console.log(err);
+				});
+		 
+	})
+	
+	$('#woman').click(function () {
+		
+		 $.ajax({
+				type : 'post',
+				url : '/cody/itemListOutWoman',
+				dataType : 'json',
+				data : {}
+		 		})
+		 		.done(function(data) {
+			 		$('#itemList').empty();
+				
+					$.each(data, function(i, e) {
+						$('#itemList').append('<div class="myCard">'
+								+ '<img class="card-img-top" src="'+ e.item_image +'" style="height: 250px;" alt="Card image cap">'
+								+ '<div class="card-body" style="height: 100%">'
+								+ e.item_name
+								+ '<br>'
+								+ e.item_category
+								+ '<br>'
+								+ e.item_price +'원'
+								+ '</div>'
+								+ '</div>');
+					});
+				})
+				.fail(function(err) { // 실패
+					console.log(err);
+				});
+		 
+	})
+</script>
 
 				<ol class="card-item-ol" >
 				

@@ -30,20 +30,56 @@
 	<select id="selectListCap" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where item_category = "모자"
 	</select>
+	<select id="selectListCapMan" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '모자' and cody_gender = 1
+	</select>
+	<select id="selectListCapWoman" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '모자' and cody_gender = 0
+	</select>
 	<select id="selectListTop" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where item_category = "상의"
+	</select>
+	<select id="selectListTopMan" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '상의' and cody_gender = 1
+	</select>
+	<select id="selectListTopWoman" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '상의' and cody_gender = 0
 	</select>
 	<select id="selectListBot" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where item_category = "하의"
 	</select>
+	<select id="selectListBotMan" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '하의' and cody_gender = 1
+	</select>
+	<select id="selectListBotWoman" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '하의' and cody_gender = 0
+	</select>
 	<select id="selectListOut" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where item_category = "아우터"
+	</select>
+	<select id="selectListOutMan" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '아우터' and cody_gender = 1
+	</select>
+	<select id="selectListOutWoman" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '아우터' and cody_gender = 0
 	</select>
 	<select id="selectListShoe" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where item_category = "신발"
 	</select>
-		<select id="selectListAcc" resultType="com.bitcamp.cody.dto.ItemDto">
+	<select id="selectListShoeMan" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '신발' and cody_gender = 1
+	</select>
+	<select id="selectListShoeWoman" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '신발' and cody_gender = 0
+	</select>
+	<select id="selectListAcc" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where item_category = "악세사리"
+	</select>
+	<select id="selectListAccMan" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '악세사리' and cody_gender = 1
+	</select>
+	<select id="selectListAccWoman" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and item_category = '악세사리' and cody_gender = 0
 	</select>
 	
 
