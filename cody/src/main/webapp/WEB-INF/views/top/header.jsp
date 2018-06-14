@@ -97,7 +97,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 	color: #000000;
 }
 
-.img_wrap{
+        .img_wrap{
            width: 280px;
             height: 260px;
             border: 2px solid darkgray;
@@ -105,11 +105,13 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
           
             margin-top: 45px;
             border-radius: 5px 5px 5px 5px;
+            
         }
         
         .img_wrap img{
             width: 280px;
             height: 260px;
+            
        
         }
         
@@ -121,13 +123,20 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
           
             margin-top: 45px;
             border-radius: 5px 5px 5px 5px;
+            
         }
         
         .img_wrap1 img1{
             width: 280px;
             height: 260px;
+             
        
         }
+        
+     
+        
+        
+        
 </style>
 </head>
 <body>
@@ -304,17 +313,19 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 								
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row justify-content-center align-items-center my-4">
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">사진</div>
-									
-									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center px-2">
-										<input type="file" name="photofile" id="input_img">
+					      
+					        
+									<div class="preview-image"  >
+										<input type="file" name="photofile" id="input_img"/>
 									</div>
-									
-									<div class="img_wrap">
-									  <img id="img" src="" width="280" height="260"/>
-									
+									<div class="img_wrap" >
+									  <img id="img" src="${pageContext.request.contextPath }/uploadfile/memberphoto/member.png" width="280" height="260"/>
+									  
 									</div>
-									
-									
+
+         
+         
+         
 								</div>
 								
 								
@@ -488,7 +499,7 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 									</div>
 									
 									<div class="img_wrap1">
-									  <img id="img1" src="" width="280" height="260"/>
+									  <img id="img1" src="${pageContext.request.contextPath }/uploadfile/memberphoto/member.png" width="280" height="260"/>
 									
 									</div>
 									
