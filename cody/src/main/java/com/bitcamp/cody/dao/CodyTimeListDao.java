@@ -11,6 +11,8 @@ public interface CodyTimeListDao {
 	public List<CodyDto> selectList();
 	public List<ItemDto> selectList1(int cody_idx);
 	public MemberDto selectId(int member_idx);
+	public List<CodyDto> selectListMan();
+	public List<CodyDto> selectListWoman();
 
 	
 	

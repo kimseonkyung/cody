@@ -62,18 +62,18 @@
             <ol class="card-item-ol">
                <!------------------ 타임라인 전체 리스트 반복 출력 ----------------------->
 
-               <c:forEach var="irr" items="${irr}">
+               <c:forEach var="irrW" items="${irrW}">
 
                   <li class="card card-item-li" style="margin-bottom: 50px;display: inline-block;"><a
-                     href="${pageContext.request.contextPath}/codyListView?cody_idx=${irr.codyidx}">
+                     href="${pageContext.request.contextPath}/codyListView?cody_idx=${irrW.codyidx}">
                         <img class="card-img-top card-item"
-                        src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irr.codyimage}"
+                        src="${pageContext.request.contextPath}/uploadfile/codyphoto/${irrW.codyimage}"
                         alt="Card image cap">
                   </a>
                      <div class="card-body"
                         style="overflow: hidden; position: relative; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
 
-                        <c:forEach var="item" items="${irr.itemtime}" begin="0" end="2"
+                        <c:forEach var="item" items="${irrW.itemtime}" begin="0" end="2"
                            step="1">
 
                            <div style="padding-bottom: 10px;">
@@ -88,9 +88,9 @@
 
                         <div class="card-main" style="float: left; height: 40px;margin-top: 3px;">
                            <c:choose>
-			<c:when test="${not empty irr.memberphoto}" >
+			<c:when test="${not empty irrW.memberphoto}" >
 		<img class="rounded-circle"
-                              src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irr.memberphoto }"
+                              src="${pageContext.request.contextPath }/uploadfile/memberphoto/${irrW.memberphoto }"
                               style="width: 40px; height: 40px;">
 		</c:when>
 		<c:otherwise>
@@ -101,7 +101,7 @@
                            
                            <div style="float: right; padding-left: 15px;">
                               <div>
-                              <c:set var="memberId" value="${irr.memberid}"/>
+                              <c:set var="memberId" value="${irrW.memberid}"/>
 						      <c:set var="Id"  value="${fn:length(memberId)}"/>
 						      <c:if test="${Id > 9}">
 						      <c:set var="memberId" value="${fn:substring(memberId, 0, 8)} ..." />
@@ -111,17 +111,17 @@
 
                               <div>
                                  <p
-                                    style="vertical-align: inherit; margin-bottom: 0px; height: 20px; font-size: 5px">${irr.codyheight}cm
-                                    ${irr.codyage}세</p>
+                                    style="vertical-align: inherit; margin-bottom: 0px; height: 20px; font-size: 5px">${irrW.codyheight}cm
+                                    ${irrW.codyage}세</p>
                               </div>
                            </div>
                         </div>
                         <c:choose>
-                           <c:when test="${loginInfo.member_idx eq irr.memberidx}">
-                              <a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irr.codyidx}" class="btn btn-info" style="float:right; width: 73px; height: 42px;">수정</a>
+                           <c:when test="${loginInfo.member_idx eq irrW.memberidx}">
+                              <a href="${pageContext.request.contextPath }/codyUpdate?cody_idx=${irrW.codyidx}" class="btn btn-info" style="float:right; width: 73px; height: 42px;">수정</a>
                            </c:when>
                            <c:otherwise>
-                              <button class="btn btn-info" style="float: right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irr.memberidx})">
+                              <button class="btn btn-info" style="float: right;width: 73px; height: 42px;padding-top: 0px;padding-bottom: 0px;" onclick="idx(${irrW.memberidx})">
                               <div style="margin-top: 5px;"><i class="fas fa-user-plus" style="font-size: 14px;vertical-align: inherit;"></i></div>
                               <div><i style="font-size: 14px; vertical-align: inherit;">팔로우</i></div></button>
                               

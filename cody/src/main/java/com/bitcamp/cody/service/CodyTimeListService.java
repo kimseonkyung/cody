@@ -30,4 +30,16 @@ public class CodyTimeListService {
 		
 		return list;
 	}
+    
+    public List<CodyDto> getCodyTimeListMan() {
+		dao = sqlSessionTemplate.getMapper(CodyTimeListDao.class);
+		List<CodyDto> list = dao.selectListMan();
+		return list; 
+	}
+    
+    public List<CodyDto> getCodyTimeListWoman() {
+		dao = sqlSessionTemplate.getMapper(CodyTimeListDao.class);
+		List<CodyDto> list = dao.selectListWoman();
+		return list; 
+	}
 }	  

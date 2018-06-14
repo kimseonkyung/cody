@@ -24,6 +24,16 @@
 	<select id="selectId" resultType="com.bitcamp.cody.dto.MemberDto">
 		select * from member where member_idx = #{member_idx}
 	</select>
+	
+	<select id="selectListMan"
+		resultType="com.bitcamp.cody.dto.CodyDto">
+		SELECT * FROM cody where cody_gender = 1 ORDER BY cody_idx DESC;
+	</select>
+	
+	<select id="selectListWoman"
+		resultType="com.bitcamp.cody.dto.CodyDto">
+		SELECT * FROM cody where cody_gender = 0 ORDER BY cody_idx DESC;
+	</select>
 
 
 </mapper>  

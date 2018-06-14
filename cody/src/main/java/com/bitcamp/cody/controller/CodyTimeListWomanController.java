@@ -21,7 +21,7 @@ import com.bitcamp.cody.service.FollowService;
 import com.bitcamp.cody.service.RankingSerivce;
 
 @Controller
-public class CodyTimeListController {
+public class CodyTimeListWomanController {
 
 	
 	@Autowired
@@ -34,19 +34,19 @@ public class CodyTimeListController {
 	FollowService requestandnresponse;
 
 	/* -------------------------------- 리스트 ------------------------------ */
-	@RequestMapping("/codyTimeList")
+	@RequestMapping("/codyTimeListWoman")
 
-	public String codyTimeList(Model model,HttpSession session) {
+	public String codyTimeListMan(Model model,HttpSession session) {
 		
 		MemberDto memberse = (MemberDto) session.getAttribute("loginInfo");
 		
 		// int m_request = memberse.getMember_idx();
 		
-		List<CodyDto> codytimes = codyTimeListService.getCodyTimeList();
+		List<CodyDto> codytimesW = codyTimeListService.getCodyTimeListWoman();
+		
+		ArrayList<HashMap<Object, Object>> irrW = new ArrayList<>();
 
-		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
-
-		for (CodyDto time : codytimes) {	
+		for (CodyDto time : codytimesW) {	
 			MemberDto member = rankingSerivce.getId(time.getMember_idx());
 			HashMap<Object, Object> map = new HashMap<>();
 			List<ItemDto> itemtime = new ArrayList<>();		
@@ -66,13 +66,14 @@ public class CodyTimeListController {
 				FollowDto request = requestandnresponse.getfollowfo(memberse.getMember_idx(),time.getMember_idx());
 				map.put("followinfo",request.getFollowinfo());	
 			}*/
-			irr.add(map);		
+			irrW.add(map);		
 		}
 
-		System.out.println("irr : " + irr.toString());
+		System.out.println("irrW : " + irrW.toString());
 		
-		model.addAttribute("irr", irr);
-		return "time/codyTimeList";
+		
+		model.addAttribute("irrW", irrW);
+		return "time/codyTimeListWoman";
 	}
 	
 }
