@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!--웹폰트 추가 : 구글 폰트-->
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,13 +28,13 @@
 	href="${pageContext.request.contextPath}/resources/bootstrap/offcanvas.css"
 	rel="stylesheet">
 
-<link rel="stylesheet"
+
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 
-<!--웹폰트 추가 : 구글 폰트-->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script"
 	rel="stylesheet">
-	
+	 -->
 <!-- CODY CSS -->
 <link href="resources/css/cody.css" type="text/css" rel="stylesheet">
 
@@ -245,10 +248,10 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-center align-items-center px-2">아이디</div>
 									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-between align-items-center px-2">
 										<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row justify-content-start align-items-center">
-											<input type="text" name="member_id" id="memberForm_id" placeholder="&nbsp;Please enter a valid email" style="width: 100%;">
+											<input type="text" name="member_id" id="memberForm_id" placeholder="&nbsp;" style="width: 100%;">
 										</div>
 										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 row justify-content-start align-items-center pl-2">
-										<a id="idchk" class="row justify-content-center align-items-center" style="background-color: #01D1FE; color: white; cursor: pointer; height: 27px; width: 100%;">중복확인</a>
+										<a id="idchk" class="row justify-content-center align-items-center" style="background-color: #17a2b8; color: white; cursor: pointer; height: 27px; width: 80px;; padding: 5px; border-radius: 5px;">중복확인</a>
 									    </div>
 				
 										<input type = "text" style = "display:none" id = "dupl">
@@ -332,8 +335,8 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 
 								<div class="form-group">
 									<div class="col-xl-12ss">
-										<button type="submit" class="btn btn-primary p-3"
-											style="background-color: #01D1FE; color: white; border: none; width: 100%; font-size: 20px;">가입</button>
+										<button type="submit" class="btn btn-info p-3"
+											style="background-color: #17a2b8; color: white; border: none; width: 100%; font-size: 20px;">가입</button>
 									</div>
 								</div>
 
@@ -394,8 +397,8 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 								</div>
 								<div class="form-group">
 									<div class="col-xl-12ss">
-										<button type="submit" class="btn btn-primary p-3"
-											style="background-color: #01D1FE; color: white; border: none; width: 100%; font-size: 20px;">Login</button>
+										<button type="submit" class="btn btn-info p-3"
+											style="background-color: #17a2b8; color: white; border: none; width: 100%; font-size: 20px;">Login</button>
 									</div>
 								</div>
 								
@@ -508,8 +511,8 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
 
 								<div class="form-group">
 									<div class="col-xl-12ss">
-										<button type="submit" class="btn btn-primary p-3"
-											style="background-color: #01D1FE; color: white; border: none; width: 100%; font-size: 20px;">수정</button>
+										<button type="submit" class="btn btn-info p-3"
+											style="background-color: #17a2b8; color: white; border: none; width: 100%; font-size: 20px;">수정</button>
 									</div>
 								</div>
 								
