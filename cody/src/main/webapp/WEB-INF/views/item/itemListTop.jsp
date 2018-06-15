@@ -64,7 +64,7 @@
 		<nav class="nav nav-underline">
 			<a class="nav-link col-4 mr-auto" id="all" href="${pageContext.request.contextPath}/itemListTop" style="font-size: 22px; font-weight: 600;">All</a> 
 			<button type="button" class="nav-link col-4 mr-auto btn btn-link" id="man" style="font-size: 22px; font-weight: 600;">Man</button>
-			<button type="button" class="nav-link col-4 mr-auto btn btn-link" id="woman" style="font-size: 22px; font-weight: 600;">Woman</button>
+       		<button type="button" class="nav-link col-4 mr-auto btn btn-link" id="woman" style="font-size: 22px; font-weight: 600;">Woman</button>
 		</nav>
 		</div>
 </div>
@@ -96,6 +96,7 @@
 								+ e.item_category
 								+ '<br>'
 								+ e.item_price +'원'
+								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right">구입</a>'
 								+ '</div>'
 								+ '</div>');
 					});
@@ -126,6 +127,7 @@
 								+ e.item_category
 								+ '<br>'
 								+ e.item_price +'원'
+								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right">구입</a>'
 								+ '</div>'
 								+ '</div>');
 					});

@@ -95,6 +95,7 @@
 								+ e.item_category
 								+ '<br>'
 								+ e.item_price +'원'
+								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right">구입</a>'
 								+ '</div>'
 								+ '</div>');
 					});
@@ -125,6 +126,7 @@
 								+ e.item_category
 								+ '<br>'
 								+ e.item_price +'원'
+								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right">구입</a>'
 								+ '</div>'
 								+ '</div>');
 					});
