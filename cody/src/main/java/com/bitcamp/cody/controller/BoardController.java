@@ -139,5 +139,12 @@ public class BoardController {
 		return "board/boardList";
 
 	}
+	
+	// 지도
+	@RequestMapping("/map")
+	public String map() {
+
+		return "map/map";
+	}
 
 }

@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<footer class="my-5 pt-5 text-muted text-center text-small">
+<footer class="my-5 pt-5 text-muted text-center text-small" style="border-top: 1px solid #ccc;">
     <p class="mb-1">Bitcamp 2018 Project for <a href="${pageContext.request.contextPath }">Cody</a> by <a href="https://twitter.com/mdo">Drop the table</a>.</p>
       <p>
        <ul class="list-inline">

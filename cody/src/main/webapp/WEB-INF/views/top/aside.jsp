@@ -56,7 +56,7 @@
 			<h4>Notice</h4>
 			<ul>
 			<li><a href="${pageContext.request.contextPath}/boardList">Board</a><br> 
-			<li><a href="${pageContext.request.contextPath}/boardList">Map</a><br> 
+			<li><a href="${pageContext.request.contextPath}/map">Map</a><br> 
 		</ul>		
 	</div>
 	</div>
