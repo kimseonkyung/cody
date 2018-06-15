@@ -22,6 +22,7 @@ input:focus, textarea:focus {
 }
 </style>
 
+
 <style>
 	#bar1 {
 	height: 55px;
