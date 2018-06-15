@@ -155,7 +155,7 @@
 					<img class="card-img-top card-item" src="${item.item_image}" alt="Card image cap" onclick="itemListView(${item.item_idx})">
 						<div class="card-body" style="height: 100%;">
 							${item.item_name }<br> ${item.item_category }<br> ${item.item_price }원
-							<a href="#" class="btn btn-info" style="float: right; margin-bottom: 20px;">구입</a>
+							<a href="item.item_link" class="btn btn-info" style="float: right; margin-bottom: 20px;">구입</a>
 						</div>
 				</li>
 
