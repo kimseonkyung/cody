@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.cody.dto.CodyDto;
 import com.bitcamp.cody.dto.ItemDto;
@@ -122,5 +125,46 @@ public class SearchController {
 		model.addAttribute("MemberLsit", memberLists);
 
 		return "search/memberInfo";
+	}
+	
+	@RequestMapping(value = "/memberInfoMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String searchMemberInfoMan(Model model) {
+
+		List<MemberDto> memberLists = searchService.getSearchMemberMan();
+		JSONArray arr = new JSONArray();
+		
+		for (MemberDto member : memberLists) {
+			JSONObject obj = new JSONObject();
+			obj.put("member_idx", member.getMember_idx());
+			obj.put("member_photo", member.getMember_photo());
+			obj.put("member_id", member.getMember_id());
+			arr.put(obj);
+		}
+
+        System.out.println("arr : " + arr);		
+		
+		return arr.toString();
+	}
+	
+	@RequestMapping(value = "/memberInfoWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String searchMemberInfoWoman(Model model) {
+
+		List<MemberDto> memberLists = searchService.getSearchMemberWoman();
+		
+		JSONArray arr = new JSONArray();
+		
+		for (MemberDto member : memberLists) {			
+			JSONObject obj = new JSONObject();
+			obj.put("member_idx", member.getMember_idx());
+			obj.put("member_photo", member.getMember_photo());
+			obj.put("member_id", member.getMember_id());
+			arr.put(obj);
+		}
+
+        System.out.println("arr : " + arr);		
+		
+		return arr.toString();
 	}
 }

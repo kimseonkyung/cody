@@ -18,8 +18,17 @@
 	
 	<select id="searchMember"
 		resultType="com.bitcamp.cody.dto.MemberDto">
-		SELECT * FROM MEMBER WHERE member_id LIKE CONCAT('%',#{keyword3},'%');
-		
+		SELECT * FROM MEMBER WHERE member_id LIKE CONCAT('%',#{keyword3},'%');		
+	</select>
+	
+	<select id="searchMemberMan"
+		resultType="com.bitcamp.cody.dto.MemberDto">
+        select * from member where member_id in (SELECT distinct member_id FROM member,cody WHERE cody.member_idx=member.member_idx and cody_gender=1);	
+	</select>
+	
+	<select id="searchMemberWoman"
+		resultType="com.bitcamp.cody.dto.MemberDto">
+		select * from member where member_id in (SELECT distinct member_id FROM member,cody WHERE cody.member_idx=member.member_idx and cody_gender=0);
 	</select>
 	
 	<select id="selectId" resultType="com.bitcamp.cody.dto.MemberDto">

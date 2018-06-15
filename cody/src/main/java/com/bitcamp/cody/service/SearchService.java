@@ -50,6 +50,24 @@ public class SearchService {
 		return memberlist;
 					
 		}
+	public List<MemberDto> getSearchMemberMan()
+	{
+		dao = sqlSessionTemplate.getMapper(SearchDao.class);
+		
+		List<MemberDto> memberlist = dao.searchMemberMan();
+		
+		return memberlist;
+					
+		}
+	public List<MemberDto> getSearchMemberWoman()
+	{
+		dao = sqlSessionTemplate.getMapper(SearchDao.class);
+		
+		List<MemberDto> memberlist = dao.searchMemberWoman();
+		
+		return memberlist;
+					
+		}
 	
 	//멤버 값 뽑기
      public MemberDto getId(int member_idx){
