@@ -9,7 +9,11 @@ import com.bitcamp.cody.dto.MemberDto;
 public interface SearchDao {
 	
 	public List<ItemDto> searchItem(String keyword1);
+	public List<ItemDto> searchItemMan();
+	public List<ItemDto> searchItemWoman();
 	public List<CodyDto> searchCody(String keyword2);
+	public List<CodyDto> searchCodyMan();
+	public List<CodyDto> searchCodyWoman();
 	public List<MemberDto> searchMember(String keyword3);
 	public List<MemberDto> searchMemberMan();
 	public List<MemberDto> searchMemberWoman();

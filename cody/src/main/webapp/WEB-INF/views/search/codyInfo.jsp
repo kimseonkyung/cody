@@ -46,12 +46,12 @@
 	<div class="nav-scroller bg-white">
 	<div class="container">
 		<nav class="nav nav-underline">
-			<a class="nav-link col-4 mr-auto" href="#">all</a> 
-			<a class="nav-link col-4 mr-auto" href="#">men</a>
-			<a class="nav-link col-4 mr-auto" href="#">women</a>
+			<a class="nav-link col-4 mr-auto" id="all" href="${pageContext.request.contextPath}/codyInfo?keyword2" style="font-size: 22px; font-weight: 600;">All</a> 
+			<button type="button" class="nav-link col-4 mr-auto btn btn-link" id="man" style="font-size: 22px; font-weight: 600;">Man</button>
+			<button type="button" class="nav-link col-4 mr-auto btn btn-link" id="woman" style="font-size: 22px; font-weight: 600;">Woman</button>
 		</nav>
-	</div>
-</div>
+		</div>
+    </div>
 	
 <div class="row">
      <!--------------------- 메인 사이드 ----------------------->

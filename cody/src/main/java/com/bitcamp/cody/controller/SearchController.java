@@ -57,6 +57,50 @@ public class SearchController {
 
 		return "search/itemInfo";
 	}
+	
+	@RequestMapping(value = "/itemInfoMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String searchItemInfoMan(Model model) {
+
+		List<ItemDto> ItemLists = searchService.getSearchItemMan();
+        JSONArray arr = new JSONArray();
+		
+		for (ItemDto list : ItemLists) {
+			JSONObject obj = new JSONObject();
+			obj.put("item_idx", list.getItem_idx());
+			obj.put("item_photo", list.getItem_image());
+			obj.put("item_name", list.getItem_name());
+			obj.put("item_price", list.getItem_price());
+			obj.put("item_category", list.getItem_category());
+			arr.put(obj);
+		}
+
+        System.out.println("arr : " + arr);		
+		
+		return arr.toString();
+	}
+	
+	@RequestMapping(value = "/itemInfoWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String searchItemInfoWoman(Model model) {
+
+		List<ItemDto> ItemLists = searchService.getSearchItemWoman();
+		JSONArray arr = new JSONArray();
+		
+		for (ItemDto list : ItemLists) {
+			JSONObject obj = new JSONObject();
+			obj.put("item_idx", list.getItem_idx());
+			obj.put("item_photo", list.getItem_image());
+			obj.put("item_name", list.getItem_name());
+			obj.put("item_price", list.getItem_price());
+			obj.put("item_category", list.getItem_category());
+			arr.put(obj);
+		}
+
+        System.out.println("arr : " + arr);		
+		
+		return arr.toString();
+	}
 
 	// 코드 검색 뷰로 이동
 /*
@@ -97,7 +141,7 @@ public class SearchController {
 			irr.add(map);
 			
 		}
-
+		model.addAttribute("list", CodyLists);
 		model.addAttribute("irr", irr);
 
 		System.out.println("irr : " + irr.toString());
