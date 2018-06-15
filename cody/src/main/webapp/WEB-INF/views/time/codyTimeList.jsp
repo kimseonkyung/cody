@@ -47,7 +47,7 @@
 	<div class="nav-scroller bg-white">
 	<div class="container">
 		<nav class="nav nav-underline">
-			<a class="nav-link col-4 mr-auto" href="${pageContext.request.contextPath}/main" style="font-size: 22px; font-weight: 600;">All</a> 
+			<a class="nav-link col-4 mr-auto" href="${pageContext.request.contextPath}/main" style="font-size: 22px; font-weight: 600; background-color: #17a2b8; color: #fff;">All</a> 
 			<a class="nav-link col-4 mr-auto" href="${pageContext.request.contextPath}/codyTimeListMan" style="font-size: 22px; font-weight: 600;">Men</a>
 			<a class="nav-link col-4 mr-auto" href="${pageContext.request.contextPath}/codyTimeListWoman" style="font-size: 22px; font-weight: 600;">Women</a>
 		</nav>
