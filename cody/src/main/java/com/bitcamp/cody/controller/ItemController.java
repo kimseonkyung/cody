@@ -111,6 +111,7 @@ public class ItemController {
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -132,6 +133,7 @@ public class ItemController {
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -164,6 +166,7 @@ public class ItemController {
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -178,13 +181,14 @@ public class ItemController {
 		List<ItemDto> items = itemListService.getItemListCapWoman();
         JSONArray arr = new JSONArray();
 		
-		for (ItemDto item : items) {
+        for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
 			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -217,6 +221,7 @@ public class ItemController {
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -233,11 +238,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -265,11 +271,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -286,11 +293,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -318,11 +326,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -339,11 +348,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -371,11 +381,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -392,11 +403,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -424,11 +436,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
@@ -445,11 +458,12 @@ public class ItemController {
 		
 		for (ItemDto item : items) {
 			JSONObject obj = new JSONObject();
-		    obj.put("item_idx", item.getItem_idx());
+			obj.put("item_idx", item.getItem_idx());
 			obj.put("item_image", item.getItem_image());
 			obj.put("item_name", item.getItem_name());
 			obj.put("item_category", item.getItem_category());
 			obj.put("item_price", item.getItem_price());
+			obj.put("item_link", item.getItem_link());
 			arr.put(obj);
 		}
 		
