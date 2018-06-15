@@ -22,7 +22,6 @@
 <style>
 #memberList{
     overflow: hidden;
-    column-width: 240px;
     column-gap: 15px;
 }
 
@@ -42,17 +41,16 @@
 	<!-- 인클루드 header -->
 	<%@ include file="../top/header.jsp"%>
 
-	<main role="main" class="container"> <!--------------------- 메인 배너 ----------------------->
-	<div
-		class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow"
-		style="background-image: url('/cody/uploadfile/cody.png'); background-repeat: no-repeat; background-size: contain;">
+	<main role="main" class="container"> 
+	<!--------------------- 메인 배너 ----------------------->
+	<div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" style="background-image: url('/cody/uploadfile/cody.png'); background-repeat: no-repeat; background-size: contain;">
 		<div class="lh-100">
 			<h5 class="mb-0 text-white lh-100">CODY</h5>
 			<small>bitcamp 2018</small>
 		</div>
 	</div>
 
-		<div class="nav-scroller bg-white">
+	<div class="nav-scroller bg-white">
 	<div class="container">
 		<nav class="nav nav-underline">
 			<a class="nav-link col-4 mr-auto" id="all" href="${pageContext.request.contextPath}/memberInfo?keyword3" style="font-size: 22px; font-weight: 600;">All</a> 
@@ -60,7 +58,7 @@
 			<button type="button" class="nav-link col-4 mr-auto btn btn-link" id="woman" style="font-size: 22px; font-weight: 600;">Woman</button>
 		</nav>
 		</div>
-</div>
+    </div>
 <div class="row">
      <!--------------------- 메인 사이드 ----------------------->
 

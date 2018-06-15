@@ -82,7 +82,7 @@
 						<div class="card-body" style="overflow: hidden; position: relative;">
 						 <h5 class="card-title" style="float: left;"></h5>
 							${ItemLists.item_name }<br> ${ItemLists.item_category }<br> ${ItemLists.item_price }원
-							<a href="#" class="btn btn-info"	style="position: absolute; right: 20px;">구입</a>
+							<a href="ItemLists.item_link" class="btn btn-info"	style="position: absolute; right: 20px;">구입</a>
 						</div>
 				</li>
 
