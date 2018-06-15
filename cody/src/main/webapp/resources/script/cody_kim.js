@@ -506,7 +506,7 @@ function followDel(idx) {
     };
     
 // 팔로우 수락
-    function followDel(idx) {
+    function followUp(idx) {
     	
     	$.ajax({
     		type : 'get',
