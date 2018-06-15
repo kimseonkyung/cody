@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,6 +122,75 @@ public class SearchController {
 			return "search/codyInfo";
 
 		List<CodyDto> CodyLists = searchService.getSearchCody(keyword2);
+		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
+		
+		for (CodyDto list : CodyLists) {
+			MemberDto member = searchService.getId(list.getMember_idx());
+			HashMap<Object, Object> map = new HashMap<>();
+			List<ItemDto> itemtime = new ArrayList<>();		
+			itemtime = codyItemListService.getCodyItemList(list.getCody_idx());
+			map.put(list.getCody_idx(),itemtime);	
+			map.put("cody_title",list.getCody_title());
+			map.put("cody_image",list.getCody_image());
+			map.put("cody_idx",list.getCody_idx());	
+			map.put("cody_age", list.getCody_age());
+			map.put("cody_height",list.getCody_height());
+			map.put("member_id", member.getMember_id() );
+			map.put("member_idx", list.getMember_idx() );
+			map.put("member_photo", member.getMember_photo() );
+			map.put(list, itemtime);
+			map.put("itemtime", itemtime);
+			irr.add(map);
+			
+		}
+		model.addAttribute("list", CodyLists);
+		model.addAttribute("irr", irr);
+
+		System.out.println("irr : " + irr.toString());
+
+		return "search/codyInfo";
+	}
+	
+	@RequestMapping(value = "/codyInfoMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+
+	public String searchCodyInfoMan(Model model) {
+
+		List<CodyDto> CodyLists = searchService.getSearchCodyMan();
+		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
+		
+		for (CodyDto list : CodyLists) {
+			MemberDto member = searchService.getId(list.getMember_idx());
+			HashMap<Object, Object> map = new HashMap<>();
+			List<ItemDto> itemtime = new ArrayList<>();		
+			itemtime = codyItemListService.getCodyItemList(list.getCody_idx());
+			map.put(list.getCody_idx(),itemtime);	
+			map.put("cody_title",list.getCody_title());
+			map.put("cody_image",list.getCody_image());
+			map.put("cody_idx",list.getCody_idx());	
+			map.put("cody_age", list.getCody_age());
+			map.put("cody_height",list.getCody_height());
+			map.put("member_id", member.getMember_id() );
+			map.put("member_idx", list.getMember_idx() );
+			map.put("member_photo", member.getMember_photo() );
+			map.put(list, itemtime);
+			map.put("itemtime", itemtime);
+			irr.add(map);
+			
+		}
+		model.addAttribute("list", CodyLists);
+		model.addAttribute("irr", irr);
+
+		System.out.println("irr : " + irr.toString());
+
+		return "search/codyInfo";
+	}
+	
+	@RequestMapping(value = "/codyInfoWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String searchCodyInfoWoman(Model model) {
+
+		List<CodyDto> CodyLists = searchService.getSearchCodyWoman();
 		ArrayList<HashMap<Object, Object>> irr = new ArrayList<>();
 		
 		for (CodyDto list : CodyLists) {

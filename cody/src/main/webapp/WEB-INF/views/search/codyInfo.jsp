@@ -59,7 +59,70 @@
 	<%@ include file="../top/aside.jsp" %>
 
 		<div class="col-md-10 order-md-2">
-			<div class="my-3 p-3 bg-white rounded box-shadow">
+			<div id="itemList"class="my-3 p-3 bg-white rounded box-shadow">
+				<script>
+	$('#man').click(function () {
+		
+		 $.ajax({
+				type : 'post',
+				url : '/cody/itemListMan',
+				dataType : 'json',
+				data : {}
+		 		})
+		 		.done(function(data) {
+			 		$('#itemList').empty();
+				
+					$.each(data, function(i, e) {
+						$('#itemList').append('<div class="myCard">'
+								+ '<img class="card-img-top" src="'+ e.cody_image +'" style="height: 270px;" alt="Card image cap">'
+								+ '<div class="card-body" style="height: 100%">'
+								+ e.cody_title
+								+ '<br>'
+								+ e.item_category
+								+ '<br>'
+								+ e.item_price +'원'
+								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right; margin-bottom: 20px;">구입</a>'
+								+ '</div>'
+								+ '</div>');
+					});
+				})
+				.fail(function(err) { // 실패
+					console.log(err);
+				});
+		 
+	})
+	
+	$('#woman').click(function () {
+		
+		 $.ajax({
+				type : 'post',
+				url : '/cody/itemListWoman',
+				dataType : 'json',
+				data : {}
+		 		})
+		 		.done(function(data) {
+			 		$('#itemList').empty();
+				
+					$.each(data, function(i, e) {
+						$('#itemList').append('<div class="myCard">'
+								+ '<img class="card-img-top" src="'+ e.cody_image +'" style="height: 270px;" alt="Card image cap">'
+								+ '<div class="card-body" style="height: 100%">'
+								+ e.cody_title
+								+ '<br>'
+								+ e.item_category
+								+ '<br>'
+								+ e.item_price +'원'
+								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right; margin-bottom: 20px;">구입</a>'
+								+ '</div>'
+								+ '</div>');
+					});
+				})
+				.fail(function(err) { // 실패
+					console.log(err);
+				});
+		 
+	})
+</script>
 				<ol class="card-item-ol" >
 
 			<!------------------ 코디 리스트 반복 출력 ----------------------->

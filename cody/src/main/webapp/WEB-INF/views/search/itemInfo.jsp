@@ -78,9 +78,6 @@
      <!--------------------- 메인 사이드 ----------------------->
 
 	<%@ include file="../top/aside.jsp" %>
-	
-	
-	
 
 		<div class="col-md-10 order-md-2">
 			<div id="itemList"class="my-3 p-3 bg-white rounded box-shadow">
