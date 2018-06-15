@@ -620,6 +620,7 @@ input:focus, textarea:focus {
 								<input type="hidden" id="myitem_brand${item.item_idx }" value="${item.item_brand }">
 								<input type="hidden" id="myitem_category${item.item_idx }" value="${item.item_category }">
 								<input type="hidden" id="myitem_color${item.item_idx }" value="${item.item_color }">
+								<input type="hidden" id="myitem_link${item.item_idx }" value="${item.item_link }">
 								<input type="hidden" id="myitem_price${item.item_idx }" value="${item.item_price }">
 							</c:forEach>
 						</section>
