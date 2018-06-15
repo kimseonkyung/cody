@@ -142,7 +142,7 @@ input:focus, textarea:focus {
 	<div class="p-3 bg-white rounded box-shadow">
           <button type="button" class="btn btn-info" data-target="#modifyModal" data-toggle="modal" style="float:right;margin-top:7%;margin-right: 5%;">프로필변경</button>	
 	      
-	      <div class="p-3 bg-white rounded box-shadow" style="width:460px;">
+	      <div class="p-3 bg-white rounded box-shadow" style="width:400px;">
 	      <c:choose>
 	      <c:when test="${loginInfo.member_photo ne null}" >
           <img src="${pageContext.request.contextPath }/uploadfile/memberphoto/${loginInfo.member_photo}" width="180" height="180" class="rounded-circle" style="margin-left:5%;">
@@ -152,8 +152,11 @@ input:focus, textarea:focus {
          </c:otherwise>
           </c:choose>
           <div style="float:right; margin-top:9%;">
-          <div><p style="vertical-align: inherit;margin-bottom: 0px; font-size:20px;">${loginInfo.member_id}</p></div>							
-		  <div><p style="vertical-align: inherit;margin-bottom: 0px; font-size:20px;"><fmt:formatDate value="${loginInfo.member_reg}" pattern="yyyy-MM-dd"/></p></div>
+          <div><p style="vertical-align: inherit;margin-bottom: 0px; font-size:25px;"><strong>${loginInfo.member_id}</strong></p></div>							
+		  <div>
+		  <p style="vertical-align: inherit;margin-bottom: 0px; font-size:15px;">${loginInfo.member_name }</p>
+		  <p style="vertical-align: inherit;margin-bottom: 0px; font-size:15px;"><fmt:formatDate value="${loginInfo.member_reg}" pattern="yyyy/MM/dd"/></p>
+		  </div>
           </div>
           
      	</div>
@@ -182,14 +185,6 @@ input:focus, textarea:focus {
 		
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 		<div class="row">
-		
-		<div id="main_section" style="width: 100%">
-			<div id="myPageList" class="my-3 p-3 bg-white rounded box-shadow">
-				<div style="width: 500px; margin: 0 auto; padding-top: 20px; border: 1px solid red; text-align: center;">hello 마이페이지!!</div>
-				
-				
-			</div>
-		</div>
 		
 		<!--회원가입 폼-->
 <div class="container" style="float: left">
