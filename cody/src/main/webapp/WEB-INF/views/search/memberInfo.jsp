@@ -64,10 +64,10 @@
 						<li class="card card-item-li" style="display: inline-block;margin-bottom:50px;">
 						<c:choose>
 			<c:when test="${not empty MemberLsit.member_photo}" >
-		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${MemberLsit.member_photo }" style="width:240px; height: 240px;">
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${MemberLsit.member_photo }" style="width:240px; height: 270px;">
 		</c:when>
 		<c:otherwise>
-		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/member.png" width="240" height="240">
+		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/member.png" width="240" height="270">
 		
 		</c:otherwise>
 		</c:choose>

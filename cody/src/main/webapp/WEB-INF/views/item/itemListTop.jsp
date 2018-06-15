@@ -26,14 +26,21 @@
 	
 
 <style>
+#itemList{
+    overflow: hidden;
+    column-width: 240px;
+    column-gap: 15px;
+}
+
 .myCard {
-		width: 240px; 
-		display: inline-table; 
-		margin: 10px;
+		width: 240px;  
+		display: inline-block;
+		margin-left: 40px;
+        margin-bottom: 50px;
   		background-color: #fff;
   		border: 1px solid rgba(0, 0, 0, 0.125);
   		border-radius: 0.25rem;
-  		
+  		box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 	}
 </style>
 
@@ -89,14 +96,14 @@
 				
 					$.each(data, function(i, e) {
 						$('#itemList').append('<div class="myCard">'
-								+ '<img class="card-img-top" src="'+ e.item_image +'" style="height: 250px;" alt="Card image cap">'
+								+ '<img class="card-img-top" src="'+ e.item_image +'" style="height: 270px;" alt="Card image cap">'
 								+ '<div class="card-body" style="height: 100%">'
 								+ e.item_name
 								+ '<br>'
 								+ e.item_category
 								+ '<br>'
 								+ e.item_price +'원'
-								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right">구입</a>'
+								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right; margin-bottom:20px;">구입</a>'
 								+ '</div>'
 								+ '</div>');
 					});
@@ -120,14 +127,14 @@
 				
 					$.each(data, function(i, e) {
 						$('#itemList').append('<div class="myCard">'
-								+ '<img class="card-img-top" src="'+ e.item_image +'" style="height: 250px;" alt="Card image cap">'
+								+ '<img class="card-img-top" src="'+ e.item_image +'" style="height: 270px;" alt="Card image cap">'
 								+ '<div class="card-body" style="height: 100%">'
 								+ e.item_name
 								+ '<br>'
 								+ e.item_category
 								+ '<br>'
 								+ e.item_price +'원'
-								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right">구입</a>'
+								+ '<a href="'+ e.item_link +'" class="btn btn-info" style="float:right; margin-bottom:20px;">구입</a>'
 								+ '</div>'
 								+ '</div>');
 					});
@@ -147,10 +154,9 @@
 			
 				<li class="card card-item-li" style="display:inline-block; margin-bottom: 50px;">
 					<img class="card-img-top card-item" src="${item.item_image}" alt="Card image cap" onclick="itemListView(${item.item_idx})">
-						<div class="card-body" style="overflow: hidden; position: relative;">
-						 <h5 class="card-title" style="float: left;"></h5>
-							${item.item_name }<br> ${item.item_category }<br> ${item.item_price }
-							<a href="#" class="btn btn-info"	style="position: absolute; right: 20px;">구입</a>
+						<div class="card-body" style="height: 100%;">
+							${item.item_name }<br> ${item.item_category }<br> ${item.item_price }원
+							<a href="#" class="btn btn-info" style="float: right; margin-bottom: 20px;">구입</a>
 						</div>
 				</li>
 
