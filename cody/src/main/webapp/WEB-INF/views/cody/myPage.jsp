@@ -186,6 +186,14 @@ input:focus, textarea:focus {
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 		<div class="row">
 		
+		<div id="main_section" style="width: 100%">
+			<div id="myPageList" class="my-3 p-3 bg-white rounded box-shadow">
+				<div style="width: 500px; margin: 0 auto; padding-top: 20px; text-align: center;"></div>
+				
+				
+			</div>
+		</div>
+		
 		<!--회원가입 폼-->
 <div class="container" style="float: left">
 
