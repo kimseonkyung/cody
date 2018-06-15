@@ -265,7 +265,8 @@ function naverSearchOk() {
 				var name = strip_tag(row.title);
 				var $hidden = $('<div>').html('<input type="hidden" name="itemList['+idx+'].item_image" value="'+row.image+'">'
 									+'<input type="hidden" name="itemList['+idx+'].item_name" value="'+name+'">'		
-									+'<input type="hidden" name="itemList['+idx+'].item_price" value="'+row.lprice+'">');
+									+'<input type="hidden" name="itemList['+idx+'].item_price" value="'+row.lprice+'">'
+									+'<input type="hidden" name="itemList['+idx+'].item_link" value="'+row.link+'">');
 				 $hidden.appendTo($div);
 				 $div.appendTo($table);
 				 idx++;
@@ -292,6 +293,7 @@ $('#myItemOk').click(function () {
 	var category = $('#myitem_category'+ch).val();
 	var color = $('#myitem_color'+ch).val();
 	var price = $('#myitem_price'+ch).val();
+	var link = $('#myitem_link'+ch).val();
 	
 				var $div = $('<tbody id="codyDiv'+idx+'">');
 				var $tr = $('<tr>').append($('<td rowspan="6">').html('<img src="'+image+'" width="100">'),	$('<td>').html('이름 : '+name)
@@ -315,6 +317,7 @@ $('#myItemOk').click(function () {
 											 +'<input type="hidden" name="itemList['+idx+'].item_brand" value="'+brand+'">'		
 											 +'<input type="hidden" name="itemList['+idx+'].item_category" value="'+category+'">'		
 											 +'<input type="hidden" name="itemList['+idx+'].item_color" value="'+color+'">'		
+											 +'<input type="hidden" name="itemList['+idx+'].item_link" value="'+link+'">'		
 											 +'<input type="hidden" name="itemList['+idx+'].item_price" value="'+price+'">');
 				 $hidden.appendTo($div);
 				 $div.appendTo($table);
@@ -417,7 +420,6 @@ function bookmarkIns(memberIdx, codyIdx) {
 			cody_idx : codyIdx,
 		},
 		success : function(data) {
-			alert('성공');
 			location.reload(true);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
@@ -437,7 +439,6 @@ function bookmarkDel(idx) {
 			bookmark_idx : idx
 		},
 		success : function(data) {
-			alert('성공');
 			location.reload(true);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {

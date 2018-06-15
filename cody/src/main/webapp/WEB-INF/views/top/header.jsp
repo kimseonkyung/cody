@@ -136,7 +136,8 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
        
         }
         
-     
+     @import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+      div { font-family: 'Jeju Myeongjo', serif; }
         
         
         
