@@ -427,22 +427,19 @@ $('#gFollow').click(function () {
 				$.each(data, function(i, e ) {
 					$('#myPageList').append('<div class="myCard">'
 							+ '<a href="/cody/listView?member_idx='+ e.followrq_idx +'"><img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrq_imge +'" style="height: 250px;" alt="Card image cap"></a>'
-							+ '<div class="card-body" style="height: 100%">'
-							+ e.followrq_id		
-							+ '<br>'
-							+ e.followrq_birth
-							+ '<br>'
-							+ '<div id="followrq'+e.followrq_idx+'">'
+							+ '<span class="card-body">'
+							+ e.followrq_id						
+							+ '<span id="followrq'+e.followrq_idx+'">'
 							
 							);																	
 							if(e.followinfoq == false) {
-								$('#followrq'+e.followrq_idx).append('<button class="btn btn-primary"style="float: right;" onclick ="followdel2('+e.followidxq+')"><i class="fas fa-user-minus"></i><br>팔로우 취소</button>');
+								$('#followrq'+e.followrq_idx).append('<button class="btn btn-primary"style="line-height: 1; font-size: 14px; float:right; margin-bottom: 10px;margin-top: 10px;margin-right: 10px;" onclick ="followdel2('+e.followidxq+')"><i class="fas fa-user-minus"></i><br>취소</button>');
 							} else {
-								$('#followrq'+e.followrq_idx).append('<button class="btn btn-danger"style="float: right;" onclick = "followdel3('+e.followidxq+')"><i class="fas fa-user-check"></i><br>팔로 잉</button>');
+								$('#followrq'+e.followrq_idx).append('<button class="btn btn-danger"style="line-height: 1; font-size: 14px; float:right; margin-bottom: 10px;margin-top: 10px;margin-right: 10px;" onclick = "followdel3('+e.followidxq+')"><i class="fas fa-user-check"></i><br>팔로 잉</button>');
 																
 							}		
-							+ '</div>'
-							+ '</div>'
+							+ '</span>'
+							+ '</span>'
 																	
 				});
 			})
@@ -508,17 +505,18 @@ $('#gFollower').click(function () {
 				$.each(data, function(i, e) {
 					$('#myPageList').append('<div class="myCard">'
 							+ '<a href="/cody/listView?member_idx='+ e.followrp_idx +'"><img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrp_imag +'" style="height: 250px;" alt="Card image cap"></a>'
-							+ '<div class="card-body" style="height: 100%">'
-							+ e.followrp_id	
-							+ '<br>'
-							+ e.followrp_birth
-							+ '<div id="followrp'+e.followrp_idx+'">'
+						    + '<span class="card-body">'
+						    + '<div>'
+						    + e.followrp_id	
+						    + '<div>'
+						    + '<span id="followrp'+e.followrp_idx+'">'
+						    + '</div>'
 					);
 															
 					if(e.followinfop == false) {
-						$('#followrp'+e.followrp_idx).append('<button class="btn btn-primary"style="float: right;" onclick ="followUpdate('+e.followrp_idx+')" ><i class="fas fa-user-plus"></i><br>팔로우 수락</button>');
+						$('#followrp'+e.followrp_idx).append('<button class="btn btn-primary"style="line-height: 1; font-size: 14px; float:right; margin-bottom: 10px;margin-top: 10px;margin-right: 10px;"onclick ="followUpdate('+e.followrp_idx+')" ><i class="fas fa-user-plus"></i><br>팔로우 수락</button>');
 					} else {
-						$('#followrp'+e.followrp_idx).append('<button class="btn btn-danger"style="float: right;" onclick = "followDelete('+e.followidxp+')"><i class="fas fa-user-check"></i><br>팔로잉 </button>');
+						$('#followrp'+e.followrp_idx).append('<button class="btn btn-danger" style="line-height: 1; font-size: 14px; float:right; margin-bottom: 10px;margin-top: 10px;margin-right: 10px;" onclick = "followDelete('+e.followidxp+')"><i class="fas fa-user-check" style = "font-size: 14px;"></i><br>팔로잉 </button>');
 					}		
 					+ '</div>'
 					+ '</div>'
