@@ -40,7 +40,6 @@ a {
 <!--본문 내용 속성-->
 <style>
 #content {
-	border: 2px solid darkgray;
 	border-radius: 5px 5px 5px 5px;
 	max-width: 920px;
 	display: flex;

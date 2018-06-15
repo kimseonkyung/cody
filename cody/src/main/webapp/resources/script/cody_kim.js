@@ -420,7 +420,6 @@ function bookmarkIns(memberIdx, codyIdx) {
 			cody_idx : codyIdx,
 		},
 		success : function(data) {
-			alert('성공');
 			location.reload(true);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
@@ -440,7 +439,6 @@ function bookmarkDel(idx) {
 			bookmark_idx : idx
 		},
 		success : function(data) {
-			alert('성공');
 			location.reload(true);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
