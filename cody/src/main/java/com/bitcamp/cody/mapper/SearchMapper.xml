@@ -11,9 +11,29 @@
 		SELECT * FROM ITEM WHERE ITEM_NAME LIKE CONCAT('%',#{keyword1},'%');
 	</select>
 	
+	<select id="searchItemMan"
+		resultType="com.bitcamp.cody.dto.ItemDto">
+		SELECT * FROM item,cody WHERE cody.cody_idx=item.cody_idx and cody_gender=1;
+	</select>
+	
+	<select id="searchItemWoman"
+		resultType="com.bitcamp.cody.dto.ItemDto">
+		SELECT * FROM item,cody WHERE cody.cody_idx=item.cody_idx and cody_gender=0;
+	</select>
+	
 	<select id="searchCody"
 		resultType="com.bitcamp.cody.dto.CodyDto">
 		SELECT * FROM CODY WHERE cody_title LIKE CONCAT('%',#{keyword2},'%');
+	</select>
+	
+	<select id="searchCodyMan"
+		resultType="com.bitcamp.cody.dto.CodyDto">
+		SELECT * FROM item,cody WHERE cody.cody_idx=item.cody_idx and cody_gender=1;
+	</select>
+	
+	<select id="searchCodyWoman"
+		resultType="com.bitcamp.cody.dto.CodyDto">
+		SELECT * FROM item,cody WHERE cody.cody_idx=item.cody_idx and cody_gender=0;
 	</select>
 	
 	<select id="searchMember"

@@ -29,12 +29,52 @@ public class SearchService {
 					
 		}
 	
+	public List<ItemDto> getSearchItemMan()
+	{
+		dao = sqlSessionTemplate.getMapper(SearchDao.class);
+		
+		List<ItemDto> itemlist = dao.searchItemMan();
+		
+		return itemlist;
+					
+		}
+	
+	public List<ItemDto> getSearchItemWoman()
+	{
+		dao = sqlSessionTemplate.getMapper(SearchDao.class);
+		
+		List<ItemDto> itemlist = dao.searchItemWoman();
+		
+		return itemlist;
+					
+		}
+	
 	//코디 검색
 	public List<CodyDto> getSearchCody(String keyword2)
 	{
 		dao = sqlSessionTemplate.getMapper(SearchDao.class);
 		
 		List<CodyDto> codylist = dao.searchCody(keyword2);
+		
+		return codylist;
+					
+		}
+	
+	public List<CodyDto> getSearchCodyMan()
+	{
+		dao = sqlSessionTemplate.getMapper(SearchDao.class);
+		
+		List<CodyDto> codylist = dao.searchCodyMan();
+		
+		return codylist;
+					
+		}
+	
+	public List<CodyDto> getSearchCodyWoman()
+	{
+		dao = sqlSessionTemplate.getMapper(SearchDao.class);
+		
+		List<CodyDto> codylist = dao.searchCodyWoman();
 		
 		return codylist;
 					
