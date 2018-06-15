@@ -15,6 +15,8 @@ public interface ItemDao {
 	public int insertListItem(List<ItemDto> list);
 	public List<ItemDto> selectByMemberIdx(int memberIdx);
 	public List<ItemDto> selectList();
+	public List<ItemDto> selectListMan();
+	public List<ItemDto> selectListWoman();
 	public List<ItemDto> selectListCap();
 	public List<ItemDto> selectListCapMan();
 	public List<ItemDto> selectListCapWoman();

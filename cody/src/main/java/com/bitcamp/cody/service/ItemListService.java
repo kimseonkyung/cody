@@ -22,6 +22,20 @@ public class ItemListService {
 		
 		return list;
 	}
+	public List<ItemDto> getItemListMan() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListMan();
+		
+		return list;
+	}
+	public List<ItemDto> getItemListWoman() {
+
+		dao = sqlSessionTemplate.getMapper(ItemDao.class);
+		List<ItemDto> list = dao.selectListWoman();
+		
+		return list;
+	}
 	public List<ItemDto> getItemListCap() {
 
 		dao = sqlSessionTemplate.getMapper(ItemDao.class);

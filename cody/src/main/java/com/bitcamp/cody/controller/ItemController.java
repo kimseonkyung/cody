@@ -97,6 +97,48 @@ public class ItemController {
 
 		return "item/itemList";
 	}
+	@RequestMapping(value="/itemListMan", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListMan(Model model) {
+
+		List<ItemDto> items = itemListService.getItemListMan();
+        JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+			obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
+	@RequestMapping(value="/itemListWoman", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String itemListWoman(Model model) {
+		
+		List<ItemDto> items = itemListService.getItemListWoman();
+        JSONArray arr = new JSONArray();
+		
+		for (ItemDto item : items) {
+			JSONObject obj = new JSONObject();
+			obj.put("item_idx", item.getItem_idx());
+			obj.put("item_image", item.getItem_image());
+			obj.put("item_name", item.getItem_name());
+			obj.put("item_category", item.getItem_category());
+			obj.put("item_price", item.getItem_price());
+			arr.put(obj);
+		}
+		
+		System.out.println("arr : " + arr);
+		
+		return arr.toString();
+	}
 	@RequestMapping("/itemListCap")
 	public String itemListCap(Model model) {
 

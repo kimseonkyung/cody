@@ -26,6 +26,12 @@
 	<select id="selectList" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item
 	</select>
+	<select id="selectListMan" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and cody_gender = 1
+	</select>
+	<select id="selectListWoman" resultType="com.bitcamp.cody.dto.ItemDto">
+		select * from cody.cody ,cody.item where cody.cody_idx=item.cody_idx and cody_gender = 0
+	</select>
 	
 	<select id="selectListCap" resultType="com.bitcamp.cody.dto.ItemDto">
 		select * from item where item_category = "모자"
