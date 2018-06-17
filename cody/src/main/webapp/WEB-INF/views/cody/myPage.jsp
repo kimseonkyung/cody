@@ -426,7 +426,7 @@ $('#gFollow').click(function () {
 			
 				$.each(data, function(i, e ) {
 					$('#myPageList').append('<div class="myCard">'
-							+ '<a href="/cody/listView?member_idx='+ e.followrq_idx +'"><img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrq_imge +'" style="height: 250px;" alt="Card image cap"></a>'
+							+ '<img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrq_imge +'" style="height: 250px;" alt="Card image cap">'
 							+ '<div class="card-body"style="padding-top: 0px;">'
 							+ '<span style="float:left; margin-top:17px;">'
 							+ e.followrq_id
@@ -506,7 +506,7 @@ $('#gFollower').click(function () {
 			
 				$.each(data, function(i, e) {
 					$('#myPageList').append('<div class="myCard">'
-							+ '<a href="/cody/listView?member_idx='+ e.followrp_idx +'"><img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrp_imag +'" style="height: 250px;" alt="Card image cap"></a>'
+							+ '<img class="card-img-top" src="/cody/uploadfile/memberphoto/'+ e.followrp_imag +'" style="height: 250px;" alt="Card image cap">'
 							+ '<div class="card-body"style="padding-top: 0px;">'
 							+ '<span style="float:left; margin-top:17px;">'
 							+ e.followrp_id
