@@ -46,6 +46,13 @@
 .card-item {
    height: 320px;
 }
+.card-item-ol1{
+   overflow: hidden;
+}
+.card-item-li1{
+   width: 240px;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
 #ranking{
 width: 25px;
 height: 25px;
@@ -105,9 +112,9 @@ iframe {
 	 <div class="my-3 p-3 bg-white rounded box-shadow">
 		<p style="vertical-align: inherit;font-size:23px; margin-left: 37px; max-width: 823px; border-bottom: 1px solid darkgray;">랭킹 리스트</p>
 	<!------------------ 랭킹리스트 반복 출력 ----------------------->			
-			<ol class="card-item-ol" >
+			<ol class="card-item-ol1" style="padding-left: 0px" >
 			<c:forEach var="cody" items="${arr }" begin="0" end="2" step="1" varStatus="status">		
-				<li class="card card-item-li" id="ranking${status.index }" style="margin-bottom:50px;">
+				<li class="card card-item-li1" id="ranking${status.index }" style="margin-bottom:50px; margin-left: 40px; display:inline-block;">
 					<a href="${pageContext.request.contextPath}/codyListView?cody_idx=${cody.cody_idx}">
 					<div id="ranking">
 					<c:choose>
