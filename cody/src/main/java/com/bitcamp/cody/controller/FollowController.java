@@ -24,7 +24,7 @@ import com.bitcamp.cody.service.MemberService;
 public class FollowController {
 
 	@Autowired
-	FollowService requestandnresponse;
+	FollowService followService;
 
 	@Autowired
 	MemberService memberService;
@@ -49,7 +49,7 @@ public class FollowController {
 		map.put("m_request", m_request);
 		map.put("m_response", m_response);// 변경해야됨
 		
-		int resultCnt = requestandnresponse.insertFollow(map);
+		int resultCnt = followService.insertFollow(map);
 		
 		String msg = "정상적 팔로우가 신청되었습니다.";
 
@@ -78,17 +78,18 @@ public class FollowController {
 		
 	 	System.out.println("memberIdx: " + m_response);
 
-		List<FollowDto> responseList = requestandnresponse.getListrespons(m_response);
+		List<FollowDto> responseList = followService.getListrespons(m_response);
 		JSONArray arr = new JSONArray();
 		
 		
 		for (FollowDto response : responseList) {
-			MemberDto memberrequst = requestandnresponse.selectrequest(response.getM_request());
+			MemberDto memberrequst = followService.selectrequest(response.getM_request());
 		 	JSONObject obj = new JSONObject();
 			obj.put("followrp_idx", memberrequst.getMember_idx());
 			obj.put("followrp_id", memberrequst.getMember_id());
 			obj.put("followrp_imag",memberrequst.getMember_photo());
 			obj.put("followrp_birth",memberrequst.getMember_birth());
+			obj.put("followrp_name",memberrequst.getMember_name());
 			obj.put("followinfop",response.getFollowinfo());
 			obj.put("followidxp", response.getFollow_idx());
 			arr.put(obj);
@@ -136,17 +137,18 @@ public class FollowController {
 
 		int m_request = member.getMember_idx();
 
-		List<FollowDto> requestLsit = requestandnresponse.getListrequet(m_request);		
+		List<FollowDto> requestLsit = followService.getListrequet(m_request);		
 		JSONArray arr = new JSONArray();
 		
 		for(FollowDto request : requestLsit) {
-			MemberDto memberrespons = requestandnresponse.selectresponse(request.getM_response());
+			MemberDto memberrespons = followService.selectresponse(request.getM_response());
 			JSONObject obj = new JSONObject();
 			
 			obj.put("followrq_idx",memberrespons.getMember_idx());
 			obj.put("followrq_id",memberrespons.getMember_id());
 			obj.put("followrq_imge",memberrespons.getMember_photo());
 			obj.put("followrq_birth",memberrespons.getMember_birth());
+			obj.put("followrq_name", memberrespons.getMember_name());
 			obj.put("followinfoq",request.getFollowinfo());
 			obj.put("followidxq", request.getFollow_idx());
 			arr.put(obj);			
@@ -191,7 +193,7 @@ public class FollowController {
 		map.put("m_response", m_response);
 		map.put("m_request", m_request);// 변경해야됨
 
-		int resultCnt = requestandnresponse.getfollowUpdate(map);
+		int resultCnt = followService.getfollowUpdate(map);
 
 		String msg = "팔로우 수락";
 
@@ -208,7 +210,7 @@ public class FollowController {
 	@RequestMapping(value="/followDelete",method = RequestMethod.GET)
 	public String deleteFollow(Model model , @RequestParam("fallow_idx") int followidx ) {
 
-		int resultCnt = requestandnresponse.getdeleteFollow(followidx);
+		int resultCnt = followService.getdeleteFollow(followidx);
 		
 		System.out.println(resultCnt);
 		
