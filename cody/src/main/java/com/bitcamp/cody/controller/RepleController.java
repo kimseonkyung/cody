@@ -155,9 +155,10 @@ public class RepleController {
 	// 수신 여부
 	@RequestMapping(value = "/reception", method = RequestMethod.POST)
 	@ResponseBody
-	public int reception() {
-
-		int cnt = repleService.selectReception();
+	public int reception(HttpSession session) {
+		MemberDto member = (MemberDto) session.getAttribute("loginInfo");
+		
+		int cnt = repleService.selectReception(member.getMember_idx());
 
 		return cnt;
 	}

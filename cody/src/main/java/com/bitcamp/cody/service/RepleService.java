@@ -109,9 +109,9 @@ public class RepleService {
 	}
 
 	// 알림 수신여부 확인하기
-	public int selectReception() {
+	public int selectReception(int idx) {
 		dao = sqlSessionTemplate.getMapper(RepleDao.class);
-		int cnt = dao.selectReception();
+		int cnt = dao.selectReception(idx);
 
 		return cnt;
 	}

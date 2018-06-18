@@ -96,7 +96,7 @@
                 
                 success : function(){
                  alert("카카오 로그인에 성공하였습니다.");
-                 window.location = "mypage/main?type=kakao";
+                 window.location = "/cody/main";
                  }
                 });
              },

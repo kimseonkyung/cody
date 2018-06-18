@@ -88,9 +88,10 @@
 	
 
 	<!-- 알림 수신여부 확인하기 -->
-	<select id="selectReception" resultType="int">
+	<select id="selectReception" resultType="int" parameterType="com.bitcamp.cody.dto.RepleDto">
 		select max(reception)
 		from reple
+		where member_idx = #{idx}
 	</select>
 	
 	<!-- 페이징 처리 -->

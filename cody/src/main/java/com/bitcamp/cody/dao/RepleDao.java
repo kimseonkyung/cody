@@ -37,7 +37,7 @@ public interface RepleDao {
 	int recepUpdate(int idx);
 	
 	// 알림 수신여부 확인하기
-	int selectReception();
+	int selectReception(int idx);
 
 	// 알림 리스트 정보 가져오기
 	List<RepleDto> noticeList(HashMap<String, Object> params);
