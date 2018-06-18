@@ -81,7 +81,7 @@
                            <div style="padding-bottom: 10px;">
                               <img src="${item.item_image}"
                                  style="width: 40px; height: 50px">
-                              &emsp;${item.item_price}원<a href="item.item_link" class="btn btn-info"
+                              &emsp;${item.item_price}원<a href="javascript:buy(${item.item_link})" class="btn btn-info"
                                  style="position: absolute; right: 10px;">구입</a>
                            </div>
 

@@ -78,7 +78,7 @@
                // 내부 서버로 데이터를 넘겨 세션을 만들어준다. 내부서버에는 해당 데이터들을 받아 처리할 controller 필요.
               $.ajax({
                 type : "POST",
-                data : 
+                data :  
                 	
                 	
                 "kakaoEmail="+jsonval.kaccount_email+

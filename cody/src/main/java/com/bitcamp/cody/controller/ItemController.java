@@ -526,6 +526,7 @@ public class ItemController {
 	}
 	
 	/*-------------------------------- 네이버쇼핑api ------------------------------*/
+	// 아이템 검색
 	@RequestMapping(value="/naverItem", produces = "application/text; charset=utf8")
 	
 	@ResponseBody
@@ -548,8 +549,7 @@ public class ItemController {
 		return arr.toString();
     }
 
-
-	
+	// 아이템 선택후 확인
 	@RequestMapping(value="/naverItemOk", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String naverItemOk(@RequestParam(value="keyword", required=false)String keyword,
@@ -580,7 +580,5 @@ public class ItemController {
 		
 		return arr.toString();
     }
-	
-	
  
 }

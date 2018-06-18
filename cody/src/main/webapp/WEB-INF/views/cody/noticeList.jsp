@@ -199,9 +199,9 @@
     	<div id="new" class="m-3 bg-white rounded box-shadow"> 
     		<p class="tit">CODY 소식</p>
     		<ul>
-    			<li><a href="#">해군이형 언능 하세요</a></li>
+    			<li><a href="#">새로운 기능 추가</a></li>
     			<li><a href="#">유니클로 감사제 7/20~7/23</a></li>
-    			<li><a href="#">60 개 이상의 상점이 대상 2000 엔 쿠폰</a></li>
+    			<li><a href="#">60 개 이상의 상점이 대상 2000원 쿠폰</a></li>
     		</ul>
     		
     	

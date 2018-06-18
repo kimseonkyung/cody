@@ -48,9 +48,9 @@ public class RepleController {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm");
 
 		RepleDto lateReple = repleService.selectinfo(reple);
-		System.out.println("lateReple : " + lateReple);
 		JSONObject obj = new JSONObject();
 		obj.put("date", df.format(lateReple.getReple_date()));
+		obj.put("reple_idx", lateReple.getReple_idx());
 
 		return obj.toString();
 	}

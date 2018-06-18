@@ -26,7 +26,7 @@ function itemListView(item_idx) {
 }
 
 /*--------------------------------------- 알림 ---------------------------------------
- 1초마다 알림 확인 
+ 1초마다 알림 확인 */
 $(document).ready(function() {
 
 	setInterval(function() {
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
 	}, 1000);
 
-});*/
+});
 
 
 
@@ -88,7 +88,7 @@ $('#reple #repleSave').click(function() {
 					$('#repleList').append('<div class="repleDiv">'
 							+'<img class="rounded-circle repleImg" src="/cody/uploadfile/memberphoto/'+member_photo+'">'
 							+'&emsp;<p class="h3 repleId">'+member_id+'</p> &emsp;&emsp;'+data.date
-							+'<button class="ml-3" id="repleDelete${repleList.reple_idx }" onclick="repleDelete(${repleList.reple_idx })">삭제</button><br>'
+							+'<a href="javascript:repleDelete('+data.reple_idx +')"><i style="font-size: 20px; color: #444; margin-left: 10px;" class="far fa-trash-alt"></i></a>'
 							+'<div class="repleCon">'+reple_contents+'</div>'
 							+'</div>');
 					$('#reple_contents').val("");
@@ -182,7 +182,7 @@ function naverSearch() {
 				var $tr = $('<tr>').append(
 					$('<td>').html('<img src="'+row.image+'" width="100">'),
 					$('<td>').html(row.title),
-					$('<td>').html(row.lprice),
+					$('<td>').html(row.lprice+'원'),
 					$('<td>').html('<input type="checkbox" name="item_check" value="'+row.productId+'">')
 				);
 				$tr.appendTo($table);
@@ -243,17 +243,17 @@ function naverSearchOk() {
 					$tr = $('<tr>').append(
 						$('<td>').html(' 색상 : <select id="item_color" name="itemList['+idx+'].item_color">'
 								+'<option>선택해주세요</option>'
-								+'<option value="white">흰색</option>'
-								+'<option value="black">검은색</option>'
-								+'<option value="red"">빨간색</option>'
-								+'<option value="orange">주황색</option>'
-								+'<option value="yellow">노랑색</option>'
-								+'<option value="green">초록색</option>'
-								+'<option value="blue">파랑색</option>'
-								+'<option value="navy">남색</option>'
-								+'<option value="purple">보라색</option></select>')
+								+'<option value="흰색">흰색</option>'
+								+'<option value="검은색">검은색</option>'
+								+'<option value="빨간색"">빨간색</option>'
+								+'<option value="">주황색</option>'
+								+'<option value="노란색">노랑색</option>'
+								+'<option value="초록색">초록색</option>'
+								+'<option value="파랑색">파랑색</option>'
+								+'<option value="남색">남색</option>'
+								+'<option value="보라색">보라색</option></select>')
 				); $tr.appendTo($div);	
-					$tr = $('<tr>').append($('<td>').html('가격 : '+row.lprice)
+					$tr = $('<tr>').append($('<td>').html('가격 : '+row.lprice+'원')
 				); $tr.appendTo($div);
 					$tr = $('<tr>').append($('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
 				); $tr.appendTo($div);
@@ -304,7 +304,7 @@ $('#myItemOk').click(function () {
 				); $tr.appendTo($div);	
 					$tr = $('<tr>').append($('<td>').html('색상 : '+color)
 				); $tr.appendTo($div);	
-					$tr = $('<tr>').append($('<td>').html('가격 : '+price)
+					$tr = $('<tr>').append($('<td>').html('가격 : '+price+'원')
 				); $tr.appendTo($div);
 					$tr = $('<tr>').append($('<td>').html('<button class="btn btn-dark" type="button" onclick="itemRemove('+idx+')">삭제</button>')
 				); $tr.appendTo($div);
@@ -531,7 +531,12 @@ function followDel(idx) {
     	
     };
 
-
-
-
-
+//아이템 구매 팝업차
+    function buy(url) {
+		var winWidth = 700;
+		var winHeight = 600;
+		 var popupOption= "width="+winWidth+", height="+winHeight;    //팝업창 옵션(optoin)
+			window.open(url,"",popupOption);
+	}
+    
+    

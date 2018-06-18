@@ -667,7 +667,7 @@ input:focus, textarea:focus {
       <th scope="row"><a href="${naver_link}"><img src="${naver_image}" width="100px"
 					height="100px"></a></th>
       <td><a href="${naver_link}">${naver_title}</a></td>
-      <td>${naver_lprice}</td>
+      <td>${naver_lprice}원</td>
       <td>${naver_mallName}</td>
     </tr>
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -186,12 +187,21 @@ input:nth-of-type(3):checked ~ section.buttons>label:nth-of-type(3) {
     			    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" 
 			     aria-haspopup="true" aria-expanded="false" style="color: black; padding-right: 20px;">
 			     <c:set var="photo" value="${loginInfo.member_photo }"/>
+			     <c:set var="photoCk" value="${fn:substring(loginInfo.member_photo, 0, 4)}" />
 			     <c:if test="${photo eq null }">
 			     <c:set var="photo" value="member.png"/>
 			     </c:if>
-		<img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${photo }" style="width:35px; height: 35px; margin: 0 10px 0 0;">
-		<h4 style="display: inline-block;">${loginInfo.member_id }</h4>
-		</a>
+			     <c:if test="${photoCk eq 'null'}">
+				 <img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/member.png" style="width:35px; height: 35px; margin: 0 10px 0 0;">
+			     </c:if>
+			     <c:if test="${photoCk eq 'http'}">
+				 <img class="rounded-circle" src="${photo }" style="width:35px; height: 35px; margin: 0 10px 0 0;">
+			     </c:if>
+			     <c:if test="${photoCk ne 'http' and photoCk ne 'null'}">
+				 <img class="rounded-circle" src="${pageContext.request.contextPath }/uploadfile/memberphoto/${photo }" style="width:35px; height: 35px; margin: 0 10px 0 0;">
+			     </c:if>
+				 <h4 style="display: inline-block;">${loginInfo.member_name }</h4>
+				 </a>
 
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">마이페이지</a>

@@ -191,7 +191,7 @@ public class MemberController {
 		@RequestMapping("/member/memberlogout")
 		public String logout(HttpSession session) {
 			session.removeAttribute("loginInfo");
-			return "redirect:/";
+			return "redirect:/main";
 		}
 		
 		
@@ -238,9 +238,18 @@ public class MemberController {
 		
 		@RequestMapping("/kakaologin")
 		   @ResponseBody
-		   public String kakaologin(MemberDto member, HttpSession session) {
+		   public String kakaologin(
+				   @RequestParam(value="id") String id, 
+				   @RequestParam(value="nickname") String nickname, 
+				   @RequestParam(value="profile_image") String profile_image, 
+				   HttpSession session) {
 		      // 비교 서비스
-			  MemberDto  members = service.kakaock(member);
+			  MemberDto member = new MemberDto();
+			  member.setMember_id(id);
+			  member.setMember_name(nickname);
+			  member.setMember_photo(profile_image);
+			  
+			 /* MemberDto  members = service.kakaock(member);
 		      String ck = "y";
 
 		      if (members != null) {
@@ -250,16 +259,16 @@ public class MemberController {
 
 		      } else {
 		         // 회원가입 처리 디비 저장
-
-		         session.setAttribute("loginInfo", member);
 		         ck = "y";
 		        
 		 		
-		 		System.out.println(session.getAttribute("loginInfo"));
 
-		      }
+		      }*/
+			  
+			  session.setAttribute("loginInfo", member);
+		      System.out.println(session.getAttribute("loginInfo"));
 
-		      return ck;
+		      return member.toString();
 
 		   }
 

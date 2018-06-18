@@ -483,13 +483,12 @@ margin: 0 auto;
 							<img src="${item.item_image }" style="margin-left:20px; width: 120px; border-radius: 3px; float:left;">
 							<p style="width: 270px; float:right;">
 							${item.item_name }<br>
-							${item.item_category }( ${item_color } )<br>
-							${item.item_price }<br>
-							<button class="btn btn-info" onclick="location.href='${item.item_link}'" style="float:  right; width: 100px;">구입</button>
+							${item.item_category }<br>
+							${item.item_price }원<br>
+							<button class="btn btn-info" style="float:  right; width: 100px;"
+							onclick="window.open('${item.item_link }', 'buyItem', 'width=1000px, height=700px')">구입</button>
 							</p>
 							</li>
-							
-							
 							</c:forEach>
 							
 							</ul>

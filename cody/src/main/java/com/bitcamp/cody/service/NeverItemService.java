@@ -41,10 +41,6 @@ public class NeverItemService {
             XmlPullParser parser = factory.newPullParser();
             parser.setInput(
                     new InputStreamReader(urlConn.getInputStream()));
-            //Test에서 했던 방식은 DOM방식이기때문에? 
-            //그래서 이렇게 해도 된다?!??!??!? 
-            
-            
             
             int eventType = parser.getEventType();
             Item b = null;
@@ -103,8 +99,6 @@ public class NeverItemService {
                 }
                 eventType = parser.next();
             }
-            
-            
             
             
         } catch (MalformedURLException e) {

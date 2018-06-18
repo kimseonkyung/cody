@@ -99,7 +99,7 @@
 		select *
         from reple
         where reception=true and cody_idx in (select cody_idx from cody where member_idx = #{idx}) 
-        order by reple_idx desc limit #{offset}, #{noOfRecords}
+        order by reple_date desc limit #{offset}, #{noOfRecords}
 	</select>
 	
 	<!-- 알림글 총 개수 -->

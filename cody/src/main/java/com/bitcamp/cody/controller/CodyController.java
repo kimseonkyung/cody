@@ -230,9 +230,6 @@ public class CodyController {
 	@RequestMapping(value = "/codyUpdateOk")
 	public String codyUpdate(Model model, HttpSession session, CodyDto cody) throws IllegalStateException, IOException {
 		
-		System.out.println("cody 수정 : " + cody);
-		System.out.println("ItemList 수정 : " + cody.getItemList());
-		
 		List<ItemDto> itemList = cody.getItemList();
 		for(int i=0; i<itemList.size(); i++) {
 			if(itemList.get(i).getItem_name() == null) {
@@ -250,8 +247,15 @@ public class CodyController {
 		}
 		
 		itemService.itemCodyDelete(cody.getCody_idx());
-		itemService.itemListInsert(arr);
+		int resultCnt = itemService.itemListInsert(arr);
 
+		String msg = "코디수정 완료";
+
+		if (resultCnt == 0)
+			msg = "등록이 되지 않았습니다. 담당자에게 문의 해주세요.";
+
+		model.addAttribute("msg", msg);
+		
 		return "cody/codyFormOk";
 	}
 	

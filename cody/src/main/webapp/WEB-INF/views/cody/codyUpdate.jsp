@@ -459,6 +459,7 @@ input:focus, textarea:focus {
 													<input type="hidden" name="itemList[${status.index }].item_category" value="${item.item_category }">	
 													<input type="hidden" name="itemList[${status.index }].item_color" value="${item.item_color }">	
 													<input type="hidden" name="itemList[${status.index }].item_price" value="${item.item_price }">	
+													<input type="hidden" name="itemList[${status.index }].item_link" value="${item.item_link }">	
 												</td></tr>
 												<tr><td style="height: 30px;"></td></tr>
 												<tr><td colspan="2" style="border-top:1px dashed #666; height: 30px;"></td></tr>
@@ -626,6 +627,7 @@ input:focus, textarea:focus {
 								<input type="hidden" id="myitem_category${item.item_idx }" value="${item.item_category }">
 								<input type="hidden" id="myitem_color${item.item_idx }" value="${item.item_color }">
 								<input type="hidden" id="myitem_price${item.item_idx }" value="${item.item_price }">
+								<input type="hidden" id="myitem_link${item.item_idx }" value="${item.item_link }">
 							</c:forEach>
 						</section>
 						</div>
