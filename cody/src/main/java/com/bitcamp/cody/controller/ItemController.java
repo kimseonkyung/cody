@@ -307,7 +307,7 @@ public class ItemController {
 
 		
 		System.out.println("전체리스트 : " + items.toString());
-		model.addAttribute("itemsOut", items);
+		model.addAttribute("items", items);
 
 		return "item/itemListOut";
 	}
